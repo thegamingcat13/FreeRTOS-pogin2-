@@ -5,6 +5,7 @@
 #include "cmsis_os.h"
 #include <math.h>
 
+osThreadId_t hReachWaypointTask;
 
 int CurrentWaypoint = STRC_AMOUNT;
 int WaypointCount = STRC_AMOUNT;

@@ -5,9 +5,6 @@
 #include "cmsis_os.h"
 #include <math.h>
 
-osThreadId_t hdifferenceTask;
-
-
 Differences difference (int waypoint)
 {
 
@@ -52,7 +49,6 @@ Differences difference (int waypoint)
 					UART_printf(100, "\r\nlon: %f", londifference);
 				}
 
-			xTaskNotifyGive(hHeadingTask);
 			osDelay(2000);
 		}
 		else if (waypoint >STRC_AMOUNT)
