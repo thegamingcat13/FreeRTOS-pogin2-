@@ -159,4 +159,7 @@ extern void Student_task1 (void *);
 // admin.c
 extern void Timer1_Handler(void);
 
+// TactileFeedback.c
+extern void ReachWaypointTask(void *);
+
 

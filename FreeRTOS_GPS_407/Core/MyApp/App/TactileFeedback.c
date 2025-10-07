@@ -38,43 +38,43 @@ void spin_around()
 
 void GoToDest()
 {
-	while(1)
-	{
-		if(fabs(parsed_gnrmc.latitude - wpLat) > 0.00002 && fabs(parsed_gnrmc.longitude - wpLon) > 0.0002)
-			drive_foward();
-		else if(fabs(parsed_gnrmc.latitude - wpLat) < 0.00002 && fabs(parsed_gnrmc.longitude - wpLon) < 0.0002)
-			spin_around();
-	}
+	if(fabs(parsed_gnrmc.latitude - wpLat) > 0.00002 && fabs(parsed_gnrmc.longitude - wpLon) > 0.00002)
+		drive_foward();
+	else if(fabs(parsed_gnrmc.latitude - wpLat) < 0.00002 && fabs(parsed_gnrmc.longitude - wpLon) < 0.00002)
+		spin_around();
 }
 
-void ReachWaypoint(void *argument)
+void ReachWaypointTask(void *argument)
 {
 
 
 	ulTaskNotifyTake(pdTRUE, portMAX_DELAY);
 	xTaskNotifyGive(hGpsDataMutex);
 
-	if (xSemaphoreTake(hGpsDataMutex, portMAX_DELAY) == pdTRUE)
+	while (TRUE)
 	{
-
-		wpLat = returnWaypoints(CurrentWaypoint, 1);
-		wpLon = returnWaypoints(CurrentWaypoint, 2);
-
-		if(wpLat > 1 && wpLon > 1) //Check of er iets van data in de Waypoints zit, anders ga door naar de volgende waypoint.
+		if (xSemaphoreTake(hGpsDataMutex, portMAX_DELAY) == pdTRUE)
 		{
-			DesiredHeading = heading();
-			//CurrentHeading =
 
-			if(CurrentHeading > DesiredHeading)
-				turn_right();
-			else if(CurrentHeading < DesiredHeading)
-				turn_left();
-			else if(fabs(CurrentHeading - DesiredHeading) <  MAX_HEADING_DIFFERENCE)
-				GoToDest();
+			wpLat = returnWaypoints(CurrentWaypoint, 1);
+			wpLon = returnWaypoints(CurrentWaypoint, 2);
 
+			if(wpLat > 1 && wpLon > 1) //Check of er iets van data in de Waypoints zit, anders ga door naar de volgende waypoint.
+			{
+				DesiredHeading = heading();
+				//CurrentHeading =
+
+				if(CurrentHeading > DesiredHeading)
+					turn_right();
+				else if(CurrentHeading < DesiredHeading)
+					turn_left();
+				else if(fabs(CurrentHeading - DesiredHeading) <  MAX_HEADING_DIFFERENCE)
+					GoToDest();
+
+			}
+			else
+				CurrentWaypoint--;
 		}
-		else
-			CurrentWaypoint--;
 	}
 }
 
