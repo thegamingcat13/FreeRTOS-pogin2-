@@ -10,6 +10,8 @@ int CurrentWaypoint = 20;
 float DesiredHeading;
 float CurrentHeading;
 float MAX_HEADING_DIFFERENCE = 10;
+int wpLat;
+int wpLon;
 
 void turn_left()
 {
@@ -34,11 +36,20 @@ void spin_around()
 	HAL_GPIO_TogglePin(GPIOD, LEDBLUE);
 }
 
+void GoToDest()
+{
+	while(1)
+	{
+		if(fabs(parsed_gnrmc.latitude - wpLat) > 0.00002 && fabs(parsed_gnrmc.longitude - wpLon) > 0.0002)
+			drive_foward();
+		else if(fabs(parsed_gnrmc.latitude - wpLat) < 0.00002 && fabs(parsed_gnrmc.longitude - wpLon) < 0.0002)
+			spin_around();
+	}
+}
 
 void ReachWaypoint(void *argument)
 {
-	int wpLat;
-	int wpLon;
+
 
 	ulTaskNotifyTake(pdTRUE, portMAX_DELAY);
 	xTaskNotifyGive(hGpsDataMutex);
@@ -51,7 +62,6 @@ void ReachWaypoint(void *argument)
 
 		if(wpLat > 1 && wpLon > 1) //Check of er iets van data in de Waypoints zit, anders ga door naar de volgende waypoint.
 		{
-
 			DesiredHeading = heading();
 			//CurrentHeading =
 
@@ -59,34 +69,12 @@ void ReachWaypoint(void *argument)
 				turn_right();
 			else if(CurrentHeading < DesiredHeading)
 				turn_left();
+			else if(fabs(CurrentHeading - DesiredHeading) <  MAX_HEADING_DIFFERENCE)
+				GoToDest();
+
 		}
 		else
 			CurrentWaypoint--;
-
-
-
-		while(1)
-		{
-
-			if(wpLat > 1 && wpLon > 1) //Check of er iets van data in de Waypoints zit, anders ga door naar de volgende waypoint.
-			{
-				DesiredHeading = heading();
-//				CurrentHeading =
-
-				if(fabs(CurrentHeading - DesiredHeading) <  MAX_HEADING_DIFFERENCE)
-					drive_foward();
-				else if(CurrentHeading > DesiredHeading)
-					turn_right();
-				else if(CurrentHeading < DesiredHeading)
-					turn_left();
-				else if(fabs(parsed_gnrmc.latitude - wpLat) < 0.00002 && fabs(parsed_gnrmc.longitude - wpLon) < 0.0002)
-					spin_around();
-
-
-			}else
-			CurrentWaypoint--;
-
-		}
 	}
 }
 

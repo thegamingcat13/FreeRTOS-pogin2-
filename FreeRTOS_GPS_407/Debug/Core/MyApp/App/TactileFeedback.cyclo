@@ -1,0 +1,6 @@
+../Core/MyApp/App/TactileFeedback.c:16:6:turn_left	1
+../Core/MyApp/App/TactileFeedback.c:21:6:turn_right	1
+../Core/MyApp/App/TactileFeedback.c:26:6:drive_foward	1
+../Core/MyApp/App/TactileFeedback.c:31:6:spin_around	1
+../Core/MyApp/App/TactileFeedback.c:39:6:GoToDest	5
+../Core/MyApp/App/TactileFeedback.c:50:6:ReachWaypoint	7

@@ -6,6 +6,7 @@
 # Add inputs and outputs from these tool invocations to the build variables 
 C_SRCS += \
 ../Core/MyApp/App/ARM_keys.c \
+../Core/MyApp/App/TactileFeedback.c \
 ../Core/MyApp/App/UART_keys.c \
 ../Core/MyApp/App/admin.c \
 ../Core/MyApp/App/gps.c \
@@ -16,6 +17,7 @@ C_SRCS += \
 
 OBJS += \
 ./Core/MyApp/App/ARM_keys.o \
+./Core/MyApp/App/TactileFeedback.o \
 ./Core/MyApp/App/UART_keys.o \
 ./Core/MyApp/App/admin.o \
 ./Core/MyApp/App/gps.o \
@@ -26,6 +28,7 @@ OBJS += \
 
 C_DEPS += \
 ./Core/MyApp/App/ARM_keys.d \
+./Core/MyApp/App/TactileFeedback.d \
 ./Core/MyApp/App/UART_keys.d \
 ./Core/MyApp/App/admin.d \
 ./Core/MyApp/App/gps.d \
@@ -42,7 +45,7 @@ Core/MyApp/App/%.o Core/MyApp/App/%.su Core/MyApp/App/%.cyclo: ../Core/MyApp/App
 clean: clean-Core-2f-MyApp-2f-App
 
 clean-Core-2f-MyApp-2f-App:
-	-$(RM) ./Core/MyApp/App/ARM_keys.cyclo ./Core/MyApp/App/ARM_keys.d ./Core/MyApp/App/ARM_keys.o ./Core/MyApp/App/ARM_keys.su ./Core/MyApp/App/UART_keys.cyclo ./Core/MyApp/App/UART_keys.d ./Core/MyApp/App/UART_keys.o ./Core/MyApp/App/UART_keys.su ./Core/MyApp/App/admin.cyclo ./Core/MyApp/App/admin.d ./Core/MyApp/App/admin.o ./Core/MyApp/App/admin.su ./Core/MyApp/App/gps.cyclo ./Core/MyApp/App/gps.d ./Core/MyApp/App/gps.o ./Core/MyApp/App/gps.su ./Core/MyApp/App/ledjes.cyclo ./Core/MyApp/App/ledjes.d ./Core/MyApp/App/ledjes.o ./Core/MyApp/App/ledjes.su ./Core/MyApp/App/route.cyclo ./Core/MyApp/App/route.d ./Core/MyApp/App/route.o ./Core/MyApp/App/route.su ./Core/MyApp/App/route_performer.cyclo ./Core/MyApp/App/route_performer.d ./Core/MyApp/App/route_performer.o ./Core/MyApp/App/route_performer.su ./Core/MyApp/App/student.cyclo ./Core/MyApp/App/student.d ./Core/MyApp/App/student.o ./Core/MyApp/App/student.su
+	-$(RM) ./Core/MyApp/App/ARM_keys.cyclo ./Core/MyApp/App/ARM_keys.d ./Core/MyApp/App/ARM_keys.o ./Core/MyApp/App/ARM_keys.su ./Core/MyApp/App/TactileFeedback.cyclo ./Core/MyApp/App/TactileFeedback.d ./Core/MyApp/App/TactileFeedback.o ./Core/MyApp/App/TactileFeedback.su ./Core/MyApp/App/UART_keys.cyclo ./Core/MyApp/App/UART_keys.d ./Core/MyApp/App/UART_keys.o ./Core/MyApp/App/UART_keys.su ./Core/MyApp/App/admin.cyclo ./Core/MyApp/App/admin.d ./Core/MyApp/App/admin.o ./Core/MyApp/App/admin.su ./Core/MyApp/App/gps.cyclo ./Core/MyApp/App/gps.d ./Core/MyApp/App/gps.o ./Core/MyApp/App/gps.su ./Core/MyApp/App/ledjes.cyclo ./Core/MyApp/App/ledjes.d ./Core/MyApp/App/ledjes.o ./Core/MyApp/App/ledjes.su ./Core/MyApp/App/route.cyclo ./Core/MyApp/App/route.d ./Core/MyApp/App/route.o ./Core/MyApp/App/route.su ./Core/MyApp/App/route_performer.cyclo ./Core/MyApp/App/route_performer.d ./Core/MyApp/App/route_performer.o ./Core/MyApp/App/route_performer.su ./Core/MyApp/App/student.cyclo ./Core/MyApp/App/student.d ./Core/MyApp/App/student.o ./Core/MyApp/App/student.su
 
 .PHONY: clean-Core-2f-MyApp-2f-App
 
