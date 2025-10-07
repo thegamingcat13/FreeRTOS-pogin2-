@@ -28,7 +28,7 @@ Differences difference ()
 		if (waypoint <= STRC_AMOUNT)
 		{
 
-			latpoint = returnWaypoints(waypoint, 1);
+			latpoint = returnWaypoints(waypoint, 2);
 			lonpoint = returnWaypoints(waypoint, 2);
 			latcurrent = parsed_gnrmc.latitude;
 			loncurrent = parsed_gnrmc.longitude;
