@@ -36,7 +36,7 @@
 * The data field block, including delimiters is limited to 74 characters or less.
 */
 
-#define STRC_AMOUNT 20 // amount of waypoints that will be created
+#define STRC_AMOUNT 19 // amount of waypoints that will be created
 
 #define LAT_PREC 0.000002 // level of precision for gps parser
 #define LON_PREC 0.000002 // level of precision for gps parser
