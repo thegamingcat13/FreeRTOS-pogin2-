@@ -54,7 +54,7 @@ void LED_Task1 (void *argument)
 	    * heb vrijgegeven met Give.
 	    */
 		leds = 128; // start at led nr. 8
-		for (i=0; i<9; i++, leds>>=1)
+		for (i=0; i<8; i++, leds>>=1)
 		{
         	LED_put(leds); // set leds
            	osDelay(os_delay);
