@@ -5,19 +5,24 @@
 #include "cmsis_os.h"
 #include <math.h>
 
-Differences difference (int waypoint)
+osThreadId_t hdifferenceTask;
+
+
+Differences difference ()
 {
 
-	float latpoint = 0;
-	float lonpoint = 0;
-	float latcurrent = 0;
-	float loncurrent = 0;
-	float latdifference = 0;
-	float londifference = 0;
+	static int waypoint = 0;
+	float latpoint;
+	float lonpoint;
+	float latcurrent;
+	float loncurrent;
+	float latdifference;
+	float londifference;
 	Differences diffs;
 
 
-	xTaskNotifyGive(hParsedGPS);
+	ulTaskNotifyTake(pdTRUE, portMAX_DELAY);
+	xTaskNotifyGive(hGpsDataMutex);
 	if (xSemaphoreTake(hGpsDataMutex, portMAX_DELAY) == pdTRUE)
 	{
 		if (waypoint <= STRC_AMOUNT)
@@ -43,12 +48,13 @@ Differences difference (int waypoint)
 
 			if (Uart_debug_out)
 				{
-					UART_puts("\n\rlatitude difference:");
+					UART_puts("\nlatitude difference:");
 					UART_printf(100, "\r\nlon: %f", latdifference);
-					UART_puts("\n\rlongitude difference:");
+					UART_puts("\nlongitude difference:");
 					UART_printf(100, "\r\nlon: %f", londifference);
 				}
 
+			xTaskNotifyGive(hHeadingTask);
 			osDelay(2000);
 		}
 		else if (waypoint >STRC_AMOUNT)
@@ -62,24 +68,28 @@ Differences difference (int waypoint)
 }
 
 
-float heading (int waypoint)
+float heading (void)
 {
 	Differences diffs;
-
-	diffs = difference(waypoint);
-
-	double overstaande = diffs.londifference;
-	double aanliggende = diffs.latdifference;
-
-	double heading_rad = atan(overstaande / aanliggende);
-	double heading_deg = heading_rad * (180.0 / M_PI);
-
-	if (Uart_debug_out)
+		while (TRUE)
 		{
-			UART_puts("\nHeading:");
-			UART_printf(100, "%f", heading_deg);
+			ulTaskNotifyTake(pdTRUE, portMAX_DELAY);
+
+			diffs = difference();
+
+			double overstaande = diffs.londifference;
+			double aanliggende = diffs.latdifference;
+
+			double heading_rad = atan(overstaande / aanliggende);
+			double heading_deg = heading_rad * (180.0 / M_PI);
+
+			if (Uart_debug_out)
+			    {
+			        UART_puts("\nHeading:");
+			        UART_printf(100, "%f", heading_deg);
+			    }
+			return(heading_deg);
 		}
-	return(heading_deg);
 }
 
 
