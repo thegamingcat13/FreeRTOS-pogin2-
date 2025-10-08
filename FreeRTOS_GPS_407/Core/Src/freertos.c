@@ -64,7 +64,7 @@ __weak void configureTimerForRunTimeStats(void)
 	DWT->CYCCNT=0;
 }
 
-__weak unsigned long getRunTimecounterValue(void)
+__weak unsigned long getRunTimeCounterValue(void)
 {
 	return DWT->CYCCNT;
 }
