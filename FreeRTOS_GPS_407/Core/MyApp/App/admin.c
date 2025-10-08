@@ -86,6 +86,8 @@ TASKDATA tasks[] =
   // student.c
 { Student_task1,NULL, .attr.name = "Student_task1",.attr.stack_size = 700, .attr.priority = osPriorityBelowNormal7 },
 
+{ ReachWaypointTask,NULL, .attr.name = "ReachWaypointTask",.attr.stack_size = 700, .attr.priority = osPriorityBelowNormal7 },
+
   // ledjes.c
   // NOTE: ledtasks 1 & 2 moeten dezelfde priority hebben, anders 'sterft' de taak met de laagste priority
   //       wat wel kan: afdwingen dat taken aan de beurt komen door notifications, zie ledasks 3 & 4

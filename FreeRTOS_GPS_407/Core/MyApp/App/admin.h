@@ -136,10 +136,6 @@ extern void LED_Task4 (void *);
 extern void Waypoint ();
 extern float returnWaypoints (int, int);
 
-// route_performer.c
-extern Differences difference (int);
-extern float heading (int);
-
 // ARM_keys.c
 extern void ARM_keys_IRQ (void *);
 extern void ARM_keys_task(void *);
@@ -152,10 +148,14 @@ extern void UART_menu     (void *);
 // gps.c
 extern void GPS_getNMEA (void *);
 extern void PARSED_GPS (void *);
+
 // studenttask.c
 extern void Student_task1 (void *);
 
 // admin.c
 extern void Timer1_Handler(void);
+
+//TactileFeedback.c
+extern void ReachWaypointTask (void *);
 
 
