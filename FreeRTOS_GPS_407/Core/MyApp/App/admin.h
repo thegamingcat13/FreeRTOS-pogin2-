@@ -73,7 +73,7 @@ extern TimerHandle_t      hTimer1;
 /// handle zodat de waypoint task extern genotified kan worden
 extern osThreadId_t   	  hWaypointTask;
 extern osThreadId_t		  hParsedGPS;
-extern osThreadId_t		  hReachWaypointTask;
+extern osThreadId_t		  hReachWPTask;
 
 
 /// debug naar uart output, zie uart_keys.c
@@ -156,7 +156,7 @@ extern void Student_task1 (void *);
 extern void Timer1_Handler(void);
 
 //TactileFeedback.c
-extern void ReachWaypointTask (void *);
+extern void ReachWPTask (void *);
 
 extern float heading (int);
 
