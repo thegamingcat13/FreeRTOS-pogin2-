@@ -142,7 +142,7 @@ void fill_GNRMC(char *message)
 * @brief Leest de GPS-NMEA-strings die via de UART via interrupt-handler (HAL_UART_RxCpltCallback)
 * binnenkomen. * De handler zet elk inkomende character gelijk op een queue, die hier uitgelezen wordt.
 * Vervolgens wordt hiervan een GPS-message opgebouwd en verwerkt.
-* @return void
+* @return void/
 */
 void GPS_getNMEA (void *argument)
 {
