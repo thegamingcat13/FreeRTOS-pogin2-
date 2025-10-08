@@ -49,14 +49,12 @@
 
 /* Private function prototypes -----------------------------------------------*/
 /* USER CODE BEGIN FunctionPrototypes */
-
+void configureTimerForRunTimeStats(void);
+unsigned long getRunTimeCounterValue(void);
 /* USER CODE END FunctionPrototypes */
 
 /* Private application code --------------------------------------------------*/
 /* USER CODE BEGIN Application */
-void configureTimerForRunTimeStats(void);
-unsigned long getRunTimeCounterValue(void);
-
 __weak void configureTimerForRunTimeStats(void)
 {
 	CoreDebug->DEMCR |= CoreDebug_DEMCR_TRCENA_Msk;
