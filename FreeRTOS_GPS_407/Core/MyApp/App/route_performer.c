@@ -5,13 +5,9 @@
 #include "cmsis_os.h"
 #include <math.h>
 
-osThreadId_t hdifferenceTask;
-
-
-Differences difference ()
+Differences difference (int waypoint)
 {
 
-	static int waypoint = 0;
 	float latpoint;
 	float lonpoint;
 	float latcurrent;
@@ -20,8 +16,6 @@ Differences difference ()
 	float londifference;
 	Differences diffs;
 
-
-	ulTaskNotifyTake(pdTRUE, portMAX_DELAY);
 	xTaskNotifyGive(hParsedGPS);
 	if (xSemaphoreTake(hGpsDataMutex, portMAX_DELAY) == pdTRUE)
 	{
@@ -54,76 +48,29 @@ Differences difference ()
 					UART_printf(100, "\r\nlon: %f", londifference);
 				}
 
-			xTaskNotifyGive(hHeadingTask);
 			osDelay(2000);
 		}
-		else if (waypoint >STRC_AMOUNT)
-			{
-			UART_puts("\nRoute klaar, bestemming bereikt");
-			waypoint = 0;
-			taskYIELD();
-			}
 	}
 		return (diffs);
 }
 
 
-float heading (void)
+float heading (int waypoint)
 {
 	Differences diffs;
-		while (TRUE)
-		{
-			ulTaskNotifyTake(pdTRUE, portMAX_DELAY);
 
-			diffs = difference();
+		diffs = difference(waypoint);
 
-			double overstaande = diffs.londifference;
-			double aanliggende = diffs.latdifference;
+		double overstaande = diffs.londifference;
+		double aanliggende = diffs.latdifference;
 
-			double heading_rad = atan(overstaande / aanliggende);
-			double heading_deg = heading_rad * (180.0 / M_PI);
+		double heading_rad = atan(overstaande / aanliggende);
+		double heading_deg = heading_rad * (180.0 / M_PI);
 
-			if (Uart_debug_out)
-			    {
-			        UART_puts("\nHeading:");
-			        UART_printf(100, "%f", heading_deg);
-			    }
-			return(heading_deg);
-		}
+		if (Uart_debug_out)
+			{
+				UART_puts("\nHeading:");
+				UART_printf(100, "%f", heading_deg);
+			}
+		return(heading_deg);
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
