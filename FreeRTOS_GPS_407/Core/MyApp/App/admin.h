@@ -73,8 +73,7 @@ extern TimerHandle_t      hTimer1;
 /// handle zodat de waypoint task extern genotified kan worden
 extern osThreadId_t   	  hWaypointTask;
 extern osThreadId_t		  hParsedGPS;
-extern osThreadId_t		  hdifferenceTask;
-extern osThreadId_t 	  hHeadingTask;
+extern osThreadId_t		  hReachWaypointTask;
 
 
 /// debug naar uart output, zie uart_keys.c
@@ -138,8 +137,8 @@ extern void Waypoint ();
 extern float returnWaypoints (int, int);
 
 // route_performer.c
-extern Differences difference (void);
-extern float heading (void);
+extern Differences difference (int);
+extern float heading (int);
 
 // ARM_keys.c
 extern void ARM_keys_IRQ (void *);
