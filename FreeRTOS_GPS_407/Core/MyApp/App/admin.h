@@ -158,4 +158,6 @@ extern void Timer1_Handler(void);
 //TactileFeedback.c
 extern void ReachWaypointTask (void *);
 
+extern float heading (int);
+
 
