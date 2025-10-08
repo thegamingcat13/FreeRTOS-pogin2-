@@ -36,7 +36,7 @@
 * The data field block, including delimiters is limited to 74 characters or less.
 */
 
-#define STRC_AMOUNT 20 // amount of waypoints that will be created
+#define STRC_AMOUNT 19 // amount of waypoints that will be created
 
 #define LAT_PREC 0.000002 // level of precision for gps parser
 #define LON_PREC 0.000002 // level of precision for gps parser
@@ -73,8 +73,7 @@ extern TimerHandle_t      hTimer1;
 /// handle zodat de waypoint task extern genotified kan worden
 extern osThreadId_t   	  hWaypointTask;
 extern osThreadId_t		  hParsedGPS;
-extern osThreadId_t		  hdifferenceTask;
-extern osThreadId_t 	  hHeadingTask;
+extern osThreadId_t		  hReachWaypointTask;
 
 
 /// debug naar uart output, zie uart_keys.c
@@ -138,8 +137,8 @@ extern void Waypoint ();
 extern float returnWaypoints (int, int);
 
 // route_performer.c
-extern Differences difference (void);
-extern float heading (void);
+extern Differences difference (int);
+extern float heading (int);
 
 // ARM_keys.c
 extern void ARM_keys_IRQ (void *);
@@ -158,5 +157,8 @@ extern void Student_task1 (void *);
 
 // admin.c
 extern void Timer1_Handler(void);
+
+// TactileFeedback.c
+extern void ReachWaypointTask(void *);
 
 

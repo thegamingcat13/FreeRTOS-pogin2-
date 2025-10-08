@@ -5,13 +5,15 @@
 #include "cmsis_os.h"
 #include <math.h>
 
+osThreadId_t hReachWaypointTask;
 
-int CurrentWaypoint = 20;
-float DesiredHeading;
-float CurrentHeading;
+int CurrentWaypoint = STRC_AMOUNT;
+int WaypointCount = STRC_AMOUNT;
+float DesiredHeading = 0;
+float CurrentHeading = 0;
 float MAX_HEADING_DIFFERENCE = 10;
-int wpLat;
-int wpLon;
+int wpLat = 0;
+int wpLon = 0;
 
 void turn_left()
 {
@@ -36,45 +38,65 @@ void spin_around()
 	HAL_GPIO_TogglePin(GPIOD, LEDBLUE);
 }
 
-void GoToDest()
+void stop()
 {
-	while(1)
-	{
-		if(fabs(parsed_gnrmc.latitude - wpLat) > 0.00002 && fabs(parsed_gnrmc.longitude - wpLon) > 0.0002)
-			drive_foward();
-		else if(fabs(parsed_gnrmc.latitude - wpLat) < 0.00002 && fabs(parsed_gnrmc.longitude - wpLon) < 0.0002)
-			spin_around();
-	}
+	HAL_GPIO_WritePin(GPIOD, LEDORANGE, RESET);
+	HAL_GPIO_WritePin(GPIOD, LEDRED, RESET);
+	HAL_GPIO_WritePin(GPIOD, LEDGREEN, RESET);
+	HAL_GPIO_WritePin(GPIOD, LEDBLUE, RESET);
 }
 
-void ReachWaypoint(void *argument)
+void GoToDest()
+{
+	if(fabs(parsed_gnrmc.latitude - wpLat) > 0.00002 && fabs(parsed_gnrmc.longitude - wpLon) > 0.00002)
+	{
+		drive_foward();
+		osDelay(100);
+		xTaskNotifyGive(hParsedGPS);
+	}
+	else if(fabs(parsed_gnrmc.latitude - wpLat) < 0.00002 && fabs(parsed_gnrmc.longitude - wpLon) < 0.00002)
+	{
+		spin_around();
+		stop();
+		CurrentWaypoint ++;
+	}
+
+}
+
+void ReachWaypointTask(void *argument)
 {
 
-
 	ulTaskNotifyTake(pdTRUE, portMAX_DELAY);
-	xTaskNotifyGive(hGpsDataMutex);
 
-	if (xSemaphoreTake(hGpsDataMutex, portMAX_DELAY) == pdTRUE)
+	while (TRUE)
 	{
-
-		wpLat = returnWaypoints(CurrentWaypoint, 1);
-		wpLon = returnWaypoints(CurrentWaypoint, 2);
-
-		if(wpLat > 1 && wpLon > 1) //Check of er iets van data in de Waypoints zit, anders ga door naar de volgende waypoint.
+		if (xSemaphoreTake(hGpsDataMutex, portMAX_DELAY) == pdTRUE)
 		{
-			DesiredHeading = heading();
-			//CurrentHeading =
 
-			if(CurrentHeading > DesiredHeading)
-				turn_right();
-			else if(CurrentHeading < DesiredHeading)
-				turn_left();
-			else if(fabs(CurrentHeading - DesiredHeading) <  MAX_HEADING_DIFFERENCE)
-				GoToDest();
+			while (wpLat == 0)
+			{
+				wpLat = returnWaypoints(WaypointCount, 1);
+				WaypointCount --;
+				CurrentWaypoint = 0;
+			}
+
+			while (CurrentWaypoint <= WaypointCount) //Check of er iets van data in de Waypoints zit, anders ga door naar de volgende waypoint.
+			{
+				wpLat = returnWaypoints(CurrentWaypoint, 1);
+				wpLon = returnWaypoints(CurrentWaypoint, 2);
+
+				DesiredHeading = heading(CurrentWaypoint);
+				//CurrentHeading =
+
+				if(CurrentHeading > DesiredHeading)
+					turn_right();
+				else if(CurrentHeading < DesiredHeading)
+					turn_left();
+				else if(fabs(CurrentHeading - DesiredHeading) <  MAX_HEADING_DIFFERENCE)
+					GoToDest();
+			}
 
 		}
-		else
-			CurrentWaypoint--;
 	}
 }
 
