@@ -22,7 +22,7 @@ Differences difference ()
 
 
 	ulTaskNotifyTake(pdTRUE, portMAX_DELAY);
-	xTaskNotifyGive(hGpsDataMutex);
+	xTaskNotifyGive(hParsedGPS);
 	if (xSemaphoreTake(hGpsDataMutex, portMAX_DELAY) == pdTRUE)
 	{
 		if (waypoint <= STRC_AMOUNT)
