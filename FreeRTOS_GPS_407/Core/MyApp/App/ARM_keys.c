@@ -93,7 +93,7 @@ void ARM_keys_task (void *argument)
 		}
 
 		if (key == 2)
-			xTaskNotifyGive(hReachWaypointTask);
+			xTaskNotifyGive(hReachWPTask);
 
 
 		if (Uart_debug_out & ARMKEYS_DEBUG_OUT)
