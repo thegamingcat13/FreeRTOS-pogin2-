@@ -5,7 +5,7 @@
 #include "cmsis_os.h"
 #include <math.h>
 
-osThreadId_t hReachWaypointTask;
+osThreadId_t hReachWPTask;
 
 int CurrentWaypoint = STRC_AMOUNT;
 int WaypointCount = STRC_AMOUNT;
@@ -63,7 +63,7 @@ void GoToDest()
 
 }
 
-void ReachWaypointTask(void *argument)
+void ReachWPTask(void *argument)
 {
 	ulTaskNotifyTake(pdTRUE, portMAX_DELAY);
 	while (TRUE)
@@ -97,6 +97,3 @@ void ReachWaypointTask(void *argument)
 		}
 	}
 }
-
-
-

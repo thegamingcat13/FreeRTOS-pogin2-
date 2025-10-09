@@ -68,6 +68,9 @@ void ARM_keys_task (void *argument)
 	if (!(hParsedGPS = xTaskGetHandle("PARSED_GPS")))
 		   error_HaltOS("Err:hParsedGPS");
 
+	if (!(hReachWPTask = xTaskGetHandle("ReachWaypoint")))
+		   error_HaltOS("Err:hReachWPTask");
+
 	while(TRUE)
 	{
 		// WAITING FOR users key
@@ -90,7 +93,7 @@ void ARM_keys_task (void *argument)
 		}
 
 		if (key == 2)
-			xTaskNotifyGive(hReachWaypointTask);
+			xTaskNotifyGive(hReachWPTask);
 
 
 		if (Uart_debug_out & ARMKEYS_DEBUG_OUT)
