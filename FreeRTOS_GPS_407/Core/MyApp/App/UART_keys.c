@@ -246,7 +246,7 @@ void UART_menu (void *argument)
 				break;
 
 		case 'H': // H: Show current heading
-			UART_puts("Dummy komt later zodra kompass logica er is");
+			UART_puts("\n\n\rDummy komt later zodra kompass logica er is");
 			break;
 
 		case 'C': // C,x Verander het huidig in te leren waypoint naar x
