@@ -97,3 +97,36 @@ void ReachWPTask(void *argument)
 		}
 	}
 }
+
+int SkipWaypoint (void)
+{
+	int memory = CurrentWaypoint;
+	CurrentWaypoint++;
+	if (CurrentWaypoint == memory +1)
+		return 1;
+	else
+		return 0;
+}
+
+int BackWaypoint (void)
+{
+	int memory = CurrentWaypoint;
+	CurrentWaypoint--;
+	if (CurrentWaypoint == memory -1)
+		return 1;
+	else
+		return 0;
+}
+
+int ShowWaypoint (void)
+{
+	int current = CurrentWaypoint;
+	char charcurrent = current + '0'; // Convert integer to character
+	int total = WaypointCount;
+	char chartotal = total + '0'; // Convert integer to character
+	LCD_clear();
+	LCD_puts("waypoint");
+	LCD_puts(charcurrent);
+	LCD_puts("of");
+	LCD_puts(chartotal);
+}
