@@ -79,3 +79,12 @@ float returnWaypoints (int pointNumber, int type)
 				break;
 	}
 }
+
+int CurrentWaypointChange (int target)
+{
+	current = target;
+	if (current == target)
+		return 1;
+	else
+		return 0;
+}
