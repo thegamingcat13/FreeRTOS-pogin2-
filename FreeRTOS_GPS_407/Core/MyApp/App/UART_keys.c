@@ -228,7 +228,7 @@ void UART_menu (void *argument)
 					  StartStopTask(val1);
 				  break;
 
-		case 'W': /// W: Show GPS data
+		case 'WL': /// WL: Show waypoint data
 				  // Eerst worden floats aangemaakt als buffer,
 				  // daarna wordt funtie returnWaypoints aangeroepen (route.c) om de floatwaardes op te halen.
 				UART_puts("\r\n\nGetting waypoints");
@@ -238,9 +238,32 @@ void UART_menu (void *argument)
 					templat = returnWaypoints(i, 1);			// print latitude van punt i
 					float templon;
 					templon = returnWaypoints(i, 2);			// print longitude van punt i
-					UART_printf(100, "\r\n\nWaypoint %d: ", i);
+					UART_printf(100, "\r\n\nWaypoint %d: ", i+1);
 					UART_printf(100, "\r\nlon: %f", templat);
 					UART_printf(100, "\r\nlat: %f", templon);
+
+		case 'H': // H: Show current heading
+			UART_puts("Dummy komt later zodra kompass logica er is");
+
+		case 'W': // W,x Verander het huidig in te leren waypoint naar x
+		      s = strtok(s,    tok); 				 // naar start van string, negeer 's,'
+			  s = strtok(NULL, tok); val1 = atoi(s); // volgende = task_id
+			  val1--;
+
+			  int status = CurrentWaypointChange(val1);
+
+			  switch (status)
+			  {
+			  case 1:
+				  UART_puts("\n\rAanpassen gelukt");
+				  break;
+			  case 2:
+				  UART_puts("\n\rAanpassing mislukt");
+				  break;
+			  default:
+				  UART_puts("\n\rFatal error");
+				  break;
+			  }
 				}
 		}
 	}
