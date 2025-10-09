@@ -21,7 +21,6 @@ static int current = 0;
 static bool filled = false;
 
 sWaypoints aWaypoints[STRC_AMOUNT];
-
 // waypoint
 // @brief deze functie checkt of er goede gps-data is binnen gekomen en slaat goede data op in een structure array.
 // hiermeer kunnen (STRC_AMOUNT) punten opgslagen worden.
