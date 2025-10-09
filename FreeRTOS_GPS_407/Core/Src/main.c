@@ -47,14 +47,13 @@
 
 /* Private variables ---------------------------------------------------------*/
 I2C_HandleTypeDef hi2c1;
+
 I2S_HandleTypeDef hi2s3;
+
 SPI_HandleTypeDef hspi1;
 
 UART_HandleTypeDef huart4;
 UART_HandleTypeDef huart2;
-unsigned char uart2_char; // keep global!
-unsigned char uart4_char; // keep global!
-
 
 /* Definitions for defaultTask */
 osThreadId_t defaultTaskHandle;
@@ -91,6 +90,7 @@ void StartDefaultTask(void *argument);
   */
 int main(void)
 {
+
   /* USER CODE BEGIN 1 */
   /* USER CODE END 1 */
 
@@ -164,6 +164,7 @@ int main(void)
   osKernelStart();
 
   /* We should never get here as control is now taken by the scheduler */
+
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
   while (1)
@@ -400,8 +401,8 @@ static void MX_USART2_UART_Init(void)
 static void MX_GPIO_Init(void)
 {
   GPIO_InitTypeDef GPIO_InitStruct = {0};
-/* USER CODE BEGIN MX_GPIO_Init_1 */
-/* USER CODE END MX_GPIO_Init_1 */
+  /* USER CODE BEGIN MX_GPIO_Init_1 */
+  /* USER CODE END MX_GPIO_Init_1 */
 
   /* GPIO Ports Clock Enable */
   __HAL_RCC_GPIOE_CLK_ENABLE();
@@ -412,7 +413,8 @@ static void MX_GPIO_Init(void)
   __HAL_RCC_GPIOD_CLK_ENABLE();
 
   /*Configure GPIO pin Output Level */
-  HAL_GPIO_WritePin(CS_I2C_SPI_GPIO_Port, CS_I2C_SPI_Pin, GPIO_PIN_RESET);
+  HAL_GPIO_WritePin(GPIOE, CS_I2C_SPI_Pin|M1_1_Pin|M1_2_Pin|M2_1_Pin
+                          |M2_2_Pin, GPIO_PIN_RESET);
 
   /*Configure GPIO pin Output Level */
   HAL_GPIO_WritePin(OTG_FS_PowerSwitchOn_GPIO_Port, OTG_FS_PowerSwitchOn_Pin, GPIO_PIN_SET);
@@ -430,12 +432,14 @@ static void MX_GPIO_Init(void)
   /*Configure GPIO pin Output Level */
   HAL_GPIO_WritePin(LED_SER_GPIO_Port, LED_SER_Pin, GPIO_PIN_RESET);
 
-  /*Configure GPIO pin : CS_I2C_SPI_Pin */
-  GPIO_InitStruct.Pin = CS_I2C_SPI_Pin;
+  /*Configure GPIO pins : CS_I2C_SPI_Pin M1_1_Pin M1_2_Pin M2_1_Pin
+                           M2_2_Pin */
+  GPIO_InitStruct.Pin = CS_I2C_SPI_Pin|M1_1_Pin|M1_2_Pin|M2_1_Pin
+                          |M2_2_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
-  HAL_GPIO_Init(CS_I2C_SPI_GPIO_Port, &GPIO_InitStruct);
+  HAL_GPIO_Init(GPIOE, &GPIO_InitStruct);
 
   /*Configure GPIO pins : OTG_FS_PowerSwitchOn_Pin Buzzer_Pin */
   GPIO_InitStruct.Pin = OTG_FS_PowerSwitchOn_Pin|Buzzer_Pin;
@@ -470,6 +474,12 @@ static void MX_GPIO_Init(void)
   GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   HAL_GPIO_Init(BOOT1_GPIO_Port, &GPIO_InitStruct);
+
+  /*Configure GPIO pins : M1_ANALOG_Pin M2_ANALOG_Pin */
+  GPIO_InitStruct.Pin = M1_ANALOG_Pin|M2_ANALOG_Pin;
+  GPIO_InitStruct.Mode = GPIO_MODE_ANALOG;
+  GPIO_InitStruct.Pull = GPIO_NOPULL;
+  HAL_GPIO_Init(GPIOE, &GPIO_InitStruct);
 
   /*Configure GPIO pin : CLK_IN_Pin */
   GPIO_InitStruct.Pin = CLK_IN_Pin;
@@ -511,8 +521,8 @@ static void MX_GPIO_Init(void)
   HAL_NVIC_SetPriority(EXTI0_IRQn, 5, 0);
   HAL_NVIC_EnableIRQ(EXTI0_IRQn);
 
-/* USER CODE BEGIN MX_GPIO_Init_2 */
-/* USER CODE END MX_GPIO_Init_2 */
+  /* USER CODE BEGIN MX_GPIO_Init_2 */
+  /* USER CODE END MX_GPIO_Init_2 */
 }
 
 /* USER CODE BEGIN 4 */
@@ -585,7 +595,8 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
   /* USER CODE BEGIN Callback 0 */
 
   /* USER CODE END Callback 0 */
-  if (htim->Instance == TIM1) {
+  if (htim->Instance == TIM1)
+  {
     HAL_IncTick();
   }
   /* USER CODE BEGIN Callback 1 */
@@ -607,8 +618,7 @@ void Error_Handler(void)
   }
   /* USER CODE END Error_Handler_Debug */
 }
-
-#ifdef  USE_FULL_ASSERT
+#ifdef USE_FULL_ASSERT
 /**
   * @brief  Reports the name of the source file and the source line number
   *         where the assert_param error has occurred.

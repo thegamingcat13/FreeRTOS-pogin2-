@@ -22,6 +22,7 @@
 /* Define to prevent recursive inclusion -------------------------------------*/
 #ifndef __USBH_CONF__H__
 #define __USBH_CONF__H__
+
 #ifdef __cplusplus
  extern "C" {
 #endif
@@ -190,6 +191,4 @@
 #ifdef __cplusplus
 }
 #endif
-
 #endif /* __USBH_CONF__H__ */
-

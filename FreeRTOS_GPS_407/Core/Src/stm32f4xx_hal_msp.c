@@ -21,7 +21,6 @@
 
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
-
 /* USER CODE BEGIN Includes */
 
 /* USER CODE END Includes */
@@ -64,6 +63,7 @@
   */
 void HAL_MspInit(void)
 {
+
   /* USER CODE BEGIN MspInit 0 */
 
   /* USER CODE END MspInit 0 */
@@ -81,19 +81,19 @@ void HAL_MspInit(void)
 }
 
 /**
-* @brief I2C MSP Initialization
-* This function configures the hardware resources used in this example
-* @param hi2c: I2C handle pointer
-* @retval None
-*/
+  * @brief I2C MSP Initialization
+  * This function configures the hardware resources used in this example
+  * @param hi2c: I2C handle pointer
+  * @retval None
+  */
 void HAL_I2C_MspInit(I2C_HandleTypeDef* hi2c)
 {
   GPIO_InitTypeDef GPIO_InitStruct = {0};
   if(hi2c->Instance==I2C1)
   {
-  /* USER CODE BEGIN I2C1_MspInit 0 */
+    /* USER CODE BEGIN I2C1_MspInit 0 */
 
-  /* USER CODE END I2C1_MspInit 0 */
+    /* USER CODE END I2C1_MspInit 0 */
 
     __HAL_RCC_GPIOB_CLK_ENABLE();
     /**I2C1 GPIO Configuration
@@ -109,26 +109,27 @@ void HAL_I2C_MspInit(I2C_HandleTypeDef* hi2c)
 
     /* Peripheral clock enable */
     __HAL_RCC_I2C1_CLK_ENABLE();
-  /* USER CODE BEGIN I2C1_MspInit 1 */
+    /* USER CODE BEGIN I2C1_MspInit 1 */
 
-  /* USER CODE END I2C1_MspInit 1 */
+    /* USER CODE END I2C1_MspInit 1 */
+
   }
 
 }
 
 /**
-* @brief I2C MSP De-Initialization
-* This function freeze the hardware resources used in this example
-* @param hi2c: I2C handle pointer
-* @retval None
-*/
+  * @brief I2C MSP De-Initialization
+  * This function freeze the hardware resources used in this example
+  * @param hi2c: I2C handle pointer
+  * @retval None
+  */
 void HAL_I2C_MspDeInit(I2C_HandleTypeDef* hi2c)
 {
   if(hi2c->Instance==I2C1)
   {
-  /* USER CODE BEGIN I2C1_MspDeInit 0 */
+    /* USER CODE BEGIN I2C1_MspDeInit 0 */
 
-  /* USER CODE END I2C1_MspDeInit 0 */
+    /* USER CODE END I2C1_MspDeInit 0 */
     /* Peripheral clock disable */
     __HAL_RCC_I2C1_CLK_DISABLE();
 
@@ -140,28 +141,28 @@ void HAL_I2C_MspDeInit(I2C_HandleTypeDef* hi2c)
 
     HAL_GPIO_DeInit(Audio_SDA_GPIO_Port, Audio_SDA_Pin);
 
-  /* USER CODE BEGIN I2C1_MspDeInit 1 */
+    /* USER CODE BEGIN I2C1_MspDeInit 1 */
 
-  /* USER CODE END I2C1_MspDeInit 1 */
+    /* USER CODE END I2C1_MspDeInit 1 */
   }
 
 }
 
 /**
-* @brief I2S MSP Initialization
-* This function configures the hardware resources used in this example
-* @param hi2s: I2S handle pointer
-* @retval None
-*/
+  * @brief I2S MSP Initialization
+  * This function configures the hardware resources used in this example
+  * @param hi2s: I2S handle pointer
+  * @retval None
+  */
 void HAL_I2S_MspInit(I2S_HandleTypeDef* hi2s)
 {
   GPIO_InitTypeDef GPIO_InitStruct = {0};
   RCC_PeriphCLKInitTypeDef PeriphClkInitStruct = {0};
   if(hi2s->Instance==SPI3)
   {
-  /* USER CODE BEGIN SPI3_MspInit 0 */
+    /* USER CODE BEGIN SPI3_MspInit 0 */
 
-  /* USER CODE END SPI3_MspInit 0 */
+    /* USER CODE END SPI3_MspInit 0 */
 
   /** Initializes the peripherals clock
   */
@@ -198,26 +199,27 @@ void HAL_I2S_MspInit(I2S_HandleTypeDef* hi2s)
     GPIO_InitStruct.Alternate = GPIO_AF6_SPI3;
     HAL_GPIO_Init(GPIOC, &GPIO_InitStruct);
 
-  /* USER CODE BEGIN SPI3_MspInit 1 */
+    /* USER CODE BEGIN SPI3_MspInit 1 */
 
-  /* USER CODE END SPI3_MspInit 1 */
+    /* USER CODE END SPI3_MspInit 1 */
+
   }
 
 }
 
 /**
-* @brief I2S MSP De-Initialization
-* This function freeze the hardware resources used in this example
-* @param hi2s: I2S handle pointer
-* @retval None
-*/
+  * @brief I2S MSP De-Initialization
+  * This function freeze the hardware resources used in this example
+  * @param hi2s: I2S handle pointer
+  * @retval None
+  */
 void HAL_I2S_MspDeInit(I2S_HandleTypeDef* hi2s)
 {
   if(hi2s->Instance==SPI3)
   {
-  /* USER CODE BEGIN SPI3_MspDeInit 0 */
+    /* USER CODE BEGIN SPI3_MspDeInit 0 */
 
-  /* USER CODE END SPI3_MspDeInit 0 */
+    /* USER CODE END SPI3_MspDeInit 0 */
     /* Peripheral clock disable */
     __HAL_RCC_SPI3_CLK_DISABLE();
 
@@ -231,27 +233,27 @@ void HAL_I2S_MspDeInit(I2S_HandleTypeDef* hi2s)
 
     HAL_GPIO_DeInit(GPIOC, I2S3_MCK_Pin|I2S3_SCK_Pin|I2S3_SD_Pin);
 
-  /* USER CODE BEGIN SPI3_MspDeInit 1 */
+    /* USER CODE BEGIN SPI3_MspDeInit 1 */
 
-  /* USER CODE END SPI3_MspDeInit 1 */
+    /* USER CODE END SPI3_MspDeInit 1 */
   }
 
 }
 
 /**
-* @brief SPI MSP Initialization
-* This function configures the hardware resources used in this example
-* @param hspi: SPI handle pointer
-* @retval None
-*/
+  * @brief SPI MSP Initialization
+  * This function configures the hardware resources used in this example
+  * @param hspi: SPI handle pointer
+  * @retval None
+  */
 void HAL_SPI_MspInit(SPI_HandleTypeDef* hspi)
 {
   GPIO_InitTypeDef GPIO_InitStruct = {0};
   if(hspi->Instance==SPI1)
   {
-  /* USER CODE BEGIN SPI1_MspInit 0 */
+    /* USER CODE BEGIN SPI1_MspInit 0 */
 
-  /* USER CODE END SPI1_MspInit 0 */
+    /* USER CODE END SPI1_MspInit 0 */
     /* Peripheral clock enable */
     __HAL_RCC_SPI1_CLK_ENABLE();
 
@@ -268,26 +270,27 @@ void HAL_SPI_MspInit(SPI_HandleTypeDef* hspi)
     GPIO_InitStruct.Alternate = GPIO_AF5_SPI1;
     HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
 
-  /* USER CODE BEGIN SPI1_MspInit 1 */
+    /* USER CODE BEGIN SPI1_MspInit 1 */
 
-  /* USER CODE END SPI1_MspInit 1 */
+    /* USER CODE END SPI1_MspInit 1 */
+
   }
 
 }
 
 /**
-* @brief SPI MSP De-Initialization
-* This function freeze the hardware resources used in this example
-* @param hspi: SPI handle pointer
-* @retval None
-*/
+  * @brief SPI MSP De-Initialization
+  * This function freeze the hardware resources used in this example
+  * @param hspi: SPI handle pointer
+  * @retval None
+  */
 void HAL_SPI_MspDeInit(SPI_HandleTypeDef* hspi)
 {
   if(hspi->Instance==SPI1)
   {
-  /* USER CODE BEGIN SPI1_MspDeInit 0 */
+    /* USER CODE BEGIN SPI1_MspDeInit 0 */
 
-  /* USER CODE END SPI1_MspDeInit 0 */
+    /* USER CODE END SPI1_MspDeInit 0 */
     /* Peripheral clock disable */
     __HAL_RCC_SPI1_CLK_DISABLE();
 
@@ -298,27 +301,27 @@ void HAL_SPI_MspDeInit(SPI_HandleTypeDef* hspi)
     */
     HAL_GPIO_DeInit(GPIOA, SPI1_SCK_Pin|SPI1_MISO_Pin|SPI1_MOSI_Pin);
 
-  /* USER CODE BEGIN SPI1_MspDeInit 1 */
+    /* USER CODE BEGIN SPI1_MspDeInit 1 */
 
-  /* USER CODE END SPI1_MspDeInit 1 */
+    /* USER CODE END SPI1_MspDeInit 1 */
   }
 
 }
 
 /**
-* @brief UART MSP Initialization
-* This function configures the hardware resources used in this example
-* @param huart: UART handle pointer
-* @retval None
-*/
+  * @brief UART MSP Initialization
+  * This function configures the hardware resources used in this example
+  * @param huart: UART handle pointer
+  * @retval None
+  */
 void HAL_UART_MspInit(UART_HandleTypeDef* huart)
 {
   GPIO_InitTypeDef GPIO_InitStruct = {0};
   if(huart->Instance==UART4)
   {
-  /* USER CODE BEGIN UART4_MspInit 0 */
+    /* USER CODE BEGIN UART4_MspInit 0 */
 
-  /* USER CODE END UART4_MspInit 0 */
+    /* USER CODE END UART4_MspInit 0 */
     /* Peripheral clock enable */
     __HAL_RCC_UART4_CLK_ENABLE();
 
@@ -337,15 +340,15 @@ void HAL_UART_MspInit(UART_HandleTypeDef* huart)
     /* UART4 interrupt Init */
     HAL_NVIC_SetPriority(UART4_IRQn, 5, 0);
     HAL_NVIC_EnableIRQ(UART4_IRQn);
-  /* USER CODE BEGIN UART4_MspInit 1 */
+    /* USER CODE BEGIN UART4_MspInit 1 */
 
-  /* USER CODE END UART4_MspInit 1 */
+    /* USER CODE END UART4_MspInit 1 */
   }
   else if(huart->Instance==USART2)
   {
-  /* USER CODE BEGIN USART2_MspInit 0 */
+    /* USER CODE BEGIN USART2_MspInit 0 */
 
-  /* USER CODE END USART2_MspInit 0 */
+    /* USER CODE END USART2_MspInit 0 */
     /* Peripheral clock enable */
     __HAL_RCC_USART2_CLK_ENABLE();
 
@@ -364,26 +367,26 @@ void HAL_UART_MspInit(UART_HandleTypeDef* huart)
     /* USART2 interrupt Init */
     HAL_NVIC_SetPriority(USART2_IRQn, 5, 0);
     HAL_NVIC_EnableIRQ(USART2_IRQn);
-  /* USER CODE BEGIN USART2_MspInit 1 */
+    /* USER CODE BEGIN USART2_MspInit 1 */
 
-  /* USER CODE END USART2_MspInit 1 */
+    /* USER CODE END USART2_MspInit 1 */
   }
 
 }
 
 /**
-* @brief UART MSP De-Initialization
-* This function freeze the hardware resources used in this example
-* @param huart: UART handle pointer
-* @retval None
-*/
+  * @brief UART MSP De-Initialization
+  * This function freeze the hardware resources used in this example
+  * @param huart: UART handle pointer
+  * @retval None
+  */
 void HAL_UART_MspDeInit(UART_HandleTypeDef* huart)
 {
   if(huart->Instance==UART4)
   {
-  /* USER CODE BEGIN UART4_MspDeInit 0 */
+    /* USER CODE BEGIN UART4_MspDeInit 0 */
 
-  /* USER CODE END UART4_MspDeInit 0 */
+    /* USER CODE END UART4_MspDeInit 0 */
     /* Peripheral clock disable */
     __HAL_RCC_UART4_CLK_DISABLE();
 
@@ -395,15 +398,15 @@ void HAL_UART_MspDeInit(UART_HandleTypeDef* huart)
 
     /* UART4 interrupt DeInit */
     HAL_NVIC_DisableIRQ(UART4_IRQn);
-  /* USER CODE BEGIN UART4_MspDeInit 1 */
+    /* USER CODE BEGIN UART4_MspDeInit 1 */
 
-  /* USER CODE END UART4_MspDeInit 1 */
+    /* USER CODE END UART4_MspDeInit 1 */
   }
   else if(huart->Instance==USART2)
   {
-  /* USER CODE BEGIN USART2_MspDeInit 0 */
+    /* USER CODE BEGIN USART2_MspDeInit 0 */
 
-  /* USER CODE END USART2_MspDeInit 0 */
+    /* USER CODE END USART2_MspDeInit 0 */
     /* Peripheral clock disable */
     __HAL_RCC_USART2_CLK_DISABLE();
 
@@ -415,9 +418,9 @@ void HAL_UART_MspDeInit(UART_HandleTypeDef* huart)
 
     /* USART2 interrupt DeInit */
     HAL_NVIC_DisableIRQ(USART2_IRQn);
-  /* USER CODE BEGIN USART2_MspDeInit 1 */
+    /* USER CODE BEGIN USART2_MspDeInit 1 */
 
-  /* USER CODE END USART2_MspDeInit 1 */
+    /* USER CODE END USART2_MspDeInit 1 */
   }
 
 }
