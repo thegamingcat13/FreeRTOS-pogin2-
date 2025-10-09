@@ -135,6 +135,7 @@ extern void LED_Task4 (void *);
 //route.c
 extern void Waypoint ();
 extern float returnWaypoints (int, int);
+extern int CurrentWaypointChange (int);
 
 // ARM_keys.c
 extern void ARM_keys_IRQ (void *);
