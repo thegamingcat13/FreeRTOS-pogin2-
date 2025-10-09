@@ -14,6 +14,9 @@
 #include "main.h"
 #include "cmsis_os.h"
 
+// LCD messages
+char wplcd[]= "Waypoint opslaan";
+char rslcd[]= "route starten";
 
 /**
 * @brief Zet een kleurenledje aan en uit.
@@ -88,13 +91,16 @@ void ARM_keys_task (void *argument)
 		if (key == 1 )
 		{
 			xTaskNotifyGive(hParsedGPS);
+			LCD_puts(wplcd);
 			osDelay(7);
 			Waypoint();
 		}
 
 		if (key == 2)
+		{
 			xTaskNotifyGive(hReachWPTask);
-
+			LCD_puts(rslcd);
+		}
 
 		if (Uart_debug_out & ARMKEYS_DEBUG_OUT)
 		{
