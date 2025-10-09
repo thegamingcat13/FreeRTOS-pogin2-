@@ -289,6 +289,7 @@ void UART_menu (void *argument)
 				UART_puts("\r\nUnknown error");
 				break;
 			}
+			break;
 
 		}
 	}
