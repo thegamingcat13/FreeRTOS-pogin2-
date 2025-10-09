@@ -293,14 +293,21 @@ void UART_menu (void *argument)
 			break;
 
 		case 'G': // G: Print parsed gps data
+			UART_puts("\n\n\rParsed GPS data:");
 			UART_printf(100, "\n\r Head: %s", parsed_gnrmc.head);
 			UART_printf(100, "\n\r Time: %d", parsed_gnrmc.time);
 			UART_printf(100, "\n\r Status: %s", parsed_gnrmc.status);
 			UART_printf(100, "\n\r Latitude: %d", parsed_gnrmc.latitude);
 			UART_printf(100, "\n\r NS_ind %s", parsed_gnrmc.NS_ind);
 			UART_printf(100, "\n\r Longitude: %d", parsed_gnrmc.longitude);
-			//UART_printf(100, "\n\r ");
-
+			UART_printf(100, "\n\r EW_ind %s", parsed_gnrmc.EW_ind);
+			UART_printf(100, "\n\r Speed: %f", parsed_gnrmc.speed);
+			UART_printf(100, "\n\r Course: %f", parsed_gnrmc.course);
+			UART_printf(100, "\n\r Date: %s", parsed_gnrmc.date);
+			UART_printf(100, "\n\r Mag_var: %f", parsed_gnrmc.mag_var);
+			UART_printf(100, "\n\r Mag_var_pos : %s", parsed_gnrmc.mag_var_pos);
+			UART_printf(100, "\n\r Mode: %s", parsed_gnrmc.mode);
+			UART_printf(100, "\n\r Cs: %s", parsed_gnrmc.cs);
 		}
 	}
 }
