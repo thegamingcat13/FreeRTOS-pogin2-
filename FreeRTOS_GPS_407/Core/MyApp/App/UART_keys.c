@@ -267,7 +267,29 @@ void UART_menu (void *argument)
 				  UART_puts("\n\rFatal error");
 				  break;
 			  }
+
 			  break;
+
+		case 'R': // R: register a waypoint
+			UART_puts("\n\n\rParsing GPS data");
+			xTaskNotifyGive(hParsedGPS);
+			osDelay(10);
+			UART_puts("\n\rSaving waypoints");
+			Waypoint();
+
+			switch (status)
+			{
+			case 1:
+				UART_puts("\r\nWaypoint opgeslagen")
+				break;
+			case 2:
+				UART_puts("\r\nError opslaan mislukt Tip:Check gps data (commando G)");
+				break;
+			default:
+				UART_puts("\r\nUnknown error");
+				break;
+			}
+
 		}
 	}
 }
