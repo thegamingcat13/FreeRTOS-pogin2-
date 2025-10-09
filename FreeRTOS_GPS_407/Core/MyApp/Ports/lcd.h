@@ -63,7 +63,7 @@ Revision:	5
 void LCD_init(void);
 void LCD_clear(void);
 void LCD_cursor_home(void);
-extern void LCD_writecontrol(unsigned char data);
+void LCD_writecontrol(unsigned char data);
 void LCD_put(char *c);
 void LCD_puts(char *c);
 void LCD_putchar(char c);

@@ -91,6 +91,7 @@ void ARM_keys_task (void *argument)
 		if (key == 1 )
 		{
 			xTaskNotifyGive(hParsedGPS);
+			LCD_clear();
 			LCD_puts(wplcd);
 			osDelay(7);
 			Waypoint();
@@ -99,6 +100,7 @@ void ARM_keys_task (void *argument)
 		if (key == 2)
 		{
 			xTaskNotifyGive(hReachWPTask);
+			LCD_clear();
 			LCD_puts(rslcd);
 		}
 
