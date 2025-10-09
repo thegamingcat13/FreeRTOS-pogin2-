@@ -308,6 +308,7 @@ void UART_menu (void *argument)
 			UART_printf(100, "\n\r Mag_var_pos : %s", parsed_gnrmc.mag_var_pos);
 			UART_printf(100, "\n\r Mode: %s", parsed_gnrmc.mode);
 			UART_printf(100, "\n\r Cs: %s", parsed_gnrmc.cs);
+			break;
 		}
 	}
 }
