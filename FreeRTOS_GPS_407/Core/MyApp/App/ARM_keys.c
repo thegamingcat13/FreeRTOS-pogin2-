@@ -17,6 +17,8 @@
 // LCD messages
 char wplcd[]= "Waypoint opslaan";
 char rslcd[]= "route starten";
+char skiplcd[]= "waypoint overgeslagen";
+char backlcd[]= "terug naar vorige punt";
 
 /**
 * @brief Zet een kleurenledje aan en uit.
@@ -88,20 +90,38 @@ void ARM_keys_task (void *argument)
 	    BUZZER_put (500);
 		osDelay(500);
 
-		if (key == 1 )
+		switch (key)
 		{
+		case 1:
 			xTaskNotifyGive(hParsedGPS);
 			LCD_clear();
 			LCD_puts(wplcd);
 			osDelay(7);
 			Waypoint();
-		}
+			break;
 
-		if (key == 2)
-		{
+		case 2:
 			xTaskNotifyGive(hReachWPTask);
 			LCD_clear();
 			LCD_puts(rslcd);
+			break;
+
+		case 3:
+			SkipWaypoint();
+			LCD_clear();
+			LCD_puts(skiplcd);
+			break;
+
+		case 4:
+			BackWaypoint();
+			LCD_clear();
+			LCD_puts(backlcd);
+			break;
+
+		case 5:
+			ShowWaypoint();
+			break;
+
 		}
 
 		if (Uart_debug_out & ARMKEYS_DEBUG_OUT)

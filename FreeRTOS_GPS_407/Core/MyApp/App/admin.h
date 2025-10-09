@@ -158,7 +158,9 @@ extern void Timer1_Handler(void);
 
 //TactileFeedback.c
 extern void ReachWPTask (void *);
-
 extern float heading (int);
+extern int SkipWaypoint (void);
+extern int BackWaypoint (void);
+extern int ShowWaypoint (void);
 
 
