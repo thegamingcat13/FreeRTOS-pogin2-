@@ -17,7 +17,7 @@ int wpLon = 0;
 
 void turn_left()
 {
-	HAL_GPIO_TogglePin(GPIOD, LEDGREEN);
+	//HAL_GPIO_WritePin(GPIOE, PE7, SET);
 }
 
 void turn_right()

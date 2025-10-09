@@ -64,6 +64,8 @@ const osThreadAttr_t defaultTask_attributes = {
 };
 /* USER CODE BEGIN PV */
 
+unsigned char 	uart4_char, uart2_char;
+
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
