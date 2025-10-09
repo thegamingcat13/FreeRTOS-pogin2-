@@ -17,6 +17,7 @@
 #include "main.h"
 #include "cmsis_os.h"
 #include "uart.h"
+#include "gps.h"
 
 extern unsigned int os_delay; /// deze waarde kan hier veranderd worden.
 
@@ -280,7 +281,7 @@ void UART_menu (void *argument)
 			switch (status)
 			{
 			case 1:
-				UART_puts("\r\nWaypoint opgeslagen")
+				UART_puts("\r\nWaypoint opgeslagen");
 				break;
 			case 2:
 				UART_puts("\r\nError opslaan mislukt Tip:Check gps data (commando G)");
@@ -290,6 +291,15 @@ void UART_menu (void *argument)
 				break;
 			}
 			break;
+
+		case 'G': // G: Print parsed gps data
+			UART_printf(100, "\n\r Head: %s", parsed_gnrmc.head);
+			UART_printf(100, "\n\r Time: %d", parsed_gnrmc.time);
+			UART_printf(100, "\n\r Status: %s", parsed_gnrmc.status);
+			UART_printf(100, "\n\r Latitude: %d", parsed_gnrmc.latitude);
+			UART_printf(100, "\n\r NS_ind %s", parsed_gnrmc.NS_ind);
+			UART_printf(100, "\n\r Longitude: %d", parsed_gnrmc.longitude);
+			//UART_printf(100, "\n\r ");
 
 		}
 	}

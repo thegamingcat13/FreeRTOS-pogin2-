@@ -35,16 +35,16 @@ typedef struct _GNRMC
 typedef struct sParsed_GNRMC
 {
 	char    head[7];       // 1. header
-	int    time;      // 2. hhmmss.sss
+	int     time;      // 2. hhmmss.sss
 	char    status;        // 3. A=valid, V=not valid
-	double    latitude;  // 4. ddmm.mmmm (double)
+	double  latitude;  // 4. ddmm.mmmm (double)
 	char    NS_ind;        // 5. N,S
-	double    longitude; // 6. ddmm.mmmm (double)
+	double  longitude; // 6. ddmm.mmmm (double)
 	char    EW_ind;        // 7. E,W
-	double   speed;      // 8. 0.13 knots (double)
-	double    course;     // 9. 309.62 degrees (double)
+	double  speed;      // 8. 0.13 knots (double)
+	double  course;     // 9. 309.62 degrees (double)
 	char    date[7];       // 10. ddmmyy
-	double    mag_var;    // 11. E,W degrees (double)
+	double  mag_var;    // 11. E,W degrees (double)
 	char    mag_var_pos;   // 12.
 	char    mode;          // 13. A=autonomous, D,E
 	char    cs[4];         // 14. checkum *34
