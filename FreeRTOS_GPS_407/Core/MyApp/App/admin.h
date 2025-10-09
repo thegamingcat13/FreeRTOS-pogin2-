@@ -111,6 +111,18 @@ extern int Uart_debug_out;
 /// LD6_Pin
 #define LEDBLUE   GPIO_PIN_15
 
+#define M1_1 	  GPIO_PIN_7
+
+#define M1_2	  GPIO_PIN_8
+
+#define M2_1	  GPIO_PIN_9
+
+#define M2_2 	  GPIO_PIN_10
+
+#define M1_ANALOG GPIO_PIN_11
+
+#define M2_ANALOG GPIO_PIN_12
+
 // my_app.c
 extern void DisplayVersion (void);
 extern void DisplayMenu    (void);

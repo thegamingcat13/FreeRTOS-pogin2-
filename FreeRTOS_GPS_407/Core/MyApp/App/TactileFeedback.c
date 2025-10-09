@@ -17,33 +17,43 @@ int wpLon = 0;
 
 void turn_left()
 {
-	//HAL_GPIO_WritePin(GPIOE, PE7, SET);
+	HAL_GPIO_WritePin(GPIOE, M1_1, SET);
+	HAL_GPIO_WritePin(GPIOE, M1_2, RESET);
+	HAL_GPIO_WritePin(GPIOE, M2_1, RESET);
+	HAL_GPIO_WritePin(GPIOE, M2_2, SET);
 }
 
 void turn_right()
 {
-	HAL_GPIO_TogglePin(GPIOD, LEDRED);
+	HAL_GPIO_WritePin(GPIOE, M1_1, RESET);
+	HAL_GPIO_WritePin(GPIOE, M1_2, SET);
+	HAL_GPIO_WritePin(GPIOE, M2_1, SET);
+	HAL_GPIO_WritePin(GPIOE, M2_2, RESET);
 }
 
 void drive_foward()
 {
-	HAL_GPIO_TogglePin(GPIOD, LEDORANGE);
+	HAL_GPIO_WritePin(GPIOE, M1_1, RESET);
+	HAL_GPIO_WritePin(GPIOE, M1_2, SET);
+	HAL_GPIO_WritePin(GPIOE, M2_1, RESET);
+	HAL_GPIO_WritePin(GPIOE, M2_2, SET);
 }
-
+/*
 void spin_around()
 {
-	HAL_GPIO_TogglePin(GPIOD, LEDORANGE);
-	HAL_GPIO_TogglePin(GPIOD, LEDRED);
-	HAL_GPIO_TogglePin(GPIOD, LEDGREEN);
-	HAL_GPIO_TogglePin(GPIOD, LEDBLUE);
+	HAL_GPIO_WritePin(GPIOE, M1_1, RESET);
+	HAL_GPIO_WritePin(GPIOE, M1_2, SET);
+	HAL_GPIO_WritePin(GPIOE, M2_1, SET);
+	HAL_GPIO_WritePin(GPIOE, M2_2, RESET);
 }
+*/
 
 void stop()
 {
-	HAL_GPIO_WritePin(GPIOD, LEDORANGE, RESET);
-	HAL_GPIO_WritePin(GPIOD, LEDRED, RESET);
-	HAL_GPIO_WritePin(GPIOD, LEDGREEN, RESET);
-	HAL_GPIO_WritePin(GPIOD, LEDBLUE, RESET);
+	HAL_GPIO_WritePin(GPIOE, M1_1, RESET);
+	HAL_GPIO_WritePin(GPIOE, M1_2, RESET);
+	HAL_GPIO_WritePin(GPIOE, M2_1, RESET);
+	HAL_GPIO_WritePin(GPIOE, M2_2, RESET);
 }
 
 void GoToDest()
@@ -56,7 +66,7 @@ void GoToDest()
 	}
 	else if(fabs(parsed_gnrmc.latitude - wpLat) < 0.00002 && fabs(parsed_gnrmc.longitude - wpLon) < 0.00002)
 	{
-		spin_around();
+		//spin_around();
 		stop();
 		CurrentWaypoint ++;
 	}
