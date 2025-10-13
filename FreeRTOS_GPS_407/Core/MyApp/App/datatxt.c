@@ -17,21 +17,21 @@ void txtOpen()
 
 }
 
-void txtWriteChar (char Name, char DataInputChar)
+void txtWriteChar (char *Name, char *DataInputChar)
 {
 	fprintf(pdata, "%s :", Name);
 	fprintf(pdata, "%s", DataInputChar);
 	fprintf(pdata, "\n");
 }
 
-void txtWriteInt (char Name, int DataInputInt)
+void txtWriteInt (char *Name, int DataInputInt)
 {
 	fprintf(pdata, "%s :", Name);
 	fprintf(pdata, "%d", DataInputInt);
 	fprintf(pdata, "\n");
 }
 
-void txtWriteFloat (char Name, float DataInputFloat)
+void txtWriteFloat (char *Name, float DataInputFloat)
 {
 	fprintf(pdata, "%s :", Name);
 	fprintf(pdata, "%f", DataInputFloat);

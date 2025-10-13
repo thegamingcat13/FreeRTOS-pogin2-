@@ -166,12 +166,14 @@ int BackWaypoint (void)
  * Deze functie wordt aangeroepen door de ARM-keys.
  * In de functie is een check ingebouwd die kijkt of de functie correct is uitgevoerd.
  */
-int ShowWaypoint (void)
+void ShowWaypoint (void)
 {
 	int current = CurrentWaypoint;
-	char charcurrent = current + '0'; // Convert integer to character
+	char charcurrent[10]; // Convert integer to character
+	itoa (current, charcurrent, 10);
 	int total = WaypointCount;
-	char chartotal = total + '0'; // Convert integer to character
+	char chartotal[10];
+	itoa (total, chartotal, 10); // Convert integer to character
 	LCD_clear();
 	LCD_puts("waypoint");
 	LCD_puts(charcurrent);
