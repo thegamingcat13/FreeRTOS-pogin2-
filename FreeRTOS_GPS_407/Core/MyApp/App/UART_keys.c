@@ -229,7 +229,7 @@ void UART_menu (void *argument)
 					  StartStopTask(val1);
 				  break;
 
-		case 'W': /// WL: Show waypoint data
+		case 'W': /// W: Show waypoint data
 				  // Eerst worden floats aangemaakt als buffer,
 				  // daarna wordt funtie returnWaypoints aangeroepen (route.c) om de floatwaardes op te halen.
 				UART_puts("\r\n\nGetting waypoints");
@@ -249,12 +249,14 @@ void UART_menu (void *argument)
 			UART_puts("\n\n\rDummy komt later zodra kompass logica er is");
 			break;
 
-		case 'C': // C,x Verander het huidig in te leren waypoint naar x
+		case 'C': /// C: Verandert huidige waypoint
+				  /// commando, als: <b>"c,4"</b> betekent: Set waypoint naar 4
+			      //  de waarde word uit de string gehaald met strtok()
 		      s = strtok(s,    tok); 				 // naar start van string, negeer 's,'
 			  s = strtok(NULL, tok); val1 = atoi(s); // volgende = task_id
 			  val1--;
 
-			  int status = CurrentWaypointChange(val1);
+			  int status = CurrentWaypointChange(val1);// status = input user
 
 			  switch (status)
 			  {
@@ -264,16 +266,16 @@ void UART_menu (void *argument)
 			  case 2:
 				  UART_puts("\n\rAanpassing mislukt");
 				  break;
-			  default:
+			  default: // moet nooit gebeuren
 				  UART_puts("\n\rFatal error");
 				  break;
 			  }
 
 			  break;
 
-		case 'R': // R: register a waypoint
+		case 'R': /// R: register a waypoint
 			UART_puts("\n\n\rParsing GPS data");
-			xTaskNotifyGive(hParsedGPS);
+			xTaskNotifyGive(hParsedGPS); // geef de notify aan de struct van gps data
 			osDelay(10);
 			UART_puts("\n\rSaving waypoints");
 			Waypoint();
@@ -286,28 +288,28 @@ void UART_menu (void *argument)
 			case 2:
 				UART_puts("\r\nError opslaan mislukt Tip:Check gps data (commando G)");
 				break;
-			default:
+			default: // moet nooit gebeuren, maar toch
 				UART_puts("\r\nUnknown error");
 				break;
 			}
 			break;
 
-		case 'G': // G: Print parsed gps data
+		case 'G': // G: Print de parsed gps struct
 			UART_puts("\n\n\rParsed GPS data:");
-			UART_printf(100, "\n\r Head: %s", parsed_gnrmc.head);
-			UART_printf(100, "\n\r Time: %d", parsed_gnrmc.time);
-			UART_printf(100, "\n\r Status: %s", parsed_gnrmc.status);
-			UART_printf(100, "\n\r Latitude: %d", parsed_gnrmc.latitude);
-			UART_printf(100, "\n\r NS_ind %s", parsed_gnrmc.NS_ind);
-			UART_printf(100, "\n\r Longitude: %d", parsed_gnrmc.longitude);
-			UART_printf(100, "\n\r EW_ind %s", parsed_gnrmc.EW_ind);
-			UART_printf(100, "\n\r Speed: %f", parsed_gnrmc.speed);
-			UART_printf(100, "\n\r Course: %f", parsed_gnrmc.course);
-			UART_printf(100, "\n\r Date: %s", parsed_gnrmc.date);
-			UART_printf(100, "\n\r Mag_var: %f", parsed_gnrmc.mag_var);
-			UART_printf(100, "\n\r Mag_var_pos : %s", parsed_gnrmc.mag_var_pos);
-			UART_printf(100, "\n\r Mode: %s", parsed_gnrmc.mode);
-			UART_printf(100, "\n\r Cs: %s", parsed_gnrmc.cs);
+			UART_printf(100, "\n\r Head: %s", parsed_gnrmc.head);				// 1. header
+			UART_printf(100, "\n\r Time: %d", parsed_gnrmc.time);				// 2. hhmmss.sss
+			UART_printf(100, "\n\r Status: %s", parsed_gnrmc.status);			// 3. A=valid, V=not valid
+			UART_printf(100, "\n\r Latitude: %d", parsed_gnrmc.latitude);		// 4. ddmm.mmmm
+			UART_printf(100, "\n\r NS_ind %s", parsed_gnrmc.NS_ind);			// 5. N,S
+			UART_printf(100, "\n\r Longitude: %d", parsed_gnrmc.longitude);		// 6. ddmm.mmmm
+			UART_printf(100, "\n\r EW_ind %s", parsed_gnrmc.EW_ind);			// 7. E,W
+			UART_printf(100, "\n\r Speed: %f", parsed_gnrmc.speed);				// 8. 0.13 knots
+			UART_printf(100, "\n\r Course: %f", parsed_gnrmc.course);			// 9. 309.62 degrees
+			UART_printf(100, "\n\r Date: %s", parsed_gnrmc.date);				// 10. ddmmyy
+			UART_printf(100, "\n\r Mag_var: %f", parsed_gnrmc.mag_var);			// 11. E,W degrees
+			UART_printf(100, "\n\r Mag_var_pos : %s", parsed_gnrmc.mag_var_pos);// 12.
+			UART_printf(100, "\n\r Mode: %s", parsed_gnrmc.mode);				// 13. A=autonomous, D,E
+			UART_printf(100, "\n\r Cs: %s", parsed_gnrmc.cs);					// 14. checkum *34
 			break;
 		}
 	}
