@@ -155,20 +155,6 @@ void Error_Handler(void);
 #define Audio_SDA_GPIO_Port GPIOB
 #define MEMS_INT2_Pin GPIO_PIN_1
 #define MEMS_INT2_GPIO_Port GPIOE
-#define M1_1PIN GPIO_PIN_7
-#define M1_1_GPIO_Port GPIOE
-#define M1_2_PIN GPIO_PIN_8
-#define M1_2_GPIO_Port GPIOE
-#define M2_1_PIN GPIO_PIN_9
-#define M2_1_GPIO_Port GPIOE
-#define M2_2_PIN GPIO_PIN_10
-#define M2_2_GPIO_Port GPIOE
-#define M1_ANALOG_PIN GPIO_PIN_11
-#define M1_ANALOG_GPIO_Port	GPIOE
-#define M2_ANALOG_PIN GPIO_PIN_12
-#define M2_ANALOG_GPIO_Port	GPIOE
-
-
 
 /* USER CODE BEGIN Private defines */
 
