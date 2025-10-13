@@ -19,6 +19,10 @@ char wplcd[]= "Waypoint opslaan";
 char rslcd[]= "route starten";
 char skiplcd[]= "waypoint overgeslagen";
 char backlcd[]= "terug naar vorige punt";
+char route[]= "route";
+char started[]= "started";
+char waypoint_skipped[]= "waypoint_skipped";
+char waypoint_back[]= "waypoint_back";
 
 /**
 * @brief Zet een kleurenledje aan en uit.
@@ -102,17 +106,20 @@ void ARM_keys_task (void *argument)
 
 		case 2:
 			xTaskNotifyGive(hReachWPTask);
+			txtWriteChar(route, started);
 			LCD_clear();
 			LCD_puts(rslcd);
 			break;
 
 		case 3:
+			txtWriteChar(route, waypoint_skipped);
 			SkipWaypoint();
 			LCD_clear();
 			LCD_puts(skiplcd);
 			break;
 
 		case 4:
+			txtWriteChar(route, waypoint_back);
 			BackWaypoint();
 			LCD_clear();
 			LCD_puts(backlcd);

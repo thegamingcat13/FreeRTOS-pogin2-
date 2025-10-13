@@ -129,6 +129,8 @@ met de UART-comport gebruikt.\r\n\
 Zie verder de Doxygen documentatie van de applicatie.\r\n\
 Michiel Scager (update: april 2023)\r\n";
 
+    txtOpen();
+
 	LCD_clear();
 	LCD_puts(app_nameLCD);
 

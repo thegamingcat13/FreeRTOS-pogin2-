@@ -175,4 +175,21 @@ extern int SkipWaypoint (void);
 extern int BackWaypoint (void);
 extern int ShowWaypoint (void);
 
+// datatxt.c
+extern void txtOpen (void);
+extern void txtClose (void);
+extern void txtWriteChar (char Name, char DataInputChar);
+extern void txtWriteInt (char Name, int DataInputInt);
+extern void txtWriteFloat (char Name, float DataInputFloat);
+
+// strings for txtWrite
+
+
+
+
+
+
+
+
+
 

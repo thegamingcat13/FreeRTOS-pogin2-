@@ -7,6 +7,7 @@
 
 osThreadId_t hReachWPTask;
 
+
 int CurrentWaypoint = STRC_AMOUNT;
 int WaypointCount = STRC_AMOUNT;
 float DesiredHeading = 0;
@@ -14,6 +15,14 @@ float CurrentHeading = 0;
 float MAX_HEADING_DIFFERENCE = 10;
 int wpLat = 0;
 int wpLon = 0;
+char desiredheading[]= "desired_heading";
+char currentheading[]= "current_heading";
+char Drive_forward[]= "Drive_forward";
+char Turn_left[]= "Turn_left";
+char Turn_right[]= "Turn_right";
+char Stop[]= "stop";
+char motor[]= "motor";
+char waypoint[]= "waypoint";
 
 /*
  * de onderstaande functies worden gebruikt voor het aansturen van de L298N dual H-bridge driver.
@@ -25,6 +34,7 @@ void turn_left()
 	HAL_GPIO_WritePin(GPIOE, M1_2, RESET);
 	HAL_GPIO_WritePin(GPIOE, M2_1, RESET);
 	HAL_GPIO_WritePin(GPIOE, M2_2, SET);
+	txtWriteChar(motor, Turn_left);
 }
 
 void turn_right()
@@ -33,6 +43,7 @@ void turn_right()
 	HAL_GPIO_WritePin(GPIOE, M1_2, SET);
 	HAL_GPIO_WritePin(GPIOE, M2_1, SET);
 	HAL_GPIO_WritePin(GPIOE, M2_2, RESET);
+	txtWriteChar(motor, Turn_right);
 }
 
 void drive_foward()
@@ -41,6 +52,7 @@ void drive_foward()
 	HAL_GPIO_WritePin(GPIOE, M1_2, SET);
 	HAL_GPIO_WritePin(GPIOE, M2_1, RESET);
 	HAL_GPIO_WritePin(GPIOE, M2_2, SET);
+	txtWriteChar(motor, Drive_forward);
 }
 
 void stop()
@@ -49,6 +61,7 @@ void stop()
 	HAL_GPIO_WritePin(GPIOE, M1_2, RESET);
 	HAL_GPIO_WritePin(GPIOE, M2_1, RESET);
 	HAL_GPIO_WritePin(GPIOE, M2_2, RESET);
+	txtWriteChar(motor, Stop);
 }
 
 /*
@@ -104,7 +117,8 @@ void ReachWPTask(void *argument)
 				// vergelijk de heading die aangehouden moet worden met de huidige heading
 				DesiredHeading = heading(CurrentWaypoint);
 				//CurrentHeading =
-
+				txtWriteFloat(desiredheading, heading(CurrentWaypoint));
+				//txtWriteFloat(currentheading, );
 				// als de headingwaarde kleiner is moet er naar rechts gedraaid worden
 				if(CurrentHeading > DesiredHeading)
 					turn_right();

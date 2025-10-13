@@ -26,6 +26,8 @@ sWaypoints aWaypoints[STRC_AMOUNT];
 // hiermeer kunnen (STRC_AMOUNT) punten opgslagen worden.
 // @return void
 
+char latitude[]= "latitude";
+char longitude[]= "longitude";
 
 void Waypoint ()
 {
@@ -35,6 +37,9 @@ void Waypoint ()
 		{
 			aWaypoints[current].lon = parsed_gnrmc.longitude;	// kopieer de latitude van de gps-data naar de waypoints-struct
 			aWaypoints[current].lat = parsed_gnrmc.latitude;	// kopieer de longitude van de gps-data naar de waypoints-struct
+
+			txtWriteFloat(longitude, aWaypoints[current].lon);
+			txtWriteFloat(latitude, aWaypoints[current].lat);
 
 			current++;
 			if (current >= STRC_AMOUNT)							// als er 20 sets data zijn opgeslagen, zet de pointer weer terug op de eerste set
