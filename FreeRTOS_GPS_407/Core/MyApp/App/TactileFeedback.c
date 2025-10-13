@@ -74,7 +74,7 @@ void GoToDest()
 		osDelay(100);
 		xTaskNotifyGive(hParsedGPS);
 	}
-	else if(fabs(parsed_gnrmc.latitude - wpLat) < LAT_PREC && fabs(parsed_gnrmc.longitude - wpLon) < LOT_PREC)
+	else if(fabs(parsed_gnrmc.latitude - wpLat) < LAT_PREC && fabs(parsed_gnrmc.longitude - wpLon) < LON_PREC)
 	{ // als de waarden kleiner zijn dan de define-waardes gaan we door naar het volgende waypoint.
 		//spin_around();
 		stop(); // waypoint bereikt, stop even
