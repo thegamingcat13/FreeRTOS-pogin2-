@@ -71,9 +71,9 @@ extern EventGroupHandle_t hKEY_Event;
 /// handle voor software timer
 extern TimerHandle_t      hTimer1;
 /// handle zodat de waypoint task extern genotified kan worden
-extern osThreadId_t   	  hWaypointTask;
-extern osThreadId_t		  hParsedGPS;
-extern osThreadId_t		  hReachWPTask;
+extern TaskHandle_t   	  hWaypointTask;
+extern TaskHandle_t		  hParsedGPS;
+extern TaskHandle_t		  hReachWPTask;
 
 
 /// debug naar uart output, zie uart_keys.c

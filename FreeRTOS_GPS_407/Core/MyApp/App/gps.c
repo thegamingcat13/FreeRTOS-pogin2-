@@ -17,7 +17,7 @@
 
 GNRMC gnrmc; // global struct for GNRMC-messages
 Parsed_GNRMC parsed_gnrmc; //global struct for parsed GNRMC-messages
-osThreadId_t hParsedGPS;
+TaskHandle_t hParsedGPS;
 /**
 * @brief De chars van de binnengekomen GNRMC-string worden in data omgezet, dwz in een
 * GNRMC-struct, mbv strtok(); De struct bevat nu alleen chars - je kunt er ook voor kiezen
