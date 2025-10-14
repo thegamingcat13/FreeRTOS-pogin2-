@@ -73,7 +73,7 @@ extern TimerHandle_t      hTimer1;
 /// handle zodat de waypoint task extern genotified kan worden
 extern TaskHandle_t   	  hWaypointTask;
 extern TaskHandle_t		  hParsedGPS;
-extern TaskHandle_t		  hReachWPTask;
+extern TaskHandle_t		  hReachWP;
 
 
 /// debug naar uart output, zie uart_keys.c

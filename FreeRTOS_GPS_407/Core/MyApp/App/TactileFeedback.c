@@ -22,7 +22,7 @@ char motor[]= "motor";
 char waypoint[]= "waypoint";
 
 
-TaskHandle_t hReachWPTask;
+TaskHandle_t hReachWP;
 /*
  * de onderstaande functies worden gebruikt voor het aansturen van de L298N dual H-bridge driver.
  * onderstaande functies kunnen worden opgeroepen om vooruit te rijden of te draaien.

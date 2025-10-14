@@ -77,7 +77,7 @@ void ARM_keys_task (void *argument)
 	if (!(hParsedGPS = xTaskGetHandle("PARSED_GPS")))
 		   error_HaltOS("Err:hParsedGPS");
 
-	if (!(hReachWPTask = xTaskGetHandle("ReachWPTask")))
+	if (!(hReachWP = xTaskGetHandle("hReachWP")))
 		   error_HaltOS("Err:hReachWPTask");
 
 	while(TRUE)
@@ -105,7 +105,7 @@ void ARM_keys_task (void *argument)
 			break;
 
 		case 2:
-			xTaskNotifyGive(hReachWPTask);
+			xTaskNotifyGive(hReachWP);
 			txtWriteChar(route, started);
 			LCD_clear();
 			LCD_puts(rslcd);
