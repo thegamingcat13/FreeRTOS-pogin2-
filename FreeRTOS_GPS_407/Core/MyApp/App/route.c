@@ -5,7 +5,6 @@
 #include "cmsis_os.h"
 
 TaskHandle_t hWaypointTask;
-osThreadId_t hHeadingTask;
 
 struct waypoints // maakt de struct aan die de latitude en longitude opslaat in floats
 {
