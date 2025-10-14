@@ -5,9 +5,6 @@
 #include "cmsis_os.h"
 #include <math.h>
 
-osThreadId_t hReachWPTask;
-
-
 int CurrentWaypoint = STRC_AMOUNT;
 int WaypointCount = STRC_AMOUNT;
 float DesiredHeading = 0;
@@ -23,6 +20,9 @@ char Turn_right[]= "Turn_right";
 char Stop[]= "stop";
 char motor[]= "motor";
 char waypoint[]= "waypoint";
+
+
+osThreadId_t hReachWPTask;
 
 /*
  * de onderstaande functies worden gebruikt voor het aansturen van de L298N dual H-bridge driver.
