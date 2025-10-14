@@ -8,8 +8,8 @@ FILE* pdata;
 
 void txtOpen()
 {
-// Open het bestand in read-modus
-	pdata = fopen("0:", "a");
+// Open het bestand in append-modus
+	pdata = fopen(":", "a");
     if (pdata == NULL)
     {
         UART_puts("error with opening file\n"); // Geef een foutmelding als het bestand niet geopend kan worden
