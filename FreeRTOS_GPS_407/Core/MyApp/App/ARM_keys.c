@@ -98,7 +98,6 @@ void ARM_keys_task (void *argument)
 		{
 		case 1:
 			xTaskNotifyGive(hParsedGPS);
-			xTaskNotifyGive(hReachWPTask);
 			LCD_clear();
 			LCD_puts(wplcd);
 			osDelay(7);
@@ -106,6 +105,7 @@ void ARM_keys_task (void *argument)
 			break;
 
 		case 2:
+			xTaskNotifyGive(hReachWPTask);
 			txtWriteChar(route, started);
 			LCD_clear();
 			LCD_puts(rslcd);
