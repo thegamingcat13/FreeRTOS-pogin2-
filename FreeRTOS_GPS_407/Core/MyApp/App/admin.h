@@ -183,11 +183,3 @@ extern void txtWriteInt (char *Name, int DataInputInt);
 extern void txtWriteFloat (char *Name, float DataInputFloat);
 
 // strings for txtWrite
-
-
-
-
-
-
-
-
