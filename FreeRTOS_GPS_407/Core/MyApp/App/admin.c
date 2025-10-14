@@ -86,7 +86,7 @@ TASKDATA tasks[] =
   // student.c
 { Student_task1,NULL, .attr.name = "Student_task1",.attr.stack_size = 700, .attr.priority = osPriorityBelowNormal7 },
 
-{ ReachWPTask,  NULL, .attr.name = "ReachWaypoint",.attr.stack_size = 700, .attr.priority = osPriorityBelowNormal7 },
+{ ReachWPTask,  NULL, .attr.name = "ReachWPTask",.attr.stack_size = 700, .attr.priority = osPriorityBelowNormal7 },
 
   // ledjes.c
   // NOTE: ledtasks 1 & 2 moeten dezelfde priority hebben, anders 'sterft' de taak met de laagste priority

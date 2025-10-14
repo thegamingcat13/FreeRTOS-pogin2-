@@ -77,7 +77,7 @@ void ARM_keys_task (void *argument)
 	if (!(hParsedGPS = xTaskGetHandle("PARSED_GPS")))
 		   error_HaltOS("Err:hParsedGPS");
 
-	if (!(hReachWPTask = xTaskGetHandle("ReachWaypoint")))
+	if (!(hReachWPTask = xTaskGetHandle("ReachWPTask")))
 		   error_HaltOS("Err:hReachWPTask");
 
 	while(TRUE)
