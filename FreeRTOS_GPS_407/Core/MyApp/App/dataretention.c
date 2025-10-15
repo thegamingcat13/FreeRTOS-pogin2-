@@ -72,7 +72,7 @@ void printLogs(void)
     // Iterate up to the maximum number of logs
     for (int i = 0; i < maxLogs; i++)
     {
-	UART_puts("Log %d:\n", i + 1);
+	UART_putint("Log %d:\n", i + 1);
 
 	// Print Latitude if it exists for this index
 	if (i < logCount1)
