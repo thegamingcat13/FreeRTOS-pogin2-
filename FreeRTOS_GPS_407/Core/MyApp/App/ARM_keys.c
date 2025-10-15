@@ -106,12 +106,14 @@ void ARM_keys_task (void *argument)
 
 		case 2:
 			xTaskNotifyGive(hReachWP);
+			logWrite(5, (void*)started);
 			txtWriteChar(route, started);
 			LCD_clear();
 			LCD_puts(rslcd);
 			break;
 
 		case 3:
+			logWrite(5, (void*)waypoint_skipped);
 			txtWriteChar(route, waypoint_skipped);
 			SkipWaypoint();
 			LCD_clear();
@@ -119,6 +121,7 @@ void ARM_keys_task (void *argument)
 			break;
 
 		case 4:
+			logWrite(5, (void*)waypoint_back);
 			txtWriteChar(route, waypoint_back);
 			BackWaypoint();
 			LCD_clear();

@@ -46,6 +46,20 @@ typedef struct {
 	    float londifference;
 	} Differences;
 
+// dataretention.c
+#define MAX_LOGS 100 // Define the maximum number of logs
+
+// log structure
+typedef struct log
+{
+	char    latitude[10];  // 4. ddmm.mmmm (double)
+	char    longitude[10]; // 6. ddmm.mmmm (double)
+	char    heading_current[8];     // 9. 309.62 degrees (double)
+	char	heading_desired[8];
+	char    buttons_pressed[25];          // 13. A=autonomous, D,E
+	char	commands[10];	   // motor commands
+} Slog;
+
 /// struct voor taak-gegevens, waaronder de argumenten om een taak aan te maken
 typedef struct TaskData
 {
@@ -182,4 +196,11 @@ extern void txtWriteChar (char *Name, char *DataInputChar);
 extern void txtWriteInt (char *Name, int DataInputInt);
 extern void txtWriteFloat (char *Name, float DataInputFloat);
 
-// strings for txtWrite
+// dataretention.c
+extern void logWrite(int type, void* info);
+extern void printLogs(void);
+
+
+
+
+

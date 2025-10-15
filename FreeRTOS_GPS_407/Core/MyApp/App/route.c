@@ -37,6 +37,9 @@ void Waypoint ()
 			aWaypoints[current].lon = parsed_gnrmc.longitude;	// kopieer de latitude van de gps-data naar de waypoints-struct
 			aWaypoints[current].lat = parsed_gnrmc.latitude;	// kopieer de longitude van de gps-data naar de waypoints-struct
 
+			logWrite(1, 0);
+			logWrite(2, 0);
+
 			txtWriteFloat(longitude, aWaypoints[current].lon);
 			txtWriteFloat(latitude, aWaypoints[current].lat);
 

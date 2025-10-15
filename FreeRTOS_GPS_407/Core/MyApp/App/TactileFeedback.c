@@ -8,6 +8,7 @@
 int CurrentWaypoint = STRC_AMOUNT;
 int WaypointCount = STRC_AMOUNT;
 float DesiredHeading = 0;
+float desiredheadingValue;
 float CurrentHeading = 0;
 float MAX_HEADING_DIFFERENCE = 10;
 int wpLat = 0;
@@ -33,7 +34,8 @@ void turn_left()
 	HAL_GPIO_WritePin(GPIOE, M1_2, RESET);
 	HAL_GPIO_WritePin(GPIOE, M2_1, RESET);
 	HAL_GPIO_WritePin(GPIOE, M2_2, SET);
-	txtWriteChar(motor, Turn_left);
+	logWrite(6, turn_left);
+	txtWriteChar(motor, (void*)Turn_left);
 }
 
 void turn_right()
@@ -42,7 +44,8 @@ void turn_right()
 	HAL_GPIO_WritePin(GPIOE, M1_2, SET);
 	HAL_GPIO_WritePin(GPIOE, M2_1, SET);
 	HAL_GPIO_WritePin(GPIOE, M2_2, RESET);
-	txtWriteChar(motor, Turn_right);
+	logWrite(6, Turn_right);
+	txtWriteChar(motor, (void*)Turn_right);
 }
 
 void drive_foward()
@@ -51,7 +54,8 @@ void drive_foward()
 	HAL_GPIO_WritePin(GPIOE, M1_2, SET);
 	HAL_GPIO_WritePin(GPIOE, M2_1, RESET);
 	HAL_GPIO_WritePin(GPIOE, M2_2, SET);
-	txtWriteChar(motor, Drive_forward);
+	logWrite(6, Drive_forward);
+	txtWriteChar(motor, (void*)Drive_forward);
 }
 
 void stop()
@@ -60,7 +64,8 @@ void stop()
 	HAL_GPIO_WritePin(GPIOE, M1_2, RESET);
 	HAL_GPIO_WritePin(GPIOE, M2_1, RESET);
 	HAL_GPIO_WritePin(GPIOE, M2_2, RESET);
-	txtWriteChar(motor, Stop);
+	logWrite(6, Stop);
+	txtWriteChar(motor, (void*)Stop);
 }
 
 /*
@@ -117,6 +122,9 @@ void ReachWPTask(void *argument)
 				DesiredHeading = heading(CurrentWaypoint);
 				//CurrentHeading =
 				txtWriteFloat(desiredheading, heading(CurrentWaypoint));
+				//logWrite(3, (void*)&heading(CurrentWaypoint));
+				desiredheadingValue = DesiredHeading;
+				logWrite(4, (void*)&desiredheadingValue);
 				//txtWriteFloat(currentheading, );
 				// als de headingwaarde kleiner is moet er naar rechts gedraaid worden
 				if(CurrentHeading > DesiredHeading)
