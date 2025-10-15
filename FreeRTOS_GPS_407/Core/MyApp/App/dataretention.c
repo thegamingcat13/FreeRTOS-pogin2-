@@ -1,11 +1,7 @@
-
 #include "admin.h"
 #include <stdbool.h>
 #include "cmsis_os.h"
 #include "gps.h"
-
-
-
 
 Slog logs[MAX_LOGS]; // Array to store log entries
 
@@ -16,7 +12,12 @@ int logCount4 = 0;// Counter to track the number of logs
 int logCount5 = 0;// Counter to track the number of logs
 int logCount6 = 0;// Counter to track the number of logs
 
-
+/*
+ * LogWrite
+ * @brief slaat verschillende stukken data op in een structure array.
+ * @param type bepaalt wat voor data het is en in welk deel van de structure array het moet worden opgeslagen
+ * @param info geeft mee welke info er moet worden opgelagen, bijvoorbeeld een string of float-waarde
+ */
 void logWrite(int type, void* info)
 {
     //memset(&logs[logCount], 0, sizeof(Slog));
@@ -52,7 +53,11 @@ void logWrite(int type, void* info)
     }
 }
 
-
+/*
+ * printLogs
+ * @brief deze functie prints alle gegevens die zijn opgelslagen in de Log-structure-arrray
+ * de hoeveelheid lijnen die moeten worden uitgeprint worden automatisch bepaald voor elke logCount.
+ */
 void printLogs(void)
 {
     // Determine the maximum number of logs across all fields
@@ -67,49 +72,45 @@ void printLogs(void)
     // Iterate up to the maximum number of logs
     for (int i = 0; i < maxLogs; i++)
     {
-	printf("Log %d:\n", i + 1);
+	UART_puts("Log %d:\n", i + 1);
 
 	// Print Latitude if it exists for this index
 	if (i < logCount1)
-		printf("  Latitude: %s\n", logs[i].latitude);
+		UART_puts("  Latitude: %s\n", logs[i].latitude);
 	 else
-		printf("  Latitude: -\n");
+		UART_puts("  Latitude: -\n");
 
 	// Print Longitude if it exists for this index
 	if (i < logCount2)
-		printf("  Longitude: %s\n", logs[i].longitude);
+		UART_puts("  Longitude: %s\n", logs[i].longitude);
 	 else
-		printf("  Longitude: -\n");
-
+		UART_puts("  Longitude: -\n");
 
 	// Print Current Heading if it exists for this index
 	if (i < logCount3)
-		printf("  Current Heading: %s\n", logs[i].heading_current);
+		UART_puts("  Current Heading: %s\n", logs[i].heading_current);
 	 else
-		printf("  Current Heading: -\n");
-
+		UART_puts("  Current Heading: -\n");
 
 	// Print Desired Heading if it exists for this index
 	if (i < logCount4)
-		printf("  Desired Heading: %s\n", logs[i].heading_desired);
+		UART_puts("  Desired Heading: %s\n", logs[i].heading_desired);
 	 else
-		printf("  Desired Heading: -\n");
-
+		UART_puts("  Desired Heading: -\n");
 
 	// Print Buttons Pressed if it exists for this index
 	if (i < logCount5)
-		printf("  Buttons Pressed: %s\n", logs[i].buttons_pressed);
+		UART_puts("  Buttons Pressed: %s\n", logs[i].buttons_pressed);
 	 else
-		printf("  Buttons Pressed: -\n");
-
+		UART_puts("  Buttons Pressed: -\n");
 
 	// Print Commands if it exists for this index
 	if (i < logCount6)
-		printf("  Commands: %s\n", logs[i].commands);
+		UART_puts("  Commands: %s\n", logs[i].commands);
 	 else
-		printf("  Commands: -\n");
+		UART_puts("  Commands: -\n");
 
 
-	printf("\n");
+	UART_puts("\n");
 	}
 }

@@ -273,7 +273,7 @@ void UART_menu (void *argument)
 
 			  break;
 
-		case 'R': /// R: register a waypoint
+		case 'R': /// R: registreer een waypoint
 			UART_puts("\n\n\rParsing GPS data");
 			xTaskNotifyGive(hParsedGPS); // geef de notify aan de struct van gps data
 			osDelay(10);

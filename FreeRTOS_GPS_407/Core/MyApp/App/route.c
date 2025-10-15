@@ -37,11 +37,10 @@ void Waypoint ()
 			aWaypoints[current].lon = parsed_gnrmc.longitude;	// kopieer de latitude van de gps-data naar de waypoints-struct
 			aWaypoints[current].lat = parsed_gnrmc.latitude;	// kopieer de longitude van de gps-data naar de waypoints-struct
 
-			logWrite(1, 0);
-			logWrite(2, 0);
-
-			txtWriteFloat(longitude, aWaypoints[current].lon);
-			txtWriteFloat(latitude, aWaypoints[current].lat);
+			logWrite(1, 0);										// sla de latitude op in de terminal-log
+			logWrite(2, 0);										// sla de longitude op in de terminal-log
+			txtWriteFloat(longitude, aWaypoints[current].lon);	// sla de latitude op in de sd-log
+			txtWriteFloat(latitude, aWaypoints[current].lat);	// sla de longitude op in de sd-log
 
 			current++;
 			if (current >= STRC_AMOUNT)							// als er 20 sets data zijn opgeslagen, zet de pointer weer terug op de eerste set
@@ -61,9 +60,6 @@ void Waypoint ()
 // @param pointNumber is de waypoint die moet worden uitgeprint.
 // @param type bepaalt of de latitude of longitude wordt uitgeprint.
 // @return returnt een float met latitude of longitude waardes afhankelijk van waarde 'type'.
-
-
-
 float returnWaypoints (int pointNumber, int type)
 {
 	switch (type)
@@ -86,11 +82,17 @@ float returnWaypoints (int pointNumber, int type)
 	}
 }
 
+/*
+ * CurrentWaypointChange
+ * @brief deze functie kan gebruikt worden om handmatig naar een ander waypoint te gaan.
+ * @param target is de waarde van het waypoint waar naartoe gegaan moet worden.
+ * @return returnt een integer-waarde die aangeeft of het aanpasssen gelukt is of niet
+ */
 int CurrentWaypointChange (int target)
 {
 	current = target;
 	if (current == target)
-		return 1;
+		return 1; // als het aanpassen gelukt is, return 1
 	else
-		return 0;
+		return 0; // als het aanpassen mislukt is, return 0
 }

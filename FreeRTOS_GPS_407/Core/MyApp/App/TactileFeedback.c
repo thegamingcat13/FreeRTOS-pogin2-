@@ -176,13 +176,13 @@ int BackWaypoint (void)
 void ShowWaypoint (void)
 {
 	int current = CurrentWaypoint;
-	char charcurrent[10]; // Convert integer to character
+	char charcurrent[10]; // Converteer integer naar character
 	itoa (current, charcurrent, 10);
 	int total = WaypointCount;
 	char chartotal[10];
-	itoa (total, chartotal, 10); // Convert integer to character
-	LCD_clear();
-	LCD_puts("waypoint");
+	itoa (total, chartotal, 10); // Converteer integer naar character
+	LCD_clear();				 // veeg het scherm leeg
+	LCD_puts("waypoint");		 // zet de data op het scherm
 	LCD_puts(charcurrent);
 	LCD_puts("of");
 	LCD_puts(chartotal);

@@ -49,7 +49,7 @@ typedef struct {
 // dataretention.c
 #define MAX_LOGS 100 // Define the maximum number of logs
 
-// log structure
+// data retention log structure
 typedef struct log
 {
 	char    latitude[10];  // 4. ddmm.mmmm (double)
@@ -199,8 +199,3 @@ extern void txtWriteFloat (char *Name, float DataInputFloat);
 // dataretention.c
 extern void logWrite(int type, void* info);
 extern void printLogs(void);
-
-
-
-
-
