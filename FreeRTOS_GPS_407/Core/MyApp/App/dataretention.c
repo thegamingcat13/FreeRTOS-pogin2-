@@ -5,7 +5,7 @@
 #include "gps.h"
 
 
-#define MAX_LOGS 100 // Define the maximum number of logs you want to store
+
 
 Slog logs[MAX_LOGS]; // Array to store log entries
 
@@ -19,7 +19,6 @@ int logCount6 = 0;// Counter to track the number of logs
 
 void logWrite(int type, void* info)
 {
-    // Clear the current log entry (optional, but good practice)
     //memset(&logs[logCount], 0, sizeof(Slog));
     switch (type)
     {
