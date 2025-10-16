@@ -3,6 +3,13 @@
 //
 
 #include "sr04.h"
+#include <admin.h>
+#include <stdbool.h>
+#include "main.h"
+#include "gps.h"
+#include "cmsis_os.h"
+#include <math.h>
+
 #define DISTANCE_LIMIT 5000
 
 void sr04_init(sr04_t *sr04_struct){
@@ -20,7 +27,7 @@ void sr04_init(sr04_t *sr04_struct){
 void sr04_trigger(sr04_t *sr04_struct){
   // Send pulse to trigger pin
   HAL_GPIO_WritePin(sr04_struct->trig_port, sr04_struct->trig_pin, GPIO_PIN_SET);
-  HAL_Delay(1);
+  osDelay(1);
   HAL_GPIO_WritePin(sr04_struct->trig_port, sr04_struct->trig_pin, GPIO_PIN_RESET);
 }
 

@@ -14,6 +14,7 @@
 #include "semphr.h"
 #include "message_buffer.h"
 #include "cmsis_os.h"
+#include "sr04.h"
 
 #include "stdio.h"
 #include "string.h" // strtok, strcpy
@@ -87,6 +88,8 @@ extern TimerHandle_t      hTimer1;
 /// handle zodat de waypoint task extern genotified kan worden
 extern TaskHandle_t   	  hWaypointTask;
 extern TaskHandle_t		  hReachWP;
+
+extern sr04_t Distance_struct;
 
 
 /// debug naar uart output, zie uart_keys.c

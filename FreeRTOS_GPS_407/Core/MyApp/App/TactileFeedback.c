@@ -22,6 +22,7 @@ char Turn_right[]= "Turn_right";
 char Stop[]= "stop";
 char motor[]= "motor";
 char waypoint[]= "waypoint";
+bool FirstRun = true;
 
 sr04_t Distance_struct;
 
@@ -30,6 +31,18 @@ TaskHandle_t hReachWP;
  * de onderstaande functies worden gebruikt voor het aansturen van de L298N dual H-bridge driver.
  * onderstaande functies kunnen worden opgeroepen om vooruit te rijden of te draaien.
  */
+
+void setup_sr04(void) {
+    Distance_struct.trig_port = Trigger_Pin;     // Replace with your TRIG port
+    Distance_struct.trig_pin = Trigger_GPIO_Port; // Replace with your TRIG pin
+
+    Distance_struct.echo_htim = &htim2;     // Replace with your ECHO timer handle
+    Distance_struct.echo_channel = TIM_CHANNEL_4; // Replace with your ECHO timer channel
+
+    // Initialize the SR04 module
+    sr04_init(&Distance_struct);
+}
+
 void turn_left()
 {
 	HAL_GPIO_WritePin(GPIOE, M1_1, SET);
@@ -100,21 +113,18 @@ void GoToDest()
 
 void ReachWPTask(void *argument)
 {
-	sr04_init(&Distance_struct);
 	while (TRUE)
 	{
 		ulTaskNotifyTake(pdTRUE, portMAX_DELAY);
 		if (xSemaphoreTake(hGpsDataMutex, portMAX_DELAY) == pdTRUE) // wacht tot de gps-mutex vrij is
 		{
 			sr04_trigger(&Distance_struct);
-			sr04_read_distance(&Distance_struct);
 			if (Distance_struct.distance < 250)
 			{
 				while (Distance_struct.distance < 250)
 				{
 					turn_left();
 					sr04_trigger(&Distance_struct);
-					sr04_read_distance(&Distance_struct);
 				}
 				stop();
 				drive_forward();
