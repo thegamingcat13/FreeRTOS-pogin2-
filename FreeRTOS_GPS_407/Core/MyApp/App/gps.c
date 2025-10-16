@@ -283,4 +283,3 @@ int checksum_valid(char *string)
 
 
 
-

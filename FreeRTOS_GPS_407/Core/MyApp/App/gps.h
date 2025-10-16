@@ -61,4 +61,3 @@ enum NMEA
 	eGNGGA       // 3 - kun je verder uitbreiden natuurlijk
 };
 
-
