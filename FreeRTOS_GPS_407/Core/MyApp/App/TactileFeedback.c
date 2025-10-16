@@ -73,7 +73,26 @@ void spin_around()
 	HAL_GPIO_WritePin(GPIOE, M2_2, RESET);
 }
 */
+uint_32 Echo_Read()
+{
+	uint_32 startTick, stopTick;
 
+	HAL_GPIO_TogglePin(GPIOE, Trigger_Pin);
+	osDelay(15);
+	HAL_GPIO_TogglePin(GPIOE, Trigger_Pin);
+
+	while (HAL_GPIO_ReadPin(GPIOE, Trigger_Pin) == GPIO_PIN_RESET);
+		startTick =
+
+	while (HAL_GPIO_ReadPin(GPIOE, Trigger_Pin) == GPIO_PIN_SET);
+		stopTick = __HAL_TIM_GET_COUNTER(&htim1);
+
+	uint32 TickDiff = (stopTick - startTick);
+
+	afstand = (TickDiff/58);
+	return afstand;
+)
+}
 
 /*
  * GoToDest wordt gebruikt om te bepalen of het voertuig al dicht genoeg bij de waypoint is om door te gaan.

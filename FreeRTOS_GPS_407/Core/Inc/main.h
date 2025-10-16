@@ -111,6 +111,10 @@ void Error_Handler(void);
 #define M2_ANALOG_GPIO_Port GPIOE
 #define CLK_IN_Pin GPIO_PIN_10
 #define CLK_IN_GPIO_Port GPIOB
+#define Echo_Pin GPIO_PIN_9
+#define Echo_GPIO_Port GPIOD
+#define Trigger_Pin GPIO_PIN_10
+#define Trigger_GPIO_Port GPIOD
 #define LD4_Pin GPIO_PIN_12
 #define LD4_GPIO_Port GPIOD
 #define LD3_Pin GPIO_PIN_13
