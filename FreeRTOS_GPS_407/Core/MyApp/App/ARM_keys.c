@@ -74,9 +74,6 @@ void ARM_keys_task (void *argument)
 	uint32_t 	 key;
 	int			 i, led;
 
-	if (!(hParsedGPS = xTaskGetHandle("PARSED_GPS")))
-		   error_HaltOS("Err:hParsedGPS");
-
 	if (!(hReachWP = xTaskGetHandle("hReachWP")))
 		   error_HaltOS("Err:hReachWPTask");
 
@@ -97,7 +94,8 @@ void ARM_keys_task (void *argument)
 		switch (key)
 		{
 		case 1:
-			xTaskNotifyGive(hParsedGPS);
+			ParsedGPS();
+			osDelay(50);
 			LCD_clear();
 			LCD_puts(wplcd);
 			osDelay(7);
@@ -107,14 +105,12 @@ void ARM_keys_task (void *argument)
 		case 2:
 			xTaskNotifyGive(hReachWP);
 			logWrite(5, (void*)started);
-			txtWriteChar(route, started);
 			LCD_clear();
 			LCD_puts(rslcd);
 			break;
 
 		case 3:
 			logWrite(5, (void*)waypoint_skipped);
-			txtWriteChar(route, waypoint_skipped);
 			SkipWaypoint();
 			LCD_clear();
 			LCD_puts(skiplcd);
@@ -122,7 +118,6 @@ void ARM_keys_task (void *argument)
 
 		case 4:
 			logWrite(5, (void*)waypoint_back);
-			txtWriteChar(route, waypoint_back);
 			BackWaypoint();
 			LCD_clear();
 			LCD_puts(backlcd);

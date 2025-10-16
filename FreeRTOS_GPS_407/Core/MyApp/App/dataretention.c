@@ -2,6 +2,7 @@
 #include <stdbool.h>
 #include "cmsis_os.h"
 #include "gps.h"
+#include "uart.h"
 
 Slog logs[MAX_LOGS]; // Array to store log entries
 
@@ -72,45 +73,45 @@ void printLogs(void)
     // Iterate up to the maximum number of logs
     for (int i = 0; i < maxLogs; i++)
     {
-	UART_putint("Log %d:\n", i + 1);
+	UART_printf(100, "Log %d:\n", i+1);
 
 	// Print Latitude if it exists for this index
 	if (i < logCount1)
-		UART_puts("  Latitude: %s\n", logs[i].latitude);
+		UART_printf(100, "  Latitude: %s\n", logs[i].latitude);
 	 else
-		UART_puts("  Latitude: -\n");
+		UART_printf(100, "  Latitude: -\n");
 
 	// Print Longitude if it exists for this index
 	if (i < logCount2)
-		UART_puts("  Longitude: %s\n", logs[i].longitude);
+		UART_printf(100, "  Longitude: %s\n", logs[i].longitude);
 	 else
-		UART_puts("  Longitude: -\n");
+		UART_printf(100, "  Longitude: -\n");
 
 	// Print Current Heading if it exists for this index
 	if (i < logCount3)
-		UART_puts("  Current Heading: %s\n", logs[i].heading_current);
+		UART_printf(100, "  Current Heading: %s\n", logs[i].heading_current);
 	 else
-		UART_puts("  Current Heading: -\n");
+		UART_printf(100, "  Current Heading: -\n");
 
 	// Print Desired Heading if it exists for this index
 	if (i < logCount4)
-		UART_puts("  Desired Heading: %s\n", logs[i].heading_desired);
+		UART_printf(100, "  Desired Heading: %s\n", logs[i].heading_desired);
 	 else
-		UART_puts("  Desired Heading: -\n");
+		UART_printf(100, "  Desired Heading: -\n");
 
 	// Print Buttons Pressed if it exists for this index
 	if (i < logCount5)
-		UART_puts("  Buttons Pressed: %s\n", logs[i].buttons_pressed);
+		UART_printf(100, "  Buttons Pressed: %s\n", logs[i].buttons_pressed);
 	 else
-		UART_puts("  Buttons Pressed: -\n");
+		UART_printf(100, "  Buttons Pressed: -\n");
 
 	// Print Commands if it exists for this index
 	if (i < logCount6)
-		UART_puts("  Commands: %s\n", logs[i].commands);
+		UART_printf(100, "  Commands: %s\n", logs[i].commands);
 	 else
-		UART_puts("  Commands: -\n");
+		UART_printf(100, "  Commands: -\n");
 
 
-	UART_puts("\n");
+	UART_printf(100, "\n");
 	}
 }

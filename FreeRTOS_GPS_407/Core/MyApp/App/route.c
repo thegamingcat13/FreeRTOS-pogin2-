@@ -18,6 +18,7 @@ sWaypoints Waypoints;
 
 static int current = 0;
 static bool filled = false;
+bool first_run = true;
 
 sWaypoints aWaypoints[STRC_AMOUNT];
 // waypoint
@@ -39,8 +40,6 @@ void Waypoint ()
 
 			logWrite(1, 0);										// sla de latitude op in de terminal-log
 			logWrite(2, 0);										// sla de longitude op in de terminal-log
-			txtWriteFloat(longitude, aWaypoints[current].lon);	// sla de latitude op in de sd-log
-			txtWriteFloat(latitude, aWaypoints[current].lat);	// sla de longitude op in de sd-log
 
 			current++;
 			if (current >= STRC_AMOUNT)							// als er 20 sets data zijn opgeslagen, zet de pointer weer terug op de eerste set
@@ -62,6 +61,15 @@ void Waypoint ()
 // @return returnt een float met latitude of longitude waardes afhankelijk van waarde 'type'.
 float returnWaypoints (int pointNumber, int type)
 {
+	if (first_run)
+	{
+		for (int i = 0; i <= 19; i++)
+		{
+			aWaypoints[i].lat = 0;
+			aWaypoints[i].lon = 0;
+		}
+		first_run = false;
+	}
 	switch (type)
 	{
 		case 1: //

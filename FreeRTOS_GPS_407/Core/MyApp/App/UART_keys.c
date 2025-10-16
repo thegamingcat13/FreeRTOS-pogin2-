@@ -245,8 +245,8 @@ void UART_menu (void *argument)
 				}
 				break;
 
-		case 'H': // H: Show current heading
-			UART_puts("\n\n\rDummy komt later zodra kompass logica er is");
+		case 'H': // H: Debug history output
+			printLogs();
 			break;
 
 		case 'C': /// C: Verandert huidige waypoint
@@ -275,7 +275,7 @@ void UART_menu (void *argument)
 
 		case 'R': /// R: registreer een waypoint
 			UART_puts("\n\n\rParsing GPS data");
-			xTaskNotifyGive(hParsedGPS); // geef de notify aan de struct van gps data
+			ParsedGPS(); // geef de notify aan de struct van gps data
 			osDelay(10);
 			UART_puts("\n\rSaving waypoints");
 			Waypoint();

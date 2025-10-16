@@ -73,7 +73,7 @@ TASKDATA tasks[] =
 // ----------------------------------------------------------------------------------------------------------------------------
   // in ARM_keys.c
 { ARM_keys_IRQ, NULL, .attr.name = "ARM_keys_IRQ", 	.attr.stack_size = 450, 	.attr.priority = osPriorityNormal1 },
-{ ARM_keys_task,NULL, .attr.name = "ARM_keys_task",	.attr.stack_size = 450, 	.attr.priority = osPriorityNormal2 },
+{ ARM_keys_task,NULL, .attr.name = "ARM_keys_task",	.attr.stack_size = 2000, 	.attr.priority = osPriorityNormal2 },
 
   // UART_keys.c
 { UART_keys_IRQ,NULL, .attr.name = "UART_keys_IRQ",	.attr.stack_size = 550, 	.attr.priority = osPriorityBelowNormal4 },
@@ -81,7 +81,6 @@ TASKDATA tasks[] =
 
   // gps.c
 { GPS_getNMEA,  NULL, .attr.name = "GPS_getNMEA",  	.attr.stack_size = 1200, 	.attr.priority = osPriorityBelowNormal1 },
-{ PARSED_GPS,   NULL, .attr.name = "PARSED_GPS",   	.attr.stack_size = 1200, 	.attr.priority = osPriorityBelowNormal1 },
 
   // student.c
 { Student_task1,NULL, .attr.name = "Student_task1",	.attr.stack_size = 700, 	.attr.priority = osPriorityBelowNormal7 },
@@ -128,8 +127,6 @@ en hoe je makkelijk tasks aanmaakt (admin.c) en hoe je de bidirectionele omgang 
 met de UART-comport gebruikt.\r\n\
 Zie verder de Doxygen documentatie van de applicatie.\r\n\
 Michiel Scager (update: april 2023)\r\n";
-
-    txtOpen();
 
 	LCD_clear();
 	LCD_puts(app_nameLCD);

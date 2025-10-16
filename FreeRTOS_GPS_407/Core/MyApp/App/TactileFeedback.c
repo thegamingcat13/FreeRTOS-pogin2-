@@ -5,7 +5,7 @@
 #include "cmsis_os.h"
 #include <math.h>
 
-int CurrentWaypoint = STRC_AMOUNT;
+int CurrentWaypoint = 0;
 int WaypointCount = STRC_AMOUNT;
 float DesiredHeading = 0;
 float desiredheadingValue;
@@ -35,7 +35,6 @@ void turn_left()
 	HAL_GPIO_WritePin(GPIOE, M2_1, RESET);
 	HAL_GPIO_WritePin(GPIOE, M2_2, SET);
 	logWrite(6, turn_left);
-	txtWriteChar(motor, (void*)Turn_left);
 }
 
 void turn_right()
@@ -45,7 +44,6 @@ void turn_right()
 	HAL_GPIO_WritePin(GPIOE, M2_1, SET);
 	HAL_GPIO_WritePin(GPIOE, M2_2, RESET);
 	logWrite(6, Turn_right);
-	txtWriteChar(motor, (void*)Turn_right);
 }
 
 void drive_foward()
@@ -55,7 +53,6 @@ void drive_foward()
 	HAL_GPIO_WritePin(GPIOE, M2_1, RESET);
 	HAL_GPIO_WritePin(GPIOE, M2_2, SET);
 	logWrite(6, Drive_forward);
-	txtWriteChar(motor, (void*)Drive_forward);
 }
 
 void stop()
@@ -65,7 +62,6 @@ void stop()
 	HAL_GPIO_WritePin(GPIOE, M2_1, RESET);
 	HAL_GPIO_WritePin(GPIOE, M2_2, RESET);
 	logWrite(6, Stop);
-	txtWriteChar(motor, (void*)Stop);
 }
 
 /*
@@ -89,7 +85,8 @@ void GoToDest()
 	{ // als de waarden groter zijn dan de define-waardes gaat het voertuig verder vooruit.
 		drive_foward();
 		osDelay(100);
-		xTaskNotifyGive(hParsedGPS);
+		ParsedGPS();
+		osDelay(50);
 	}
 	else if(fabs(parsed_gnrmc.latitude - wpLat) < LAT_PREC && fabs(parsed_gnrmc.longitude - wpLon) < LON_PREC)
 	{ // als de waarden kleiner zijn dan de define-waardes gaan we door naar het volgende waypoint.
@@ -102,15 +99,15 @@ void GoToDest()
 
 void ReachWPTask(void *argument)
 {
-	ulTaskNotifyTake(pdTRUE, portMAX_DELAY);
 	while (TRUE)
 	{
+		ulTaskNotifyTake(pdTRUE, portMAX_DELAY);
 		if (xSemaphoreTake(hGpsDataMutex, portMAX_DELAY) == pdTRUE) // wacht tot de gps-mutex vrij is
 		{
 			while (wpLat == 0)
 			{
-				wpLat = returnWaypoints(WaypointCount, 1);
 				WaypointCount --;
+				wpLat = returnWaypoints(WaypointCount, 1);
 				CurrentWaypoint = 0;
 			}
 
@@ -120,12 +117,9 @@ void ReachWPTask(void *argument)
 				wpLon = returnWaypoints(CurrentWaypoint, 2);
 				// vergelijk de heading die aangehouden moet worden met de huidige heading
 				DesiredHeading = heading(CurrentWaypoint);
-				//CurrentHeading =
-				txtWriteFloat(desiredheading, heading(CurrentWaypoint));
 				//logWrite(3, (void*)&heading(CurrentWaypoint));
 				desiredheadingValue = DesiredHeading;
 				logWrite(4, (void*)&desiredheadingValue);
-				//txtWriteFloat(currentheading, );
 				// als de headingwaarde kleiner is moet er naar rechts gedraaid worden
 				if(CurrentHeading > DesiredHeading)
 					turn_right();
@@ -136,6 +130,8 @@ void ReachWPTask(void *argument)
 				else if(fabs(CurrentHeading - DesiredHeading) <  MAX_HEADING_DIFFERENCE)
 					GoToDest();
 			}
+			xSemaphoreGive(hGpsDataMutex);
+			taskYIELD();
 		}
 	}
 }

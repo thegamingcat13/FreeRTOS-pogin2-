@@ -86,7 +86,6 @@ extern EventGroupHandle_t hKEY_Event;
 extern TimerHandle_t      hTimer1;
 /// handle zodat de waypoint task extern genotified kan worden
 extern TaskHandle_t   	  hWaypointTask;
-extern TaskHandle_t		  hParsedGPS;
 extern TaskHandle_t		  hReachWP;
 
 
@@ -174,7 +173,7 @@ extern void UART_menu     (void *);
 
 // gps.c
 extern void GPS_getNMEA (void *);
-extern void PARSED_GPS (void *);
+extern void ParsedGPS (void);
 
 // studenttask.c
 extern void Student_task1 (void *);
@@ -188,13 +187,6 @@ extern float heading (int);
 extern int SkipWaypoint (void);
 extern int BackWaypoint (void);
 extern void ShowWaypoint (void);
-
-// datatxt.c
-extern void txtOpen (void);
-extern void txtClose (void);
-extern void txtWriteChar (char *Name, char *DataInputChar);
-extern void txtWriteInt (char *Name, int DataInputInt);
-extern void txtWriteFloat (char *Name, float DataInputFloat);
 
 // dataretention.c
 extern void logWrite(int type, void* info);

@@ -16,7 +16,8 @@ Differences difference (int waypoint)
 	float londifference;
 	Differences diffs;
 
-	xTaskNotifyGive(hParsedGPS);
+	ParsedGPS();
+	osDelay(50);
 	if (xSemaphoreTake(hGpsDataMutex, portMAX_DELAY) == pdTRUE)
 	{
 		if (waypoint <= STRC_AMOUNT)
