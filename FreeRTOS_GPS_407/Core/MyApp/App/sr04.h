@@ -27,6 +27,6 @@ void sr04_init(sr04_t *sr04_struct);
 void sr04_trigger(sr04_t *sr04_struct);
 void sr04_read_distance(sr04_t *sr04_struct);  // This function should be called in the timer input capture callback
 
-extern sr04_t *sr04_struct;
+extern sr04_t sr04_struct;
 
 #endif //SR04_SR04_H

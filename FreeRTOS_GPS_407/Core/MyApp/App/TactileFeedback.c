@@ -2,6 +2,7 @@
 #include <stdbool.h>
 #include "main.h"
 #include "gps.h"
+#include "sr04.h"
 #include "cmsis_os.h"
 #include <math.h>
 
@@ -22,6 +23,7 @@ char Stop[]= "stop";
 char motor[]= "motor";
 char waypoint[]= "waypoint";
 
+sr04_t Distance_struct;
 
 TaskHandle_t hReachWP;
 /*
@@ -46,7 +48,7 @@ void turn_right()
 	logWrite(6, Turn_right);
 }
 
-void drive_foward()
+void drive_forward()
 {
 	HAL_GPIO_WritePin(GPIOE, M1_1, RESET);
 	HAL_GPIO_WritePin(GPIOE, M1_2, SET);
@@ -82,7 +84,7 @@ void GoToDest()
 {
 	if(fabs(parsed_gnrmc.latitude - wpLat) > LAT_PREC && fabs(parsed_gnrmc.longitude - wpLon) > LON_PREC)
 	{ // als de waarden groter zijn dan de define-waardes gaat het voertuig verder vooruit.
-		drive_foward();
+		drive_forward();
 		osDelay(100);
 		ParsedGPS();
 		osDelay(50);
@@ -98,11 +100,26 @@ void GoToDest()
 
 void ReachWPTask(void *argument)
 {
+	sr04_init(&Distance_struct);
 	while (TRUE)
 	{
 		ulTaskNotifyTake(pdTRUE, portMAX_DELAY);
 		if (xSemaphoreTake(hGpsDataMutex, portMAX_DELAY) == pdTRUE) // wacht tot de gps-mutex vrij is
 		{
+			sr04_trigger(&Distance_struct);
+			sr04_read_distance(&Distance_struct);
+			if (Distance_struct.distance < 250)
+			{
+				while (Distance_struct.distance < 250)
+				{
+					turn_left();
+					sr04_trigger(&Distance_struct);
+					sr04_read_distance(&Distance_struct);
+				}
+				stop();
+				drive_forward();
+				osDelay(1000);
+			}
 			while (wpLat == 0)
 			{
 				WaypointCount --;
