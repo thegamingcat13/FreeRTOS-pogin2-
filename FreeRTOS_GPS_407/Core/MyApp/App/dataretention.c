@@ -77,37 +77,37 @@ void printLogs(void)
 
 	// Print Latitude if it exists for this index
 	if (i < logCount1)
-		UART_printf(100, "\r  Latitude: %s\n", logs[i].latitude);
+		UART_printf(100, "\r\n  Latitude: %s", logs[i].latitude);
 	 else
 		UART_printf(100, "  Latitude: -\n");
 
 	// Print Longitude if it exists for this index
 	if (i < logCount2)
-		UART_printf(100, "\r  Longitude: %s\n", logs[i].longitude);
+		UART_printf(100, "\r\n  Longitude: %s", logs[i].longitude);
 	 else
 		UART_printf(100, "  Longitude: -\n");
 
 	// Print Current Heading if it exists for this index
 	if (i < logCount3)
-		UART_printf(100, "\r  Current Heading: %s\n", logs[i].heading_current);
+		UART_printf(100, "\r\n  Current Heading: %s", logs[i].heading_current);
 	 else
 		UART_printf(100, "  Current Heading: -\n");
 
 	// Print Desired Heading if it exists for this index
 	if (i < logCount4)
-		UART_printf(100, "\r  Desired Heading: %s\n", logs[i].heading_desired);
+		UART_printf(100, "\r\n  Desired Heading: %s", logs[i].heading_desired);
 	 else
 		UART_printf(100, "  Desired Heading: -\n");
 
 	// Print Buttons Pressed if it exists for this index
 	if (i < logCount5)
-		UART_printf(100, "\r  Buttons Pressed: %s\n", logs[i].buttons_pressed);
+		UART_printf(100, "\r\n  Buttons Pressed: %s", logs[i].buttons_pressed);
 	 else
 		UART_printf(100, "  Buttons Pressed: -\n");
 
 	// Print Commands if it exists for this index
 	if (i < logCount6)
-		UART_printf(100, "\r  Commands: %s\n", logs[i].commands);
+		UART_printf(100, "\r\n  Commands: %s", logs[i].commands);
 	 else
 		UART_printf(100, "  Commands: -\n");
 
