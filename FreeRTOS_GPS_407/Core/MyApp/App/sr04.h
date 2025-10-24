@@ -8,7 +8,7 @@
 
 #include "stm32f4xx_hal.h"
 
-// HC-SR04 struct
+// Sensor structure
 typedef struct {
     GPIO_TypeDef *trig_port;  // Trigger pin port
     uint16_t trig_pin;  // Trigger pin number

@@ -34,12 +34,12 @@ TaskHandle_t hReachWP;
  */
 
 void setup_sr04(void) {
-	P_Dstruct = &Distance_struct;
-    P_Dstruct->trig_port = Trigger_GPIO_Port;     // Replace with your TRIG port
-    P_Dstruct->trig_pin = Trigger_Pin; // Replace with your TRIG pin
+	P_Dstruct = &Distance_struct; // set pointer address
+    P_Dstruct->trig_port = Trigger_GPIO_Port;     // Set trigger port
+    P_Dstruct->trig_pin = Trigger_Pin; // Set trigger pin
 
-    P_Dstruct->echo_htim = &htim2;     // Replace with your ECHO timer handle
-    P_Dstruct->echo_channel = TIM_CHANNEL_4; // Replace with your ECHO timer channel
+    P_Dstruct->echo_htim = &htim2;     // Set echo timer
+    P_Dstruct->echo_channel = TIM_CHANNEL_4; // Set timer channel
 
     // Initialize the SR04 module
     sr04_init(&Distance_struct);
