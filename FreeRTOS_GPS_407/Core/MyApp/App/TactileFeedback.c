@@ -25,6 +25,7 @@ char waypoint[]= "waypoint";
 bool FirstRun = true;
 
 sr04_t Distance_struct;
+sr04_t *P_Dstruct;
 
 TaskHandle_t hReachWP;
 /*
@@ -33,11 +34,12 @@ TaskHandle_t hReachWP;
  */
 
 void setup_sr04(void) {
-    Distance_struct.trig_port = Trigger_Pin;     // Replace with your TRIG port
-    Distance_struct.trig_pin = Trigger_GPIO_Port; // Replace with your TRIG pin
+	P_Dstruct = &Distance_struct;
+    P_Dstruct->trig_port = Trigger_GPIO_Port;     // Replace with your TRIG port
+    P_Dstruct->trig_pin = Trigger_Pin; // Replace with your TRIG pin
 
-    Distance_struct.echo_htim = &htim2;     // Replace with your ECHO timer handle
-    Distance_struct.echo_channel = TIM_CHANNEL_4; // Replace with your ECHO timer channel
+    P_Dstruct->echo_htim = &htim2;     // Replace with your ECHO timer handle
+    P_Dstruct->echo_channel = TIM_CHANNEL_4; // Replace with your ECHO timer channel
 
     // Initialize the SR04 module
     sr04_init(&Distance_struct);

@@ -3,6 +3,7 @@
 #include "cmsis_os.h"
 #include "gps.h"
 #include "uart.h"
+#include "string.h"
 
 Slog logs[MAX_LOGS]; // Array to store log entries
 
