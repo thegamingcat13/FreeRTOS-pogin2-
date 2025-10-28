@@ -613,24 +613,6 @@ void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
 	}
 }
 
-/**
-  * @brief  Input Capture callback in non blocking mode.
-  *         This function is called by the HAL library whenever an input capture event occurs
-  *         on any of the configured timer input capture channels.
-  * @param  htim TIM IC handle (pointer to the timer handle structure)
-  * @retval None
-  */
-void HAL_TIM_IC_CaptureCallback(TIM_HandleTypeDef *htim2) {
-    // Check if the callback is from the specific timer instance and channel
-    // being used by your HC-SR04 sensor.
-    // In this case, TIM2 and Channel 4.
-    if (htim2->Instance == Distance_struct.echo_htim->Instance &&
-        htim2->Channel == Distance_struct.echo_channel) {
-        // Call your SR04 driver function to process the capture event (rising or falling edge).
-        sr04_read_distance(&Distance_struct);
-    }
-}
-
 /* USER CODE END 4 */
 
 /* USER CODE BEGIN Header_StartDefaultTask */
