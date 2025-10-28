@@ -67,9 +67,6 @@ const osThreadAttr_t defaultTask_attributes = {
 /* USER CODE BEGIN PV */
 unsigned char 	uart4_char, uart2_char;
 
-// Global FreeRTOS queue handle for SR04 distance
-QueueHandle_t xSR04DistanceQueue;
-
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -89,10 +86,6 @@ void StartDefaultTask(void *argument);
 
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
-uint32_t rising_edge_time = 0;
-uint32_t falling_edge_time = 0;
-uint32_t pulse_duration = 0;
-uint8_t edge_state = 0;
 /* USER CODE END 0 */
 
 /**
@@ -103,9 +96,6 @@ int main(void)
 {
 
   /* USER CODE BEGIN 1 */
-	xSR04DistanceQueue = xQueueCreate(1, sizeof(uint32_t));
-	if (xSR04DistanceQueue == NULL)
-		Error_Handler();
 
   /* USER CODE END 1 */
 
