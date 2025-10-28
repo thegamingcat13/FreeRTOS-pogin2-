@@ -1,3 +1,11 @@
+/**
+ * @file DataRetention.c
+ * @brief Onthoudt en slaat de vorige waypoints op, om deze daarna uit te printen op de terminal.
+ *
+ * De data wordt opgeslagen in `Slog` (zie `main.c` voor de definitie van de struct).
+ *
+ * @date 15/08/2025
+ */
 #include "admin.h"
 #include <stdbool.h>
 #include "cmsis_os.h"
@@ -5,20 +13,22 @@
 #include "uart.h"
 #include "string.h"
 
-Slog logs[MAX_LOGS]; // Array to store log entries
+//*  Array om log entries op te slaan.*/
+Slog logs[MAX_LOGS];
 
-int logCount1 = 0;// Counter to track the number of logs
-int logCount2 = 0;// Counter to track the number of logs
-int logCount3 = 0;// Counter to track the number of logs
-int logCount4 = 0;// Counter to track the number of logs
-int logCount5 = 0;// Counter to track the number of logs
-int logCount6 = 0;// Counter to track the number of logs
+//* Counter om het aantal logs bij te houden.*/
+int logCount1 = 0;
+int logCount2 = 0;
+int logCount3 = 0;
+int logCount4 = 0;
+int logCount5 = 0;
+int logCount6 = 0;
 
-/*
- * LogWrite
+/**
  * @brief slaat verschillende stukken data op in een structure array.
- * @param type bepaalt wat voor data het is en in welk deel van de structure array het moet worden opgeslagen
- * @param info geeft mee welke info er moet worden opgelagen, bijvoorbeeld een string of float-waarde
+ * @param type bepaalt wat voor data het is en in welk deel van de structure array het moet worden opgeslagen.
+ * @param info geeft mee welke info er moet worden opgelagen, bijvoorbeeld een string of float-waarde.
+ * @return Geen waarde(void).
  */
 void logWrite(int type, void* info)
 {
@@ -55,10 +65,10 @@ void logWrite(int type, void* info)
     }
 }
 
-/*
- * printLogs
- * @brief deze functie prints alle gegevens die zijn opgelslagen in de Log-structure-arrray
+/**
+ * @brief deze functie print alle gegevens die zijn opgelslagen in de Log-structure-arrray.
  * de hoeveelheid lijnen die moeten worden uitgeprint worden automatisch bepaald voor elke logCount.
+ * @return Geen waarde(void).
  */
 void printLogs(void)
 {
