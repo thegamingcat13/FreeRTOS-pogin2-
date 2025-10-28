@@ -41,13 +41,21 @@
 
 #define STRC_AMOUNT 20 // amount of waypoints that will be created
 
-#define LAT_PREC 0.000002 // level of precision for gps parser
-#define LON_PREC 0.000002 // level of precision for gps parser
+#define LAT_PREC 0.000045 // level of precision for gps parser
+#define LON_PREC 0.000074 // level of precision for gps parser
+#define METER_PER_DEG_LAT 111132.0f
+#define METER_PER_DEG_LON 67890.0f
 
-typedef struct Differences_s{
+#define MAX_HEADING_DIFFERENCE_DEG 5.0f // level of precision for the heading were going to
+#define ARRIVAL_RADIUS_METERS 1.0f // set arrival radius to 1 meter
+
+typedef struct RouteInfo_s{
 	    float latdifference;
 	    float londifference;
-	} Differences;
+	    float distance_m;
+	} RouteInfo;
+
+extern RouteInfo info;
 
 // dataretention.c
 #define MAX_LOGS 100 // Define the maximum number of logs

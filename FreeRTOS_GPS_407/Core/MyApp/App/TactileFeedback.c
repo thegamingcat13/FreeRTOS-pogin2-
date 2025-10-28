@@ -11,8 +11,9 @@ float DesiredHeading = 0;
 float desiredheadingValue;
 float CurrentHeading = 0;
 float MAX_HEADING_DIFFERENCE = 10;
-int wpLat = 0;
-int wpLon = 0;
+float wpLat = 0;
+float wpLat_temp = 0;
+float wpLon = 0;
 char desiredheading[]= "desired_heading";
 char currentheading[]= "current_heading";
 char Drive_forward[]= "Drive_forward";
@@ -66,7 +67,7 @@ void stop()
 	logWrite(6, Stop);
 }
 
-/*
+
 void spin_around()
 {
 	HAL_GPIO_WritePin(GPIOE, M1_1, RESET);
@@ -74,12 +75,13 @@ void spin_around()
 	HAL_GPIO_WritePin(GPIOE, M2_1, SET);
 	HAL_GPIO_WritePin(GPIOE, M2_2, RESET);
 }
-*/
+
 
 /*
  * GoToDest wordt gebruikt om te bepalen of het voertuig al dicht genoeg bij de waypoint is om door te gaan.
  * Indien het voertuig dicht genoeg erbij is gaan we naar de volgende waypoint.
  */
+/*
 void GoToDest()
 {
 	if(fabs(parsed_gnrmc.latitude - wpLat) > LAT_PREC && fabs(parsed_gnrmc.longitude - wpLon) > LON_PREC)
@@ -97,7 +99,7 @@ void GoToDest()
 	}
 
 }
-
+*/
 void ReachWPTask(void *argument)
 {
 	while (TRUE)
@@ -105,15 +107,60 @@ void ReachWPTask(void *argument)
 		ulTaskNotifyTake(pdTRUE, portMAX_DELAY);
 		if (xSemaphoreTake(hGpsDataMutex, portMAX_DELAY) == pdTRUE) // wacht tot de gps-mutex vrij is
 		{
-			while (wpLat == 0)
+			if (FirstRun == true)
 			{
-				WaypointCount --;
-				wpLat = returnWaypoints(WaypointCount, 1);
+				while (fabs(wpLat_temp) < 0.0001f)
+				{
+					WaypointCount --;
+					wpLat_temp = returnWaypoints(WaypointCount, 1); // decide how many waypoints we have max of 20
+				}
 				CurrentWaypoint = 0;
+				FirstRun = false;
 			}
 
-			while (CurrentWaypoint <= WaypointCount) //Check of er iets van data in de Waypoints zit, anders ga door naar de volgende waypoint.
+			while (CurrentWaypoint <= WaypointCount) // Controleer of we nog bezig zijn met een waypoint waar data in zit.
 			{
+				if (CurrentWaypoint >= WaypointCount)
+				{
+					stop();
+					osDelay(5000);
+					continue;
+				}
+
+				if (info.distance_m < ARRIVAL_RADIUS_METERS)
+				{
+					stop();
+					spin_around();
+					stop();
+					CurrentWaypoint++;
+					osDelay(500);
+				}
+
+				DesiredHeading = heading(CurrentWaypoint);
+
+				desiredheadingValue = DesiredHeading;
+				logWrite(4, (void*)&desiredheadingValue);
+
+				float heading_error = DesiredHeading - CurrentHeading;
+
+				if (heading_error > 180.0f) heading_error -= 360.0f;
+				if (heading_error < 180.0f) heading_error += 360.0f;
+
+				if (Uart_debug_out)
+					UART_printf(100, "\n\rCurrent heading: %.2f, Desired heading: %.2f, Error: %.2f", CurrentHeading, DesiredHeading, heading_error);
+
+				if (fabs(heading_error) > MAX_HEADING_DIFFERENCE)
+				{
+					if (heading_error > 0)
+						turn_right();
+
+					if (heading_error < 0)
+						turn_left();
+				} else
+					drive_forward();
+
+				osDelay(200);
+				/*
 				wpLat = returnWaypoints(CurrentWaypoint, 1);
 				wpLon = returnWaypoints(CurrentWaypoint, 2);
 				// vergelijk de heading die aangehouden moet worden met de huidige heading
@@ -130,6 +177,7 @@ void ReachWPTask(void *argument)
 				// als het verschil in heading klein genoeg is kan er naar voren gereden worden en wordt GoToDest opgeroepen
 				else if(fabs(CurrentHeading - DesiredHeading) <  MAX_HEADING_DIFFERENCE)
 					GoToDest();
+					*/
 			}
 			xSemaphoreGive(hGpsDataMutex);
 			taskYIELD();

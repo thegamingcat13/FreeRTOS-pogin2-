@@ -12,6 +12,7 @@
 #include "cmsis_os.h"
 #include <math.h>
 
+RouteInfo info;   // Struct voor de verschillen
 /**
  * @brief Berekent het verschil tussen huidige lon en lat vergeleken met de waypoint.
  * Geeft aan of wij het waypoint hebben berijkt of nog niet.
@@ -20,16 +21,13 @@
  * @param waypoint de struct die lan en lon opslaat.
  * @return diffs is het verschil in lon en lat.
  */
-Differences difference (int waypoint)
+RouteInfo difference (int waypoint)
 {
 
-	float latpoint;    	 // latitude van waypoint
-	float lonpoint; 	 // longitude van waypoint
-	float latcurrent;    // de huidige latitude
-	float loncurrent;    // de huidige longitude
-	float latdifference; // het vershil tussen de 2 latitudes
-	float londifference; // het verschill tussen de 2 longitudes
-	Differences diffs;   // Struct voor de verschillen
+	float latpoint_deg;    	 // latitude van waypoint
+	float lonpoint_deg; 	 // longitude van waypoint
+	float latcurrent_deg;    // de huidige latitude
+	float loncurrent_deg;    // de huidige longitude
 
 	ParsedGPS();
 	osDelay(50);
@@ -39,36 +37,33 @@ Differences difference (int waypoint)
 		if (waypoint <= STRC_AMOUNT)
 		{
 
-			latpoint = returnWaypoints(waypoint, 1);
-			lonpoint = returnWaypoints(waypoint, 2);
-			latcurrent = parsed_gnrmc.latitude;
-			loncurrent = parsed_gnrmc.longitude;
+			latpoint_deg = returnWaypoints(waypoint, 1);
+			lonpoint_deg = returnWaypoints(waypoint, 2);
+			latcurrent_deg = parsed_gnrmc.latitude;
+			loncurrent_deg = parsed_gnrmc.longitude;
 
-			latdifference = latcurrent - latpoint;
-			londifference = loncurrent - lonpoint;
-			diffs.latdifference = latdifference;
-			diffs.londifference = londifference;
+			info.latdifference = latcurrent_deg - latpoint_deg;
+			info.londifference = loncurrent_deg - lonpoint_deg;
 
-			if (diffs.latdifference <= LAT_PREC && diffs.londifference <= LON_PREC)
-				{
-					UART_puts("\nWaypoint reached, heading for next point");
-					waypoint++;
-				}
-
-			xSemaphoreGive(hGpsDataMutex); // geef de semaphore weer vrij
+			float dx_meters = info.londifference * METER_PER_DEG_LON;
+			float dy_meters = info.latdifference * METER_PER_DEG_LAT;
+			info.distance_m = sqrtf(dx_meters * dx_meters + dy_meters + dy_meters);
 
 			if (Uart_debug_out) // print de verschillen op de terminal
 				{
-					UART_puts("\nlatitude difference:");
-					UART_printf(100, "\r\nlon: %f", latdifference);
-					UART_puts("\nlongitude difference:");
-					UART_printf(100, "\r\nlon: %f", londifference);
+					UART_puts("\n\r--- Waypoint Info ---");
+					UART_printf(100, "\n\rWP %d Target: Lat %.6f, Lon %.6f", waypoint, latpoint_deg, lonpoint_deg);
+					UART_printf(100, "\n\rCurrent GPS: Lat %.6f, Lon %.6f", latcurrent_deg, loncurrent_deg);
+					UART_printf(100, "\n\rLat Diff: %.6f deg, Lon Diff: %.6f deg", info.latdifference, info.londifference);
+					UART_printf(100, "\r\nDistance to WP: %.2f m", info.distance_m);
+					UART_puts("\n\r---------------------");
 				}
 
 			osDelay(2000);
 		}
+		xSemaphoreGive(hGpsDataMutex); // geef de semaphore weer vrij
 	}
-		return (diffs);
+		return (info);
 }
 
 /**
@@ -78,20 +73,21 @@ Differences difference (int waypoint)
  */
 float heading (int waypoint)
 {
-	Differences diffs;
 
-		diffs = difference(waypoint);
+	info = difference(waypoint);
 
-		double overstaande = diffs.londifference;
-		double aanliggende = diffs.latdifference;
+	double overstaande = info.londifference;
+	double aanliggende = info.latdifference;
 
-		double heading_rad = atan(overstaande / aanliggende);
-		double heading_deg = heading_rad * (180.0 / M_PI);
+	double heading_rad = atan2f(overstaande, aanliggende);
+	double heading_deg = heading_rad * (180.0 / M_PI);
 
-		if (Uart_debug_out)
-			{
-				UART_puts("\nHeading:");
-				UART_printf(100, "%f", heading_deg);
-			}
-		return(heading_deg);
+	heading_deg = fmodf((heading_deg +360.0), 360.0);
+
+	if (Uart_debug_out)
+		{
+			UART_puts("\nHeading:");
+			UART_printf(100, "%f", heading_deg);
+		}
+	return(heading_deg);
 }
