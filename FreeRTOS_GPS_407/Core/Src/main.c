@@ -65,8 +65,10 @@ const osThreadAttr_t defaultTask_attributes = {
   .priority = (osPriority_t) osPriorityNormal,
 };
 /* USER CODE BEGIN PV */
-
 unsigned char 	uart4_char, uart2_char;
+
+// Global FreeRTOS queue handle for SR04 distance
+QueueHandle_t xSR04DistanceQueue;
 
 /* USER CODE END PV */
 
@@ -87,6 +89,10 @@ void StartDefaultTask(void *argument);
 
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
+uint32_t rising_edge_time = 0;
+uint32_t falling_edge_time = 0;
+uint32_t pulse_duration = 0;
+uint8_t edge_state = 0;
 /* USER CODE END 0 */
 
 /**
@@ -97,6 +103,10 @@ int main(void)
 {
 
   /* USER CODE BEGIN 1 */
+	xSR04DistanceQueue = xQueueCreate(1, sizeof(uint32_t));
+	if (xSR04DistanceQueue == NULL)
+		Error_Handler();
+
   /* USER CODE END 1 */
 
   /* MCU Configuration--------------------------------------------------------*/
@@ -377,7 +387,7 @@ static void MX_TIM2_Init(void)
   {
     Error_Handler();
   }
-  sConfigIC.ICPolarity = TIM_INPUTCHANNELPOLARITY_RISING;
+  sConfigIC.ICPolarity = TIM_INPUTCHANNELPOLARITY_BOTHEDGE;
   sConfigIC.ICSelection = TIM_ICSELECTION_DIRECTTI;
   sConfigIC.ICPrescaler = TIM_ICPSC_DIV1;
   sConfigIC.ICFilter = 0;
@@ -653,20 +663,11 @@ void StartDefaultTask(void *argument)
   * @param  htim : TIM handle
   * @retval None
   */
-void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim2)
+void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 {
   /* USER CODE BEGIN Callback 0 */
-    if (htim2->Instance == Distance_struct.echo_htim->Instance) {
-        // If we are currently waiting for the falling edge of the echo pulse (capture_flag == 1),
-        // it means the timer has overflowed while the ECHO pin was still high.
-        // Increment the tim_update_count to track these overflows for longer distances.
-        if (Distance_struct.capture_flag == 1) {
-        	Distance_struct.tim_update_count++;
-        }
-    }
-
   /* USER CODE END Callback 0 */
-  if (htim2->Instance == TIM1)
+  if (htim->Instance == TIM1)
   {
     HAL_IncTick();
   }

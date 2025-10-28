@@ -14,7 +14,6 @@
 #include "semphr.h"
 #include "message_buffer.h"
 #include "cmsis_os.h"
-#include "sr04.h"
 
 #include "stdio.h"
 #include "string.h" // strtok, strcpy
@@ -77,6 +76,8 @@ typedef struct TaskData
 extern QueueHandle_t 	  hUART_Queue;
 /// handle voor GPS-queue
 extern QueueHandle_t 	  hGPS_Queue;
+/// handle voor SR04 queue
+extern QueueHandle_t xSR04DistanceQueue;
 /// handle voor LED-mutex
 extern SemaphoreHandle_t  hLED_Sem;
 ///handle voor de parsed gps structure
@@ -88,8 +89,6 @@ extern TimerHandle_t      hTimer1;
 /// handle zodat de waypoint task extern genotified kan worden
 extern TaskHandle_t   	  hWaypointTask;
 extern TaskHandle_t		  hReachWP;
-
-extern sr04_t Distance_struct;
 
 
 /// debug naar uart output, zie uart_keys.c
@@ -194,3 +193,5 @@ extern void ShowWaypoint (void);
 // dataretention.c
 extern void logWrite(int type, void* info);
 extern void printLogs(void);
+
+extern void SR04_Task(void *);

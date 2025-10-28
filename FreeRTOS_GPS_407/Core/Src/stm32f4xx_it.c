@@ -25,7 +25,7 @@
 /* USER CODE BEGIN Includes */
 #include "admin.h"
 #include "cmsis_os.h"
-
+#include "queue.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -66,7 +66,10 @@ extern UART_HandleTypeDef huart2;
 extern TIM_HandleTypeDef htim1;
 
 /* USER CODE BEGIN EV */
-
+extern uint32_t rising_edge_time;
+extern uint32_t falling_edge_time;
+extern uint32_t pulse_duration;
+extern uint8_t edge_state;
 /* USER CODE END EV */
 
 /******************************************************************************/
@@ -269,5 +272,34 @@ void OTG_FS_IRQHandler(void)
 }
 
 /* USER CODE BEGIN 1 */
+void HAL_TIM_IC_CaptureCallback(TIM_HandleTypeDef *htim2)
+{
+	if (htim2->Instance == TIM2 && htim2->Channel == HAL_TIM_ACTIVE_CHANNEL_4)
+	{
+		if (edge_state == 0)
+		{
+			rising_edge_time = HAL_TIM_ReadCapturedValue(htim2, TIM_CHANNEL_4);
 
+			__HAL_TIM_SET_CAPTUREPOLARITY(htim2, TIM_CHANNEL_4, TIM_INPUTCHANNELPOLARITY_FALLING);
+			edge_state = 1;
+		} else
+		{
+			falling_edge_time = HAL_TIM_ReadCapturedValue(htim2, TIM_CHANNEL_4);
+
+			__HAL_TIM_SET_CAPTUREPOLARITY(htim2, TIM_CHANNEL_4, TIM_INPUTCHANNELPOLARITY_RISING);
+			edge_state = 0;
+
+			if (falling_edge_time > rising_edge_time)
+				pulse_duration = falling_edge_time - rising_edge_time;
+			else
+				pulse_duration = (htim2->Instance->ARR - rising_edge_time) + falling_edge_time +1;
+
+			BaseType_t xHigherPriorityTaskWoken = pdFALSE;
+			if (xSR04DistanceQueue != NULL)
+				xQueueSendFromISR(xSR04DistanceQueue, &pulse_duration, &xHigherPriorityTaskWoken);
+
+			portYIELD_FROM_ISR(xHigherPriorityTaskWoken);
+		}
+	}
+}
 /* USER CODE END 1 */
