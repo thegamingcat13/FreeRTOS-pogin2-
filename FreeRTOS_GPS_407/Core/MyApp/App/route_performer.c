@@ -21,7 +21,7 @@ RouteInfo info;   // Struct voor de verschillen
  * @param waypoint de struct die lan en lon opslaat.
  * @return diffs is het verschil in lon en lat.
  */
-RouteInfo difference (int waypoint)
+RouteInfo Get_Waypoint_Info (int waypoint)
 {
 
 	float latpoint_deg;    	 // latitude van waypoint
@@ -74,7 +74,7 @@ RouteInfo difference (int waypoint)
 float heading (int waypoint)
 {
 
-	info = difference(waypoint);
+	info = Get_Waypoint_Info(waypoint);
 
 	double overstaande = info.londifference;
 	double aanliggende = info.latdifference;

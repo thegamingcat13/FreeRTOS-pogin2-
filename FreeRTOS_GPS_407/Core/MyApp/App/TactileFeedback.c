@@ -14,6 +14,8 @@ float MAX_HEADING_DIFFERENCE = 10;
 float wpLat = 0;
 float wpLat_temp = 0;
 float wpLon = 0;
+float current_cog = 0;
+float current_speed = 0;
 char desiredheading[]= "desired_heading";
 char currentheading[]= "current_heading";
 char Drive_forward[]= "Drive_forward";
@@ -105,42 +107,52 @@ void ReachWPTask(void *argument)
 	while (TRUE)
 	{
 		ulTaskNotifyTake(pdTRUE, portMAX_DELAY);
-		if (xSemaphoreTake(hGpsDataMutex, portMAX_DELAY) == pdTRUE) // wacht tot de gps-mutex vrij is
+		if (FirstRun == true)
 		{
-			if (FirstRun == true)
+			while (fabs(wpLat_temp) < 0.0001f)
 			{
-				while (fabs(wpLat_temp) < 0.0001f)
-				{
-					WaypointCount --;
-					wpLat_temp = returnWaypoints(WaypointCount, 1); // decide how many waypoints we have max of 20
-				}
-				CurrentWaypoint = 0;
-				FirstRun = false;
+				WaypointCount --;
+				wpLat_temp = returnWaypoints(WaypointCount, 1); // decide how many waypoints we have max of 20
+			}
+			CurrentWaypoint = 0;
+			FirstRun = false;
+		}
+
+		while (CurrentWaypoint <= WaypointCount) // Controleer of we nog bezig zijn met een waypoint waar data in zit.
+		{
+			if (CurrentWaypoint >= WaypointCount)
+			{
+				stop();
+				osDelay(5000);
+				continue;
 			}
 
-			while (CurrentWaypoint <= WaypointCount) // Controleer of we nog bezig zijn met een waypoint waar data in zit.
+
+			info = Get_Waypoint_Info(CurrentWaypoint);
+
+			if (info.distance_m < ARRIVAL_RADIUS_METERS)
 			{
-				if (CurrentWaypoint >= WaypointCount)
-				{
-					stop();
-					osDelay(5000);
-					continue;
-				}
+				stop();
+				spin_around();
+				stop();
+				CurrentWaypoint++;
+				osDelay(500);
+			}
 
-				if (info.distance_m < ARRIVAL_RADIUS_METERS)
-				{
-					stop();
-					spin_around();
-					stop();
-					CurrentWaypoint++;
-					osDelay(500);
-				}
 
-				DesiredHeading = heading(CurrentWaypoint);
+			if (xSemaphoreTake(hGpsDataMutex, portMAX_DELAY) == pdTRUE)
+			{
+				current_cog = parsed_gnrmc.course;
+				current_speed = parsed_gnrmc.speed;
+				xSemaphoreGive(hGpsDataMutex);
+			}
 
-				desiredheadingValue = DesiredHeading;
-				logWrite(4, (void*)&desiredheadingValue);
+			DesiredHeading = heading(CurrentWaypoint);
+			desiredheadingValue = DesiredHeading;
+			logWrite(4, (void*)&desiredheadingValue);
 
+			if (current_speed > MIN_COG_SPEED)
+			{
 				float heading_error = DesiredHeading - CurrentHeading;
 
 				if (heading_error > 180.0f) heading_error -= 360.0f;
@@ -158,30 +170,30 @@ void ReachWPTask(void *argument)
 						turn_left();
 				} else
 					drive_forward();
-
-				osDelay(200);
-				/*
-				wpLat = returnWaypoints(CurrentWaypoint, 1);
-				wpLon = returnWaypoints(CurrentWaypoint, 2);
-				// vergelijk de heading die aangehouden moet worden met de huidige heading
-				DesiredHeading = heading(CurrentWaypoint);
-				//logWrite(3, (void*)&heading(CurrentWaypoint));
-				desiredheadingValue = DesiredHeading;
-				logWrite(4, (void*)&desiredheadingValue);
-				// als de headingwaarde kleiner is moet er naar rechts gedraaid worden
-				if(CurrentHeading > DesiredHeading)
-					turn_right();
-				// als de headingwaarde groter is moet er naar links gedraaid worden
-				else if(CurrentHeading < DesiredHeading)
-					turn_left();
-				// als het verschil in heading klein genoeg is kan er naar voren gereden worden en wordt GoToDest opgeroepen
-				else if(fabs(CurrentHeading - DesiredHeading) <  MAX_HEADING_DIFFERENCE)
-					GoToDest();
-					*/
 			}
-			xSemaphoreGive(hGpsDataMutex);
-			taskYIELD();
+
+			osDelay(200);
+			/*
+			wpLat = returnWaypoints(CurrentWaypoint, 1);
+			wpLon = returnWaypoints(CurrentWaypoint, 2);
+			// vergelijk de heading die aangehouden moet worden met de huidige heading
+			DesiredHeading = heading(CurrentWaypoint);
+			//logWrite(3, (void*)&heading(CurrentWaypoint));
+			desiredheadingValue = DesiredHeading;
+			logWrite(4, (void*)&desiredheadingValue);
+			// als de headingwaarde kleiner is moet er naar rechts gedraaid worden
+			if(CurrentHeading > DesiredHeading)
+				turn_right();
+			// als de headingwaarde groter is moet er naar links gedraaid worden
+			else if(CurrentHeading < DesiredHeading)
+				turn_left();
+			// als het verschil in heading klein genoeg is kan er naar voren gereden worden en wordt GoToDest opgeroepen
+			else if(fabs(CurrentHeading - DesiredHeading) <  MAX_HEADING_DIFFERENCE)
+				GoToDest();
+				*/
 		}
+		xSemaphoreGive(hGpsDataMutex);
+		taskYIELD();
 	}
 }
 

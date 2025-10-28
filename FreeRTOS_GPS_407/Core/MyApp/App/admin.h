@@ -48,6 +48,7 @@
 
 #define MAX_HEADING_DIFFERENCE_DEG 5.0f // level of precision for the heading were going to
 #define ARRIVAL_RADIUS_METERS 1.0f // set arrival radius to 1 meter
+#define MIN_COG_SPEED 0.5f
 
 typedef struct RouteInfo_s{
 	    float latdifference;
@@ -195,6 +196,7 @@ extern void Timer1_Handler(void);
 //TactileFeedback.c
 extern void ReachWPTask (void *);
 extern float heading (int);
+extern RouteInfo Get_Waypoint_Info (int waypoint);
 extern int SkipWaypoint (void);
 extern int BackWaypoint (void);
 extern void ShowWaypoint (void);
