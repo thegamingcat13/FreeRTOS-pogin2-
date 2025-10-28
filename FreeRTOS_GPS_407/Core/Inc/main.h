@@ -114,6 +114,7 @@ void Error_Handler(void);
 #define CLK_IN_GPIO_Port GPIOB
 #define Echo_Pin GPIO_PIN_11
 #define Echo_GPIO_Port GPIOB
+#define Echo_EXTI_IRQn EXTI15_10_IRQn
 #define Trigger_Pin GPIO_PIN_10
 #define Trigger_GPIO_Port GPIOD
 #define LD4_Pin GPIO_PIN_12
