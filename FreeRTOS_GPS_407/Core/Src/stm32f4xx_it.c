@@ -26,6 +26,7 @@
 #include "admin.h"
 #include "cmsis_os.h"
 #include "queue.h"
+#include "ultrasonic.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -234,11 +235,33 @@ void USART2_IRQHandler(void)
 void EXTI15_10_IRQHandler(void)
 {
   /* USER CODE BEGIN EXTI15_10_IRQn 0 */
+	BaseType_t xHigherPriorityTaskWoken = pdFALSE; // appereantly needed for freertos ISR usage
 
+	// check if interrupt is comming from our echo pin
+	if (__HAL_GPIO_EXTI_GET_IT(Echo_Pin) != 0U)
+	{
+		if (HAL_GPIO_ReadPin(Echo_GPIO_Port, Echo_Pin) == GPIO_PIN_SET) // Check for rising edge
+		{
+			rising_edge_time_us = __HAL_TIM_GET_COUNTER(&htim5); // Capture timer 5 counter value
+			echo_state = 1; // set to 1 to indicate that we are now expecting a falling edge
+		} else
+		{
+			if (echo_state == 1) // Calculate duration only when rising was seen before
+			{
+				falling_edge_time_us = __HAL_TIM_GET_COUNTER(&htim5); // Capture timer 5 counter value
+				pulse_duration_us = falling_edge_time_us - rising_edge_time_us;
+				echo_state = 0; // Reset for next use
+
+				if (xEchoEventGroup != NULL)
+					xEventGroupSetBitsFromISR(xEchoEventGroup, ULTRASONIC_PULSE_COMPLETE_BIT, &xHigherPriorityTaskWoken);
+			}
+		}
+	__HAL_GPIO_EXTI_CLEAR_IT(Echo_Pin);
+	}
   /* USER CODE END EXTI15_10_IRQn 0 */
   HAL_GPIO_EXTI_IRQHandler(Echo_Pin);
   /* USER CODE BEGIN EXTI15_10_IRQn 1 */
-
+  portYIELD_FROM_ISR(xHigherPriorityTaskWoken);
   /* USER CODE END EXTI15_10_IRQn 1 */
 }
 

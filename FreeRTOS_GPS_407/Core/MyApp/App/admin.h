@@ -191,3 +191,5 @@ extern void ShowWaypoint (void);
 // dataretention.c
 extern void logWrite(int type, void* info);
 extern void printLogs(void);
+
+extern void delay_us(int us);

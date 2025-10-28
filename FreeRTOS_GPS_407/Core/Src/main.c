@@ -28,6 +28,7 @@
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 #include "admin.h"
+#include "ultrasonic.h"
 
 /* USER CODE END Includes */
 
@@ -127,6 +128,12 @@ int main(void)
   MX_TIM2_Init();
   MX_TIM5_Init();
   /* USER CODE BEGIN 2 */
+  xEchoEventGroup = xEventGroupCreate();
+  if (xEchoEventGroup == NULL)
+  {
+  	Error_Handler();
+  }
+
 
   LCD_init();
   KEYS_init();
