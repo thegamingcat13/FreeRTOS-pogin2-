@@ -7,6 +7,9 @@
 *
 * @date 5/5/2022
 */
+#ifndef ADMIN_H
+#define ADMIN_H
+
 #include "FreeRTOS.h"
 #include "event_groups.h"
 #include "queue.h"
@@ -41,7 +44,7 @@
 #define LAT_PREC 0.000002 // level of precision for gps parser
 #define LON_PREC 0.000002 // level of precision for gps parser
 
-typedef struct {
+typedef struct Differences_s{
 	    float latdifference;
 	    float londifference;
 	} Differences;
@@ -192,4 +195,7 @@ extern void ShowWaypoint (void);
 extern void logWrite(int type, void* info);
 extern void printLogs(void);
 
-extern void delay_us(int us);
+extern void delay_us (int us);
+extern void SR04_Task (void *);
+
+#endif // ADMIM_H

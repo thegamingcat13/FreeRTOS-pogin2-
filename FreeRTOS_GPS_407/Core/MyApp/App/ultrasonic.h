@@ -8,9 +8,9 @@
 extern TIM_HandleTypeDef htim2; // used for delay_us function
 extern TIM_HandleTypeDef htim5; // used for pulse measurement
 
-volatile uint32_t rising_edge_time_us = 0;
-volatile uint32_t falling_edge_time_us = 0;
-volatile uint8_t echo_state = 0;
-volatile uint32_t pulse_duration_us = 0;
+extern volatile uint32_t rising_edge_time_us;
+extern volatile uint32_t falling_edge_time_us;
+extern volatile uint8_t echo_state;
+extern volatile uint32_t pulse_duration_us;
 
-EventGroupHandle_t xEchoEventGroup; // Event group for signaling pulse completion
+extern EventGroupHandle_t xEchoEventGroup; // Event group for signaling pulse completion

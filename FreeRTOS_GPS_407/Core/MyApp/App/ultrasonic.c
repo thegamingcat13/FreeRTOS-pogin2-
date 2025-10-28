@@ -11,6 +11,12 @@
  * @param us: Number of microseconds to delay
  * @retval None
  */
+EventGroupHandle_t xEchoEventGroup; // Event group for signaling pulse completion
+
+volatile uint32_t rising_edge_time_us = 0;
+volatile uint32_t falling_edge_time_us = 0;
+volatile uint8_t echo_state = 0;
+volatile uint32_t pulse_duration_us = 0;
 
 void delay_us(int us)
 {
@@ -58,12 +64,12 @@ void SR04_Task (void *argument)
 				pdMS_TO_TICKS(100)					// Timeout after 100ms
 				);
 
-		if ((uxBits & ULTRASONIC_PULSE_COMPLETE_BITT) == ULTRASONIC_PULSE_COMPLETE_BIT)
+		if ((uxBits & ULTRASONIC_PULSE_COMPLETE_BIT) == ULTRASONIC_PULSE_COMPLETE_BIT)
 		{
 			current_duration_us = pulse_duration_us;
 			distance_cm = (current_duration_us * 0.0343f) / 2.0f;
 
-			if (distance_cm > 400.0f || distance < 2.0f)
+			if (distance_cm > 400.0f || distance_cm < 2.0f)
 				distance_cm = -1.0f;
 		} else
 			UART_printf(100, "\n\n\r Error: No distance measured");
