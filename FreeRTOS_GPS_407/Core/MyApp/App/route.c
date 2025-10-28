@@ -1,3 +1,15 @@
+/**
+ * @file route.c
+ * @brief Functies rondom waypoints: controleren, opslaan en uitlezen van GPS-data.
+ *
+ * Dit bestand bevat functies om:
+ * - GPS-data te controleren en op te slaan in een struct-array.
+ * - Alle opgeslagen waypoints uit te printen.
+ * - Handmatig de waypoint-counter aan te passen.
+ *
+ * @date 28/10/2025
+ */
+
 #include <admin.h>
 #include <stdbool.h>
 #include "main.h"
@@ -21,11 +33,11 @@ static bool filled = false;
 bool first_run = true;
 
 sWaypoints aWaypoints[STRC_AMOUNT];
-// waypoint
-// @brief deze functie checkt of er goede gps-data is binnen gekomen en slaat goede data op in een structure array.
-// hiermeer kunnen (STRC_AMOUNT) punten opgslagen worden.
-// @return void
-
+/**
+ * @brief deze functie checkt of er goede gps-data is binnen gekomen en slaat goede data op in een structure array.
+ * Hiermee kunnen (STRC_AMOUNT) punten opgslagen worden.
+ * @return void
+*/
 char latitude[]= "latitude";
 char longitude[]= "longitude";
 
@@ -53,12 +65,13 @@ void Waypoint ()
     }
 }
 
-// returnWaypoints
-// @brief deze functie kan als debug gebruikt worden.
-//Wanneer in de terminal 'W' wordt ingetoetst, worden alle opgeslagen waypoints uitgeprint in de terminal.
-// @param pointNumber is de waypoint die moet worden uitgeprint.
-// @param type bepaalt of de latitude of longitude wordt uitgeprint.
-// @return returnt een float met latitude of longitude waardes afhankelijk van waarde 'type'.
+/**
+ * @brief Wanneer in de terminal 'W' wordt ingetoetst, worden alle opgeslagen waypoints uitgeprint in de terminal.
+ * Deze functie kan als debug gebruikt worden.
+ * @param PointNumber is de waypoint die moet worden uitgeprint.
+ * @param Type 1 = latitude, 2 = longitude
+ * @return Een float met latitude of longitude waardes afhankelijk van waarde 'type'.
+ */
 float returnWaypoints (int pointNumber, int type)
 {
 	if (first_run)
@@ -90,11 +103,10 @@ float returnWaypoints (int pointNumber, int type)
 	}
 }
 
-/*
- * CurrentWaypointChange
- * @brief deze functie kan gebruikt worden om handmatig naar een ander waypoint te gaan.
- * @param target is de waarde van het waypoint waar naartoe gegaan moet worden.
- * @return returnt een integer-waarde die aangeeft of het aanpasssen gelukt is of niet
+/**
+ * @brief Wijzigt handmatig de huidige waypoint.
+ * @param target Het waypointnummer waar naartoe gewisseld moet worden.
+ * @return int 1 als de wijziging gelukt is, 0 als niet.
  */
 int CurrentWaypointChange (int target)
 {
