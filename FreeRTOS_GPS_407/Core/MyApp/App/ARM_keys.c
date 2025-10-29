@@ -127,6 +127,10 @@ void ARM_keys_task (void *argument)
 			ShowWaypoint();
 			break;
 
+		case 6:
+			drive_forward();
+			break;
+
 		}
 
 		if (Uart_debug_out & ARMKEYS_DEBUG_OUT)
