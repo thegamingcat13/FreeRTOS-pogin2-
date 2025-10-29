@@ -170,7 +170,8 @@ void ReachWPTask(void *argument)
 						turn_left();
 				} else
 					drive_forward();
-			}
+			} else
+				drive_forward();
 
 			osDelay(200);
 			/*
