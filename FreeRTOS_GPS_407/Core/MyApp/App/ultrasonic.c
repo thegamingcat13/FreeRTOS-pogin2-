@@ -69,8 +69,10 @@ void SR04_Task (void *argument)
 			current_duration_us = pulse_duration_us;
 			distance_cm = (current_duration_us * 0.0343f) / 2.0f;
 
-			if (distance_cm > 400.0f || distance_cm < 2.0f)
+			if (distance_cm > 40.0f || distance_cm < 2.0f)
 				distance_cm = -1.0f;
+
+			UART_printf(100, "\n\n\rDistance: %.2f cm", distance_cm);
 		} else
 			UART_printf(100, "\n\n\r Error: No distance measured");
 

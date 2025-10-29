@@ -95,7 +95,7 @@ TASKDATA tasks[] =
 { LED_Task3,    NULL, .attr.name = "LED_Task3",    	.attr.stack_size = 400, 	.attr.priority = osPriorityBelowNormal5 },
 { LED_Task4,    NULL, .attr.name = "LED_Task4",    	.attr.stack_size = 400, 	.attr.priority = osPriorityBelowNormal4 },
 
-{ SR04_Task,    NULL, .attr.name = "SR04_Task",    	.attr.stack_size = 800, 	.attr.priority = osPriorityNormal2 },
+{ SR04_Task,    NULL, .attr.name = "SR04_Task",    	.attr.stack_size = 1600, 	.attr.priority = osPriorityNormal2 },
 
   // deze laatste niet wissen, wordt gebruik als 'terminator' in for-loops
 { NULL,         NULL, .attr.name = NULL,           	.attr.stack_size = 0,       .attr.priority = 0 }
