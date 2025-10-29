@@ -3,7 +3,7 @@
  * @brief Berekent de verschillen tussen de huidige locatie en de waypoint.
  * Dit doet hij met het verschil tussen de lon en lat en de heading te berekenen
  *
- * @date 08/08/2025
+ * @date 08/10/2025
  */
 #include <admin.h>
 #include <stdbool.h>
