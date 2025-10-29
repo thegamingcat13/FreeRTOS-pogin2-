@@ -208,6 +208,6 @@ extern void printLogs(void);
 extern void delay_us (int us);
 extern void SR04_Task (void *);
 
-extern void turn_left(void);
+extern void drive_forward(void);
 
 #endif // ADMIM_H

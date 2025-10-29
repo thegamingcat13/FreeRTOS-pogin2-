@@ -124,6 +124,7 @@ void ReachWPTask(void *argument)
 			if (info.distance_m < ARRIVAL_RADIUS_METERS)
 			{
 				stop();
+
 				CurrentWaypoint++;
 				osDelay(500);
 			}
@@ -182,7 +183,6 @@ void ReachWPTask(void *argument)
 				GoToDest();
 				*/
 		}
-		xSemaphoreGive(hGpsDataMutex);
 		taskYIELD();
 	}
 }

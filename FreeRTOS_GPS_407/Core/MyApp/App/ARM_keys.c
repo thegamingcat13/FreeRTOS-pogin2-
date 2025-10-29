@@ -29,6 +29,7 @@ char waypoint_back[]= "waypoint_back";
 * @param color De kleur.
 * @return void.
 */
+
 void toggle_led (uint32_t color)
 {
 	HAL_GPIO_TogglePin(GPIOD, color);   // turns led on or off
@@ -128,7 +129,7 @@ void ARM_keys_task (void *argument)
 			break;
 
 		case 6:
-			turn_left();
+			drive_forward();
 			break;
 
 		}
