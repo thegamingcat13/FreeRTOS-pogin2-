@@ -128,7 +128,7 @@ void ARM_keys_task (void *argument)
 			break;
 
 		case 6:
-			drive_forward();
+			turn_left();
 			break;
 
 		}

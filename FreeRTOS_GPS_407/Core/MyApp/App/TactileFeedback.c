@@ -37,8 +37,8 @@ void turn_left()
 {
 	HAL_GPIO_WritePin(GPIOE, M1_1, SET);
 	HAL_GPIO_WritePin(GPIOE, M1_2, RESET);
-	HAL_GPIO_WritePin(GPIOE, M2_1, RESET);
-	HAL_GPIO_WritePin(GPIOE, M2_2, SET);
+	HAL_GPIO_WritePin(GPIOE, M2_1, SET);
+	HAL_GPIO_WritePin(GPIOE, M2_2, RESET);
 	logWrite(6, turn_left);
 }
 
@@ -46,17 +46,17 @@ void turn_right()
 {
 	HAL_GPIO_WritePin(GPIOE, M1_1, RESET);
 	HAL_GPIO_WritePin(GPIOE, M1_2, SET);
-	HAL_GPIO_WritePin(GPIOE, M2_1, SET);
-	HAL_GPIO_WritePin(GPIOE, M2_2, RESET);
+	HAL_GPIO_WritePin(GPIOE, M2_1, RESET);
+	HAL_GPIO_WritePin(GPIOE, M2_2, SET);
 	logWrite(6, Turn_right);
 }
 
 void drive_forward()
 {
-	HAL_GPIO_WritePin(GPIOE, M1_1, RESET);
-	HAL_GPIO_WritePin(GPIOE, M1_2, SET);
-	HAL_GPIO_WritePin(GPIOE, M2_1, RESET);
-	HAL_GPIO_WritePin(GPIOE, M2_2, SET);
+	HAL_GPIO_WritePin(M1_1_GPIO_Port, M1_1_Pin, SET);
+	HAL_GPIO_WritePin(M1_2_GPIO_Port, M1_2_Pin, RESET);
+	HAL_GPIO_WritePin(M2_1_GPIO_Port, M2_1_Pin, RESET);
+	HAL_GPIO_WritePin(M2_2_GPIO_Port, M2_2_Pin, SET);
 	logWrite(6, Drive_forward);
 }
 
@@ -67,15 +67,6 @@ void stop()
 	HAL_GPIO_WritePin(GPIOE, M2_1, RESET);
 	HAL_GPIO_WritePin(GPIOE, M2_2, RESET);
 	logWrite(6, Stop);
-}
-
-
-void spin_around()
-{
-	HAL_GPIO_WritePin(GPIOE, M1_1, RESET);
-	HAL_GPIO_WritePin(GPIOE, M1_2, SET);
-	HAL_GPIO_WritePin(GPIOE, M2_1, SET);
-	HAL_GPIO_WritePin(GPIOE, M2_2, RESET);
 }
 
 
@@ -132,8 +123,6 @@ void ReachWPTask(void *argument)
 
 			if (info.distance_m < ARRIVAL_RADIUS_METERS)
 			{
-				stop();
-				spin_around();
 				stop();
 				CurrentWaypoint++;
 				osDelay(500);
