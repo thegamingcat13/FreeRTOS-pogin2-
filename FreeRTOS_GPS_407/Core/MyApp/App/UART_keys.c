@@ -245,7 +245,7 @@ void UART_menu (void *argument)
 				}
 				break;
 
-		case 'H': // H: Debug history output
+		case 'H': /// H: Debug history output
 			printLogs();
 			break;
 
@@ -273,7 +273,7 @@ void UART_menu (void *argument)
 
 			  break;
 
-		case 'R': /// R: registreer een waypoint
+		case 'R': /// R: Registreer een waypoint met de huidige gps data
 			UART_puts("\n\n\rParsing GPS data");
 			ParsedGPS(); // geef de notify aan de struct van gps data
 			osDelay(10);
@@ -294,7 +294,7 @@ void UART_menu (void *argument)
 			}
 			break;
 
-		case 'G': // G: Print de parsed gps struct
+		case 'G': /// G: Print de parsed gps structre
 			UART_puts("\n\n\rParsed GPS data:");
 			UART_printf(100, "\n\r Head: %s", parsed_gnrmc.head);				// 1. header
 			UART_printf(100, "\n\r Time: %d", parsed_gnrmc.time);				// 2. hhmmss.sss
