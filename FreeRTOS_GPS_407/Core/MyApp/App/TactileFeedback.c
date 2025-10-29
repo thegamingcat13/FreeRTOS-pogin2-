@@ -1,3 +1,11 @@
+/**
+ * @file TactileFeedback.c
+ * @brief De functies voor het aansturen van de L298N dual H-bridge driver.
+ * En de functies voor de besturing van de motors.
+ *
+ * @date 28/10/2025
+ */
+
 #include <admin.h>
 #include <stdbool.h>
 #include "main.h"
@@ -27,12 +35,12 @@ char waypoint[]= "waypoint";
 bool FirstRun = true;
 
 TaskHandle_t hReachWP;
-/*
- * de onderstaande functies worden gebruikt voor het aansturen van de L298N dual H-bridge driver.
- * onderstaande functies kunnen worden opgeroepen om vooruit te rijden of te draaien.
+
+
+/**
+ * @brief Functie voor het draaien naar links.
+ * @return void
  */
-
-
 void turn_left()
 {
 	HAL_GPIO_WritePin(GPIOE, M1_1, SET);
@@ -41,7 +49,10 @@ void turn_left()
 	HAL_GPIO_WritePin(GPIOE, M2_2, RESET);
 	logWrite(6, turn_left);
 }
-
+/**
+ * @brief Functie voor het draaien naar rechts.
+ * @return void
+ */
 void turn_right()
 {
 	HAL_GPIO_WritePin(GPIOE, M1_1, RESET);
@@ -51,6 +62,10 @@ void turn_right()
 	logWrite(6, Turn_right);
 }
 
+/**
+ * @brief Functie voor het naar voren rijden.
+ * @return void
+ */
 void drive_forward()
 {
 	HAL_GPIO_WritePin(M1_1_GPIO_Port, M1_1_Pin, SET);
@@ -59,7 +74,10 @@ void drive_forward()
 	HAL_GPIO_WritePin(M2_2_GPIO_Port, M2_2_Pin, SET);
 	logWrite(6, Drive_forward);
 }
-
+/**
+ * @brief Functie voor het stoppen van alle motoren.
+ * @return void
+ */
 void stop()
 {
 	HAL_GPIO_WritePin(GPIOE, M1_1, RESET);
@@ -93,6 +111,11 @@ void GoToDest()
 
 }
 */
+/**
+ * @brief Deze functie wordt gebruikt om te kijken of wij de waypoint bereikt hebben.
+ * @param *argument niet gerbuikt.
+ * @return void
+ */
 void ReachWPTask(void *argument)
 {
 	while (TRUE)
@@ -187,10 +210,12 @@ void ReachWPTask(void *argument)
 	}
 }
 
-/*
- * SkipWaypoint wordt gebruikt om een waypoint over te slaan.
- * Deze functie wordt aangeroepen door de ARM-keys.
+/**
+ * @brief SkipWaypoint wordt gebruikt om een waypoint over te slaan.
+ * Deze functie wordt aangeroepen door de `ARM-keys`.
  * In de functie is een check ingebouwd die kijkt of de functie correct is uitgevoerd.
+ * @return 1 = waypoint behaald, verhoog `CurrentWaypoint` met 1 voor volgende waypoint.
+ * 0 = waypoint nog niet bereikt.
  */
 int SkipWaypoint (void)
 {
@@ -201,10 +226,12 @@ int SkipWaypoint (void)
 	else
 		return 0;
 }
-/*
- * BackWaypoint wordt gebruikt om terug te gaan naar de vorige waypoint.
- * Deze functie wordt aangeroepen door de ARM-keys.
+/**
+ * @brief BackWaypoint wordt gebruikt om terug te gaan naar de vorige waypoint.
+ * Deze functie wordt aangeroepen door de `0ARM-keys`.
  * In de functie is een check ingebouwd die kijkt of de functie correct is uitgevoerd.
+ *  * @return 1 = waypoint verlaagt, verlaag `CurrentWaypoint` met 1 voor vorige waypoint.
+ * 0 = waypoint niet verlaagt.
  */
 int BackWaypoint (void)
 {
@@ -215,10 +242,11 @@ int BackWaypoint (void)
 	else
 		return 0;
 }
-/*
- * ShowWaypoint wordt gebruikt om te laten zien welk waypoint we naartoe aan het gaan zijn en hoeveel waypoints er totaal zijn.
- * Deze functie wordt aangeroepen door de ARM-keys.
+/**
+ * @brief ShowWaypoint wordt gebruikt om te laten zien welk waypoint we naartoe aan het gaan zijn en hoeveel waypoints er totaal zijn.
+ * Deze functie wordt aangeroepen door de `ARM-keys`.
  * In de functie is een check ingebouwd die kijkt of de functie correct is uitgevoerd.
+ * @return void
  */
 void ShowWaypoint (void)
 {
