@@ -16,8 +16,6 @@ extern volatile uint32_t falling_edge_time_us;
 extern volatile uint8_t echo_state;
 extern volatile uint32_t pulse_duration_us;
 
-extern float distance_cm;
-
 extern EventGroupHandle_t xEchoEventGroup; // Event group for signaling pulse completion
 
 #endif // ULTRASONIC_H

@@ -73,6 +73,18 @@ void SR04_Task (void *argument)
 			if (distance_cm > 40.0f || distance_cm < 2.0f)
 				distance_cm = -1.0f;
 
+			if (distance_cm < 20 && distance_cm > 0)
+			{
+				drive_backward();
+				osDelay(1000);
+				turn_left();
+				osDelay(1000);
+				drive_forward();
+				osDelay(1000);
+				turn_right();
+				osDelay(1000);
+				stop();
+			}
 			UART_printf(100, "\n\n\rDistance: %.2f cm", distance_cm);
 		} else
 			UART_printf(100, "\n\n\r Error: No distance measured");

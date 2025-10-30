@@ -209,5 +209,9 @@ extern void delay_us (int us);
 extern void SR04_Task (void *);
 
 extern void drive_forward(void);
+extern void turn_left(void);
+extern void turn_right(void);
+extern void drive_backward(void);
+extern void stop(void);
 
 #endif // ADMIM_H
