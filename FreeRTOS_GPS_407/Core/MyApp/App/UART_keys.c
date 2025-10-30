@@ -316,10 +316,15 @@ void UART_menu (void *argument)
 
 		case 'A': /// A: print de gemeten afstand van de sr04 sensor
 			if (!sr04_debug)
+			{
+				UART_puts("\n\n\rEnable sr04 debugging");
 				sr04_debug = true;
-
-			if (sr04_debug)
+			}
+			else
+			{
 				sr04_debug = false;
+				UART_puts("\n\n\rDisable sr04 debugging");
+			}
 		}
 	}
 }

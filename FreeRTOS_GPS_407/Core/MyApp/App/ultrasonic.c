@@ -95,6 +95,8 @@ void SR04_Task (void *argument)
 
 			if (distance_cm < 20 && distance_cm > 0)
 			{
+				LCD_clear();
+				LCD_puts("Object  gedetecteerd"); //Dubbele spatie is voor spacing op het LCD scherm
 				drive_backward();
 				osDelay(1000);
 				turn_left();
