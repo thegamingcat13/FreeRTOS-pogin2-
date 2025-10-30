@@ -2,9 +2,9 @@
  * @file ultrasonic.c
  * @brief Task/ voor het:
  *
- * 		- Aanzetten van de sensor
- * 		- Uitlezen van sensor
- * 		- Beslissingen maken aan de hand van data sensor
+ * 		\- Aanzetten van de sensor
+ * 		\- Uitlezen van sensor
+ * 		\- Beslissingen maken aan de hand van data sensor
  *
  * @date 30/10/2025
  */
