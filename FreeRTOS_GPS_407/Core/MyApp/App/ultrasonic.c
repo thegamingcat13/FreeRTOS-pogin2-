@@ -4,11 +4,9 @@
  *
  * Deze taak doet het volgende:
  *
- * <ul style="font-family:'Corbel';font-size:11pt;">
- *   <li>Aanzetten van de sensor</li>
- *   <li>Uitlezen van de sensor</li>
- *   <li>Beslissingen maken aan de hand van data van de sensor</li>
- * </ul>
+ *   Aanzetten van de sensor<br>
+ *   Uitlezen van de sensor<br>
+ *   Beslissingen maken aan de hand van data van de sensor<br>
  *
  * @date 30/10/2025
  */
