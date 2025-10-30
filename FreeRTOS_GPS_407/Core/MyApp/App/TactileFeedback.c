@@ -134,6 +134,7 @@ void ReachWPTask(void *argument)
 			{
 				current_cog = parsed_gnrmc.course;
 				current_speed = parsed_gnrmc.speed;
+				Current_Heading = parsed_gnrmc.course;
 				xSemaphoreGive(hGpsDataMutex);
 			}
 
