@@ -4,9 +4,9 @@
  *
  * Dit bestand bevat functies om:
  *
- * \- GPS-data te controleren en op te slaan in een struct-array.
- * \- Alle opgeslagen waypoints uit te printen.
- * \- Handmatig de waypoint-counter aan te passen.
+ * <li>GPS-data te controleren en op te slaan in een struct-array.</li>
+ * <li>Alle opgeslagen waypoints uit te printen.</li>
+ * <li>Handmatig de waypoint-counter aan te passen.</li>
  *
  * @date 28/10/2025
  */
