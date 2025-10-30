@@ -76,9 +76,16 @@ Als de de installatie gelukt is (zie boven), en het ARM-bordje communiceert met 
 <li>**d**:  *change Delay time.* De LED-tasks werken met een delay time van default 200 MSecs tussen elke LED-setting. Zo kun je zien wat er gebeurt. 
 Voorbeeld: 'd,50'\<enter\> verkleint de default delay time naar 50 MSecs, dus de ledjes gaan 4x zo snel.</li>
 <li>**m**:  *show Menu*. Dit menu wordt getoond.</li> 
+<li>**t**:  *display Task-data.* Na 't'\<enter\> krijg je de gegevens per task te zien, zoals: nummer, prioriteit en geheugen (stack) gebruik. Zo kun je code optimaliseren en zien of een taak dreigt te weinig geheugen te krijgen...</li>
 <li>**p**:  *change Priority of task*. Met 'p'[,tasknummer, prioriteit]\<enter\> kun je de prioriteit van een task aanpassen en zien wat er gebeurt. 
 Voorbeeld: 'p,7,20' verandert de prioriteit van task 7 naar 20.</li>
-<li>**t**:  *display Task-data.* Na 't'\<enter\> krijg je de gegevens per task te zien, zoals: nummer, prioriteit en geheugen (stack) gebruik. Zo kun je code optimaliseren en zien of een taak dreigt te weinig geheugen te krijgen...</li>
+<li>**s**:  *Start/stop task.* Na 's'[,tasknummer]\<enter\> kun je de task stoppen en starten.</li>
+<li>**w**:  *Show waypoint data.* Na 'w'\<enter\> toon alle opgeslagen data uit de waypoints.</li>
+<li>**h**:  *Print logs.* Na 'h'\<enter\> toon alle inputs en outputs. (Gps data, motor aansturing, ingedrukte knoppen enz.)</li>
+<li>**c**:  *Change current waypoint.* Met 'c'[,Waypointnummer]\<enter\> kun je de huidige waypoint veranderen naar een andere
+Voorbeeld:  'c,4' verandert de waypoint counter naar 4.</li>
+<li>**r**:  *Change waypoint data.* Met 'r'\<enter\> vervang je de huidige waypoint met de huidige data van uit de gps.</li>
+<li>**g**:  *Print Parsed GPS data.* Met 'g'\<enter\> print je de omgezette data uit. Dit is handig voor debug.</li>
 </ul>
 </ul>
 

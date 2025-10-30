@@ -25,7 +25,7 @@ int logCount5 = 0;
 int logCount6 = 0;
 
 /**
- * @brief slaat verschillende stukken data op in een structure array.
+ * @brief slaat alle data op in een structure array. Zoals gps data, motor besturing, knoppen die worden ingedrukt.
  * @param type bepaalt wat voor data het is en in welk deel van de structure array het moet worden opgeslagen.
  * @param info geeft mee welke info er moet worden opgelagen, bijvoorbeeld een string of float-waarde.
  * @return Geen waarde(void).
