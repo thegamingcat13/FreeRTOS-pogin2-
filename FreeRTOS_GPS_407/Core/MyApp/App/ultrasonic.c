@@ -1,3 +1,13 @@
+/**
+ * @file ultrasonic.c
+ * @brief Functies voor het:
+ * 		- Aanzetten van de sensor
+ * 		- Uitlezen van sensor
+ * 		- Beslissingen maken aan de hand van data sensor
+ *
+ * @date 30/10/2025
+ */
+
 #include "admin.h"
 #include "main.h"
 #include "cmsis_os.h"
@@ -10,7 +20,6 @@
 /**
  * @brief Provides a blocking microsecond delay using timer 2
  * @param us: Number of microseconds to delay
- * @retval None
  */
 
 bool sr04_debug = false;
@@ -23,6 +32,10 @@ volatile uint32_t pulse_duration_us = 0;
 
 float distance_cm;
 
+/**
+ * @brief Functie voor het creeren van de timer, nodig voor het corect werken van de sensor.
+ * @param
+ */
 void delay_us(int us)
 {
 	__HAL_TIM_SET_COUNTER(&htim2, 0); 				// Reset timer 2 counter
@@ -31,6 +44,12 @@ void delay_us(int us)
 	HAL_TIM_Base_Stop(&htim2);						// Stop timer 2
 }
 
+
+/**
+ * @brief Functie voor het aansturen en het uitlezen van de sensor. Daarnaast berekent hij de afstand, en maakt hij een keuze op basis van deze afstand
+ * @param *argument Niet gebruikt
+ * @return void
+ */
 void SR04_Task (void *argument)
 {
 	int current_duration_us;

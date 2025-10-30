@@ -1,3 +1,9 @@
+/**
+ * @file ultrasonic.h
+ * @brief Bestand voor definities/externals van ultrasoninc.c
+ */
+
+
 #ifndef ULTRASONIC_H
 #define ULTRASONIC_H
 
