@@ -4,7 +4,7 @@
  *
  * De data wordt opgeslagen in `Slog` (zie `main.c` voor de definitie van de struct).
  *
- * @date 15/08/2025
+ * @date 15/10/2025
  */
 #include "admin.h"
 #include <stdbool.h>
