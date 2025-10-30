@@ -1,0 +1,71 @@
+\doxysection{USB\+\_\+\+HOST/\+Target/usbh\+\_\+conf.h File Reference}
+\hypertarget{usbh__conf_8h}{}\label{usbh__conf_8h}\index{USB\_HOST/Target/usbh\_conf.h@{USB\_HOST/Target/usbh\_conf.h}}
+
+
+\+: Header for \doxylink{usbh__conf_8c}{usbh\+\_\+conf.\+c} file.  
+
+
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include $<$string.\+h$>$}\newline
+{\ttfamily \#include "{}main.\+h"{}}\newline
+{\ttfamily \#include "{}stm32f4xx.\+h"{}}\newline
+{\ttfamily \#include "{}stm32f4xx\+\_\+hal.\+h"{}}\newline
+{\ttfamily \#include "{}cmsis\+\_\+os.\+h"{}}\newline
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define {\bfseries USBH\+\_\+\+MAX\+\_\+\+NUM\+\_\+\+ENDPOINTS}~2U
+\item 
+\#define {\bfseries USBH\+\_\+\+MAX\+\_\+\+NUM\+\_\+\+INTERFACES}~2U
+\item 
+\#define {\bfseries USBH\+\_\+\+MAX\+\_\+\+NUM\+\_\+\+CONFIGURATION}~1U
+\item 
+\#define {\bfseries USBH\+\_\+\+KEEP\+\_\+\+CFG\+\_\+\+DESCRIPTOR}~1U
+\item 
+\#define {\bfseries USBH\+\_\+\+MAX\+\_\+\+NUM\+\_\+\+SUPPORTED\+\_\+\+CLASS}~1U
+\item 
+\#define {\bfseries USBH\+\_\+\+MAX\+\_\+\+SIZE\+\_\+\+CONFIGURATION}~256U
+\item 
+\#define {\bfseries USBH\+\_\+\+MAX\+\_\+\+DATA\+\_\+\+BUFFER}~512U
+\item 
+\#define {\bfseries USBH\+\_\+\+DEBUG\+\_\+\+LEVEL}~0U
+\item 
+\#define {\bfseries USBH\+\_\+\+USE\+\_\+\+OS}~1U
+\item 
+\#define {\bfseries HOST\+\_\+\+HS}~0
+\item 
+\#define {\bfseries HOST\+\_\+\+FS}~1
+\item 
+\#define {\bfseries USBH\+\_\+\+PROCESS\+\_\+\+PRIO}~os\+Priority\+Normal
+\item 
+\#define {\bfseries USBH\+\_\+\+PROCESS\+\_\+\+STACK\+\_\+\+SIZE}~((uint16\+\_\+t)128)
+\item 
+\#define \mbox{\hyperlink{group___u_s_b_h___c_o_n_f___exported___macros_ga6c97ce3e072825430b95029993d7c74b}{USBH\+\_\+malloc}}~malloc
+\item 
+\#define \mbox{\hyperlink{group___u_s_b_h___c_o_n_f___exported___macros_gada5b7bbb9b0edf61dce4499eaa6a3e69}{USBH\+\_\+free}}~free
+\item 
+\#define \mbox{\hyperlink{group___u_s_b_h___c_o_n_f___exported___macros_ga63ee6c1ecdb1012d53f3aaf41a90430c}{USBH\+\_\+memset}}~memset
+\item 
+\#define \mbox{\hyperlink{group___u_s_b_h___c_o_n_f___exported___macros_ga1b58c6a6ba9f58f0a86ad35faef5ae64}{USBH\+\_\+memcpy}}~memcpy
+\item 
+\#define \mbox{\hyperlink{group___u_s_b_h___c_o_n_f___exported___macros_ga3942509489f521a016de06eb7438190c}{USBH\+\_\+\+Usr\+Log}}(...)
+\item 
+\#define \mbox{\hyperlink{group___u_s_b_h___c_o_n_f___exported___macros_ga921ceccfe8dfeb178ac72475bc4c8964}{USBH\+\_\+\+Err\+Log}}(...)
+\item 
+\#define \mbox{\hyperlink{group___u_s_b_h___c_o_n_f___exported___macros_ga3d7924692379367529819886fc23b759}{USBH\+\_\+\+Dbg\+Log}}(...)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\+: Header for \doxylink{usbh__conf_8c}{usbh\+\_\+conf.\+c} file. 
+
+\begin{DoxyVersion}{Version}
+\+: v1.\+0\+\_\+\+Cube 
+\end{DoxyVersion}
+\begin{DoxyAttention}{Attention}
+
+\end{DoxyAttention}
+\doxysubsubsection*{\begin{center}\copyright{} Copyright (c) 2021 STMicroelectronics. All rights reserved.\end{center} }
+
+This software component is licensed by ST under Ultimate Liberty license SLA0044, the "{}\+License"{}; You may not use this file except in compliance with the License. You may obtain a copy of the License at\+: www.\+st.\+com/\+SLA0044 

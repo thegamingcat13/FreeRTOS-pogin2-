@@ -5,12 +5,15 @@
 #include "ultrasonic.h"
 #include "usb_host.h"
 #include <stdlib.h>
+#include <stdbool.h>
 
 /**
  * @brief Provides a blocking microsecond delay using timer 2
  * @param us: Number of microseconds to delay
  * @retval None
  */
+
+bool sr04_debug = false;
 EventGroupHandle_t xEchoEventGroup; // Event group for signaling pulse completion
 
 volatile uint32_t rising_edge_time_us = 0;
@@ -85,9 +88,11 @@ void SR04_Task (void *argument)
 				osDelay(1000);
 				stop();
 			}
-			UART_printf(100, "\n\n\rDistance: %.2f cm", distance_cm);
+			if (sr04_debug)
+				UART_printf(100, "\n\n\rDistance: %.2f cm", distance_cm);
 		} else
-			UART_printf(100, "\n\n\r Error: No distance measured");
+			if (sr04_debug)
+				UART_printf(100, "\n\n\r Error: No distance measured");
 
 		vTaskDelay(pdMS_TO_TICKS(500));
 	}

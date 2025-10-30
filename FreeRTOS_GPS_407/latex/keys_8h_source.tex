@@ -1,0 +1,79 @@
+\doxysection{keys.\+h}
+\hypertarget{keys_8h_source}{}\label{keys_8h_source}\index{Core/MyApp/Ports/keys.h@{Core/MyApp/Ports/keys.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{/*}}
+\DoxyCodeLine{00002\ \textcolor{comment}{Author:\ \ \ \ \ J.F.\ van\ der\ Bent}}
+\DoxyCodeLine{00003\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ W\ Pielage\ \&\ E\ Helmond}}
+\DoxyCodeLine{00004\ \textcolor{comment}{}}
+\DoxyCodeLine{00005\ \textcolor{comment}{Date:\ \ \ \ \ \ \ 24-\/11-\/2021}}
+\DoxyCodeLine{00006\ \textcolor{comment}{Revision:\ \ \ 5}}
+\DoxyCodeLine{00007\ \textcolor{comment}{}}
+\DoxyCodeLine{00008\ \textcolor{comment}{\ \ \ \ keys.c:}}
+\DoxyCodeLine{00009\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ Keyboard-\/driver\ for\ SpARM-\/board\ v1}}
+\DoxyCodeLine{00010\ \textcolor{comment}{}}
+\DoxyCodeLine{00011\ \textcolor{comment}{\ \ \ \ pin-\/info:}}
+\DoxyCodeLine{00012\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ PD1\ \ -\/\ R2}}
+\DoxyCodeLine{00013\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ PD2\ \ -\/\ R3}}
+\DoxyCodeLine{00014\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ PD3\ \ -\/\ R4}}
+\DoxyCodeLine{00015\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ PD6\ \ -\/\ K1}}
+\DoxyCodeLine{00016\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ PD7\ \ -\/\ K2}}
+\DoxyCodeLine{00017\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ PD8\ \ -\/\ K3}}
+\DoxyCodeLine{00018\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ PD9\ \ -\/\ K4}}
+\DoxyCodeLine{00019\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ PD11\ -\/\ R1}}
+\DoxyCodeLine{00020\ \textcolor{comment}{}}
+\DoxyCodeLine{00021\ \textcolor{comment}{To\ use\ the\ keyboard\ first\ initialize\ the\ ports:}}
+\DoxyCodeLine{00022\ \textcolor{comment}{\ \ \ \ KEYS\_init();}}
+\DoxyCodeLine{00023\ \textcolor{comment}{After\ that,\ you\ can\ use\ polling\ to\ read\ a\ key\ with:}}
+\DoxyCodeLine{00024\ \textcolor{comment}{\ \ \ \ KEYS\_read();}}
+\DoxyCodeLine{00025\ \textcolor{comment}{}}
+\DoxyCodeLine{00026\ \textcolor{comment}{\ \ \ \ 07-\/07-\/2014\ toevoeging\ defines\ key\ values}}
+\DoxyCodeLine{00027\ \textcolor{comment}{*/}}
+\DoxyCodeLine{00028\ }
+\DoxyCodeLine{00029\ \textcolor{comment}{/****************Libraries******************************/}}
+\DoxyCodeLine{00030\ \textcolor{comment}{/*\ Libraries\ needed\ for\ Keys\ are\ (These\ are\ in\ main.h):}}
+\DoxyCodeLine{00031\ \textcolor{comment}{\ *\ \#include\ "{}stm32f4xx.h"{}}}
+\DoxyCodeLine{00032\ \textcolor{comment}{\ *\ \#include\ "{}stm32f4xx\_gpio.h"{}}}
+\DoxyCodeLine{00033\ \textcolor{comment}{\ *\ \#include\ "{}stm32f4xx\_syscfg.h"{}}}
+\DoxyCodeLine{00034\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{00035\ }
+\DoxyCodeLine{00036\ \textcolor{comment}{/****************Defines********************************/}}
+\DoxyCodeLine{00037\ \textcolor{preprocessor}{\#define\ KEY\_R1\ \ \ \ \ \ \ \ \ \ GPIO\_PIN\_11}}
+\DoxyCodeLine{00038\ \textcolor{preprocessor}{\#define\ KEY\_R2\ \ \ \ \ \ \ \ \ \ GPIO\_PIN\_1}}
+\DoxyCodeLine{00039\ \textcolor{preprocessor}{\#define\ KEY\_R3\ \ \ \ \ \ \ \ \ \ GPIO\_PIN\_2}}
+\DoxyCodeLine{00040\ \textcolor{preprocessor}{\#define\ KEY\_R4\ \ \ \ \ \ \ \ \ \ GPIO\_PIN\_3}}
+\DoxyCodeLine{00041\ \textcolor{preprocessor}{\#define\ KEY\_ROW\ \ \ \ \ \ \ \ \ (KEY\_R1\ |\ KEY\_R2\ |\ KEY\_R3\ |\ KEY\_R4)}}
+\DoxyCodeLine{00042\ \textcolor{preprocessor}{\#define\ PKEY\_ROW\ \ \ \ \ \ \ \ GPIOD}}
+\DoxyCodeLine{00043\ \textcolor{preprocessor}{\#define\ KEY\_K1\ \ \ \ \ \ \ \ \ \ GPIO\_PIN\_6}}
+\DoxyCodeLine{00044\ \textcolor{preprocessor}{\#define\ KEY\_K2\ \ \ \ \ \ \ \ \ \ GPIO\_PIN\_7}}
+\DoxyCodeLine{00045\ \textcolor{preprocessor}{\#define\ KEY\_K3\ \ \ \ \ \ \ \ \ \ GPIO\_PIN\_8}}
+\DoxyCodeLine{00046\ \textcolor{preprocessor}{\#define\ KEY\_K4\ \ \ \ \ \ \ \ \ \ GPIO\_PIN\_9}}
+\DoxyCodeLine{00047\ \textcolor{preprocessor}{\#define\ KEY\_COL\ \ \ \ \ \ \ \ \ (KEY\_K1\ |\ KEY\_K2\ |\ KEY\_K3\ |\ KEY\_K4)}}
+\DoxyCodeLine{00048\ \textcolor{preprocessor}{\#define\ PKEY\_COL\ \ \ \ \ \ \ \ GPIOD}}
+\DoxyCodeLine{00049\ }
+\DoxyCodeLine{00050\ \textcolor{comment}{/****************Function\ Prototypes********************/}}
+\DoxyCodeLine{00051\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ \ \ \ KEYS\_kolom\ \ (\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00052\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ \ \ \ KEYS\_read\ \ \ (\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00053\ \textcolor{keywordtype}{void}\ \ \ \ \ \ \ \ \ \ \ \ KEYS\_init\ \ \ (\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00054\ \textcolor{keywordtype}{void}\ \ \ \ \ \ \ \ \ \ \ \ KEYS\_initISR(\textcolor{keywordtype}{int});}
+\DoxyCodeLine{00055\ }
+\DoxyCodeLine{00056\ }
+\DoxyCodeLine{00057\ \textcolor{comment}{//\ Key\ map}}
+\DoxyCodeLine{00058\ \textcolor{preprocessor}{\#define\ key\_1\ \ \ 1}}
+\DoxyCodeLine{00059\ \textcolor{preprocessor}{\#define\ key\_2\ \ \ 2}}
+\DoxyCodeLine{00060\ \textcolor{preprocessor}{\#define\ key\_3\ \ \ 3}}
+\DoxyCodeLine{00061\ \textcolor{preprocessor}{\#define\ key\_4\ \ \ 5}}
+\DoxyCodeLine{00062\ \textcolor{preprocessor}{\#define\ key\_5\ \ \ 6}}
+\DoxyCodeLine{00063\ \textcolor{preprocessor}{\#define\ key\_6\ \ \ 7}}
+\DoxyCodeLine{00064\ \textcolor{preprocessor}{\#define\ key\_7\ \ \ 9}}
+\DoxyCodeLine{00065\ \textcolor{preprocessor}{\#define\ key\_8\ \ \ 10}}
+\DoxyCodeLine{00066\ \textcolor{preprocessor}{\#define\ key\_9\ \ \ 11}}
+\DoxyCodeLine{00067\ \textcolor{preprocessor}{\#define\ key\_0\ \ \ 14}}
+\DoxyCodeLine{00068\ \textcolor{preprocessor}{\#define\ key\_s\ \ \ 13\ \ }\textcolor{comment}{//\ Star}}
+\DoxyCodeLine{00069\ \textcolor{preprocessor}{\#define\ key\_h\ \ \ 15\ \ }\textcolor{comment}{//\ Hash}}
+\DoxyCodeLine{00070\ \textcolor{preprocessor}{\#define\ key\_a\ \ \ 4}}
+\DoxyCodeLine{00071\ \textcolor{preprocessor}{\#define\ key\_b\ \ \ 8}}
+\DoxyCodeLine{00072\ \textcolor{preprocessor}{\#define\ key\_c\ \ \ 12}}
+\DoxyCodeLine{00073\ \textcolor{preprocessor}{\#define\ key\_d\ \ \ 16}}
+
+\end{DoxyCode}

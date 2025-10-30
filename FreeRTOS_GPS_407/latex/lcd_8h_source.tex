@@ -1,0 +1,82 @@
+\doxysection{lcd.\+h}
+\hypertarget{lcd_8h_source}{}\label{lcd_8h_source}\index{Core/MyApp/Ports/lcd.h@{Core/MyApp/Ports/lcd.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{/*}}
+\DoxyCodeLine{00002\ \textcolor{comment}{Author:\ \ \ \ \ J.F.\ van\ der\ Bent}}
+\DoxyCodeLine{00003\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ W\ Pielage\ \&\ E\ Helmond}}
+\DoxyCodeLine{00004\ \textcolor{comment}{}}
+\DoxyCodeLine{00005\ \textcolor{comment}{Date:\ \ \ \ \ \ \ 24-\/11-\/2021}}
+\DoxyCodeLine{00006\ \textcolor{comment}{Revision:\ \ \ 5}}
+\DoxyCodeLine{00007\ \textcolor{comment}{\ \ \ \ lcd.c:}}
+\DoxyCodeLine{00008\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ LCD-\/driver\ ARM-\/board\ v5}}
+\DoxyCodeLine{00009\ \textcolor{comment}{}}
+\DoxyCodeLine{00010\ \textcolor{comment}{\ \ \ \ pin-\/info:}}
+\DoxyCodeLine{00011\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ PE2\ \ -\/\ DB4\ \ \ -\/-\/-\/>>\ PE3}}
+\DoxyCodeLine{00012\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ PE4\ \ -\/\ DB5}}
+\DoxyCodeLine{00013\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ PE5\ \ -\/\ DB6}}
+\DoxyCodeLine{00014\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ PE6\ \ -\/\ DB7}}
+\DoxyCodeLine{00015\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ PC13\ -\/\ E:\ \ start\ data}}
+\DoxyCodeLine{00016\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ PC15\ -\/\ RS:\ register-\/select}}
+\DoxyCodeLine{00017\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ PC14\ -\/\ RW:\ read/write}}
+\DoxyCodeLine{00018\ \textcolor{comment}{}}
+\DoxyCodeLine{00019\ \textcolor{comment}{\ \ \ \ opmerkingen:}}
+\DoxyCodeLine{00020\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ -\/Alle\ instructies\ voor\ het\ display\ staan\ achterstevoren!\ (maakt}}
+\DoxyCodeLine{00021\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ de\ code\ wat\ eenvoudiger)}}
+\DoxyCodeLine{00022\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ -\/Zorg\ ervoor\ dat\ de\ delay-\/code\ ook\ wordt\ meegecompileerd,\ anders}}
+\DoxyCodeLine{00023\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ gaat\ het\ hier\ mis...}}
+\DoxyCodeLine{00024\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ -\/Deze\ code\ is\ gebaseerd\ op}}
+\DoxyCodeLine{00025\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}LCD\ routines\ for\ OLIMEX\ LPC-\/MT-\/2106,16x2\ Character\ LCD\ 1602K,}}
+\DoxyCodeLine{00026\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 4-\/bit\ mode\ operation"{},}}
+\DoxyCodeLine{00027\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Copyright\ (c)\ 2004\ senz\ at\ arm.dreamislife.com}}
+\DoxyCodeLine{00028\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 15-\/07-\/2014\ aanpassing\ voor\ 1x16\ display\ define\ eenregel\ bepaald\ type\ display\ J.F.\ van\ der\ Bent}}
+\DoxyCodeLine{00029\ \textcolor{comment}{*/}}
+\DoxyCodeLine{00030\ }
+\DoxyCodeLine{00031\ \textcolor{preprocessor}{\#define\ eenregel\ \ \ \ \ \ \ \ }\textcolor{comment}{//\ define\ voor\ 1x16\ display}}
+\DoxyCodeLine{00032\ }
+\DoxyCodeLine{00033\ \textcolor{preprocessor}{\#ifndef\ LCD\_H}}
+\DoxyCodeLine{00034\ \textcolor{preprocessor}{\#define\ LCD\_H}}
+\DoxyCodeLine{00035\ }
+\DoxyCodeLine{00036\ \textcolor{comment}{/*\ I/O-\/pinnen\ */}}
+\DoxyCodeLine{00037\ \textcolor{preprocessor}{\#define\ \ STARTBIT\ \ \ \ \ \ \ 0}}
+\DoxyCodeLine{00038\ \textcolor{preprocessor}{\#define\ \ LCD\_D7\ \ \ \ \ \ \ \ \ GPIOE,\ GPIO\_PIN\_6}}
+\DoxyCodeLine{00039\ \textcolor{preprocessor}{\#define\ \ LCD\_D6\ \ \ \ \ \ \ \ \ GPIOE,\ GPIO\_PIN\_5}}
+\DoxyCodeLine{00040\ \textcolor{preprocessor}{\#define\ \ LCD\_D5\ \ \ \ \ \ \ \ \ GPIOE,\ GPIO\_PIN\_4}}
+\DoxyCodeLine{00041\ \textcolor{preprocessor}{\#define\ \ LCD\_D4\ \ \ \ \ \ \ \ \ GPIOE,\ GPIO\_PIN\_3}}
+\DoxyCodeLine{00042\ \textcolor{preprocessor}{\#define\ \ LCD\_EN\ \ \ \ \ \ \ \ \ GPIOD,\ GPIO\_PIN\_0}}
+\DoxyCodeLine{00043\ \textcolor{preprocessor}{\#define\ \ LCD\_RS\ \ \ \ \ \ \ \ \ GPIOC,\ GPIO\_PIN\_13}}
+\DoxyCodeLine{00044\ \textcolor{preprocessor}{\#define\ \ LCD\_RW\ \ \ \ \ \ \ \ \ GPIOC,\ GPIO\_PIN\_11}}
+\DoxyCodeLine{00045\ }
+\DoxyCodeLine{00046\ \textcolor{preprocessor}{\#define\ \ LCD\_DATA\ \ \ \ \ \ \ (LCD\_D4|LCD\_D5|LCD\_D6|LCD\_D7)}}
+\DoxyCodeLine{00047\ \textcolor{preprocessor}{\#define\ \ LCD\_IOALL\ \ \ \ \ \ (LCD\_D4|LCD\_D5|LCD\_D6|LCD\_D7|LCD\_EN|LCD\_RS)}}
+\DoxyCodeLine{00048\ }
+\DoxyCodeLine{00049\ \textcolor{preprocessor}{\#define\ LCD\_SETCGRAMADDR\ 0x40}}
+\DoxyCodeLine{00050\ }
+\DoxyCodeLine{00051\ \textcolor{preprocessor}{\#define\ LCD\_display\_on()\ \ \ \ \ LCD\_writecontrol(0x0E)}}
+\DoxyCodeLine{00052\ \textcolor{preprocessor}{\#define\ LCD\_display\_off()\ \ \ \ LCD\_writecontrol(0x08)}}
+\DoxyCodeLine{00053\ }
+\DoxyCodeLine{00054\ \textcolor{preprocessor}{\#define\ LCD\_cursor\_blink()\ \ \ LCD\_writecontrol(0x0F)}}
+\DoxyCodeLine{00055\ \textcolor{preprocessor}{\#define\ LCD\_cursor\_on()\ \ \ \ \ \ LCD\_writecontrol(0x0E)}}
+\DoxyCodeLine{00056\ \textcolor{preprocessor}{\#define\ LCD\_cursor\_off()\ \ \ \ \ LCD\_writecontrol(0x0C)}}
+\DoxyCodeLine{00057\ }
+\DoxyCodeLine{00058\ \textcolor{preprocessor}{\#define\ LCD\_cursor\_left()\ \ \ \ LCD\_writecontrol(0x10)}}
+\DoxyCodeLine{00059\ \textcolor{preprocessor}{\#define\ LCD\_cursor\_right()\ \ \ LCD\_writecontrol(0x14)}}
+\DoxyCodeLine{00060\ \textcolor{preprocessor}{\#define\ LCD\_display\_sleft()\ \ LCD\_writecontrol(0x18)}}
+\DoxyCodeLine{00061\ \textcolor{preprocessor}{\#define\ LCD\_display\_sright()\ LCD\_writecontrol(0x1C)}}
+\DoxyCodeLine{00062\ }
+\DoxyCodeLine{00063\ \textcolor{keywordtype}{void}\ LCD\_init(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00064\ \textcolor{keywordtype}{void}\ LCD\_clear(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00065\ \textcolor{keywordtype}{void}\ LCD\_cursor\_home(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00066\ \textcolor{keywordtype}{void}\ LCD\_writecontrol(\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{char}\ data);}
+\DoxyCodeLine{00067\ \textcolor{keywordtype}{void}\ LCD\_put(\textcolor{keywordtype}{char}\ *c);}
+\DoxyCodeLine{00068\ \textcolor{keywordtype}{void}\ LCD\_puts(\textcolor{keywordtype}{char}\ *c);}
+\DoxyCodeLine{00069\ \textcolor{keywordtype}{void}\ LCD\_putchar(\textcolor{keywordtype}{char}\ c);}
+\DoxyCodeLine{00070\ \textcolor{keywordtype}{void}\ LCD\_putint(\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ num);}
+\DoxyCodeLine{00071\ \textcolor{keywordtype}{void}\ delay\_LCD(\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ time);}
+\DoxyCodeLine{00072\ \textcolor{keywordtype}{void}\ LCD\_XY(\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ x,\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ y);}
+\DoxyCodeLine{00073\ \textcolor{keywordtype}{void}\ busyflag(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00074\ \textcolor{keywordtype}{void}\ LCD\_createChar(uint8\_t\ location,\ uint8\_t\ map[8]);}
+\DoxyCodeLine{00075\ }
+\DoxyCodeLine{00076\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{/*LCD\_H*/}\textcolor{preprocessor}{}}
+
+\end{DoxyCode}

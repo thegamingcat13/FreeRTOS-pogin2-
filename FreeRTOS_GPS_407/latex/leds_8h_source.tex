@@ -1,0 +1,41 @@
+\doxysection{leds.\+h}
+\hypertarget{leds_8h_source}{}\label{leds_8h_source}\index{Core/MyApp/Ports/leds.h@{Core/MyApp/Ports/leds.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{/*}}
+\DoxyCodeLine{00002\ \textcolor{comment}{Author:\ \ \ \ \ W\ Pielage\ \&\ E\ Helmond}}
+\DoxyCodeLine{00003\ \textcolor{comment}{Date:\ \ \ \ \ \ \ 2-\/10-\/2013}}
+\DoxyCodeLine{00004\ \textcolor{comment}{Revision:\ \ \ 2}}
+\DoxyCodeLine{00005\ \textcolor{comment}{}}
+\DoxyCodeLine{00006\ \textcolor{comment}{\ \ \ \ leds.c:}}
+\DoxyCodeLine{00007\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ LED-\/driver\ for\ SpARM-\/board\ v1}}
+\DoxyCodeLine{00008\ \textcolor{comment}{}}
+\DoxyCodeLine{00009\ \textcolor{comment}{\ \ \ \ pin-\/info:}}
+\DoxyCodeLine{00010\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ PB1\ -\/\ RCK:\ Storage\ register\ clock}}
+\DoxyCodeLine{00011\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ PB8\ \ -\/\ SCK:\ Shift\ register\ clock}}
+\DoxyCodeLine{00012\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ PA15\ -\/\ SER:\ Data\ input}}
+\DoxyCodeLine{00013\ \textcolor{comment}{}}
+\DoxyCodeLine{00014\ \textcolor{comment}{To\ use\ the\ LEDs\ use\ the\ following\ line\ to\ set\ the\ pins:}}
+\DoxyCodeLine{00015\ \textcolor{comment}{\ \ \ \ LED\_init();}}
+\DoxyCodeLine{00016\ \textcolor{comment}{After\ that,\ you\ can\ put\ an\ 8\ bit\ value\ to\ the\ LEDs}}
+\DoxyCodeLine{00017\ \textcolor{comment}{*/}}
+\DoxyCodeLine{00018\ }
+\DoxyCodeLine{00019\ \textcolor{comment}{/****************Libraries******************************/}}
+\DoxyCodeLine{00020\ \textcolor{comment}{/*\ Libraries\ needed\ for\ LEDs\ are\ (These\ are\ in\ main.h):}}
+\DoxyCodeLine{00021\ \textcolor{comment}{\ *\ \#include\ "{}stm32f4xx.h"{}}}
+\DoxyCodeLine{00022\ \textcolor{comment}{\ *\ \#include\ "{}stm32f4xx\_gpio.h"{}}}
+\DoxyCodeLine{00023\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{00024\ }
+\DoxyCodeLine{00025\ \textcolor{comment}{/****************Defines********************************/}}
+\DoxyCodeLine{00026\ \textcolor{comment}{//\#define\ \ \ LED\_SER\ \ \ \ \ GPIO\_Pin\_15}}
+\DoxyCodeLine{00027\ \textcolor{preprocessor}{\#define\ P\_LED\_SER\ \ \ GPIOA}}
+\DoxyCodeLine{00028\ \textcolor{comment}{//\#define\ \ \ LED\_SCK\ \ \ \ \ GPIO\_Pin\_8}}
+\DoxyCodeLine{00029\ \textcolor{preprocessor}{\#define\ P\_LED\_SCK\ \ \ GPIOB}}
+\DoxyCodeLine{00030\ \textcolor{comment}{//\#define\ \ \ LED\_RCK\ \ \ \ \ GPIO\_Pin\_1}}
+\DoxyCodeLine{00031\ \textcolor{preprocessor}{\#define\ P\_LED\_RCK\ \ \ GPIOB}}
+\DoxyCodeLine{00032\ }
+\DoxyCodeLine{00033\ \textcolor{comment}{/****************Function\ Prototypes********************/}}
+\DoxyCodeLine{00034\ \textcolor{keywordtype}{void}\ \ \ \ LED\_init\ \ \ \ (\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00035\ \textcolor{keywordtype}{void}\ \ \ \ LED\_put\ \ \ \ \ (\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{short}\ led\_byte);}
+
+\end{DoxyCode}

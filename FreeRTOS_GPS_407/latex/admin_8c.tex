@@ -1,0 +1,327 @@
+\doxysection{Core/\+My\+App/\+App/admin.c File Reference}
+\hypertarget{admin_8c}{}\label{admin_8c}\index{Core/MyApp/App/admin.c@{Core/MyApp/App/admin.c}}
+
+
+Bestaat uit 3 onderdelen\+: ~\newline
+ Deel 1. {\bfseries{Initialisatieoutput naar uart en lcd-\/scherm}}.~\newline
+ Deel 2. De functies voor de {\bfseries{initialisatie van de handles}}. ~\newline
+ Deel 3. De functies voor opzet en {\bfseries{handling van tasks}}. Dit deel bevat de functies die tasks aanmaakt én hulpfuncties voor tasks.~\newline
+ {\bfseries{Demonstreert\+: os\+Thread\+New(), v\+Task\+Suspend\+All(), x\+Task\+Resume\+All(), ux\+Task\+Get\+Stack\+High\+Water\+Mark(), v\+Task\+Priority\+Set() en c-\/stuff als array-\/handling, structures,}} en let op\+: het gebruiken van specifieke structure-\/members binnen andere structures, zie tasks\mbox{[}\mbox{]}!~\newline
+.  
+
+
+{\ttfamily \#include "{}main.\+h"{}}\newline
+{\ttfamily \#include "{}cmsis\+\_\+os.\+h"{}}\newline
+{\ttfamily \#include "{}task.\+h"{}}\newline
+{\ttfamily \#include "{}admin.\+h"{}}\newline
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{admin_8c_a9dec45875121142b6466b9475691b40a}{Display\+Version}} (void)
+\item 
+void \mbox{\hyperlink{admin_8c_a93467475af28d4b75cafb508f95578bf}{Display\+Menu}} (void)
+\item 
+void \mbox{\hyperlink{admin_8c_a34a9c5eb09cae80d85d5d13a348ee1e8}{error\+\_\+\+Halt\+OS}} (char \texorpdfstring{$\ast$}{*}msg)
+\begin{DoxyCompactList}\small\item\em Fatale OS-\/error opgetreden tijdens startup of runtime, doorgaan is zinloos. Het OS wordt tot stoppen gebracht, er wordt output gegenereerd waar mogelijk, dus op UART en LCD. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{admin_8c_a183387e08a88262f831be8b883ce8754}{Create\+Handles}} (void)
+\begin{DoxyCompactList}\small\item\em Creates alle handles voor deze applicatie. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{admin_8c_a96c9e7d4608bbcbb1f89460ea7d8da6f}{Timer1\+\_\+\+Handler}} (void)
+\begin{DoxyCompactList}\small\item\em Vangt de Free\+RTOS software-\/interrupt op en toggelt een ledje. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{admin_8c_a7f983159a50cdcaaad786c6c7a216cd9}{Create\+Tasks}} (void)
+\begin{DoxyCompactList}\small\item\em Creëert alle taken door te scannen door de TASKDATA-\/argumenten-\/array.~\newline
+ Let op. Eerst wordt de scheduler gestopt, dan de taken gecreëerd, dan de scheduler gestopt. Waarom? Anders gaan taken gelijk beginnen en wachten op taken die nog niet bestaan, dat geeft een rommeltje. \end{DoxyCompactList}\item 
+os\+Thread\+Id\+\_\+t \mbox{\hyperlink{admin_8c_abb419791c78bd67bbea178c06a96f684}{Get\+Taskhandle}} (char \texorpdfstring{$\ast$}{*}taskname)
+\begin{DoxyCompactList}\small\item\em Zoekt in tasks-\/array de task, en returns de handle. Deze handle wordt door \doxylink{admin_8c_a7f983159a50cdcaaad786c6c7a216cd9}{Create\+Tasks()} in de array geplaatst. In plaats van deze functie kan ook de OS-\/functie x\+Task\+Get\+Handle() gebruikt worden. Alleen is \textquotesingle{}mijn\textquotesingle{} functie sneller. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{admin_8c_a08f97e6c32e65d04aa2425dadff927e1}{Set\+Task\+Priority}} (int task\+\_\+id, int new\+\_\+priority)
+\begin{DoxyCompactList}\small\item\em Verandert de prioriteit van een taak. Eerst wordt de taak gezocht in de lijst van alle taken (tasks\mbox{[}\mbox{]}) Daarna wordt de priority in de lijst gewijzigd en prioriteit van de taak aangepast. De functie Display\+Task\+Data() toont op de UART het tasknummer dat je nodig hebt. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{admin_8c_a3c09afd4e5fad01fc4adbb0c77ecbd6d}{Start\+Stop\+Task}} (int task\+\_\+id)
+\begin{DoxyCompactList}\small\item\em Suspends (stopt) of Resumes (start) een task. Pas op. Als een task suspended wordt als hij een mutex bezet houdt blokkeer je alle tasks die op die mutex wachten. En als je de task stopt die de UART leest, schiet je jezelf ook in de voet. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{admin_8c_ad96a6be7e481cd923af2f24834059418}{Check\+Task\+Data}} (int output)
+\begin{DoxyCompactList}\small\item\em Displays de stack-\/gegevens van alle taken op de UART. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{admin_8c_a12914590e31661b0e85237aad859c6d6}\label{admin_8c_a12914590e31661b0e85237aad859c6d6} 
+char \texorpdfstring{$\ast$}{*} {\bfseries app\+\_\+name} = "{}\textbackslash{}r\textbackslash{}n=== free\+RTOS\+\_\+\+GPS 407 ===\textbackslash{}r\textbackslash{}n"{}
+\begin{DoxyCompactList}\small\item\em output strings for initialization \end{DoxyCompactList}\item 
+\Hypertarget{admin_8c_aa4ffb2c1a26cc25e00186214c03a73a6}\label{admin_8c_aa4ffb2c1a26cc25e00186214c03a73a6} 
+char \texorpdfstring{$\ast$}{*} {\bfseries app\+\_\+name\+LCD} = "{}free\+RTOS\+\_\+\+GPS 407"{}
+\item 
+int \mbox{\hyperlink{admin_8c_a952449da34b356e2651de547daf4312c}{Uart\+\_\+debug\+\_\+out}} = \mbox{\hyperlink{admin_8h_aecec3b7ee8e67b05c23fe851e7115999}{DEBUG\+\_\+\+OUT\+\_\+\+NONE}}
+\begin{DoxyCompactList}\small\item\em default\+: debug all output to uart \end{DoxyCompactList}\item 
+\Hypertarget{admin_8c_a93bac35e38487669b25b5653c3a1ebbf}\label{admin_8c_a93bac35e38487669b25b5653c3a1ebbf} 
+Queue\+Handle\+\_\+t {\bfseries h\+Key\+\_\+\+Queue}
+\begin{DoxyCompactList}\small\item\em all handles used, note\+: defined to \textquotesingle{}extern\textquotesingle{} in \doxylink{admin_8h}{admin.\+h} \end{DoxyCompactList}\item 
+Queue\+Handle\+\_\+t \mbox{\hyperlink{admin_8c_a1db415a0f7c5ecff145e4bb53cc54dbe}{h\+UART\+\_\+\+Queue}}
+\begin{DoxyCompactList}\small\item\em typedefs of struct itself and pointer to it \end{DoxyCompactList}\item 
+Queue\+Handle\+\_\+t \mbox{\hyperlink{admin_8c_a77d12f838c966d96a18a31e503b7955c}{h\+GPS\+\_\+\+Queue}}
+\begin{DoxyCompactList}\small\item\em uses UART2 \end{DoxyCompactList}\item 
+Semaphore\+Handle\+\_\+t \mbox{\hyperlink{admin_8c_a011b1349f4d8c02977b852c7587f0581}{h\+LED\+\_\+\+Sem}}
+\begin{DoxyCompactList}\small\item\em uses UART1 \end{DoxyCompactList}\item 
+\Hypertarget{admin_8c_acb75afe78edbc0029054eef295bbd316}\label{admin_8c_acb75afe78edbc0029054eef295bbd316} 
+Semaphore\+Handle\+\_\+t {\bfseries h\+Gps\+Data\+Mutex}
+\begin{DoxyCompactList}\small\item\em handle voor de parsed gps structure \end{DoxyCompactList}\item 
+\Hypertarget{admin_8c_ada55e3a3cc32b9d16e1bbc08d83431c9}\label{admin_8c_ada55e3a3cc32b9d16e1bbc08d83431c9} 
+Event\+Group\+Handle\+\_\+t {\bfseries h\+KEY\+\_\+\+Event}
+\begin{DoxyCompactList}\small\item\em handle voor ARM-\/keys-\/event \end{DoxyCompactList}\item 
+\Hypertarget{admin_8c_af1a9410a47225cac12eb96a84b51b035}\label{admin_8c_af1a9410a47225cac12eb96a84b51b035} 
+Timer\+Handle\+\_\+t {\bfseries h\+Timer1}
+\begin{DoxyCompactList}\small\item\em handle voor software timer \end{DoxyCompactList}\item 
+\mbox{\hyperlink{admin_8h_a7f8e353159968ff0f0becfe26d3bf630}{TASKDATA}} \mbox{\hyperlink{admin_8c_a3759c2b4aa705e22db51d0174f889570}{tasks}} \mbox{[}$\,$\mbox{]}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Bestaat uit 3 onderdelen\+: ~\newline
+ Deel 1. {\bfseries{Initialisatieoutput naar uart en lcd-\/scherm}}.~\newline
+ Deel 2. De functies voor de {\bfseries{initialisatie van de handles}}. ~\newline
+ Deel 3. De functies voor opzet en {\bfseries{handling van tasks}}. Dit deel bevat de functies die tasks aanmaakt én hulpfuncties voor tasks.~\newline
+ {\bfseries{Demonstreert\+: os\+Thread\+New(), v\+Task\+Suspend\+All(), x\+Task\+Resume\+All(), ux\+Task\+Get\+Stack\+High\+Water\+Mark(), v\+Task\+Priority\+Set() en c-\/stuff als array-\/handling, structures,}} en let op\+: het gebruiken van specifieke structure-\/members binnen andere structures, zie tasks\mbox{[}\mbox{]}!~\newline
+. 
+
+Elke task wordt op dezelfde manier aangemaakt, met os\+Thread\+New() die een trits aan argumenten wil, maw\+: de argumenten zijn de variabelen. Dus waarom niet per task de variabelen op een rijtje zetten in een array -\/ zo krijg je veel meer overzicht. Eerst wordt een structure aangemaakt, die de argumenten gaat bevatten, struct \doxylink{struct_task_data}{Task\+Data}.
+
+\doxylink{struct_task_data}{Task\+Data} bevat 4 members\+: func (de taskname), argument (eventueel argument voor task, nu niet gebruikt), struct attr (Free\+RTOS structure, waarvan we enkele gebruiken!), de taskhandle. In de array tasks\mbox{[}\mbox{]} worden alleen die members van \doxylink{struct_task_data}{Task\+Data} geinitialiseerd die nodig zijn om elke task/thread aan te maken. ~\newline
+Dat zijn\+: 1. de task, 2. het argument voor de task, 3. de tasknaam als string, 4. de stack size, 5. de prioriteit. De members 3, 4 en 5 zijn members van de attr structure.
+
+\begin{DoxyAuthor}{Author}
+MSC 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+5/5/2022 
+\end{DoxyDate}
+
+
+\label{doc-func-members}
+\Hypertarget{admin_8c_doc-func-members}
+\doxysubsection{Function Documentation}
+\Hypertarget{admin_8c_ad96a6be7e481cd923af2f24834059418}\index{admin.c@{admin.c}!CheckTaskData@{CheckTaskData}}
+\index{CheckTaskData@{CheckTaskData}!admin.c@{admin.c}}
+\doxysubsubsection{\texorpdfstring{CheckTaskData()}{CheckTaskData()}}
+{\footnotesize\ttfamily \label{admin_8c_ad96a6be7e481cd923af2f24834059418} 
+void Check\+Task\+Data (\begin{DoxyParamCaption}\item[{int}]{output}{}\end{DoxyParamCaption})}
+
+
+
+Displays de stack-\/gegevens van alle taken op de UART. 
+
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+\Hypertarget{admin_8c_a183387e08a88262f831be8b883ce8754}\index{admin.c@{admin.c}!CreateHandles@{CreateHandles}}
+\index{CreateHandles@{CreateHandles}!admin.c@{admin.c}}
+\doxysubsubsection{\texorpdfstring{CreateHandles()}{CreateHandles()}}
+{\footnotesize\ttfamily \label{admin_8c_a183387e08a88262f831be8b883ce8754} 
+void Create\+Handles (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})}
+
+
+
+Creates alle handles voor deze applicatie. 
+
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+\Hypertarget{admin_8c_a7f983159a50cdcaaad786c6c7a216cd9}\index{admin.c@{admin.c}!CreateTasks@{CreateTasks}}
+\index{CreateTasks@{CreateTasks}!admin.c@{admin.c}}
+\doxysubsubsection{\texorpdfstring{CreateTasks()}{CreateTasks()}}
+{\footnotesize\ttfamily \label{admin_8c_a7f983159a50cdcaaad786c6c7a216cd9} 
+void Create\+Tasks (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})}
+
+
+
+Creëert alle taken door te scannen door de TASKDATA-\/argumenten-\/array.~\newline
+ Let op. Eerst wordt de scheduler gestopt, dan de taken gecreëerd, dan de scheduler gestopt. Waarom? Anders gaan taken gelijk beginnen en wachten op taken die nog niet bestaan, dat geeft een rommeltje. 
+
+\begin{DoxyRemark}{Remarks}
+DEEL 3 van \doxylink{admin_8c}{admin.\+c} Bevat de functies voor het creëren van tasks en admin-\/functies voor tasks 
+\end{DoxyRemark}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+\Hypertarget{admin_8c_a93467475af28d4b75cafb508f95578bf}\index{admin.c@{admin.c}!DisplayMenu@{DisplayMenu}}
+\index{DisplayMenu@{DisplayMenu}!admin.c@{admin.c}}
+\doxysubsubsection{\texorpdfstring{DisplayMenu()}{DisplayMenu()}}
+{\footnotesize\ttfamily \label{admin_8c_a93467475af28d4b75cafb508f95578bf} 
+void Display\+Menu (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})}
+
+User Interface (menu) naar UART. \begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+\begin{DoxyAuthor}{Author}
+MSC 
+\end{DoxyAuthor}
+\Hypertarget{admin_8c_a9dec45875121142b6466b9475691b40a}\index{admin.c@{admin.c}!DisplayVersion@{DisplayVersion}}
+\index{DisplayVersion@{DisplayVersion}!admin.c@{admin.c}}
+\doxysubsubsection{\texorpdfstring{DisplayVersion()}{DisplayVersion()}}
+{\footnotesize\ttfamily \label{admin_8c_a9dec45875121142b6466b9475691b40a} 
+void Display\+Version (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})}
+
+\begin{DoxyRemark}{Remarks}
+DEEL 1 van \doxylink{admin_8c}{admin.\+c} Bevat de functies voor de initialisatie output, vooral naar UART, zoals het \textquotesingle{}menu\textquotesingle{} Schrijft applicatiedata (versie, werking, menu) naar UART. Les\+: je ziet hoe je handig een lange string kunt opstellen met het \textquotesingle{}\textbackslash{}\textquotesingle{}-\/karakter. 
+\end{DoxyRemark}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+\begin{DoxyAuthor}{Author}
+MSC 
+\end{DoxyAuthor}
+\Hypertarget{admin_8c_a34a9c5eb09cae80d85d5d13a348ee1e8}\index{admin.c@{admin.c}!error\_HaltOS@{error\_HaltOS}}
+\index{error\_HaltOS@{error\_HaltOS}!admin.c@{admin.c}}
+\doxysubsubsection{\texorpdfstring{error\_HaltOS()}{error\_HaltOS()}}
+{\footnotesize\ttfamily \label{admin_8c_a34a9c5eb09cae80d85d5d13a348ee1e8} 
+void error\+\_\+\+Halt\+OS (\begin{DoxyParamCaption}\item[{char \texorpdfstring{$\ast$}{*}}]{msg}{}\end{DoxyParamCaption})}
+
+
+
+Fatale OS-\/error opgetreden tijdens startup of runtime, doorgaan is zinloos. Het OS wordt tot stoppen gebracht, er wordt output gegenereerd waar mogelijk, dus op UART en LCD. 
+
+\begin{DoxyRemark}{Remarks}
+DEEL 2 van \doxylink{admin_8c}{admin.\+c} Bevat de functies voor het creëren van alle handles 
+\end{DoxyRemark}
+
+\begin{DoxyParams}{Parameters}
+{\em msg} & Foutmelding \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+\Hypertarget{admin_8c_abb419791c78bd67bbea178c06a96f684}\index{admin.c@{admin.c}!GetTaskhandle@{GetTaskhandle}}
+\index{GetTaskhandle@{GetTaskhandle}!admin.c@{admin.c}}
+\doxysubsubsection{\texorpdfstring{GetTaskhandle()}{GetTaskhandle()}}
+{\footnotesize\ttfamily \label{admin_8c_abb419791c78bd67bbea178c06a96f684} 
+os\+Thread\+Id\+\_\+t Get\+Taskhandle (\begin{DoxyParamCaption}\item[{char \texorpdfstring{$\ast$}{*}}]{taskname}{}\end{DoxyParamCaption})}
+
+
+
+Zoekt in tasks-\/array de task, en returns de handle. Deze handle wordt door \doxylink{admin_8c_a7f983159a50cdcaaad786c6c7a216cd9}{Create\+Tasks()} in de array geplaatst. In plaats van deze functie kan ook de OS-\/functie x\+Task\+Get\+Handle() gebruikt worden. Alleen is \textquotesingle{}mijn\textquotesingle{} functie sneller. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em \texorpdfstring{$\ast$}{*}taskname} & De tasknaam \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+os\+Thread\+Id\+\_\+t De taskhandle 
+\end{DoxyReturn}
+\Hypertarget{admin_8c_a08f97e6c32e65d04aa2425dadff927e1}\index{admin.c@{admin.c}!SetTaskPriority@{SetTaskPriority}}
+\index{SetTaskPriority@{SetTaskPriority}!admin.c@{admin.c}}
+\doxysubsubsection{\texorpdfstring{SetTaskPriority()}{SetTaskPriority()}}
+{\footnotesize\ttfamily \label{admin_8c_a08f97e6c32e65d04aa2425dadff927e1} 
+void Set\+Task\+Priority (\begin{DoxyParamCaption}\item[{int}]{task\+\_\+id}{, }\item[{int}]{new\+\_\+priority}{}\end{DoxyParamCaption})}
+
+
+
+Verandert de prioriteit van een taak. Eerst wordt de taak gezocht in de lijst van alle taken (tasks\mbox{[}\mbox{]}) Daarna wordt de priority in de lijst gewijzigd en prioriteit van de taak aangepast. De functie Display\+Task\+Data() toont op de UART het tasknummer dat je nodig hebt. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em task\+\_\+id} & Task identifier \\
+\hline
+{\em new\+\_\+priority} & Nieuwe prioriteit \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+\Hypertarget{admin_8c_a3c09afd4e5fad01fc4adbb0c77ecbd6d}\index{admin.c@{admin.c}!StartStopTask@{StartStopTask}}
+\index{StartStopTask@{StartStopTask}!admin.c@{admin.c}}
+\doxysubsubsection{\texorpdfstring{StartStopTask()}{StartStopTask()}}
+{\footnotesize\ttfamily \label{admin_8c_a3c09afd4e5fad01fc4adbb0c77ecbd6d} 
+void Start\+Stop\+Task (\begin{DoxyParamCaption}\item[{int}]{task\+\_\+id}{}\end{DoxyParamCaption})}
+
+
+
+Suspends (stopt) of Resumes (start) een task. Pas op. Als een task suspended wordt als hij een mutex bezet houdt blokkeer je alle tasks die op die mutex wachten. En als je de task stopt die de UART leest, schiet je jezelf ook in de voet. 
+
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+\Hypertarget{admin_8c_a96c9e7d4608bbcbb1f89460ea7d8da6f}\index{admin.c@{admin.c}!Timer1\_Handler@{Timer1\_Handler}}
+\index{Timer1\_Handler@{Timer1\_Handler}!admin.c@{admin.c}}
+\doxysubsubsection{\texorpdfstring{Timer1\_Handler()}{Timer1\_Handler()}}
+{\footnotesize\ttfamily \label{admin_8c_a96c9e7d4608bbcbb1f89460ea7d8da6f} 
+void Timer1\+\_\+\+Handler (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})}
+
+
+
+Vangt de Free\+RTOS software-\/interrupt op en toggelt een ledje. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em h\+Timer1} & De handle van de timer \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+
+
+\label{doc-var-members}
+\Hypertarget{admin_8c_doc-var-members}
+\doxysubsection{Variable Documentation}
+\Hypertarget{admin_8c_a77d12f838c966d96a18a31e503b7955c}\index{admin.c@{admin.c}!hGPS\_Queue@{hGPS\_Queue}}
+\index{hGPS\_Queue@{hGPS\_Queue}!admin.c@{admin.c}}
+\doxysubsubsection{\texorpdfstring{hGPS\_Queue}{hGPS\_Queue}}
+{\footnotesize\ttfamily \label{admin_8c_a77d12f838c966d96a18a31e503b7955c} 
+Queue\+Handle\+\_\+t h\+GPS\+\_\+\+Queue}
+
+
+
+uses UART2 
+
+handle voor GPS-\/queue \Hypertarget{admin_8c_a011b1349f4d8c02977b852c7587f0581}\index{admin.c@{admin.c}!hLED\_Sem@{hLED\_Sem}}
+\index{hLED\_Sem@{hLED\_Sem}!admin.c@{admin.c}}
+\doxysubsubsection{\texorpdfstring{hLED\_Sem}{hLED\_Sem}}
+{\footnotesize\ttfamily \label{admin_8c_a011b1349f4d8c02977b852c7587f0581} 
+Semaphore\+Handle\+\_\+t h\+LED\+\_\+\+Sem}
+
+
+
+uses UART1 
+
+handle voor LED-\/mutex \Hypertarget{admin_8c_a1db415a0f7c5ecff145e4bb53cc54dbe}\index{admin.c@{admin.c}!hUART\_Queue@{hUART\_Queue}}
+\index{hUART\_Queue@{hUART\_Queue}!admin.c@{admin.c}}
+\doxysubsubsection{\texorpdfstring{hUART\_Queue}{hUART\_Queue}}
+{\footnotesize\ttfamily \label{admin_8c_a1db415a0f7c5ecff145e4bb53cc54dbe} 
+Queue\+Handle\+\_\+t h\+UART\+\_\+\+Queue}
+
+
+
+typedefs of struct itself and pointer to it 
+
+alle handles handle voor UART-\/queue \Hypertarget{admin_8c_a3759c2b4aa705e22db51d0174f889570}\index{admin.c@{admin.c}!tasks@{tasks}}
+\index{tasks@{tasks}!admin.c@{admin.c}}
+\doxysubsubsection{\texorpdfstring{tasks}{tasks}}
+{\footnotesize\ttfamily \label{admin_8c_a3759c2b4aa705e22db51d0174f889570} 
+\mbox{\hyperlink{admin_8h_a7f8e353159968ff0f0becfe26d3bf630}{TASKDATA}} tasks\mbox{[}$\,$\mbox{]}}
+
+tasks\mbox{[}\mbox{]} is een array van structures met alleen de argumenten om een taak aan te maken.
+
+
+\begin{DoxyItemize}
+\item {\bfseries{NB\+:}}~\newline
+
+\begin{DoxyItemize}
+\item Dit wist je vast niet. De members .attr.\+name en .attr.\+stack\+\_\+size etc. zijn enkele members van de struct \doxylink{structos_thread_attr__t}{os\+Thread\+Attr\+\_\+t}; enkele daarvan zijn nodig om een taak te starten en dus alleen die heb ik in deze array geinitialiseerd -\/ dat kan dus op de manier die je hier ziet, dus met een . (punt) ervoor.
+\item Als je in de tweede kolom ipv NULL "{}hallo"{} zet, wordt "{}hallo"{} aan de taak meegegeven -\/ kun je evt gebruiken voor testen of iets dergelijks.
+\item De prioriteiten worden hier met default-\/waarden gezet; hier kun je zelf mee spelen. Via de UART kun je elke taak een andere prioriteit geven. Kun je ook mee spelen. Trouwens, als je taken dezelfde prioriteit geeft, dan gaat het OS ze met Round Robin keurig allemaal gelijk verdelen.
+\item De laatste regel bevat nullen; deze regel wordt gebruikt om for-\/loepjes eenvoudig te laten eindigen.
+\item Om een taak niet te laten starten, zet gewoon \textquotesingle{}//\textquotesingle{} voor de regel en Bob is je oom (Bob is your uncle)!
+\end{DoxyItemize}
+\item {\bfseries{Doel van de array\+:}}
+\begin{DoxyEnumerate}
+\item makkelijk en overzichtelijk om taken te starten
+\item geeft een overview van alle taken en argumenten (name, stacksize, prty\textquotesingle{}s) 
+\end{DoxyEnumerate}
+\end{DoxyItemize}\Hypertarget{admin_8c_a952449da34b356e2651de547daf4312c}\index{admin.c@{admin.c}!Uart\_debug\_out@{Uart\_debug\_out}}
+\index{Uart\_debug\_out@{Uart\_debug\_out}!admin.c@{admin.c}}
+\doxysubsubsection{\texorpdfstring{Uart\_debug\_out}{Uart\_debug\_out}}
+{\footnotesize\ttfamily \label{admin_8c_a952449da34b356e2651de547daf4312c} 
+int Uart\+\_\+debug\+\_\+out = \mbox{\hyperlink{admin_8h_aecec3b7ee8e67b05c23fe851e7115999}{DEBUG\+\_\+\+OUT\+\_\+\+NONE}}}
+
+
+
+default\+: debug all output to uart 
+
+debug naar uart output, zie \doxylink{_u_a_r_t__keys_8c}{uart\+\_\+keys.\+c} bitmask-\/toggle key voor task-\/debug-\/output 

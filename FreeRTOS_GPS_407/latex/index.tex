@@ -1,0 +1,262 @@
+\chapter{Hoofdpagina }
+\hypertarget{index}{}\label{index}\index{Hoofdpagina@{Hoofdpagina}}
+\label{index_mainpage}%
+\Hypertarget{index_mainpage}%
+
+
+{\bfseries{Over deze pagina.}} Deze pagina (..\textbackslash{}\+Doxygen\textbackslash{}{\bfseries{mainpage.\+md}}) is een .md markdown-\/bestand, gemaakt met Typora (gratis download\+: \href{https://typora.en.uptodown.com/windows/download}{\texttt{https\+://typora.\+en.\+uptodown.\+com/windows/download}}), aangevuld met html (markdown kun je mixen met html). Zo kun je redelijk simpel zelf een hoofdpagina maken, die Doxygen dan gebruikt (ipv de standaard Doxygen-\/mainpage); dit wordt dan deze {\bfseries{index.\+html}}.~\newline
+ Het is geïnstalleerd via de Doxygen Wizard, tab \mbox{[}Expert mode\mbox{]}\+:~\newline
+ ~~~ INPUT = mainpage.\+md~\newline
+ ~~~ USE\+\_\+\+MDFILE\+\_\+\+AS\+\_\+\+MAINPAGE = mainpage.\+md~\newline
+ Bestand {\bfseries{..\textbackslash{}\+Doxyfile}} is de doxygen projectfile. De outputmap van doxygen is {\bfseries{..\textbackslash{}\+Doxygen\textbackslash{}html}}~\newline
+NB. Als je deze pagina verandert, moet je uiteraard wel eerst doxygen runnen (via tab \mbox{[}Run\mbox{]}) om aanpassingen te zien. 
+
+    
+
+~\newline
+
+
+\doxysection*{Free\+RTOS documentatie}
+
+
+
+Het realtime OS Free\+RTOS hebben we gekozen omdat het gratis is, open source is, veel gebruikt wordt, relatief eenvoudig is én... omdat het uitgebreid gedocumenteerd is. Dat betekent dat het lesmateriaal grotendeels online te vinden is (en niet op powerpoints herhaald hoeft te worden). De belangrijkste bronnen zijn\+:
+
+
+\begin{DoxyItemize}
+\item {\bfseries{FREERTOS hoofddocumentatie}}\+: de \href{https://www.freertos.org/a00106.html}{\texttt{API-\/\+Reference}}. \uline{Bij het ontwikkelen en de lessen moet je die er constant bij houden.}  
+\item \href{https://www.freertos.org/Documentation/RTOS_book.html}{\texttt{Free\+RTOS boeken en pdf\textquotesingle{}s}} 
+\end{DoxyItemize}
+
+~\newline
+ \doxysection*{Installatie\+: hoe krijg je de applicatie aan de praat?}
+
+ 
+\begin{DoxyItemize}
+\item Installeer het project Free\+RTOS\+\_\+\+GPS\+\_\+407 in \href{https://www.st.com/en/development-tools/stm32cubeide.html}{\texttt{STM32\+Cube\+IDE}}. 
+\begin{DoxyItemize}
+\item zip-\/bestand downloaden en uitpakken in map 
+\item STMCube\+IDE starten 
+\item Nieuwe Workspace 
+\item File -\/\texorpdfstring{$>$}{>} Import -\/\texorpdfstring{$>$}{>} General -\/\texorpdfstring{$>$}{>} Atollic True\+STUDIO Project 
+\end{DoxyItemize}
+\item Sluit het ARM-\/bordje aan via USB. 
+\item Flash de applicatie naar het ARM-\/bordje (bv. via debug). 
+\item Download en installeer op je laptop een terminal-\/rs232-\/programma, bv. terminal.\+exe, of Tera\+Term of iets anders. Zet de comport op 115200,n,8,1. Zet bij Transmit \mbox{[}CR\mbox{]}=\mbox{[}CR\mbox{]}+\mbox{[}LF\mbox{]} (dan wordt na $<$\+Enter$>$ automatisch een Linefeed-\/character toegevoegd.  
+\item Reset het ARM-\/bordje en als het goed is zie je nu tekst verschijnen op het terminalprogramma.  
+\end{DoxyItemize}~\newline
+
+
+\doxysection*{Werking\+: wat doet de applicatie?}
+
+ De applicatie free\+RTOS\+\_\+\+GPS\+\_\+407 (geschikt voor ARM Cortex 407) is een werkende free\+RTOS-\/applicatie, met de volgende doelen\+:
+
+
+\begin{DoxyItemize}
+\item {\bfseries{didactisch}}. Het toont de opzet en werking van verschillende free\+RTOS-\/mechanismen. Soms is in de code op didactische gronden gekozen voor een of ander mechanisme, terwijl dit ook anders opgelost had kunnen worden. 
+\item {\bfseries{als basis (skeleton) om verder uit te werken voor het project}}. Nu hoef je als student niet alles from scratch zelf te bouwen. Het is wel aan jou om goed te kijken welke onderdelen van de code je voor jouw applicatie kunt gebruiken en welke je kunt verwijderen. 
+\end{DoxyItemize}
+
+Als de de installatie gelukt is (zie boven), en het ARM-\/bordje communiceert met je laptop via een terminalprogramma, dan zie je dit\+:
+
+
+\begin{DoxyItemize}
+\item Het display toont het versienummer (\doxylink{main_8c}{main.\+c}, \doxylink{admin_8c}{admin.\+c}) 
+\item De applicatie stuurt de rij ledjes aan (\doxylink{ledjes_8c}{ledjes.\+c}). 
+\item Het blauwe ledje wordt elke halve seconde aan-\/ en uitgezet (\doxylink{admin_8c}{admin.\+c}). 
+\item De applicatie leest de ARM-\/keys in (\doxylink{_a_r_m__keys_8c}{ARM\+\_\+keys.\+c}, en \doxylink{stm32f4xx__it_8c}{stm32f4xx\+\_\+it.\+c}). Na elke toets zie je de ledjes rood, oranje en groen oplichten. 
+\item De applicatie heeft een user interface via de UART (\doxylink{main_8c}{main.\+c}). Het menu geeft keurig aan welke toetsen gebruikt kunnen worden (\doxylink{_u_a_r_t__keys_8c}{UART\+\_\+keys.\+c}).  
+\begin{DoxyItemize}
+\item {\bfseries{MENU\+:}} 
+\item {\bfseries{0}}\+: {\itshape On/\+Off ALL test output.} Bij \textquotesingle{}0\textquotesingle{}\texorpdfstring{$<$}{<}enter\texorpdfstring{$>$}{>} krijg je of ALLE of GEEN testoutput te zien. 
+\item {\bfseries{1}}\+: {\itshape On/\+Off LEDS output.} Bij \textquotesingle{}1\textquotesingle{}\texorpdfstring{$<$}{<}enter\texorpdfstring{$>$}{>} gaan de LED-\/tasken WEL of GEEN output genereren.\textquotesingle{} 
+\item {\bfseries{2}}\+: {\itshape On/\+Off ARM\+\_\+keys output.} Bij \textquotesingle{}2\textquotesingle{}\texorpdfstring{$<$}{<}enter\texorpdfstring{$>$}{>} gaan de ARM-\/keys-\/tasken WEL of GEEN output genereren.\textquotesingle{} 
+\item {\bfseries{3}}\+: {\itshape On/\+Off UART\+\_\+keys output.} Bij \textquotesingle{}3\textquotesingle{}\texorpdfstring{$<$}{<}enter\texorpdfstring{$>$}{>} gaan de UART-\/keys-\/tasken WEL of GEEN output genereren.\textquotesingle{} 
+\item {\bfseries{4}}\+: {\itshape On/\+Off STUDENT output.}  Toets \textquotesingle{}4\textquotesingle{}\texorpdfstring{$<$}{<}enter\texorpdfstring{$>$}{>} kun je gebruiken voor je eigen testoutput. 
+\item {\bfseries{5}}\+: On/\+Off GPS processed data output (mits een GPS-\/receiver aangesloten is). 
+\item {\bfseries{6}}\+: On/\+Off GPS raw incoming data output. 
+\item {\bfseries{d}}\+: {\itshape change Delay time.} De LED-\/tasks werken met een delay time van default 200 MSecs tussen elke LED-\/setting. Zo kun je zien wat er gebeurt. Voorbeeld\+: \textquotesingle{}d,50\textquotesingle{}\texorpdfstring{$<$}{<}enter\texorpdfstring{$>$}{>} verkleint de default delay time naar 50 MSecs, dus de ledjes gaan 4x zo snel. 
+\item {\bfseries{m}}\+: {\itshape show Menu}. Dit menu wordt getoond. 
+\item {\bfseries{t}}\+: {\itshape display Task-\/data.} Na \textquotesingle{}t\textquotesingle{}\texorpdfstring{$<$}{<}enter\texorpdfstring{$>$}{>} krijg je de gegevens per task te zien, zoals\+: nummer, prioriteit en geheugen (stack) gebruik. Zo kun je code optimaliseren en zien of een taak dreigt te weinig geheugen te krijgen... 
+\item {\bfseries{p}}\+: {\itshape change Priority of task}. Met \textquotesingle{}p\textquotesingle{}\mbox{[},tasknummer, prioriteit\mbox{]}\texorpdfstring{$<$}{<}enter\texorpdfstring{$>$}{>} kun je de prioriteit van een task aanpassen en zien wat er gebeurt. Voorbeeld\+: \textquotesingle{}p,7,20\textquotesingle{} verandert de prioriteit van task 7 naar 20. 
+\item {\bfseries{s}}\+: {\itshape Start/stop task.} Na \textquotesingle{}s\textquotesingle{}\mbox{[},tasknummer\mbox{]}\texorpdfstring{$<$}{<}enter\texorpdfstring{$>$}{>} kun je de task stoppen en starten. 
+\item {\bfseries{w}}\+: {\itshape Show waypoint data.} Na \textquotesingle{}w\textquotesingle{}\texorpdfstring{$<$}{<}enter\texorpdfstring{$>$}{>} toon alle opgeslagen data uit de waypoints. 
+\item {\bfseries{h}}\+: {\itshape Print logs.} Na \textquotesingle{}h\textquotesingle{}\texorpdfstring{$<$}{<}enter\texorpdfstring{$>$}{>} toon alle inputs en outputs. (Gps data, motor aansturing, ingedrukte knoppen enz.) 
+\item {\bfseries{c}}\+: {\itshape Change current waypoint.} Met \textquotesingle{}c\textquotesingle{}\mbox{[},Waypointnummer\mbox{]}\texorpdfstring{$<$}{<}enter\texorpdfstring{$>$}{>} kun je de huidige waypoint veranderen naar een andere Voorbeeld\+: \textquotesingle{}c,4\textquotesingle{} verandert de waypoint counter naar 4. 
+\item {\bfseries{r}}\+: {\itshape Change waypoint data.} Met \textquotesingle{}r\textquotesingle{}\texorpdfstring{$<$}{<}enter\texorpdfstring{$>$}{>} vervang je de huidige waypoint met de huidige data van uit de gps. 
+\item {\bfseries{g}}\+: {\itshape Print Parsed GPS data.} Met \textquotesingle{}g\textquotesingle{}\texorpdfstring{$<$}{<}enter\texorpdfstring{$>$}{>} print je de omgezette data uit. Dit is handig voor debug. 
+\end{DoxyItemize}
+\end{DoxyItemize}
+
+~\newline
+ \doxysection*{Design\+: overview van de applicatie}
+
+
+
+Hieronder zie je het {\itshape graphical design} van de applicatie (gemaakt in Powerpoint).~\newline
+ Het doel van het graphisch design is om snel inzicht te krijgen in de samenhang en werking van de applicatie. Daarom zijn alleen de belangrijkste zaken weergegeven. (Er is bijvoorbeeld ook een software-\/timer (timer.\+c), maar die is in het design niet weergegeven.)
+
+
+
+De verschillende elementen\+: 
+\begin{DoxyItemize}
+\item {\itshape I/\+O-\/laag.} Links zie je de ARM-\/inputs (UART en ARM-\/toetsen), rechts de ARM-\/outputs (UART, LCD, Buzzer, RGBY-\/leds en de LED-\/rij). De applicatie gebruikt deze I/O\textquotesingle{}s om te laten zien hoe multitasking werkt met de Free\+RTOS-\/mechanismen.  
+\item {\itshape Tasks.} Elke task bestaat uit een gekleurd blokje met titel en \textquotesingle{}sourcecode\textquotesingle{}. Bijbehorende tasks zijn per kleur gegroepeerd. Zoals je ziet zijn er 3 task-\/groepen\+: 
+\begin{DoxyItemize}
+\item {\itshape Blauw.} Eigenlijk is dit de User Interface via de UART. Het leest en interpreteert de commando\textquotesingle{}s die de gebruiker via een terminalprogramma intikt. Daarnaast schrijft het naar de gebruiker het menu en het programmaverloop. 
+\item {\itshape Oranje.} Deze groep leest en interpreteert de ARM-\/toetsen.  
+\item {\itshape Groen.} Deze groep behandelt de led-\/rij.  
+\end{DoxyItemize}
+\item {\itshape Free\+RTOS-\/mechanismen.} De inter-\/proces-\/communicatie (tussen de tasks dus) met Free\+RTOS-\/functies is ook in kleur weergegeven. Zo zie je welke tasks welke data naar elkaar sturen.  
+\item {\itshape Source-\/files.} De gestippelde blokjes geven aan in welke c-\/files de tasks gecodeerd zijn.  
+\item {\itshape IRQ.} Niet alle blokjes zijn tasks, maar functies, in dit geval interrupt handlers. Deze functies worden door STM32 gegenereerd op het moment dat je op de processor (.ios) hardwarematig een interrupt definieert. Die functie is dan nog leeg, en aan de programmeur om verder \textquotesingle{}in te vullen\textquotesingle{}. In deze applicatie zijn de ARM-\/toetsen en de UART-\/input aan interrupts gekoppeld. 
+\end{DoxyItemize}
+
+~\newline
+ \doxysection*{Free\+RTOS en multitasking, de RTOS-\/basics}
+
+
+
+De applicatie is bedoeld om de werking van Free\+RTOS te laten zien\+: het OS en de functionaliteiten daarvan. In het design hierboven zie je ze in de tasks beschreven in hun c-\/functieprototypes.
+
+Ze zijn allemaal keurig beschreven op de Free\+RTOS-\/site (de \href{https://www.freertos.org/a00106.html}{\texttt{API-\/\+Reference}} en \href{https://www.freertos.org/Documentation/RTOS_book.html}{\texttt{boeken en pdf\textquotesingle{}s}}).
+
+Laten we eerst eens kijken wat een multitasking OS is en hoe die werkt. NB. Ik ga hier nu niet deze referenties herhalen, maar ga alleen globaal in op de basis Free\+RTOS-\/zaken als multitasking, synchronisatie-\/ en communicatiemechanismen en bijbehorende functies.
+
+
+\begin{DoxyItemize}
+\item (Terzijde) {\bfseries{Free\+RTOS en CMSIS}}. ~\newline
+ARM heeft, om zo onafhankelijk mogelijk te zijn van RTOS en processorkeuzes, een eigen softwarelaag gemaakt bovenop Free\+RTOS\+: \href{https://arm-software.github.io/CMSIS-FreeRTOS/General/html/index.html}{\texttt{RTOS2}}. \textquotesingle{}{\itshape Using this software pack, users can choose between a native Free\+RTOS implementation or one that is adhering to the CMSIS-\/\+RTOS2 API and using Free\+RTOS under the hood.}\textquotesingle{} In de praktijk betekent dit dat zo\textquotesingle{}n beetje elke Free\+RTOS-\/functie een RTOS2-\/variant heeft. RTOS2-\/functies zijn te herkennen aan het voorvoegsel \textquotesingle{}{\itshape os}\textquotesingle{}, zoals {\itshape os\+Thread\+New()} of {\itshape os\+Delay()}. Om verwarring te voorkomen gebruiken we in deze applicatie zoveel mogelijk \textquotesingle{}native\textquotesingle{} Free\+RTOS-\/functies. Hier en daar gebruiken we RTOS2-\/functies, omdat die door STM32\+Cube\+IDE automatisch gegenereerd worden, die houden we dus voor het gemak in stand.~\newline
+~\newline
+ 
+\item {\bfseries{\href{https://www.freertos.org/implementation/a00004.html}{\texttt{Multitasking}}}}. ~\newline
+Free\+RTOS is een realtime \href{https://www.freertos.org/implementation/a00004.html}{\texttt{multitasking}} operating system. {\itshape Realtime} betekent dat code gegarandeerd binnen een bepaalde tijd, of op een bepaalde tijd, uitgevoerd wordt. {\itshape Multitasking} of multithreading betekent dat meerdere taken (tasks of threads genoemd) schijnbaar \textquotesingle{}tegelijkertijd\textquotesingle{} uitgevoerd worden, parallel als het ware. Dat kan natuurlijk niet echt, want er is maar 1 processor. Wat er gebeurt, is dat het OS zo snel tussen tasks swicht, dat het lijkt of taken inderdaad gelijktijdig uitgevoerd worden. Dit heet {\bfseries{context switch}}, waar we zo op door gaan.~\newline
+  ~\newline
+~\newline
+ 
+\item {\bfseries{Tasks}} (of {\bfseries{threads}}). ~\newline
+Een \href{https://www.freertos.org/taskandcr.html}{\texttt{task}} is qua code niets anders dan een functie met een oneindige while(1)-\/loop.~\newline
+ \textquotesingle{}{\itshape Each task executes within its own context with no coincidental dependency on other tasks within the system or the RTOS scheduler itself. Only one task within the application can be executing at any point in time and the real time RTOS scheduler is responsible for deciding which task this should be. The RTOS scheduler may therefore repeatedly start and stop each task (swap each task in and out) as the application executes. As a task has no knowledge of the RTOS scheduler activity it is the responsibility of the real time RTOS scheduler to ensure that the processor context (register values, stack contents, etc) when a task is swapped in is exactly that as when the same task was swapped out. To achieve this each task is provided with its own stack. When the task is swapped out the execution context is saved to the stack of that task so it can also be exactly restored when the same task is later swapped back in.}\textquotesingle{} ~\newline
+Dus, een task is een functie die zich gedraagt als een aparte applicatie, met zijn eigen geheugenruimte. De {\bfseries{scheduler}} van het OS switcht tussen deze tasks, wat \href{https://www.freertos.org/implementation/a00006.html}{\texttt{context switch}} heet. ~\newline
+  ~\newline
+Sommige tasks zullen belangrijker zijn dan ander, dus wil je dat die belangrijke tasks meer processortijd krijgen. Dat wordt gedaan met prioriteiten. Een task met een hogere prioriteit krijgt dan meer processortijd van het OS.  
+\begin{DoxyItemize}
+\item Een task kan de volgende status hebben\+: 
+\begin{DoxyItemize}
+\item {\bfseries{Running\+:}} deze tasks is aan de gang. Het OS geeft hem de beurt, en de task heeft de processor tot zijn beschikking. 
+\item {\bfseries{Ready\+:}} deze task is klaar om \textquotesingle{}te gaan\textquotesingle{} (hij is niet blocked, noch is hij suspended) maar het OS laat een andere task, bv. met een hogere prioriteit, runnen. 
+\item {\bfseries{Blocked / waiting\+:}} een task is blocked als hij wacht op een event (bv. een bericht of mutex) van een andere task.  
+\item {\bfseries{Suspended\+:}} deze task is op \textquotesingle{}pauze\textquotesingle{} gezet. Het OS negeert deze tasks, totdat hij weer op {\itshape Resume} gezet is. 
+\end{DoxyItemize}
+\end{DoxyItemize}
+\begin{DoxyItemize}
+\item Code. 
+\begin{DoxyItemize}
+\item {\itshape Een task aanmaken\+:} taskhandle = \href{https://arm-software.github.io/CMSIS_5/RTOS2/html/group__CMSIS__RTOS__ThreadMgmt.html\#ga48d68b8666d99d28fa646ee1d2182b8f}{\texttt{os\+Thread\+New()}} (De Free\+RTOS-\/variant is \href{https://www.freertos.org/a00125.html}{\texttt{x\+Task\+Create()}})~\newline
+Om een task aan te kunnen maken heeft het OS meerdere argumenten nodig, zoals\+: de naam van de functie, de hoeveelheid geheugen die je de taak meegeeft, de prioriteit die je hem toekent en nog wat zaken.  
+\item {\itshape Taskpriority bepalen\+:} \href{https://www.freertos.org/a00129.html}{\texttt{v\+Task\+Priority\+Set(handle, prio)}} 
+\item {\itshape Task vertragen (context switch afdwingen)\+:} \href{https://www.freertos.org/a00127.html}{\texttt{v\+Task\+Delay(clockticks)}}. Wij gebruiken meestal\+: \href{https://arm-software.github.io/CMSIS_5/RTOS2/html/group__CMSIS__RTOS__Wait.html\#gaf6055a51390ef65b6b6edc28bf47322e}{\texttt{os\+Delay(clockticks)}}. Wat ook kan\+: \href{https://www.freertos.org/a00020.html\#taskYIELD}{\texttt{task\+YIELD()}}, hiermee forceer je een context switch. 
+\item {\itshape Zie\+:} \doxylink{admin_8c}{admin.\+c}, \doxylink{ledjes_8c}{ledjes.\+c} ~\newline
+~\newline
+ 
+\end{DoxyItemize}
+\end{DoxyItemize}
+
+
+\end{DoxyItemize}
+
+~\newline
+ \doxysection*{Free\+RTOS\+: de mechanismen in de applicatie}
+
+
+
+
+\begin{DoxyItemize}
+\item {\bfseries{Algemeen.}} Voor de synchronisatie en communicatie {\itshape tussen} tasks gebruiken we 4 mechanismen\+: {\itshape mutexes} voor \uline{synchronisatie}, en {\itshape notifications, events} en {\itshape queues} voor \uline{communicatie}.~\newline
+~\newline
+
+
+
+\item {\bfseries{\href{https://www.freertos.org/a00113.html}{\texttt{Mutual Exclusion Semaphores (mutexes)}}.}} ~\newline
+Met een Mutual Exclusion Semaphore, meestal {\bfseries{mutex}} genoemd, zorg je ervoor dat een \textquotesingle{}shared resource\textquotesingle{} (denk aan\+: printer of wc of ledjes) niet tegelijkertijd door meerdere processen gebruikt kan worden (hence\+: mutual exluded). Bij een printer wil je dat eerst de ene printjob afgehandeld wordt voordat de volgende printjob aan de beurt komt. Bij een wc wil je liever niet dat een ander van het toilet gebruik maakt terwijl jij er net op zit. Anders gezegd\+: je wil dat dit soort \textquotesingle{}gedeelde resources\textquotesingle{} {\itshape gesynchroniseerd} kunnen worden. Bij een wc is dit het slotje op de deur\+: rood betekent \textquotesingle{}bezet\textquotesingle{}, groen betekent\+: \textquotesingle{}vrij\textquotesingle{}.~\newline
+  ~\newline
+In de applicatie wordt een {\itshape mutex} gebruikt om te ledjes te synchroniseren. Kijk in het design naar het groene gedeelte. Daar zie je dat meerdere tasks tegelijkertijd naar de ledjes willen schrijven. Om ervoor te zorgen dat ze niet allemaal dwars door elkaar gaan rammen, is er een mutex aangemaakt. Een task kan pas naar de leds schrijven als de \textquotesingle{}deur op groen\textquotesingle{} staat. De task wacht op het OS tot hij erin mag. Zolang de mutex \textquotesingle{}bezet\textquotesingle{} is door een andere task, geeft het OS de beurt aan een andere task. De wachtende task blijft dan \href{https://www.freertos.org/RTOS-task-states.html}{\texttt{blocked}}.
+
+
+\begin{DoxyItemize}
+\item {\itshape Aanmaken\+:} handle = \href{https://www.freertos.org/CreateMutex.html}{\texttt{x\+Semaphore\+Create\+Mutex();}} 
+\item {\itshape Aanvragen (ik wil erin...)\+:} \href{https://www.freertos.org/a00122.html}{\texttt{x\+Semaphore\+Take(handle);}} 
+\item {\itshape Vrijgeven (ik ben klaar...)\+:} \href{https://www.freertos.org/a00123.html}{\texttt{x\+Semaphore\+Give(handle);}} 
+\item {\itshape Zie\+:} \doxylink{admin_8c}{admin.\+c}, \doxylink{ledjes_8c}{ledjes.\+c} ~\newline
+~\newline
+ 
+\end{DoxyItemize}
+\item {\bfseries{\href{https://www.freertos.org/RTOS-task-notification-API.html}{\texttt{Notifications.}}}}~\newline
+Met notifications maak je een virtuele verbinding naar een andere task. De ontvangende task wacht (en is dus {\itshape \textquotesingle{}blocked\textquotesingle{}}) op het bericht van de versturende taak. Dat bericht kan een signalering zijn (net als \textquotesingle{}tikkertje\textquotesingle{}), of een waarde. Om een notificatie te doen, moet de task die stuurt eerst de taskhandle van de ontvanger verkrijgen. De ontvangende taak wacht gewoon, en aan de code kun je niet zien op welke task hij wacht.~\newline
+  ~\newline
+{\itshape Let op. Bij queues en events stuur je niet een bericht naar een task, maar naar een specifieke queue-\/handle of een event-\/handle; elke taak kan naar die handle sturen of van die handle ontvangen (\textquotesingle{}luisteren\textquotesingle{}).} 
+\begin{DoxyItemize}
+\item {\itshape Aanmaken\+:} hoeft niet, de handle die nodig is bestaat al\+: de handle van de task waarnaar verzonden wordt. 
+\item {\itshape Zenden en ontvangen met een waarde\+:} \href{https://www.freertos.org/xTaskNotify.html}{\texttt{x\+Task\+Notify(taskhandle)}} en \href{https://www.freertos.org/xTaskNotifyWait.html}{\texttt{x\+Task\+Notify\+Wait()}} 
+\item {\itshape Op elkaar laten wachten\+:} \href{https://www.freertos.org/xTaskNotifyGive.html}{\texttt{x\+Task\+Notify\+Give(taskhandle)}} en \href{https://www.freertos.org/ulTaskNotifyTake.html}{\texttt{ul\+Task\+Notify\+Take()}} 
+\item {\itshape Zie\+:} handles.\+c, \doxylink{ledjes_8c}{ledjes.\+c}, \doxylink{_a_r_m__keys_8c}{ARM\+\_\+keys.\+c} ~\newline
+~\newline
+ 
+\end{DoxyItemize}
+\item {\bfseries{\href{https://www.freertos.org/event-groups-API.html}{\texttt{Eventgroups (flags).}}}} ~\newline
+Met een event group zet je een waarde -\/ of eigenlijk\+: een rij bits -\/ op de aangemaakte eventgroup (op de handle dus) -\/ dat doe je met Event\+Group\+Set\+Bits(). Elke bit kun je zien als een event -\/ hence \textquotesingle{}event group\textquotesingle{}. Bijvoorbeeld, bit 1 staat voor de motorstatus (aan of uit, 1 of 0), bit 2 voor de koplampen (aan of uit) etc. ~\newline
+  ~\newline
+ Met Event\+Group\+Wait\+Bits() worden de bits uitgelezen. Je kunt alle bits uitlezen, of alleen op een specifieke bit (event) wachten, bijvoorbeeld\+: de motortask wacht tot de motor aangezet wordt, dus reageert op bit 1. Je kunt dan aan het OS aangeven of het bit gecleared moet worden of niet. De applicatie doet het simpeler\+: nadat een ARM-\/key gepressed is, wordt een interrupt gegeneerd. In de ISR wordt bepaald welke key gedrukt is, en die key-\/waarde (int) wordt op de eventgroup-\/handle gezet (met ...Send\+From\+ISR). In \doxylink{_a_r_m__keys_8c}{ARM\+\_\+keys.\+c} wordt die waarde in zijn geheel uitgelezen. Er wordt dus verder niks met afzonderlijke bits gedaan.  
+\begin{DoxyItemize}
+\item {\itshape Aanmaken\+:} handle = \href{https://www.freertos.org/xEventGroupCreate.html}{\texttt{x\+Event\+Group\+Create()}} 
+\item {\itshape Zenden\+:} \href{https://www.freertos.org/xEventGroupSetBits.html}{\texttt{x\+Event\+Group\+Set\+Bits(handle)}} en \href{https://www.freertos.org/xEventGroupSetBitsFromISR.html}{\texttt{x\+Event\+Group\+Set\+Bits\+From\+ISR(handle)}} 
+\item {\itshape Ontvangen\+:} \href{https://www.freertos.org/xEventGroupWaitBits.html}{\texttt{x\+Event\+Group\+Wait\+Bits(handle)}} 
+\item {\itshape Zie\+:} \doxylink{admin_8c}{admin.\+c}, \doxylink{stm32f4xx__it_8c}{stm32f4xx\+\_\+it.\+c}, \doxylink{_a_r_m__keys_8c}{ARM\+\_\+keys.\+c} ~\newline
+~\newline
+ 
+\end{DoxyItemize}
+\item {\bfseries{\href{https://www.freertos.org/a00018.html}{\texttt{Queues.}}}} ~\newline
+Een queue is een rij/array van elementen. Net als karretjes bij een kassa. Een element kan een char zijn, of een structure, of een pointer, whatever. Bij het aanmaken geef je aan hoeveel elementen de queue moet bevatten (hoeveel karretjes er in de rij kunnen), en hoe groot (hoeveel bytes) elk element is (hoeveel in elk karretje past). Daarmee weet het OS genoeg. Een queue werkt via FIFO (first in, first out\+: default) of LIFO. Met {\itshape send} zet je een element op de queue; het OS zorgt (bij FIFO) dat dat element keurig achter het vorige element terecht komt.  ~\newline
+ Bij {\itshape receive} wordt het eerst verstuurde element van de queue gehaald (wil je dat niet, dan moet je {\itshape peek} gebruiken). In de applicatie wordt een queue gebruikt om de toetsaanslagen op de UART op te vangen; dit wordt gedaan door de ISR (met ...Send\+From\+ISR in \doxylink{main_8c}{main.\+c}). Met deze queue wordt een soort buffer gecreëerd, zodat er geen toetsaanslagen verloren gaan. De ontvangende kant (\doxylink{_u_a_r_t__keys_8c}{UART\+\_\+keys.\+c}) leest elke character (toets) direct uit, tot ie een linefeed \textquotesingle{}\textbackslash{}n\textquotesingle{} tegenkomt -\/ dan gaat ie de string naar een andere task versturen met x\+Task\+Notify(). 
+\begin{DoxyItemize}
+\item {\itshape Aanmaken\+:} handle = \href{https://www.freertos.org/a00116.html}{\texttt{x\+Queue\+Create()}}  
+\item {\itshape Op queue zetten\+:} \href{https://www.freertos.org/a00117.html}{\texttt{x\+Queue\+Send(handle)}} en \href{https://www.freertos.org/a00119.html}{\texttt{x\+Queue\+Send\+From\+ISR(handle)}} 
+\item {\itshape Ontvangen\+:} \href{https://www.freertos.org/a00118.html}{\texttt{x\+Queue\+Receive(handle)}} 
+\item {\itshape Zie\+:} \doxylink{admin_8c}{admin.\+c}, \doxylink{main_8c}{main.\+c}, \doxylink{_u_a_r_t__keys_8c}{UART\+\_\+keys.\+c}~\newline
+ 
+\end{DoxyItemize}
+\end{DoxyItemize}
+
+~\newline
+ \doxysection*{Sourcefiles\+: samenhang van de applicatie}
+
+
+
+Hieronder zie je de voor deze applicatie belangrijkste bestanden. De applicatie bevindt zich in de map {\bfseries{Core}}, en wel hoofdzakelijk in de map {\bfseries{My\+App}}, die weer verdeeld is in App en Ports. Daarnaast zie je in Core nog de map {\bfseries{Src}}, die door STM gegenereerde bestanden bevat. 
+\begin{DoxyTable}{2}{}{}{0}
+{\bfseries{\mbox{[}Core/\+Src\mbox{]}}}&{\bfseries{Bevat de door STM gegenereerde bestanden}}\\
+\doxylink{main_8c}{main.\+c}&ISR voor UART (\doxylink{_u_a_r_t__keys_8c}{UART\+\_\+keys.\+c}), blijf ik verder zoveel mogelijk uit...\\
+\doxylink{stm32f4xx__it_8c}{stm32f4xx\+\_\+it.\+c}&ISR voor \doxylink{_a_r_m__keys_8c}{ARM\+\_\+keys.\+c}\\
+~&\\
+{\bfseries{\mbox{[}Core/\+My\+App/\+App\mbox{]}}}&{\bfseries{Bevat de applicatie-\/code (Michiel Scager)}}\\
+\doxylink{admin_8c}{admin.\+c}&versie-\/beheer~\newline
+kleine algemene functies;~\newline
+{\bfseries{alle handles en alle taken (tasks, threads) worden hier aangemaakt}}\\
+\doxylink{admin_8h}{admin.\+h}&\#defines, structs, externals, etc.\\
+\doxylink{gps_8c}{gps.\+c}&verwerking van de inkomende GPS-\/data (UART)\\
+\doxylink{ledjes_8c}{ledjes.\+c}&hier gaan wat tasks met ledjes spelen\\
+\doxylink{_u_a_r_t__keys_8c}{UART\+\_\+keys.\+c}&afhandeling UART-\/input via ISR in \doxylink{main_8c}{main.\+c}\\
+\doxylink{_a_r_m__keys_8c}{ARM\+\_\+keys.\+c}&afhandeling ARM-\/toetsen via ISR in \doxylink{stm32f4xx__it_8c}{stm32f4xx\+\_\+it.\+c}\\
+\doxylink{student_8c}{student.\+c}&speeltuin voor studenten\\
+~&\\
+{\bfseries{\mbox{[}Core/\+Myapp/\+Ports\mbox{]}}}&{\bfseries{Bevat ARM-\/port-\/functies (Franc van der Bent)}}\\
+buzzer.\+c&\\
+uart.\+c&\\
+leds.\+c&\\
+lcd.\+c&\\
+keys.\+c&\\
+\end{DoxyTable}
+
+
+~\newline
+ 

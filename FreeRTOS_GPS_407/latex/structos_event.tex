@@ -1,0 +1,49 @@
+\doxysection{os\+Event Struct Reference}
+\hypertarget{structos_event}{}\label{structos_event}\index{osEvent@{osEvent}}
+
+
+Event structure contains detailed information about an event.  
+
+
+
+
+{\ttfamily \#include $<$cmsis\+\_\+os.\+h$>$}
+
+\doxysubsubsection*{Data Fields}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{structos_event_ad477a289f1f03ac45407b64268d707d3}\label{structos_event_ad477a289f1f03ac45407b64268d707d3} 
+os\+Status {\bfseries status}
+\begin{DoxyCompactList}\small\item\em status code\+: event or error information \end{DoxyCompactList}\item 
+\Hypertarget{structos_event_adec29e9abff9637ab22ae6dd9ba4e8ae}\label{structos_event_adec29e9abff9637ab22ae6dd9ba4e8ae} 
+\begin{tabbing}
+xx\=xx\=xx\=xx\=xx\=xx\=xx\=xx\=xx\=\kill
+union \{\\
+\>uint32\_t {\bfseries v}\\
+\>\>{\em message as 32-\/bit value }\\
+\>void \texorpdfstring{$\ast$}{*} {\bfseries p}\\
+\>\>{\em message or mail as void pointer }\\
+\>int32\_t {\bfseries signals}\\
+\>\>{\em signal flags }\\
+\} {\bfseries value}\\
+
+\end{tabbing}\begin{DoxyCompactList}\small\item\em event value \end{DoxyCompactList}\item 
+\Hypertarget{structos_event_acd42f17daf8b68730b6f85e0bb5fdd3f}\label{structos_event_acd42f17daf8b68730b6f85e0bb5fdd3f} 
+\begin{tabbing}
+xx\=xx\=xx\=xx\=xx\=xx\=xx\=xx\=xx\=\kill
+union \{\\
+\>osMailQId {\bfseries mail\_id}\\
+\>\>{\em mail id obtained by osMailCreate }\\
+\>osMessageQId {\bfseries message\_id}\\
+\>\>{\em message id obtained by osMessageCreate }\\
+\} {\bfseries def}\\
+
+\end{tabbing}\begin{DoxyCompactList}\small\item\em event definition \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Event structure contains detailed information about an event. 
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Middlewares/\+Third\+\_\+\+Party/\+Free\+RTOS/\+Source/\+CMSIS\+\_\+\+RTOS\+\_\+\+V2/cmsis\+\_\+os.\+h\end{DoxyCompactItemize}

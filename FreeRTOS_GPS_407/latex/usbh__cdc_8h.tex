@@ -1,0 +1,226 @@
+\doxysection{Middlewares/\+ST/\+STM32\+\_\+\+USB\+\_\+\+Host\+\_\+\+Library/\+Class/\+CDC/\+Inc/usbh\+\_\+cdc.h File Reference}
+\hypertarget{usbh__cdc_8h}{}\label{usbh__cdc_8h}\index{Middlewares/ST/STM32\_USB\_Host\_Library/Class/CDC/Inc/usbh\_cdc.h@{Middlewares/ST/STM32\_USB\_Host\_Library/Class/CDC/Inc/usbh\_cdc.h}}
+
+
+This file contains all the prototypes for the \doxylink{usbh__cdc_8c}{usbh\+\_\+cdc.\+c}.  
+
+
+{\ttfamily \#include "{}usbh\+\_\+core.\+h"{}}\newline
+\doxysubsubsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+union \mbox{\hyperlink{union___c_d_c___line_coding_structure}{\+\_\+\+CDC\+\_\+\+Line\+Coding\+Structure}}
+\item 
+struct \mbox{\hyperlink{struct___functional_descriptor_header}{\+\_\+\+Functional\+Descriptor\+Header}}
+\item 
+struct \mbox{\hyperlink{struct___call_mgmt_functional_descriptor}{\+\_\+\+Call\+Mgmt\+Functional\+Descriptor}}
+\item 
+struct \mbox{\hyperlink{struct___abstract_cntrl_mgmt_functional_descriptor}{\+\_\+\+Abstract\+Cntrl\+Mgmt\+Functional\+Descriptor}}
+\item 
+struct \mbox{\hyperlink{struct___union_functional_descriptor}{\+\_\+\+Union\+Functional\+Descriptor}}
+\item 
+struct \mbox{\hyperlink{struct___u_s_b_h___c_d_c_interface_desc}{\+\_\+\+USBH\+\_\+\+CDCInterface\+Desc}}
+\item 
+struct \mbox{\hyperlink{struct_c_d_c___comm_itf_typedef}{CDC\+\_\+\+Comm\+Itf\+Typedef}}
+\item 
+struct \mbox{\hyperlink{struct_c_d_c___data_itf_typedef}{CDC\+\_\+\+Data\+Itf\+Typedef}}
+\item 
+struct \mbox{\hyperlink{struct___c_d_c___process}{\+\_\+\+CDC\+\_\+\+Process}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define {\bfseries USB\+\_\+\+CDC\+\_\+\+CLASS}~0x02U
+\item 
+\#define {\bfseries COMMUNICATION\+\_\+\+INTERFACE\+\_\+\+CLASS\+\_\+\+CODE}~0x02U
+\item 
+\#define {\bfseries DATA\+\_\+\+INTERFACE\+\_\+\+CLASS\+\_\+\+CODE}~0x0\+AU
+\item 
+\#define {\bfseries RESERVED}~0x00U
+\item 
+\#define {\bfseries DIRECT\+\_\+\+LINE\+\_\+\+CONTROL\+\_\+\+MODEL}~0x01U
+\item 
+\#define {\bfseries ABSTRACT\+\_\+\+CONTROL\+\_\+\+MODEL}~0x02U
+\item 
+\#define {\bfseries TELEPHONE\+\_\+\+CONTROL\+\_\+\+MODEL}~0x03U
+\item 
+\#define {\bfseries MULTICHANNEL\+\_\+\+CONTROL\+\_\+\+MODEL}~0x04U
+\item 
+\#define {\bfseries CAPI\+\_\+\+CONTROL\+\_\+\+MODEL}~0x05U
+\item 
+\#define {\bfseries ETHERNET\+\_\+\+NETWORKING\+\_\+\+CONTROL\+\_\+\+MODEL}~0x06U
+\item 
+\#define {\bfseries ATM\+\_\+\+NETWORKING\+\_\+\+CONTROL\+\_\+\+MODEL}~0x07U
+\item 
+\#define {\bfseries NO\+\_\+\+CLASS\+\_\+\+SPECIFIC\+\_\+\+PROTOCOL\+\_\+\+CODE}~0x00U
+\item 
+\#define {\bfseries COMMON\+\_\+\+AT\+\_\+\+COMMAND}~0x01U
+\item 
+\#define {\bfseries VENDOR\+\_\+\+SPECIFIC}~0x\+FFU
+\item 
+\#define {\bfseries CS\+\_\+\+INTERFACE}~0x24U
+\item 
+\#define {\bfseries CDC\+\_\+\+PAGE\+\_\+\+SIZE\+\_\+64}~0x40U
+\item 
+\#define {\bfseries CDC\+\_\+\+SEND\+\_\+\+ENCAPSULATED\+\_\+\+COMMAND}~0x00U
+\item 
+\#define {\bfseries CDC\+\_\+\+GET\+\_\+\+ENCAPSULATED\+\_\+\+RESPONSE}~0x01U
+\item 
+\#define {\bfseries CDC\+\_\+\+SET\+\_\+\+COMM\+\_\+\+FEATURE}~0x02U
+\item 
+\#define {\bfseries CDC\+\_\+\+GET\+\_\+\+COMM\+\_\+\+FEATURE}~0x03U
+\item 
+\#define {\bfseries CDC\+\_\+\+CLEAR\+\_\+\+COMM\+\_\+\+FEATURE}~0x04U
+\item 
+\#define {\bfseries CDC\+\_\+\+SET\+\_\+\+AUX\+\_\+\+LINE\+\_\+\+STATE}~0x10U
+\item 
+\#define {\bfseries CDC\+\_\+\+SET\+\_\+\+HOOK\+\_\+\+STATE}~0x11U
+\item 
+\#define {\bfseries CDC\+\_\+\+PULSE\+\_\+\+SETUP}~0x12U
+\item 
+\#define {\bfseries CDC\+\_\+\+SEND\+\_\+\+PULSE}~0x13U
+\item 
+\#define {\bfseries CDC\+\_\+\+SET\+\_\+\+PULSE\+\_\+\+TIME}~0x14U
+\item 
+\#define {\bfseries CDC\+\_\+\+RING\+\_\+\+AUX\+\_\+\+JACK}~0x15U
+\item 
+\#define {\bfseries CDC\+\_\+\+SET\+\_\+\+LINE\+\_\+\+CODING}~0x20U
+\item 
+\#define {\bfseries CDC\+\_\+\+GET\+\_\+\+LINE\+\_\+\+CODING}~0x21U
+\item 
+\#define {\bfseries CDC\+\_\+\+SET\+\_\+\+CONTROL\+\_\+\+LINE\+\_\+\+STATE}~0x22U
+\item 
+\#define {\bfseries CDC\+\_\+\+SEND\+\_\+\+BREAK}~0x23U
+\item 
+\#define {\bfseries CDC\+\_\+\+SET\+\_\+\+RINGER\+\_\+\+PARMS}~0x30U
+\item 
+\#define {\bfseries CDC\+\_\+\+GET\+\_\+\+RINGER\+\_\+\+PARMS}~0x31U
+\item 
+\#define {\bfseries CDC\+\_\+\+SET\+\_\+\+OPERATION\+\_\+\+PARMS}~0x32U
+\item 
+\#define {\bfseries CDC\+\_\+\+GET\+\_\+\+OPERATION\+\_\+\+PARMS}~0x33U
+\item 
+\#define {\bfseries CDC\+\_\+\+SET\+\_\+\+LINE\+\_\+\+PARMS}~0x34U
+\item 
+\#define {\bfseries CDC\+\_\+\+GET\+\_\+\+LINE\+\_\+\+PARMS}~0x35U
+\item 
+\#define {\bfseries CDC\+\_\+\+DIAL\+\_\+\+DIGITS}~0x36U
+\item 
+\#define {\bfseries CDC\+\_\+\+SET\+\_\+\+UNIT\+\_\+\+PARAMETER}~0x37U
+\item 
+\#define {\bfseries CDC\+\_\+\+GET\+\_\+\+UNIT\+\_\+\+PARAMETER}~0x38U
+\item 
+\#define {\bfseries CDC\+\_\+\+CLEAR\+\_\+\+UNIT\+\_\+\+PARAMETER}~0x39U
+\item 
+\#define {\bfseries CDC\+\_\+\+GET\+\_\+\+PROFILE}~0x3\+AU
+\item 
+\#define {\bfseries CDC\+\_\+\+SET\+\_\+\+ETHERNET\+\_\+\+MULTICAST\+\_\+\+FILTERS}~0x40U
+\item 
+\#define {\bfseries CDC\+\_\+\+SET\+\_\+\+ETHERNET\+\_\+\+POWER\+\_\+\+MANAGEMENT\+\_\+\+PATTERN}~FILTER        0x41U
+\item 
+\#define {\bfseries CDC\+\_\+\+GET\+\_\+\+ETHERNET\+\_\+\+POWER\+\_\+\+MANAGEMENT\+\_\+\+PATTERN}~FILTER        0x42U
+\item 
+\#define {\bfseries CDC\+\_\+\+SET\+\_\+\+ETHERNET\+\_\+\+PACKET\+\_\+\+FILTER}~0x43U
+\item 
+\#define {\bfseries CDC\+\_\+\+GET\+\_\+\+ETHERNET\+\_\+\+STATISTIC}~0x44U
+\item 
+\#define {\bfseries CDC\+\_\+\+SET\+\_\+\+ATM\+\_\+\+DATA\+\_\+\+FORMAT}~0x50U
+\item 
+\#define {\bfseries CDC\+\_\+\+GET\+\_\+\+ATM\+\_\+\+DEVICE\+\_\+\+STATISTICS}~0x51U
+\item 
+\#define {\bfseries CDC\+\_\+\+SET\+\_\+\+ATM\+\_\+\+DEFAULT\+\_\+\+VC}~0x52U
+\item 
+\#define {\bfseries CDC\+\_\+\+GET\+\_\+\+ATM\+\_\+\+VC\+\_\+\+STATISTICS}~0x53U
+\item 
+\#define {\bfseries CDC\+\_\+\+ACTIVATE\+\_\+\+CARRIER\+\_\+\+SIGNAL\+\_\+\+RTS}~0x0002U
+\item 
+\#define {\bfseries CDC\+\_\+\+DEACTIVATE\+\_\+\+CARRIER\+\_\+\+SIGNAL\+\_\+\+RTS}~0x0000U
+\item 
+\#define {\bfseries CDC\+\_\+\+ACTIVATE\+\_\+\+SIGNAL\+\_\+\+DTR}~0x0001U
+\item 
+\#define {\bfseries CDC\+\_\+\+DEACTIVATE\+\_\+\+SIGNAL\+\_\+\+DTR}~0x0000U
+\item 
+\#define {\bfseries LINE\+\_\+\+CODING\+\_\+\+STRUCTURE\+\_\+\+SIZE}~0x07U
+\item 
+\#define {\bfseries USBH\+\_\+\+CDC\+\_\+\+CLASS}~\&CDC\+\_\+\+Class
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef union \mbox{\hyperlink{union___c_d_c___line_coding_structure}{\+\_\+\+CDC\+\_\+\+Line\+Coding\+Structure}} {\bfseries CDC\+\_\+\+Line\+Coding\+Type\+Def}
+\item 
+typedef struct \mbox{\hyperlink{struct___functional_descriptor_header}{\+\_\+\+Functional\+Descriptor\+Header}} {\bfseries CDC\+\_\+\+Header\+Func\+Desc\+\_\+\+Type\+Def}
+\item 
+typedef struct \mbox{\hyperlink{struct___call_mgmt_functional_descriptor}{\+\_\+\+Call\+Mgmt\+Functional\+Descriptor}} {\bfseries CDC\+\_\+\+Call\+Mgmt\+Func\+Desc\+\_\+\+Type\+Def}
+\item 
+typedef struct \mbox{\hyperlink{struct___abstract_cntrl_mgmt_functional_descriptor}{\+\_\+\+Abstract\+Cntrl\+Mgmt\+Functional\+Descriptor}} {\bfseries CDC\+\_\+\+Abst\+Cntrl\+Mgmt\+Func\+Desc\+\_\+\+Type\+Def}
+\item 
+typedef struct \mbox{\hyperlink{struct___union_functional_descriptor}{\+\_\+\+Union\+Functional\+Descriptor}} {\bfseries CDC\+\_\+\+Union\+Func\+Desc\+\_\+\+Type\+Def}
+\item 
+typedef struct \mbox{\hyperlink{struct___u_s_b_h___c_d_c_interface_desc}{\+\_\+\+USBH\+\_\+\+CDCInterface\+Desc}} {\bfseries CDC\+\_\+\+Interface\+Desc\+\_\+\+Typedef}
+\item 
+typedef struct \mbox{\hyperlink{struct___c_d_c___process}{\+\_\+\+CDC\+\_\+\+Process}} {\bfseries CDC\+\_\+\+Handle\+Type\+Def}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{group___u_s_b_h___c_d_c___c_o_r_e___exported___types_ga7bc064008b8b70ebbcc096c885662cbb}\label{group___u_s_b_h___c_d_c___c_o_r_e___exported___types_ga7bc064008b8b70ebbcc096c885662cbb} 
+enum {\bfseries CDC\+\_\+\+Data\+State\+Type\+Def} \{ \newline
+{\bfseries CDC\+\_\+\+IDLE} = 0U
+, {\bfseries CDC\+\_\+\+SEND\+\_\+\+DATA}
+, {\bfseries CDC\+\_\+\+SEND\+\_\+\+DATA\+\_\+\+WAIT}
+, {\bfseries CDC\+\_\+\+RECEIVE\+\_\+\+DATA}
+, \newline
+{\bfseries CDC\+\_\+\+RECEIVE\+\_\+\+DATA\+\_\+\+WAIT}
+ \}
+\item 
+\Hypertarget{group___u_s_b_h___c_d_c___c_o_r_e___exported___types_ga56093ffed85a00960af27fa7f9555701}\label{group___u_s_b_h___c_d_c___c_o_r_e___exported___types_ga56093ffed85a00960af27fa7f9555701} 
+enum {\bfseries CDC\+\_\+\+State\+Type\+Def} \{ \newline
+{\bfseries CDC\+\_\+\+IDLE\+\_\+\+STATE} = 0U
+, {\bfseries CDC\+\_\+\+SET\+\_\+\+LINE\+\_\+\+CODING\+\_\+\+STATE}
+, {\bfseries CDC\+\_\+\+GET\+\_\+\+LAST\+\_\+\+LINE\+\_\+\+CODING\+\_\+\+STATE}
+, {\bfseries CDC\+\_\+\+TRANSFER\+\_\+\+DATA}
+, \newline
+{\bfseries CDC\+\_\+\+ERROR\+\_\+\+STATE}
+ \}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+USBH\+\_\+\+Status\+Type\+Def \mbox{\hyperlink{group___u_s_b_h___c_d_c___c_o_r_e___exported___functions_prototype_ga0a97cecdc325afda054708260d4a4cd4}{USBH\+\_\+\+CDC\+\_\+\+Set\+Line\+Coding}} (USBH\+\_\+\+Handle\+Type\+Def \texorpdfstring{$\ast$}{*}phost, CDC\+\_\+\+Line\+Coding\+Type\+Def \texorpdfstring{$\ast$}{*}linecoding)
+\begin{DoxyCompactList}\small\item\em This function prepares the state before issuing the class specific commands. \end{DoxyCompactList}\item 
+USBH\+\_\+\+Status\+Type\+Def \mbox{\hyperlink{group___u_s_b_h___c_d_c___c_o_r_e___exported___functions_prototype_ga58896a873e5451cfa68e0199b62310c1}{USBH\+\_\+\+CDC\+\_\+\+Get\+Line\+Coding}} (USBH\+\_\+\+Handle\+Type\+Def \texorpdfstring{$\ast$}{*}phost, CDC\+\_\+\+Line\+Coding\+Type\+Def \texorpdfstring{$\ast$}{*}linecoding)
+\begin{DoxyCompactList}\small\item\em This function prepares the state before issuing the class specific commands. \end{DoxyCompactList}\item 
+USBH\+\_\+\+Status\+Type\+Def \mbox{\hyperlink{group___u_s_b_h___c_d_c___c_o_r_e___exported___functions_prototype_gaa665a75165250f23da58b07a0ccfdf85}{USBH\+\_\+\+CDC\+\_\+\+Transmit}} (USBH\+\_\+\+Handle\+Type\+Def \texorpdfstring{$\ast$}{*}phost, uint8\+\_\+t \texorpdfstring{$\ast$}{*}pbuff, uint32\+\_\+t length)
+\begin{DoxyCompactList}\small\item\em This function prepares the state before issuing the class specific commands. \end{DoxyCompactList}\item 
+USBH\+\_\+\+Status\+Type\+Def \mbox{\hyperlink{group___u_s_b_h___c_d_c___c_o_r_e___exported___functions_prototype_ga541a5501a8392d124fe1ee0c6cbf0d1a}{USBH\+\_\+\+CDC\+\_\+\+Receive}} (USBH\+\_\+\+Handle\+Type\+Def \texorpdfstring{$\ast$}{*}phost, uint8\+\_\+t \texorpdfstring{$\ast$}{*}pbuff, uint32\+\_\+t length)
+\begin{DoxyCompactList}\small\item\em This function prepares the state before issuing the class specific commands. \end{DoxyCompactList}\item 
+uint16\+\_\+t \mbox{\hyperlink{group___u_s_b_h___c_d_c___c_o_r_e___exported___functions_prototype_ga604e66c38a1c9bb300087a5f717fa744}{USBH\+\_\+\+CDC\+\_\+\+Get\+Last\+Received\+Data\+Size}} (USBH\+\_\+\+Handle\+Type\+Def \texorpdfstring{$\ast$}{*}phost)
+\begin{DoxyCompactList}\small\item\em This function return last received data size. \end{DoxyCompactList}\item 
+USBH\+\_\+\+Status\+Type\+Def \mbox{\hyperlink{group___u_s_b_h___c_d_c___c_o_r_e___exported___functions_prototype_gaa41c8ff240fbc3b03b3f7390bd2eaced}{USBH\+\_\+\+CDC\+\_\+\+Stop}} (USBH\+\_\+\+Handle\+Type\+Def \texorpdfstring{$\ast$}{*}phost)
+\begin{DoxyCompactList}\small\item\em USBH\+\_\+\+CDC\+\_\+\+Stop Stop current CDC Transmission. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group___u_s_b_h___c_d_c___c_o_r_e___exported___functions_prototype_ga1b2d41ca6b37f340c3092acc166cfcff}{USBH\+\_\+\+CDC\+\_\+\+Line\+Coding\+Changed}} (USBH\+\_\+\+Handle\+Type\+Def \texorpdfstring{$\ast$}{*}phost)
+\begin{DoxyCompactList}\small\item\em The function informs user that Settings have been changed. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group___u_s_b_h___c_d_c___c_o_r_e___exported___functions_prototype_ga1c18873ae6f293550150a5a59755b12f}{USBH\+\_\+\+CDC\+\_\+\+Transmit\+Callback}} (USBH\+\_\+\+Handle\+Type\+Def \texorpdfstring{$\ast$}{*}phost)
+\begin{DoxyCompactList}\small\item\em The function informs user that data have been received. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group___u_s_b_h___c_d_c___c_o_r_e___exported___functions_prototype_ga1b7246b5945f2868805d0919148d01a2}{USBH\+\_\+\+CDC\+\_\+\+Receive\+Callback}} (USBH\+\_\+\+Handle\+Type\+Def \texorpdfstring{$\ast$}{*}phost)
+\begin{DoxyCompactList}\small\item\em The function informs user that data have been sent. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{struct_u_s_b_h___class_type_def}{USBH\+\_\+\+Class\+Type\+Def}} {\bfseries CDC\+\_\+\+Class}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+This file contains all the prototypes for the \doxylink{usbh__cdc_8c}{usbh\+\_\+cdc.\+c}. 
+
+\begin{DoxyAuthor}{Author}
+MCD Application Team 
+\end{DoxyAuthor}
+\begin{DoxyAttention}{Attention}
+
+\end{DoxyAttention}
+Copyright (c) 2015 STMicroelectronics. All rights reserved.
+
+This software is licensed under terms that can be found in the LICENSE file in the root directory of this software component. If no LICENSE file comes with this software, it is provided AS-\/\+IS. 

@@ -1,0 +1,61 @@
+\doxysection{gps.\+h}
+\hypertarget{gps_8h_source}{}\label{gps_8h_source}\index{Core/MyApp/App/gps.h@{Core/MyApp/App/gps.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00010\ \textcolor{keywordtype}{int}\ hex2int(\textcolor{keywordtype}{char}\ *c);}
+\DoxyCodeLine{00011\ \textcolor{keywordtype}{int}\ hexchar2int(\textcolor{keywordtype}{char}\ c);}
+\DoxyCodeLine{00012\ \textcolor{keywordtype}{int}\ checksum\_valid(\textcolor{keywordtype}{char}\ *\textcolor{keywordtype}{string});}
+\DoxyCodeLine{00013\ }
+\DoxyCodeLine{00014\ }
+\DoxyCodeLine{00015\ \textcolor{comment}{//\ GNRMC\ struct:\ all\ with\ char-\/members\ -\/\ should/could\ be\ improved\ with\ proper\ data-\/elements}}
+\DoxyCodeLine{00016\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct___g_n_r_m_c}{\_GNRMC}}}
+\DoxyCodeLine{00017\ \{}
+\DoxyCodeLine{00018\ \ \ \ \ \textcolor{keywordtype}{char}\ \ \ \ head[7];\ \ \ \ \ \ \ \textcolor{comment}{//\ 1.\ header}}
+\DoxyCodeLine{00019\ \ \ \ \ \textcolor{keywordtype}{char}\ \ \ \ time[10];\ \ \ \ \ \ \textcolor{comment}{//\ 2.\ hhmmss.sss}}
+\DoxyCodeLine{00020\ \ \ \ \ \textcolor{keywordtype}{char}\ \ \ \ status;\ \ \ \ \ \ \ \ \textcolor{comment}{//\ 3.\ A=valid,\ V=not\ valid}}
+\DoxyCodeLine{00021\ \ \ \ \ \textcolor{keywordtype}{char}\ \ \ \ latitude[10];\ \ \textcolor{comment}{//\ 4.\ ddmm.mmmm\ (double)}}
+\DoxyCodeLine{00022\ \ \ \ \ \textcolor{keywordtype}{char}\ \ \ \ NS\_ind;\ \ \ \ \ \ \ \ \textcolor{comment}{//\ 5.\ N,S}}
+\DoxyCodeLine{00023\ \ \ \ \ \textcolor{keywordtype}{char}\ \ \ \ longitude[10];\ \textcolor{comment}{//\ 6.\ ddmm.mmmm\ (double)}}
+\DoxyCodeLine{00024\ \ \ \ \ \textcolor{keywordtype}{char}\ \ \ \ EW\_ind;\ \ \ \ \ \ \ \ \textcolor{comment}{//\ 7.\ E,W}}
+\DoxyCodeLine{00025\ \ \ \ \ \textcolor{keywordtype}{char}\ \ \ \ speed[6];\ \ \ \ \ \ \textcolor{comment}{//\ 8.\ 0.13\ knots\ (double)}}
+\DoxyCodeLine{00026\ \ \ \ \ \textcolor{keywordtype}{char}\ \ \ \ course[6];\ \ \ \ \ \textcolor{comment}{//\ 9.\ 309.62\ degrees\ (double)}}
+\DoxyCodeLine{00027\ \ \ \ \ \textcolor{keywordtype}{char}\ \ \ \ date[7];\ \ \ \ \ \ \ \textcolor{comment}{//\ 10.\ ddmmyy}}
+\DoxyCodeLine{00028\ \ \ \ \ \textcolor{keywordtype}{char}\ \ \ \ mag\_var[6];\ \ \ \ \textcolor{comment}{//\ 11.\ E,W\ degrees\ (double)}}
+\DoxyCodeLine{00029\ \ \ \ \ \textcolor{keywordtype}{char}\ \ \ \ mag\_var\_pos;\ \ \ \textcolor{comment}{//\ 12.}}
+\DoxyCodeLine{00030\ \ \ \ \ \textcolor{keywordtype}{char}\ \ \ \ mode;\ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 13.\ A=autonomous,\ D,E}}
+\DoxyCodeLine{00031\ \ \ \ \ \textcolor{keywordtype}{char}\ \ \ \ cs[4];\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 14.\ checkum\ *34}}
+\DoxyCodeLine{00032\ \}\ GNRMC;}
+\DoxyCodeLine{00033\ }
+\DoxyCodeLine{00034\ }
+\DoxyCodeLine{00035\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structs_parsed___g_n_r_m_c}{sParsed\_GNRMC}}}
+\DoxyCodeLine{00036\ \{}
+\DoxyCodeLine{00037\ \ \ \ \ \textcolor{keywordtype}{char}\ \ \ \ head[7];\ \ \ \ \ \ \ \textcolor{comment}{//\ 1.\ header}}
+\DoxyCodeLine{00038\ \ \ \ \ \textcolor{keywordtype}{int}\ \ \ \ \ time;\ \ \ \ \ \ \textcolor{comment}{//\ 2.\ hhmmss.sss}}
+\DoxyCodeLine{00039\ \ \ \ \ \textcolor{keywordtype}{char}\ \ \ \ status;\ \ \ \ \ \ \ \ \textcolor{comment}{//\ 3.\ A=valid,\ V=not\ valid}}
+\DoxyCodeLine{00040\ \ \ \ \ \textcolor{keywordtype}{double}\ \ latitude;\ \ \textcolor{comment}{//\ 4.\ ddmm.mmmm\ (double)}}
+\DoxyCodeLine{00041\ \ \ \ \ \textcolor{keywordtype}{char}\ \ \ \ NS\_ind;\ \ \ \ \ \ \ \ \textcolor{comment}{//\ 5.\ N,S}}
+\DoxyCodeLine{00042\ \ \ \ \ \textcolor{keywordtype}{double}\ \ longitude;\ \textcolor{comment}{//\ 6.\ ddmm.mmmm\ (double)}}
+\DoxyCodeLine{00043\ \ \ \ \ \textcolor{keywordtype}{char}\ \ \ \ EW\_ind;\ \ \ \ \ \ \ \ \textcolor{comment}{//\ 7.\ E,W}}
+\DoxyCodeLine{00044\ \ \ \ \ \textcolor{keywordtype}{double}\ \ speed;\ \ \ \ \ \ \textcolor{comment}{//\ 8.\ 0.13\ knots\ (double)}}
+\DoxyCodeLine{00045\ \ \ \ \ \textcolor{keywordtype}{double}\ \ course;\ \ \ \ \ \textcolor{comment}{//\ 9.\ 309.62\ degrees\ (double)}}
+\DoxyCodeLine{00046\ \ \ \ \ \textcolor{keywordtype}{char}\ \ \ \ date[7];\ \ \ \ \ \ \ \textcolor{comment}{//\ 10.\ ddmmyy}}
+\DoxyCodeLine{00047\ \ \ \ \ \textcolor{keywordtype}{double}\ \ mag\_var;\ \ \ \ \textcolor{comment}{//\ 11.\ E,W\ degrees\ (double)}}
+\DoxyCodeLine{00048\ \ \ \ \ \textcolor{keywordtype}{char}\ \ \ \ mag\_var\_pos;\ \ \ \textcolor{comment}{//\ 12.}}
+\DoxyCodeLine{00049\ \ \ \ \ \textcolor{keywordtype}{char}\ \ \ \ mode;\ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 13.\ A=autonomous,\ D,E}}
+\DoxyCodeLine{00050\ \ \ \ \ \textcolor{keywordtype}{char}\ \ \ \ cs[4];\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 14.\ checkum\ *34}}
+\DoxyCodeLine{00051\ \}\ Parsed\_GNRMC;}
+\DoxyCodeLine{00052\ }
+\DoxyCodeLine{00053\ \textcolor{keyword}{extern}\ Parsed\_GNRMC\ parsed\_gnrmc;}
+\DoxyCodeLine{00054\ }
+\DoxyCodeLine{00055\ \textcolor{comment}{//\ enum\ voor\ NMEA\ protocolstrings\ (starting\ 'e'\ for\ enum)}}
+\DoxyCodeLine{00056\ \textcolor{comment}{//\ gebruikt\ het\ type\ van\ de\ nmea-\/msg\ in\ de\ queue\ vast\ te\ leggen}}
+\DoxyCodeLine{00057\ \textcolor{keyword}{enum}\ NMEA}
+\DoxyCodeLine{00058\ \{}
+\DoxyCodeLine{00059\ \ \ \ \ eGNRMC\ =\ 1,\ \ \textcolor{comment}{//\ 1}}
+\DoxyCodeLine{00060\ \ \ \ \ eGPGSA,\ \ \ \ \ \ \textcolor{comment}{//\ 2}}
+\DoxyCodeLine{00061\ \ \ \ \ eGNGGA\ \ \ \ \ \ \ \textcolor{comment}{//\ 3\ -\/\ kun\ je\ verder\ uitbreiden\ natuurlijk}}
+\DoxyCodeLine{00062\ \};}
+\DoxyCodeLine{00063\ }
+
+\end{DoxyCode}

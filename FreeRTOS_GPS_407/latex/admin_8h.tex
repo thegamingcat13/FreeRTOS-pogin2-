@@ -1,0 +1,911 @@
+\doxysection{Core/\+My\+App/\+App/admin.h File Reference}
+\hypertarget{admin_8h}{}\label{admin_8h}\index{Core/MyApp/App/admin.h@{Core/MyApp/App/admin.h}}
+
+
+Bevat de defines \& externals voor deze applicatie.  
+
+
+{\ttfamily \#include "{}Free\+RTOS.\+h"{}}\newline
+{\ttfamily \#include "{}event\+\_\+groups.\+h"{}}\newline
+{\ttfamily \#include "{}queue.\+h"{}}\newline
+{\ttfamily \#include "{}task.\+h"{}}\newline
+{\ttfamily \#include "{}semphr.\+h"{}}\newline
+{\ttfamily \#include "{}message\+\_\+buffer.\+h"{}}\newline
+{\ttfamily \#include "{}cmsis\+\_\+os.\+h"{}}\newline
+{\ttfamily \#include "{}stdio.\+h"{}}\newline
+{\ttfamily \#include "{}string.\+h"{}}\newline
+{\ttfamily \#include "{}stdlib.\+h"{}}\newline
+{\ttfamily \#include "{}ctype.\+h"{}}\newline
+\doxysubsubsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{struct_route_info__s}{Route\+Info\+\_\+s}}
+\item 
+struct \mbox{\hyperlink{structlog}{log}}
+\item 
+struct \mbox{\hyperlink{struct_task_data}{Task\+Data}}
+\begin{DoxyCompactList}\small\item\em struct voor taak-\/gegevens, waaronder de argumenten om een taak aan te maken \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{admin_8h_aa8cecfc5c5c054d2875c03e77b7be15d}\label{admin_8h_aa8cecfc5c5c054d2875c03e77b7be15d} 
+\#define {\bfseries TRUE}~1
+\item 
+\Hypertarget{admin_8h_aa93f0eb578d23995850d61f7d61c55c1}\label{admin_8h_aa93f0eb578d23995850d61f7d61c55c1} 
+\#define {\bfseries FALSE}~0
+\item 
+\Hypertarget{admin_8h_a18901836d92cf76a93826b9e1116292d}\label{admin_8h_a18901836d92cf76a93826b9e1116292d} 
+\#define {\bfseries QSIZE\+\_\+\+UART}~10
+\begin{DoxyCompactList}\small\item\em set queue op 10 elementen \end{DoxyCompactList}\item 
+\Hypertarget{admin_8h_a13315792b47dcf5207ce4e06daeab518}\label{admin_8h_a13315792b47dcf5207ce4e06daeab518} 
+\#define {\bfseries TIMER1\+\_\+\+DELAY}~1000
+\begin{DoxyCompactList}\small\item\em set software timer 1000 msecs \end{DoxyCompactList}\item 
+\Hypertarget{admin_8h_a40d33106a4ed541fd00a0f928caeee64}\label{admin_8h_a40d33106a4ed541fd00a0f928caeee64} 
+\#define {\bfseries GPS\+\_\+\+MAXLEN}~79+4
+\item 
+\#define \mbox{\hyperlink{admin_8h_a593d279df692e4e19e04443e24cd823d}{STRC\+\_\+\+AMOUNT}}~20
+\item 
+\Hypertarget{admin_8h_a1328de21bb2bcf7a67910e5f2fa5a522}\label{admin_8h_a1328de21bb2bcf7a67910e5f2fa5a522} 
+\#define {\bfseries LAT\+\_\+\+PREC}~0.\+000045
+\item 
+\Hypertarget{admin_8h_ac1563fd608f35162a3fae296e05e058d}\label{admin_8h_ac1563fd608f35162a3fae296e05e058d} 
+\#define {\bfseries LON\+\_\+\+PREC}~0.\+000074
+\item 
+\Hypertarget{admin_8h_a4dbb9b7af3551f02a4a7a612b5b1945e}\label{admin_8h_a4dbb9b7af3551f02a4a7a612b5b1945e} 
+\#define {\bfseries METER\+\_\+\+PER\+\_\+\+DEG\+\_\+\+LAT}~111132.\+0f
+\item 
+\Hypertarget{admin_8h_acf00179e78b8665b124872006d1a3825}\label{admin_8h_acf00179e78b8665b124872006d1a3825} 
+\#define {\bfseries METER\+\_\+\+PER\+\_\+\+DEG\+\_\+\+LON}~67890.\+0f
+\item 
+\Hypertarget{admin_8h_afe37a01e641952e5c687a6dc0c6847b9}\label{admin_8h_afe37a01e641952e5c687a6dc0c6847b9} 
+\#define {\bfseries MAX\+\_\+\+HEADING\+\_\+\+DIFFERENCE\+\_\+\+DEG}~5.\+0f
+\item 
+\Hypertarget{admin_8h_a14bdbaa52affd16be648be362e67d2fb}\label{admin_8h_a14bdbaa52affd16be648be362e67d2fb} 
+\#define {\bfseries ARRIVAL\+\_\+\+RADIUS\+\_\+\+METERS}~1.\+0f
+\item 
+\Hypertarget{admin_8h_a4ae68bc4da0f671082b3a2abc70672eb}\label{admin_8h_a4ae68bc4da0f671082b3a2abc70672eb} 
+\#define {\bfseries MIN\+\_\+\+COG\+\_\+\+SPEED}~0.\+5f
+\item 
+\Hypertarget{admin_8h_a90a2fc1fcdc1fb0aa0706e78cc498f01}\label{admin_8h_a90a2fc1fcdc1fb0aa0706e78cc498f01} 
+\#define {\bfseries MAX\+\_\+\+LOGS}~100
+\item 
+\Hypertarget{admin_8h_aecec3b7ee8e67b05c23fe851e7115999}\label{admin_8h_aecec3b7ee8e67b05c23fe851e7115999} 
+\#define {\bfseries DEBUG\+\_\+\+OUT\+\_\+\+NONE}~0x00
+\begin{DoxyCompactList}\small\item\em stop alle test output \end{DoxyCompactList}\item 
+\Hypertarget{admin_8h_adf61e71f815198fd487984a437f413fe}\label{admin_8h_adf61e71f815198fd487984a437f413fe} 
+\#define {\bfseries DEBUG\+\_\+\+OUT\+\_\+\+ALL}~0xff
+\begin{DoxyCompactList}\small\item\em genereer alle test output \end{DoxyCompactList}\item 
+\Hypertarget{admin_8h_a367617a9804f8aeeb1b5b09d17af0d1a}\label{admin_8h_a367617a9804f8aeeb1b5b09d17af0d1a} 
+\#define {\bfseries LEDS\+\_\+\+DEBUG\+\_\+\+OUT}~0x01
+\begin{DoxyCompactList}\small\item\em bit 1\+: toggles leds stuff output \end{DoxyCompactList}\item 
+\Hypertarget{admin_8h_ae2de7e45f2168abc45779a2d5dce35e2}\label{admin_8h_ae2de7e45f2168abc45779a2d5dce35e2} 
+\#define {\bfseries ARMKEYS\+\_\+\+DEBUG\+\_\+\+OUT}~0x02
+\begin{DoxyCompactList}\small\item\em bit 2\+: toggles armkeys stuff output \end{DoxyCompactList}\item 
+\Hypertarget{admin_8h_a4fb4ecb0210feec08883b3c4a1d401e3}\label{admin_8h_a4fb4ecb0210feec08883b3c4a1d401e3} 
+\#define {\bfseries UART\+\_\+\+DEBUG\+\_\+\+OUT}~0x04
+\begin{DoxyCompactList}\small\item\em bit 3\+: toggles uart2 stuff output \end{DoxyCompactList}\item 
+\Hypertarget{admin_8h_a6fcd7c2c8ee6e408e84e96747933027c}\label{admin_8h_a6fcd7c2c8ee6e408e84e96747933027c} 
+\#define {\bfseries STUDENT\+\_\+\+DEBUG\+\_\+\+OUT}~0x08
+\begin{DoxyCompactList}\small\item\em bit 4\+: toggles student stuff output \end{DoxyCompactList}\item 
+\Hypertarget{admin_8h_aaaa64fd595cb0468a82ae3c5c19df4fd}\label{admin_8h_aaaa64fd595cb0468a82ae3c5c19df4fd} 
+\#define {\bfseries GPS\+\_\+\+DEBUG\+\_\+\+OUT}~0x10
+\begin{DoxyCompactList}\small\item\em bit 5\+: toggles gps uart1 output \end{DoxyCompactList}\item 
+\Hypertarget{admin_8h_ad153ab003e587c7f081539b0db29c704}\label{admin_8h_ad153ab003e587c7f081539b0db29c704} 
+\#define {\bfseries GPS\+\_\+\+DEBUG\+\_\+\+RAW\+\_\+\+OUT}~0x20
+\begin{DoxyCompactList}\small\item\em bit 6\+: toggles the raw incoming gps-\/input \end{DoxyCompactList}\item 
+\Hypertarget{admin_8h_ad65393627b89dfb8bd8fbac4260c4355}\label{admin_8h_ad65393627b89dfb8bd8fbac4260c4355} 
+\#define {\bfseries RESERVED1\+\_\+\+OUT}~0x40
+\begin{DoxyCompactList}\small\item\em bit 7\+: toggles whatever \end{DoxyCompactList}\item 
+\Hypertarget{admin_8h_a4d479dc102c926bfe5bb99a0f096b9f2}\label{admin_8h_a4d479dc102c926bfe5bb99a0f096b9f2} 
+\#define {\bfseries RESERVED2\+\_\+\+OUT}~0x80
+\begin{DoxyCompactList}\small\item\em bit 8\+: toggles whatever \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{admin_8h_a5cd9ee80876b12602eb666a07b9cfe50}{LEDGREEN}}~GPIO\+\_\+\+PIN\+\_\+12
+\item 
+\Hypertarget{admin_8h_a4a865d371e7fdede347031acef7248a1}\label{admin_8h_a4a865d371e7fdede347031acef7248a1} 
+\#define {\bfseries LEDRED}~GPIO\+\_\+\+PIN\+\_\+13
+\begin{DoxyCompactList}\small\item\em LD3\+\_\+\+Pin. \end{DoxyCompactList}\item 
+\Hypertarget{admin_8h_a997de867fda1d8d8774cda7ef97c6f9d}\label{admin_8h_a997de867fda1d8d8774cda7ef97c6f9d} 
+\#define {\bfseries LEDORANGE}~GPIO\+\_\+\+PIN\+\_\+14
+\begin{DoxyCompactList}\small\item\em LD5\+\_\+\+Pin. \end{DoxyCompactList}\item 
+\Hypertarget{admin_8h_a4e14f0fe9bbd66b4bb5a86911b030043}\label{admin_8h_a4e14f0fe9bbd66b4bb5a86911b030043} 
+\#define {\bfseries LEDBLUE}~GPIO\+\_\+\+PIN\+\_\+15
+\begin{DoxyCompactList}\small\item\em LD6\+\_\+\+Pin. \end{DoxyCompactList}\item 
+\Hypertarget{admin_8h_a86cc40f982d5f3b4512b0f6758fa04ae}\label{admin_8h_a86cc40f982d5f3b4512b0f6758fa04ae} 
+\#define {\bfseries M1\+\_\+1}~GPIO\+\_\+\+PIN\+\_\+7
+\item 
+\Hypertarget{admin_8h_ac692921a2f6cfc9e65ebf6093a215341}\label{admin_8h_ac692921a2f6cfc9e65ebf6093a215341} 
+\#define {\bfseries M1\+\_\+2}~GPIO\+\_\+\+PIN\+\_\+8
+\item 
+\Hypertarget{admin_8h_a98ebbf1910ef199e0aa219d698927931}\label{admin_8h_a98ebbf1910ef199e0aa219d698927931} 
+\#define {\bfseries M2\+\_\+1}~GPIO\+\_\+\+PIN\+\_\+9
+\item 
+\Hypertarget{admin_8h_a43fee40bab88fa9c144462e16dec19d1}\label{admin_8h_a43fee40bab88fa9c144462e16dec19d1} 
+\#define {\bfseries M2\+\_\+2}~GPIO\+\_\+\+PIN\+\_\+10
+\item 
+\Hypertarget{admin_8h_a5b55a0702166a9e9234042ad874c2892}\label{admin_8h_a5b55a0702166a9e9234042ad874c2892} 
+\#define {\bfseries M1\+\_\+\+ANALOG}~GPIO\+\_\+\+PIN\+\_\+11
+\item 
+\Hypertarget{admin_8h_aedcb05bd92e3c6896f097e116a9ec604}\label{admin_8h_aedcb05bd92e3c6896f097e116a9ec604} 
+\#define {\bfseries M2\+\_\+\+ANALOG}~GPIO\+\_\+\+PIN\+\_\+12
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{admin_8h_a7957d6df1013b18e2a5e0ceeafc3eeeb}\label{admin_8h_a7957d6df1013b18e2a5e0ceeafc3eeeb} 
+typedef struct \mbox{\hyperlink{struct_route_info__s}{Route\+Info\+\_\+s}} {\bfseries Route\+Info}
+\item 
+\Hypertarget{admin_8h_a2dc040f4a24409ecc9436984282aba58}\label{admin_8h_a2dc040f4a24409ecc9436984282aba58} 
+typedef struct \mbox{\hyperlink{structlog}{log}} {\bfseries Slog}
+\item 
+\Hypertarget{admin_8h_a7f8e353159968ff0f0becfe26d3bf630}\label{admin_8h_a7f8e353159968ff0f0becfe26d3bf630} 
+typedef struct \mbox{\hyperlink{struct_task_data}{Task\+Data}} {\bfseries TASKDATA}
+\begin{DoxyCompactList}\small\item\em struct voor taak-\/gegevens, waaronder de argumenten om een taak aan te maken \end{DoxyCompactList}\item 
+\Hypertarget{admin_8h_aa1b44409a93fa486a84d312252b5cf7c}\label{admin_8h_aa1b44409a93fa486a84d312252b5cf7c} 
+typedef struct \mbox{\hyperlink{struct_task_data}{Task\+Data}} \texorpdfstring{$\ast$}{*} {\bfseries PTASKDATA}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{admin_8h_a9dec45875121142b6466b9475691b40a}{Display\+Version}} (void)
+\item 
+void \mbox{\hyperlink{admin_8h_a93467475af28d4b75cafb508f95578bf}{Display\+Menu}} (void)
+\item 
+void \mbox{\hyperlink{admin_8h_ac7a60a0c0a7a24b63849288395b81b59}{error\+\_\+\+Halt\+OS}} (char \texorpdfstring{$\ast$}{*})
+\begin{DoxyCompactList}\small\item\em Fatale OS-\/error opgetreden tijdens startup of runtime, doorgaan is zinloos. Het OS wordt tot stoppen gebracht, er wordt output gegenereerd waar mogelijk, dus op UART en LCD. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{admin_8h_a27f94d40ad6bce04d22896b2c679b8c5}{Check\+Task\+Data}} (int)
+\begin{DoxyCompactList}\small\item\em Displays de stack-\/gegevens van alle taken op de UART. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{admin_8h_a7f983159a50cdcaaad786c6c7a216cd9}{Create\+Tasks}} (void)
+\begin{DoxyCompactList}\small\item\em Creëert alle taken door te scannen door de TASKDATA-\/argumenten-\/array.~\newline
+ Let op. Eerst wordt de scheduler gestopt, dan de taken gecreëerd, dan de scheduler gestopt. Waarom? Anders gaan taken gelijk beginnen en wachten op taken die nog niet bestaan, dat geeft een rommeltje. \end{DoxyCompactList}\item 
+os\+Thread\+Id\+\_\+t \mbox{\hyperlink{admin_8h_af3fcde4e5fc023f9a6b398139143c657}{Get\+Taskhandle}} (char \texorpdfstring{$\ast$}{*})
+\begin{DoxyCompactList}\small\item\em Zoekt in tasks-\/array de task, en returns de handle. Deze handle wordt door \doxylink{admin_8c_a7f983159a50cdcaaad786c6c7a216cd9}{Create\+Tasks()} in de array geplaatst. In plaats van deze functie kan ook de OS-\/functie x\+Task\+Get\+Handle() gebruikt worden. Alleen is \textquotesingle{}mijn\textquotesingle{} functie sneller. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{admin_8h_a16ba23da293f6f319ffbc502a4cb7d5c}{Set\+Task\+Priority}} (int, int)
+\begin{DoxyCompactList}\small\item\em Verandert de prioriteit van een taak. Eerst wordt de taak gezocht in de lijst van alle taken (tasks\mbox{[}\mbox{]}) Daarna wordt de priority in de lijst gewijzigd en prioriteit van de taak aangepast. De functie Display\+Task\+Data() toont op de UART het tasknummer dat je nodig hebt. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{admin_8h_a0c9aab30edaac2fecc7fd1c21f5763a2}{Start\+Stop\+Task}} (int)
+\begin{DoxyCompactList}\small\item\em Suspends (stopt) of Resumes (start) een task. Pas op. Als een task suspended wordt als hij een mutex bezet houdt blokkeer je alle tasks die op die mutex wachten. En als je de task stopt die de UART leest, schiet je jezelf ook in de voet. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{admin_8h_a183387e08a88262f831be8b883ce8754}{Create\+Handles}} (void)
+\begin{DoxyCompactList}\small\item\em Creates alle handles voor deze applicatie. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{admin_8h_a8fa46093b138efd9f745379e50aaebb1}{LED\+\_\+\+Task1}} (void \texorpdfstring{$\ast$}{*})
+\begin{DoxyCompactList}\small\item\em Tasks die ledjes manipuleren nadat ze eerst afgeschermd zijn met mutex semaphores. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{admin_8h_aa6578679005e0ded1868835daa8fbede}{LED\+\_\+\+Task2}} (void \texorpdfstring{$\ast$}{*})
+\begin{DoxyCompactList}\small\item\em Tasks die ledjes manipuleren nadat ze eerst afgeschermd zijn met mutex semaphores. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{admin_8h_a379c01dd4fb15e45ca6e00a95c761cc7}{LED\+\_\+\+Task3}} (void \texorpdfstring{$\ast$}{*})
+\begin{DoxyCompactList}\small\item\em Tasks die ledjes manipuleren nadat ze eerst afgeschermd zijn met mutex semaphores. Task 3 en 4 werken daarnaast nog met tasknotification. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{admin_8h_a549798a0f2a6d88c91a8297567a018c1}{LED\+\_\+\+Task4}} (void \texorpdfstring{$\ast$}{*})
+\begin{DoxyCompactList}\small\item\em Tasks die ledjes manipuleren nadat ze eerst afgeschermd zijn met mutex semaphores. Task 3 en 4 werken daarnaast nog met tasknotification. \end{DoxyCompactList}\item 
+\Hypertarget{admin_8h_a7eb9007652c87d53469d602818f0d187}\label{admin_8h_a7eb9007652c87d53469d602818f0d187} 
+void {\bfseries Waypoint} ()
+\item 
+float \mbox{\hyperlink{admin_8h_ab8ef2480f3b6e8731e14146e47d92a72}{return\+Waypoints}} (int, int)
+\begin{DoxyCompactList}\small\item\em Wanneer in de terminal \textquotesingle{}W\textquotesingle{} wordt ingetoetst, worden alle opgeslagen waypoints uitgeprint in de terminal. Deze functie kan als debug gebruikt worden. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{admin_8h_ad27f7aa2260823ac2f3a243ae7654e32}{Current\+Waypoint\+Change}} (int)
+\begin{DoxyCompactList}\small\item\em Wijzigt handmatig de huidige waypoint. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{admin_8h_a0c660e87fd3fb5216355c32e3a72f95e}{ARM\+\_\+keys\+\_\+\+IRQ}} (void \texorpdfstring{$\ast$}{*})
+\begin{DoxyCompactList}\small\item\em Deze task handelt de ARM-\/toets af, die ontvangen is van de ISR-\/handler (zie\+: \doxylink{stm32f4xx__it_8c}{stm32f4xx\+\_\+it.\+c}). \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{admin_8h_af21164a48742d972455d2ce8c6317262}{ARM\+\_\+keys\+\_\+task}} (void \texorpdfstring{$\ast$}{*})
+\begin{DoxyCompactList}\small\item\em Task krijgt ARM-\/key met notificatie binnen, en zet ledjes op die waarde. Ook de gekleurde ledjes (behalve blauw, die wordt door de timer gebruikt) krijgen een schwung... \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{admin_8h_a390831b4b34c463c81b188d9973d2a52}{UART\+\_\+keys\+\_\+poll}} (void \texorpdfstring{$\ast$}{*})
+\begin{DoxyCompactList}\small\item\em deze waarde kan hier veranderd worden. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{admin_8h_af42059fd155a512774c89e7fc38bc03c}{UART\+\_\+keys\+\_\+\+IRQ}} (void \texorpdfstring{$\ast$}{*})
+\begin{DoxyCompactList}\small\item\em Leest characters in die de gebruiker via Terminalprogramma intikt. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{admin_8h_af909ca669055035da2246051d81ae747}{UART\+\_\+menu}} (void \texorpdfstring{$\ast$}{*})
+\begin{DoxyCompactList}\small\item\em User Interface. De task wacht op kant en klare user-\/strings (Task\+Notify\+Take) van ISR-\/handler, en interpreteert de string. Het eerste character geeft het hoofd-\/commando aan. Afhankelijk van het commando worden opvolgende chars geinterpreteerd. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{admin_8h_aa858cc1bd518e1f551603a78e90c53be}{GPS\+\_\+get\+NMEA}} (void \texorpdfstring{$\ast$}{*})
+\begin{DoxyCompactList}\small\item\em Leest de GPS-\/\+NMEA-\/strings die via de UART via interrupt-\/handler (HAL\+\_\+\+UART\+\_\+\+Rx\+Cplt\+Callback) binnenkomen. \texorpdfstring{$\ast$}{*} De handler zet elk inkomende character gelijk op een queue, die hier uitgelezen wordt. Vervolgens wordt hiervan een GPS-\/message opgebouwd en verwerkt. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{admin_8h_a279ae28c1e6a05f0495e2fc3688e4947}{Parsed\+GPS}} (void)
+\begin{DoxyCompactList}\small\item\em De chars van de binnengekomen GNRMC-\/string worden in data omgezet, dwz in een GNRMC-\/struct, mbv strtok(); De struct bevat nu alleen chars -\/ je kunt er ook voor kiezen om gelijk met doubles te werken, die je dan met atof(); omzet. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{admin_8h_a23fe84bfb739ead3f3005b8378170b62}{Student\+\_\+task1}} (void \texorpdfstring{$\ast$}{*})
+\begin{DoxyCompactList}\small\item\em Oefentask voor studenten. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{admin_8h_a96c9e7d4608bbcbb1f89460ea7d8da6f}{Timer1\+\_\+\+Handler}} (void)
+\begin{DoxyCompactList}\small\item\em Vangt de Free\+RTOS software-\/interrupt op en toggelt een ledje. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{admin_8h_af292f364f4ee621c575f83b5b25fbfc5}{Reach\+WPTask}} (void \texorpdfstring{$\ast$}{*})
+\begin{DoxyCompactList}\small\item\em Deze functie wordt gebruikt om te kijken of wij de waypoint bereikt hebben. \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{admin_8h_a5d6397136fbf12fef3dca666de7a35a0}{heading}} (int)
+\begin{DoxyCompactList}\small\item\em Berekent de heading eerst in radialen en daarna omgezet in graden. \end{DoxyCompactList}\item 
+Route\+Info \mbox{\hyperlink{admin_8h_af4a85680d3fac414e5b91f0cd16e8adf}{Get\+\_\+\+Waypoint\+\_\+\+Info}} (int waypoint)
+\begin{DoxyCompactList}\small\item\em Berekent het verschil tussen huidige lon en lat vergeleken met de waypoint. Geeft aan of wij het waypoint hebben berijkt of nog niet. De data wordt vanuit {\ttfamily parsed\+\_\+grmc} gehaald( zie {\ttfamily \doxylink{gps_8h_source}{gps.\+h}} voor de struct). \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{admin_8h_a8e72f6787dd96ab06b941f402e994077}{Skip\+Waypoint}} (void)
+\begin{DoxyCompactList}\small\item\em Skip\+Waypoint wordt gebruikt om een waypoint over te slaan. Deze functie wordt aangeroepen door de {\ttfamily ARM-\/keys}. In de functie is een check ingebouwd die kijkt of de functie correct is uitgevoerd. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{admin_8h_a2f96c316955e657fb8242f6a23b21975}{Back\+Waypoint}} (void)
+\begin{DoxyCompactList}\small\item\em Back\+Waypoint wordt gebruikt om terug te gaan naar de vorige waypoint. Deze functie wordt aangeroepen door de {\ttfamily 0ARM-\/keys}. In de functie is een check ingebouwd die kijkt of de functie correct is uitgevoerd. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{admin_8h_a5f8b543f818c13ecb6eaf9452f9a4395}{Show\+Waypoint}} (void)
+\begin{DoxyCompactList}\small\item\em Show\+Waypoint wordt gebruikt om te laten zien welk waypoint we naartoe aan het gaan zijn en hoeveel waypoints er totaal zijn. Deze functie wordt aangeroepen door de {\ttfamily ARM-\/keys}. In de functie is een check ingebouwd die kijkt of de functie correct is uitgevoerd. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{admin_8h_ae101eafad5ce91c38146e960eaed0c50}{log\+Write}} (int type, void \texorpdfstring{$\ast$}{*}info)
+\begin{DoxyCompactList}\small\item\em slaat alle data op in een structure array. Zoals gps data, motor besturing, knoppen die worden ingedrukt. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{admin_8h_a2ebdc8837802eba656d049ffab377c30}{print\+Logs}} (void)
+\begin{DoxyCompactList}\small\item\em deze functie print alle gegevens die zijn opgelslagen in de Log-\/structure-\/arrray. de hoeveelheid lijnen die moeten worden uitgeprint worden automatisch bepaald voor elke log\+Count. \end{DoxyCompactList}\item 
+\Hypertarget{admin_8h_a3f88352450dad51d82e4bf84a0a439a1}\label{admin_8h_a3f88352450dad51d82e4bf84a0a439a1} 
+void {\bfseries delay\+\_\+us} (int us)
+\item 
+\Hypertarget{admin_8h_acba72bb75efaeba8bfbb4bd856cc49c3}\label{admin_8h_acba72bb75efaeba8bfbb4bd856cc49c3} 
+void {\bfseries SR04\+\_\+\+Task} (void \texorpdfstring{$\ast$}{*})
+\item 
+void \mbox{\hyperlink{admin_8h_a70f05e6a13ceea6e6c44a03cfa90059b}{drive\+\_\+forward}} (void)
+\begin{DoxyCompactList}\small\item\em Functie voor het naar voren rijden. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{admin_8h_a70327aff7b4807668e49a589b69fe633}\label{admin_8h_a70327aff7b4807668e49a589b69fe633} 
+Route\+Info {\bfseries info}
+\item 
+Queue\+Handle\+\_\+t \mbox{\hyperlink{admin_8h_a1db415a0f7c5ecff145e4bb53cc54dbe}{h\+UART\+\_\+\+Queue}}
+\begin{DoxyCompactList}\small\item\em typedefs of struct itself and pointer to it \end{DoxyCompactList}\item 
+Queue\+Handle\+\_\+t \mbox{\hyperlink{admin_8h_a77d12f838c966d96a18a31e503b7955c}{h\+GPS\+\_\+\+Queue}}
+\begin{DoxyCompactList}\small\item\em handle voor GPS-\/queue \end{DoxyCompactList}\item 
+Semaphore\+Handle\+\_\+t \mbox{\hyperlink{admin_8h_a011b1349f4d8c02977b852c7587f0581}{h\+LED\+\_\+\+Sem}}
+\begin{DoxyCompactList}\small\item\em handle voor LED-\/mutex \end{DoxyCompactList}\item 
+\Hypertarget{admin_8h_acb75afe78edbc0029054eef295bbd316}\label{admin_8h_acb75afe78edbc0029054eef295bbd316} 
+Semaphore\+Handle\+\_\+t {\bfseries h\+Gps\+Data\+Mutex}
+\begin{DoxyCompactList}\small\item\em handle voor de parsed gps structure \end{DoxyCompactList}\item 
+\Hypertarget{admin_8h_ada55e3a3cc32b9d16e1bbc08d83431c9}\label{admin_8h_ada55e3a3cc32b9d16e1bbc08d83431c9} 
+Event\+Group\+Handle\+\_\+t {\bfseries h\+KEY\+\_\+\+Event}
+\begin{DoxyCompactList}\small\item\em handle voor ARM-\/keys-\/event \end{DoxyCompactList}\item 
+\Hypertarget{admin_8h_af1a9410a47225cac12eb96a84b51b035}\label{admin_8h_af1a9410a47225cac12eb96a84b51b035} 
+Timer\+Handle\+\_\+t {\bfseries h\+Timer1}
+\begin{DoxyCompactList}\small\item\em handle voor software timer \end{DoxyCompactList}\item 
+\Hypertarget{admin_8h_ab0334f032bcc3014435a9a3ce0dbcb43}\label{admin_8h_ab0334f032bcc3014435a9a3ce0dbcb43} 
+Task\+Handle\+\_\+t {\bfseries h\+Waypoint\+Task}
+\begin{DoxyCompactList}\small\item\em handle zodat de waypoint task extern genotified kan worden \end{DoxyCompactList}\item 
+\Hypertarget{admin_8h_ad914495c21e66409a9f5a49acca3796a}\label{admin_8h_ad914495c21e66409a9f5a49acca3796a} 
+Task\+Handle\+\_\+t {\bfseries h\+Reach\+WP}
+\item 
+int \mbox{\hyperlink{admin_8h_a952449da34b356e2651de547daf4312c}{Uart\+\_\+debug\+\_\+out}}
+\begin{DoxyCompactList}\small\item\em default\+: debug all output to uart \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Bevat de defines \& externals voor deze applicatie. 
+
+\begin{DoxyAttention}{Attention}
+\doxysubsubsubsection*{\copyright{} Copyright (c) 2021 (HU) Michiel Scager.}
+\end{DoxyAttention}
+\begin{DoxyAuthor}{Author}
+MSC
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+5/5/2022 
+\end{DoxyDate}
+
+
+\label{doc-define-members}
+\Hypertarget{admin_8h_doc-define-members}
+\doxysubsection{Macro Definition Documentation}
+\Hypertarget{admin_8h_a5cd9ee80876b12602eb666a07b9cfe50}\index{admin.h@{admin.h}!LEDGREEN@{LEDGREEN}}
+\index{LEDGREEN@{LEDGREEN}!admin.h@{admin.h}}
+\doxysubsubsection{\texorpdfstring{LEDGREEN}{LEDGREEN}}
+{\footnotesize\ttfamily \label{admin_8h_a5cd9ee80876b12602eb666a07b9cfe50} 
+\#define LEDGREEN~GPIO\+\_\+\+PIN\+\_\+12}
+
+Redefine pins om beter aan te geven waar het om gaat\+: gekleurde ledjes LD4\+\_\+\+Pin \Hypertarget{admin_8h_a593d279df692e4e19e04443e24cd823d}\index{admin.h@{admin.h}!STRC\_AMOUNT@{STRC\_AMOUNT}}
+\index{STRC\_AMOUNT@{STRC\_AMOUNT}!admin.h@{admin.h}}
+\doxysubsubsection{\texorpdfstring{STRC\_AMOUNT}{STRC\_AMOUNT}}
+{\footnotesize\ttfamily \label{admin_8h_a593d279df692e4e19e04443e24cd823d} 
+\#define STRC\+\_\+\+AMOUNT~20}
+
+The carriage return \mbox{[}CR\mbox{]} and the line feed \mbox{[}LF\mbox{]} combination terminate the sentence. NMEA 0 83 sentences vary in length, but each sentence is limited to 79 characters or less. This length limit excludes the \$ and the \mbox{[}CR\mbox{]}\mbox{[}LF\mbox{]} characters. The data field block, including delimiters is limited to 74 characters or less. 
+
+\label{doc-func-members}
+\Hypertarget{admin_8h_doc-func-members}
+\doxysubsection{Function Documentation}
+\Hypertarget{admin_8h_a0c660e87fd3fb5216355c32e3a72f95e}\index{admin.h@{admin.h}!ARM\_keys\_IRQ@{ARM\_keys\_IRQ}}
+\index{ARM\_keys\_IRQ@{ARM\_keys\_IRQ}!admin.h@{admin.h}}
+\doxysubsubsection{\texorpdfstring{ARM\_keys\_IRQ()}{ARM\_keys\_IRQ()}}
+{\footnotesize\ttfamily \label{admin_8h_a0c660e87fd3fb5216355c32e3a72f95e} 
+void ARM\+\_\+keys\+\_\+\+IRQ (\begin{DoxyParamCaption}\item[{void \texorpdfstring{$\ast$}{*}}]{argument}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Deze task handelt de ARM-\/toets af, die ontvangen is van de ISR-\/handler (zie\+: \doxylink{stm32f4xx__it_8c}{stm32f4xx\+\_\+it.\+c}). 
+
+
+\begin{DoxyParams}{Parameters}
+{\em \texorpdfstring{$\ast$}{*}argument} & Niet gebruikt, eventueel een waarde of string om te testen \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void. 
+\end{DoxyReturn}
+\Hypertarget{admin_8h_af21164a48742d972455d2ce8c6317262}\index{admin.h@{admin.h}!ARM\_keys\_task@{ARM\_keys\_task}}
+\index{ARM\_keys\_task@{ARM\_keys\_task}!admin.h@{admin.h}}
+\doxysubsubsection{\texorpdfstring{ARM\_keys\_task()}{ARM\_keys\_task()}}
+{\footnotesize\ttfamily \label{admin_8h_af21164a48742d972455d2ce8c6317262} 
+void ARM\+\_\+keys\+\_\+task (\begin{DoxyParamCaption}\item[{void \texorpdfstring{$\ast$}{*}}]{argument}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Task krijgt ARM-\/key met notificatie binnen, en zet ledjes op die waarde. Ook de gekleurde ledjes (behalve blauw, die wordt door de timer gebruikt) krijgen een schwung... 
+
+
+\begin{DoxyParams}{Parameters}
+{\em \texorpdfstring{$\ast$}{*}argument} & Niet gebruikt, eventueel een waarde of string om te testen. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void. 
+\end{DoxyReturn}
+\Hypertarget{admin_8h_a2f96c316955e657fb8242f6a23b21975}\index{admin.h@{admin.h}!BackWaypoint@{BackWaypoint}}
+\index{BackWaypoint@{BackWaypoint}!admin.h@{admin.h}}
+\doxysubsubsection{\texorpdfstring{BackWaypoint()}{BackWaypoint()}}
+{\footnotesize\ttfamily \label{admin_8h_a2f96c316955e657fb8242f6a23b21975} 
+int Back\+Waypoint (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Back\+Waypoint wordt gebruikt om terug te gaan naar de vorige waypoint. Deze functie wordt aangeroepen door de {\ttfamily 0ARM-\/keys}. In de functie is een check ingebouwd die kijkt of de functie correct is uitgevoerd. 
+
+
+\begin{DoxyItemize}
+\item \begin{DoxyReturn}{Returns}
+1 = waypoint verlaagt, verlaag {\ttfamily Current\+Waypoint} met 1 voor vorige waypoint. 0 = waypoint niet verlaagt. 
+\end{DoxyReturn}
+
+\end{DoxyItemize}\Hypertarget{admin_8h_a27f94d40ad6bce04d22896b2c679b8c5}\index{admin.h@{admin.h}!CheckTaskData@{CheckTaskData}}
+\index{CheckTaskData@{CheckTaskData}!admin.h@{admin.h}}
+\doxysubsubsection{\texorpdfstring{CheckTaskData()}{CheckTaskData()}}
+{\footnotesize\ttfamily \label{admin_8h_a27f94d40ad6bce04d22896b2c679b8c5} 
+void Check\+Task\+Data (\begin{DoxyParamCaption}\item[{int}]{output}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Displays de stack-\/gegevens van alle taken op de UART. 
+
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+\Hypertarget{admin_8h_a183387e08a88262f831be8b883ce8754}\index{admin.h@{admin.h}!CreateHandles@{CreateHandles}}
+\index{CreateHandles@{CreateHandles}!admin.h@{admin.h}}
+\doxysubsubsection{\texorpdfstring{CreateHandles()}{CreateHandles()}}
+{\footnotesize\ttfamily \label{admin_8h_a183387e08a88262f831be8b883ce8754} 
+void Create\+Handles (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Creates alle handles voor deze applicatie. 
+
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+\Hypertarget{admin_8h_a7f983159a50cdcaaad786c6c7a216cd9}\index{admin.h@{admin.h}!CreateTasks@{CreateTasks}}
+\index{CreateTasks@{CreateTasks}!admin.h@{admin.h}}
+\doxysubsubsection{\texorpdfstring{CreateTasks()}{CreateTasks()}}
+{\footnotesize\ttfamily \label{admin_8h_a7f983159a50cdcaaad786c6c7a216cd9} 
+void Create\+Tasks (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Creëert alle taken door te scannen door de TASKDATA-\/argumenten-\/array.~\newline
+ Let op. Eerst wordt de scheduler gestopt, dan de taken gecreëerd, dan de scheduler gestopt. Waarom? Anders gaan taken gelijk beginnen en wachten op taken die nog niet bestaan, dat geeft een rommeltje. 
+
+\begin{DoxyRemark}{Remarks}
+DEEL 3 van \doxylink{admin_8c}{admin.\+c} Bevat de functies voor het creëren van tasks en admin-\/functies voor tasks 
+\end{DoxyRemark}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+\Hypertarget{admin_8h_ad27f7aa2260823ac2f3a243ae7654e32}\index{admin.h@{admin.h}!CurrentWaypointChange@{CurrentWaypointChange}}
+\index{CurrentWaypointChange@{CurrentWaypointChange}!admin.h@{admin.h}}
+\doxysubsubsection{\texorpdfstring{CurrentWaypointChange()}{CurrentWaypointChange()}}
+{\footnotesize\ttfamily \label{admin_8h_ad27f7aa2260823ac2f3a243ae7654e32} 
+int Current\+Waypoint\+Change (\begin{DoxyParamCaption}\item[{int}]{target}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Wijzigt handmatig de huidige waypoint. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em target} & Het waypointnummer waar naartoe gewisseld moet worden. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int 1 als de wijziging gelukt is, 0 als niet. 
+\end{DoxyReturn}
+\Hypertarget{admin_8h_a93467475af28d4b75cafb508f95578bf}\index{admin.h@{admin.h}!DisplayMenu@{DisplayMenu}}
+\index{DisplayMenu@{DisplayMenu}!admin.h@{admin.h}}
+\doxysubsubsection{\texorpdfstring{DisplayMenu()}{DisplayMenu()}}
+{\footnotesize\ttfamily \label{admin_8h_a93467475af28d4b75cafb508f95578bf} 
+void Display\+Menu (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [extern]}}
+
+User Interface (menu) naar UART. \begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+\begin{DoxyAuthor}{Author}
+MSC 
+\end{DoxyAuthor}
+\Hypertarget{admin_8h_a9dec45875121142b6466b9475691b40a}\index{admin.h@{admin.h}!DisplayVersion@{DisplayVersion}}
+\index{DisplayVersion@{DisplayVersion}!admin.h@{admin.h}}
+\doxysubsubsection{\texorpdfstring{DisplayVersion()}{DisplayVersion()}}
+{\footnotesize\ttfamily \label{admin_8h_a9dec45875121142b6466b9475691b40a} 
+void Display\+Version (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [extern]}}
+
+\begin{DoxyRemark}{Remarks}
+DEEL 1 van \doxylink{admin_8c}{admin.\+c} Bevat de functies voor de initialisatie output, vooral naar UART, zoals het \textquotesingle{}menu\textquotesingle{} Schrijft applicatiedata (versie, werking, menu) naar UART. Les\+: je ziet hoe je handig een lange string kunt opstellen met het \textquotesingle{}\textbackslash{}\textquotesingle{}-\/karakter. 
+\end{DoxyRemark}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+\begin{DoxyAuthor}{Author}
+MSC 
+\end{DoxyAuthor}
+\Hypertarget{admin_8h_a70f05e6a13ceea6e6c44a03cfa90059b}\index{admin.h@{admin.h}!drive\_forward@{drive\_forward}}
+\index{drive\_forward@{drive\_forward}!admin.h@{admin.h}}
+\doxysubsubsection{\texorpdfstring{drive\_forward()}{drive\_forward()}}
+{\footnotesize\ttfamily \label{admin_8h_a70f05e6a13ceea6e6c44a03cfa90059b} 
+void drive\+\_\+forward (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Functie voor het naar voren rijden. 
+
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+\Hypertarget{admin_8h_ac7a60a0c0a7a24b63849288395b81b59}\index{admin.h@{admin.h}!error\_HaltOS@{error\_HaltOS}}
+\index{error\_HaltOS@{error\_HaltOS}!admin.h@{admin.h}}
+\doxysubsubsection{\texorpdfstring{error\_HaltOS()}{error\_HaltOS()}}
+{\footnotesize\ttfamily \label{admin_8h_ac7a60a0c0a7a24b63849288395b81b59} 
+void error\+\_\+\+Halt\+OS (\begin{DoxyParamCaption}\item[{char \texorpdfstring{$\ast$}{*}}]{msg}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Fatale OS-\/error opgetreden tijdens startup of runtime, doorgaan is zinloos. Het OS wordt tot stoppen gebracht, er wordt output gegenereerd waar mogelijk, dus op UART en LCD. 
+
+\begin{DoxyRemark}{Remarks}
+DEEL 2 van \doxylink{admin_8c}{admin.\+c} Bevat de functies voor het creëren van alle handles 
+\end{DoxyRemark}
+
+\begin{DoxyParams}{Parameters}
+{\em msg} & Foutmelding \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+\Hypertarget{admin_8h_af4a85680d3fac414e5b91f0cd16e8adf}\index{admin.h@{admin.h}!Get\_Waypoint\_Info@{Get\_Waypoint\_Info}}
+\index{Get\_Waypoint\_Info@{Get\_Waypoint\_Info}!admin.h@{admin.h}}
+\doxysubsubsection{\texorpdfstring{Get\_Waypoint\_Info()}{Get\_Waypoint\_Info()}}
+{\footnotesize\ttfamily \label{admin_8h_af4a85680d3fac414e5b91f0cd16e8adf} 
+Route\+Info Get\+\_\+\+Waypoint\+\_\+\+Info (\begin{DoxyParamCaption}\item[{int}]{waypoint}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Berekent het verschil tussen huidige lon en lat vergeleken met de waypoint. Geeft aan of wij het waypoint hebben berijkt of nog niet. De data wordt vanuit {\ttfamily parsed\+\_\+grmc} gehaald( zie {\ttfamily \doxylink{gps_8h_source}{gps.\+h}} voor de struct). 
+
+
+\begin{DoxyParams}{Parameters}
+{\em waypoint} & de struct die lan en lon opslaat. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+diffs is het verschil in lon en lat. 
+\end{DoxyReturn}
+\Hypertarget{admin_8h_af3fcde4e5fc023f9a6b398139143c657}\index{admin.h@{admin.h}!GetTaskhandle@{GetTaskhandle}}
+\index{GetTaskhandle@{GetTaskhandle}!admin.h@{admin.h}}
+\doxysubsubsection{\texorpdfstring{GetTaskhandle()}{GetTaskhandle()}}
+{\footnotesize\ttfamily \label{admin_8h_af3fcde4e5fc023f9a6b398139143c657} 
+os\+Thread\+Id\+\_\+t Get\+Taskhandle (\begin{DoxyParamCaption}\item[{char \texorpdfstring{$\ast$}{*}}]{taskname}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Zoekt in tasks-\/array de task, en returns de handle. Deze handle wordt door \doxylink{admin_8c_a7f983159a50cdcaaad786c6c7a216cd9}{Create\+Tasks()} in de array geplaatst. In plaats van deze functie kan ook de OS-\/functie x\+Task\+Get\+Handle() gebruikt worden. Alleen is \textquotesingle{}mijn\textquotesingle{} functie sneller. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em \texorpdfstring{$\ast$}{*}taskname} & De tasknaam \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+os\+Thread\+Id\+\_\+t De taskhandle 
+\end{DoxyReturn}
+\Hypertarget{admin_8h_aa858cc1bd518e1f551603a78e90c53be}\index{admin.h@{admin.h}!GPS\_getNMEA@{GPS\_getNMEA}}
+\index{GPS\_getNMEA@{GPS\_getNMEA}!admin.h@{admin.h}}
+\doxysubsubsection{\texorpdfstring{GPS\_getNMEA()}{GPS\_getNMEA()}}
+{\footnotesize\ttfamily \label{admin_8h_aa858cc1bd518e1f551603a78e90c53be} 
+void GPS\+\_\+get\+NMEA (\begin{DoxyParamCaption}\item[{void \texorpdfstring{$\ast$}{*}}]{argument}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Leest de GPS-\/\+NMEA-\/strings die via de UART via interrupt-\/handler (HAL\+\_\+\+UART\+\_\+\+Rx\+Cplt\+Callback) binnenkomen. \texorpdfstring{$\ast$}{*} De handler zet elk inkomende character gelijk op een queue, die hier uitgelezen wordt. Vervolgens wordt hiervan een GPS-\/message opgebouwd en verwerkt. 
+
+\begin{DoxyReturn}{Returns}
+void/ 
+\end{DoxyReturn}
+\Hypertarget{admin_8h_a5d6397136fbf12fef3dca666de7a35a0}\index{admin.h@{admin.h}!heading@{heading}}
+\index{heading@{heading}!admin.h@{admin.h}}
+\doxysubsubsection{\texorpdfstring{heading()}{heading()}}
+{\footnotesize\ttfamily \label{admin_8h_a5d6397136fbf12fef3dca666de7a35a0} 
+float heading (\begin{DoxyParamCaption}\item[{int}]{waypoint}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Berekent de heading eerst in radialen en daarna omgezet in graden. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em waypoint} & de struct die lan en lon opslaat. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+heading\+\_\+deg de heading in graden. 
+\end{DoxyReturn}
+\Hypertarget{admin_8h_a8fa46093b138efd9f745379e50aaebb1}\index{admin.h@{admin.h}!LED\_Task1@{LED\_Task1}}
+\index{LED\_Task1@{LED\_Task1}!admin.h@{admin.h}}
+\doxysubsubsection{\texorpdfstring{LED\_Task1()}{LED\_Task1()}}
+{\footnotesize\ttfamily \label{admin_8h_a8fa46093b138efd9f745379e50aaebb1} 
+void LED\+\_\+\+Task1 (\begin{DoxyParamCaption}\item[{void \texorpdfstring{$\ast$}{*}}]{argument}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Tasks die ledjes manipuleren nadat ze eerst afgeschermd zijn met mutex semaphores. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em \texorpdfstring{$\ast$}{*}argument} & Niet gebruikt, eventueel een waarde of string om te testen \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+\Hypertarget{admin_8h_aa6578679005e0ded1868835daa8fbede}\index{admin.h@{admin.h}!LED\_Task2@{LED\_Task2}}
+\index{LED\_Task2@{LED\_Task2}!admin.h@{admin.h}}
+\doxysubsubsection{\texorpdfstring{LED\_Task2()}{LED\_Task2()}}
+{\footnotesize\ttfamily \label{admin_8h_aa6578679005e0ded1868835daa8fbede} 
+void LED\+\_\+\+Task2 (\begin{DoxyParamCaption}\item[{void \texorpdfstring{$\ast$}{*}}]{argument}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Tasks die ledjes manipuleren nadat ze eerst afgeschermd zijn met mutex semaphores. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em \texorpdfstring{$\ast$}{*}argument} & Niet gebruikt, eventueel een waarde of string om te testen \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+\Hypertarget{admin_8h_a379c01dd4fb15e45ca6e00a95c761cc7}\index{admin.h@{admin.h}!LED\_Task3@{LED\_Task3}}
+\index{LED\_Task3@{LED\_Task3}!admin.h@{admin.h}}
+\doxysubsubsection{\texorpdfstring{LED\_Task3()}{LED\_Task3()}}
+{\footnotesize\ttfamily \label{admin_8h_a379c01dd4fb15e45ca6e00a95c761cc7} 
+void LED\+\_\+\+Task3 (\begin{DoxyParamCaption}\item[{void \texorpdfstring{$\ast$}{*}}]{argument}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Tasks die ledjes manipuleren nadat ze eerst afgeschermd zijn met mutex semaphores. Task 3 en 4 werken daarnaast nog met tasknotification. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em \texorpdfstring{$\ast$}{*}argument} & Niet gebruikt, eventueel een waarde of string om te testen \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+\Hypertarget{admin_8h_a549798a0f2a6d88c91a8297567a018c1}\index{admin.h@{admin.h}!LED\_Task4@{LED\_Task4}}
+\index{LED\_Task4@{LED\_Task4}!admin.h@{admin.h}}
+\doxysubsubsection{\texorpdfstring{LED\_Task4()}{LED\_Task4()}}
+{\footnotesize\ttfamily \label{admin_8h_a549798a0f2a6d88c91a8297567a018c1} 
+void LED\+\_\+\+Task4 (\begin{DoxyParamCaption}\item[{void \texorpdfstring{$\ast$}{*}}]{argument}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Tasks die ledjes manipuleren nadat ze eerst afgeschermd zijn met mutex semaphores. Task 3 en 4 werken daarnaast nog met tasknotification. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em \texorpdfstring{$\ast$}{*}argument} & Niet gebruikt, eventueel een waarde of string om te testen \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+\Hypertarget{admin_8h_ae101eafad5ce91c38146e960eaed0c50}\index{admin.h@{admin.h}!logWrite@{logWrite}}
+\index{logWrite@{logWrite}!admin.h@{admin.h}}
+\doxysubsubsection{\texorpdfstring{logWrite()}{logWrite()}}
+{\footnotesize\ttfamily \label{admin_8h_ae101eafad5ce91c38146e960eaed0c50} 
+void log\+Write (\begin{DoxyParamCaption}\item[{int}]{type}{, }\item[{void \texorpdfstring{$\ast$}{*}}]{info}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+slaat alle data op in een structure array. Zoals gps data, motor besturing, knoppen die worden ingedrukt. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em type} & bepaalt wat voor data het is en in welk deel van de structure array het moet worden opgeslagen. \\
+\hline
+{\em info} & geeft mee welke info er moet worden opgelagen, bijvoorbeeld een string of float-\/waarde. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Geen waarde(void). 
+\end{DoxyReturn}
+\Hypertarget{admin_8h_a279ae28c1e6a05f0495e2fc3688e4947}\index{admin.h@{admin.h}!ParsedGPS@{ParsedGPS}}
+\index{ParsedGPS@{ParsedGPS}!admin.h@{admin.h}}
+\doxysubsubsection{\texorpdfstring{ParsedGPS()}{ParsedGPS()}}
+{\footnotesize\ttfamily \label{admin_8h_a279ae28c1e6a05f0495e2fc3688e4947} 
+void Parsed\+GPS (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+De chars van de binnengekomen GNRMC-\/string worden in data omgezet, dwz in een GNRMC-\/struct, mbv strtok(); De struct bevat nu alleen chars -\/ je kunt er ook voor kiezen om gelijk met doubles te werken, die je dan met atof(); omzet. 
+
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+\Hypertarget{admin_8h_a2ebdc8837802eba656d049ffab377c30}\index{admin.h@{admin.h}!printLogs@{printLogs}}
+\index{printLogs@{printLogs}!admin.h@{admin.h}}
+\doxysubsubsection{\texorpdfstring{printLogs()}{printLogs()}}
+{\footnotesize\ttfamily \label{admin_8h_a2ebdc8837802eba656d049ffab377c30} 
+void print\+Logs (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+deze functie print alle gegevens die zijn opgelslagen in de Log-\/structure-\/arrray. de hoeveelheid lijnen die moeten worden uitgeprint worden automatisch bepaald voor elke log\+Count. 
+
+\begin{DoxyReturn}{Returns}
+Geen waarde(void). 
+\end{DoxyReturn}
+\Hypertarget{admin_8h_af292f364f4ee621c575f83b5b25fbfc5}\index{admin.h@{admin.h}!ReachWPTask@{ReachWPTask}}
+\index{ReachWPTask@{ReachWPTask}!admin.h@{admin.h}}
+\doxysubsubsection{\texorpdfstring{ReachWPTask()}{ReachWPTask()}}
+{\footnotesize\ttfamily \label{admin_8h_af292f364f4ee621c575f83b5b25fbfc5} 
+void Reach\+WPTask (\begin{DoxyParamCaption}\item[{void \texorpdfstring{$\ast$}{*}}]{argument}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Deze functie wordt gebruikt om te kijken of wij de waypoint bereikt hebben. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em \texorpdfstring{$\ast$}{*}argument} & niet gerbuikt. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+\Hypertarget{admin_8h_ab8ef2480f3b6e8731e14146e47d92a72}\index{admin.h@{admin.h}!returnWaypoints@{returnWaypoints}}
+\index{returnWaypoints@{returnWaypoints}!admin.h@{admin.h}}
+\doxysubsubsection{\texorpdfstring{returnWaypoints()}{returnWaypoints()}}
+{\footnotesize\ttfamily \label{admin_8h_ab8ef2480f3b6e8731e14146e47d92a72} 
+float return\+Waypoints (\begin{DoxyParamCaption}\item[{int}]{point\+Number}{, }\item[{int}]{type}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Wanneer in de terminal \textquotesingle{}W\textquotesingle{} wordt ingetoetst, worden alle opgeslagen waypoints uitgeprint in de terminal. Deze functie kan als debug gebruikt worden. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Point\+Number} & is de waypoint die moet worden uitgeprint. \\
+\hline
+{\em Type} & 1 = latitude, 2 = longitude \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Een float met latitude of longitude waardes afhankelijk van waarde \textquotesingle{}type\textquotesingle{}. 
+\end{DoxyReturn}
+\Hypertarget{admin_8h_a16ba23da293f6f319ffbc502a4cb7d5c}\index{admin.h@{admin.h}!SetTaskPriority@{SetTaskPriority}}
+\index{SetTaskPriority@{SetTaskPriority}!admin.h@{admin.h}}
+\doxysubsubsection{\texorpdfstring{SetTaskPriority()}{SetTaskPriority()}}
+{\footnotesize\ttfamily \label{admin_8h_a16ba23da293f6f319ffbc502a4cb7d5c} 
+void Set\+Task\+Priority (\begin{DoxyParamCaption}\item[{int}]{task\+\_\+id}{, }\item[{int}]{new\+\_\+priority}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Verandert de prioriteit van een taak. Eerst wordt de taak gezocht in de lijst van alle taken (tasks\mbox{[}\mbox{]}) Daarna wordt de priority in de lijst gewijzigd en prioriteit van de taak aangepast. De functie Display\+Task\+Data() toont op de UART het tasknummer dat je nodig hebt. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em task\+\_\+id} & Task identifier \\
+\hline
+{\em new\+\_\+priority} & Nieuwe prioriteit \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+\Hypertarget{admin_8h_a5f8b543f818c13ecb6eaf9452f9a4395}\index{admin.h@{admin.h}!ShowWaypoint@{ShowWaypoint}}
+\index{ShowWaypoint@{ShowWaypoint}!admin.h@{admin.h}}
+\doxysubsubsection{\texorpdfstring{ShowWaypoint()}{ShowWaypoint()}}
+{\footnotesize\ttfamily \label{admin_8h_a5f8b543f818c13ecb6eaf9452f9a4395} 
+void Show\+Waypoint (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Show\+Waypoint wordt gebruikt om te laten zien welk waypoint we naartoe aan het gaan zijn en hoeveel waypoints er totaal zijn. Deze functie wordt aangeroepen door de {\ttfamily ARM-\/keys}. In de functie is een check ingebouwd die kijkt of de functie correct is uitgevoerd. 
+
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+\Hypertarget{admin_8h_a8e72f6787dd96ab06b941f402e994077}\index{admin.h@{admin.h}!SkipWaypoint@{SkipWaypoint}}
+\index{SkipWaypoint@{SkipWaypoint}!admin.h@{admin.h}}
+\doxysubsubsection{\texorpdfstring{SkipWaypoint()}{SkipWaypoint()}}
+{\footnotesize\ttfamily \label{admin_8h_a8e72f6787dd96ab06b941f402e994077} 
+int Skip\+Waypoint (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Skip\+Waypoint wordt gebruikt om een waypoint over te slaan. Deze functie wordt aangeroepen door de {\ttfamily ARM-\/keys}. In de functie is een check ingebouwd die kijkt of de functie correct is uitgevoerd. 
+
+\begin{DoxyReturn}{Returns}
+1 = waypoint behaald, verhoog {\ttfamily Current\+Waypoint} met 1 voor volgende waypoint. 0 = waypoint nog niet bereikt. 
+\end{DoxyReturn}
+\Hypertarget{admin_8h_a0c9aab30edaac2fecc7fd1c21f5763a2}\index{admin.h@{admin.h}!StartStopTask@{StartStopTask}}
+\index{StartStopTask@{StartStopTask}!admin.h@{admin.h}}
+\doxysubsubsection{\texorpdfstring{StartStopTask()}{StartStopTask()}}
+{\footnotesize\ttfamily \label{admin_8h_a0c9aab30edaac2fecc7fd1c21f5763a2} 
+void Start\+Stop\+Task (\begin{DoxyParamCaption}\item[{int}]{task\+\_\+id}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Suspends (stopt) of Resumes (start) een task. Pas op. Als een task suspended wordt als hij een mutex bezet houdt blokkeer je alle tasks die op die mutex wachten. En als je de task stopt die de UART leest, schiet je jezelf ook in de voet. 
+
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+\Hypertarget{admin_8h_a23fe84bfb739ead3f3005b8378170b62}\index{admin.h@{admin.h}!Student\_task1@{Student\_task1}}
+\index{Student\_task1@{Student\_task1}!admin.h@{admin.h}}
+\doxysubsubsection{\texorpdfstring{Student\_task1()}{Student\_task1()}}
+{\footnotesize\ttfamily \label{admin_8h_a23fe84bfb739ead3f3005b8378170b62} 
+void Student\+\_\+task1 (\begin{DoxyParamCaption}\item[{void \texorpdfstring{$\ast$}{*}}]{argument}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Oefentask voor studenten. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em argument,kan} & evt vanuit tasks gebruikt worden \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+\Hypertarget{admin_8h_a96c9e7d4608bbcbb1f89460ea7d8da6f}\index{admin.h@{admin.h}!Timer1\_Handler@{Timer1\_Handler}}
+\index{Timer1\_Handler@{Timer1\_Handler}!admin.h@{admin.h}}
+\doxysubsubsection{\texorpdfstring{Timer1\_Handler()}{Timer1\_Handler()}}
+{\footnotesize\ttfamily \label{admin_8h_a96c9e7d4608bbcbb1f89460ea7d8da6f} 
+void Timer1\+\_\+\+Handler (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Vangt de Free\+RTOS software-\/interrupt op en toggelt een ledje. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em h\+Timer1} & De handle van de timer \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+\Hypertarget{admin_8h_af42059fd155a512774c89e7fc38bc03c}\index{admin.h@{admin.h}!UART\_keys\_IRQ@{UART\_keys\_IRQ}}
+\index{UART\_keys\_IRQ@{UART\_keys\_IRQ}!admin.h@{admin.h}}
+\doxysubsubsection{\texorpdfstring{UART\_keys\_IRQ()}{UART\_keys\_IRQ()}}
+{\footnotesize\ttfamily \label{admin_8h_af42059fd155a512774c89e7fc38bc03c} 
+void UART\+\_\+keys\+\_\+\+IRQ (\begin{DoxyParamCaption}\item[{void \texorpdfstring{$\ast$}{*}}]{argument}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Leest characters in die de gebruiker via Terminalprogramma intikt. 
+
+
+\begin{DoxyEnumerate}
+\item wacht op chars in queue, gevuld door de IRQ\+\_\+handler (\doxylink{main_8c}{main.\+c})
+\item notifies/stuurt command-\/string naar andere task 
+\begin{DoxyParams}{Parameters}
+{\em \texorpdfstring{$\ast$}{*}argument} & Niet gebruikt, eventueel een waarde of string om te testen \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+
+\end{DoxyEnumerate}\Hypertarget{admin_8h_a390831b4b34c463c81b188d9973d2a52}\index{admin.h@{admin.h}!UART\_keys\_poll@{UART\_keys\_poll}}
+\index{UART\_keys\_poll@{UART\_keys\_poll}!admin.h@{admin.h}}
+\doxysubsubsection{\texorpdfstring{UART\_keys\_poll()}{UART\_keys\_poll()}}
+{\footnotesize\ttfamily \label{admin_8h_a390831b4b34c463c81b188d9973d2a52} 
+void UART\+\_\+keys\+\_\+poll (\begin{DoxyParamCaption}\item[{void \texorpdfstring{$\ast$}{*}}]{argument}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+deze waarde kan hier veranderd worden. 
+
+Polt en leest characters in die de gebruiker via Terminalprogramma intikt.
+\begin{DoxyEnumerate}
+\item leest characters van uart
+\item notifies command-\/string naar andere task 
+\begin{DoxyParams}{Parameters}
+{\em \texorpdfstring{$\ast$}{*}argument} & Niet gebruikt, eventueel een waarde of string om te testen \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+
+\end{DoxyEnumerate}\Hypertarget{admin_8h_af909ca669055035da2246051d81ae747}\index{admin.h@{admin.h}!UART\_menu@{UART\_menu}}
+\index{UART\_menu@{UART\_menu}!admin.h@{admin.h}}
+\doxysubsubsection{\texorpdfstring{UART\_menu()}{UART\_menu()}}
+{\footnotesize\ttfamily \label{admin_8h_af909ca669055035da2246051d81ae747} 
+void UART\+\_\+menu (\begin{DoxyParamCaption}\item[{void \texorpdfstring{$\ast$}{*}}]{argument}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+User Interface. De task wacht op kant en klare user-\/strings (Task\+Notify\+Take) van ISR-\/handler, en interpreteert de string. Het eerste character geeft het hoofd-\/commando aan. Afhankelijk van het commando worden opvolgende chars geinterpreteerd. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em \texorpdfstring{$\ast$}{*}argument} & Niet gebruikt, eventueel een waarde of string om te testen \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+{\bfseries{0 -\/ 5}}\+: Togglet verschillende debug-\/outputs naar UART
+
+... en reageert ook op een paar letters
+
+D\+: Verandert de Default OSTIME-\/\+DELAY, die gebruikt wordt bij de LEDs. commando\+: {\bfseries{"{}d,200"{}}} betekent\+: set delay op 200, NB\+: spaties worden niet afgevangen...
+
+M\+: Displays het menu (zie my\+\_\+app.\+c)
+
+T\+: Displays de stackdata van alle Tasks
+
+P\+: Verandert de Prioriteit van een taak commando, als\+: {\bfseries{"{}t,9,20"{}}} betekent\+: set Task 9 op priority 20
+
+S\+: Start/\+Stop task commando, als\+: {\bfseries{"{}s,9"{}}} betekent\+: start/stop Task 9
+
+W\+: Show waypoint data
+
+H\+: Debug history output
+
+C\+: Verandert huidige waypoint commando, als\+: {\bfseries{"{}c,4"{}}} betekent\+: Set waypoint naar 4
+
+R\+: Registreer een waypoint met de huidige gps data
+
+G\+: Print de parsed gps structre
+
+\label{doc-var-members}
+\Hypertarget{admin_8h_doc-var-members}
+\doxysubsection{Variable Documentation}
+\Hypertarget{admin_8h_a77d12f838c966d96a18a31e503b7955c}\index{admin.h@{admin.h}!hGPS\_Queue@{hGPS\_Queue}}
+\index{hGPS\_Queue@{hGPS\_Queue}!admin.h@{admin.h}}
+\doxysubsubsection{\texorpdfstring{hGPS\_Queue}{hGPS\_Queue}}
+{\footnotesize\ttfamily \label{admin_8h_a77d12f838c966d96a18a31e503b7955c} 
+Queue\+Handle\+\_\+t h\+GPS\+\_\+\+Queue\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+handle voor GPS-\/queue 
+
+handle voor GPS-\/queue \Hypertarget{admin_8h_a011b1349f4d8c02977b852c7587f0581}\index{admin.h@{admin.h}!hLED\_Sem@{hLED\_Sem}}
+\index{hLED\_Sem@{hLED\_Sem}!admin.h@{admin.h}}
+\doxysubsubsection{\texorpdfstring{hLED\_Sem}{hLED\_Sem}}
+{\footnotesize\ttfamily \label{admin_8h_a011b1349f4d8c02977b852c7587f0581} 
+Semaphore\+Handle\+\_\+t h\+LED\+\_\+\+Sem\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+handle voor LED-\/mutex 
+
+handle voor LED-\/mutex \Hypertarget{admin_8h_a1db415a0f7c5ecff145e4bb53cc54dbe}\index{admin.h@{admin.h}!hUART\_Queue@{hUART\_Queue}}
+\index{hUART\_Queue@{hUART\_Queue}!admin.h@{admin.h}}
+\doxysubsubsection{\texorpdfstring{hUART\_Queue}{hUART\_Queue}}
+{\footnotesize\ttfamily \label{admin_8h_a1db415a0f7c5ecff145e4bb53cc54dbe} 
+Queue\+Handle\+\_\+t h\+UART\+\_\+\+Queue\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+typedefs of struct itself and pointer to it 
+
+alle handles handle voor UART-\/queue \Hypertarget{admin_8h_a952449da34b356e2651de547daf4312c}\index{admin.h@{admin.h}!Uart\_debug\_out@{Uart\_debug\_out}}
+\index{Uart\_debug\_out@{Uart\_debug\_out}!admin.h@{admin.h}}
+\doxysubsubsection{\texorpdfstring{Uart\_debug\_out}{Uart\_debug\_out}}
+{\footnotesize\ttfamily \label{admin_8h_a952449da34b356e2651de547daf4312c} 
+int Uart\+\_\+debug\+\_\+out\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+default\+: debug all output to uart 
+
+debug naar uart output, zie \doxylink{_u_a_r_t__keys_8c}{uart\+\_\+keys.\+c} bitmask-\/toggle key voor task-\/debug-\/output 

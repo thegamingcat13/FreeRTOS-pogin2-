@@ -1,0 +1,139 @@
+\doxysection{\+\_\+\+\_\+\+I2\+S\+\_\+\+Handle\+Type\+Def Struct Reference}
+\hypertarget{struct_____i2_s___handle_type_def}{}\label{struct_____i2_s___handle_type_def}\index{\_\_I2S\_HandleTypeDef@{\_\_I2S\_HandleTypeDef}}
+
+
+I2S handle Structure definition.  
+
+
+
+
+{\ttfamily \#include $<$stm32f4xx\+\_\+hal\+\_\+i2s.\+h$>$}
+
+\doxysubsubsection*{Data Fields}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{struct_s_p_i___type_def}{SPI\+\_\+\+Type\+Def}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{struct_____i2_s___handle_type_def_aa5c715deaf693cc2dbfa90f40681ee1d}{Instance}}
+\item 
+\mbox{\hyperlink{struct_i2_s___init_type_def}{I2\+S\+\_\+\+Init\+Type\+Def}} \mbox{\hyperlink{struct_____i2_s___handle_type_def_a578c0cfc11e016a6ea29e052a9f652c7}{Init}}
+\item 
+uint16\+\_\+t \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{struct_____i2_s___handle_type_def_a18ef962d60fea84ef86146de2f90d883}{p\+Tx\+Buff\+Ptr}}
+\item 
+\mbox{\hyperlink{core__armv81mml_8h_aec43007d9998a0a0e01faede4133d6be}{\+\_\+\+\_\+\+IO}} uint16\+\_\+t \mbox{\hyperlink{struct_____i2_s___handle_type_def_a1d38bf13df64f7bd58b6722b1fd8c2ab}{Tx\+Xfer\+Size}}
+\item 
+\mbox{\hyperlink{core__armv81mml_8h_aec43007d9998a0a0e01faede4133d6be}{\+\_\+\+\_\+\+IO}} uint16\+\_\+t \mbox{\hyperlink{struct_____i2_s___handle_type_def_a1823437fbed80bdd1510782ced4e5532}{Tx\+Xfer\+Count}}
+\item 
+uint16\+\_\+t \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{struct_____i2_s___handle_type_def_a5d6fc2bd3b9dae2d28fb939b32867a77}{p\+Rx\+Buff\+Ptr}}
+\item 
+\mbox{\hyperlink{core__armv81mml_8h_aec43007d9998a0a0e01faede4133d6be}{\+\_\+\+\_\+\+IO}} uint16\+\_\+t \mbox{\hyperlink{struct_____i2_s___handle_type_def_a0c194e8f6f444cce318dbd261e1d8ba4}{Rx\+Xfer\+Size}}
+\item 
+\mbox{\hyperlink{core__armv81mml_8h_aec43007d9998a0a0e01faede4133d6be}{\+\_\+\+\_\+\+IO}} uint16\+\_\+t \mbox{\hyperlink{struct_____i2_s___handle_type_def_ad95a26d6b12b7087bba3d1b769175db2}{Rx\+Xfer\+Count}}
+\item 
+void(\texorpdfstring{$\ast$}{*} \mbox{\hyperlink{struct_____i2_s___handle_type_def_aed7b18dc763064a4e581ee381b38dc2d}{Irq\+Handler\+ISR}} )(struct \mbox{\hyperlink{struct_____i2_s___handle_type_def}{\+\_\+\+\_\+\+I2\+S\+\_\+\+Handle\+Type\+Def}} \texorpdfstring{$\ast$}{*}hi2s)
+\item 
+\mbox{\hyperlink{group___d_m_a___exported___types_ga41b754a906b86bce54dc79938970138b}{DMA\+\_\+\+Handle\+Type\+Def}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{struct_____i2_s___handle_type_def_a33e13c28b1a70e6164417abb026d7a22}{hdmatx}}
+\item 
+\mbox{\hyperlink{group___d_m_a___exported___types_ga41b754a906b86bce54dc79938970138b}{DMA\+\_\+\+Handle\+Type\+Def}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{struct_____i2_s___handle_type_def_abd0aeec20298a55d89a440320e35634f}{hdmarx}}
+\item 
+\mbox{\hyperlink{core__armv81mml_8h_aec43007d9998a0a0e01faede4133d6be}{\+\_\+\+\_\+\+IO}} \mbox{\hyperlink{stm32f4xx__hal__def_8h_ab367482e943333a1299294eadaad284b}{HAL\+\_\+\+Lock\+Type\+Def}} \mbox{\hyperlink{struct_____i2_s___handle_type_def_a2fcaf7965ee94947d34e5dc6eb75c313}{Lock}}
+\item 
+\mbox{\hyperlink{core__armv81mml_8h_aec43007d9998a0a0e01faede4133d6be}{\+\_\+\+\_\+\+IO}} \mbox{\hyperlink{group___i2_s___exported___types_ga2588a0c71baf7cd6d2c1b9b11120bef0}{HAL\+\_\+\+I2\+S\+\_\+\+State\+Type\+Def}} \mbox{\hyperlink{struct_____i2_s___handle_type_def_af312c98864464dac5591cbfe1b32bde3}{State}}
+\item 
+\mbox{\hyperlink{core__armv81mml_8h_aec43007d9998a0a0e01faede4133d6be}{\+\_\+\+\_\+\+IO}} uint32\+\_\+t \mbox{\hyperlink{struct_____i2_s___handle_type_def_a123c5063e6a3b1901b2fbe5f88c53a7e}{Error\+Code}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+I2S handle Structure definition. 
+
+\label{doc-variable-members}
+\Hypertarget{struct_____i2_s___handle_type_def_doc-variable-members}
+\doxysubsection{Field Documentation}
+\Hypertarget{struct_____i2_s___handle_type_def_a123c5063e6a3b1901b2fbe5f88c53a7e}\index{\_\_I2S\_HandleTypeDef@{\_\_I2S\_HandleTypeDef}!ErrorCode@{ErrorCode}}
+\index{ErrorCode@{ErrorCode}!\_\_I2S\_HandleTypeDef@{\_\_I2S\_HandleTypeDef}}
+\doxysubsubsection{\texorpdfstring{ErrorCode}{ErrorCode}}
+{\footnotesize\ttfamily \label{struct_____i2_s___handle_type_def_a123c5063e6a3b1901b2fbe5f88c53a7e} 
+\mbox{\hyperlink{core__armv81mml_8h_aec43007d9998a0a0e01faede4133d6be}{\+\_\+\+\_\+\+IO}} uint32\+\_\+t Error\+Code}
+
+I2S Error code This parameter can be a value of \doxylink{group___i2_s___error}{I2S Error} \Hypertarget{struct_____i2_s___handle_type_def_abd0aeec20298a55d89a440320e35634f}\index{\_\_I2S\_HandleTypeDef@{\_\_I2S\_HandleTypeDef}!hdmarx@{hdmarx}}
+\index{hdmarx@{hdmarx}!\_\_I2S\_HandleTypeDef@{\_\_I2S\_HandleTypeDef}}
+\doxysubsubsection{\texorpdfstring{hdmarx}{hdmarx}}
+{\footnotesize\ttfamily \label{struct_____i2_s___handle_type_def_abd0aeec20298a55d89a440320e35634f} 
+\mbox{\hyperlink{group___d_m_a___exported___types_ga41b754a906b86bce54dc79938970138b}{DMA\+\_\+\+Handle\+Type\+Def}}\texorpdfstring{$\ast$}{*} hdmarx}
+
+I2S Rx DMA handle parameters \Hypertarget{struct_____i2_s___handle_type_def_a33e13c28b1a70e6164417abb026d7a22}\index{\_\_I2S\_HandleTypeDef@{\_\_I2S\_HandleTypeDef}!hdmatx@{hdmatx}}
+\index{hdmatx@{hdmatx}!\_\_I2S\_HandleTypeDef@{\_\_I2S\_HandleTypeDef}}
+\doxysubsubsection{\texorpdfstring{hdmatx}{hdmatx}}
+{\footnotesize\ttfamily \label{struct_____i2_s___handle_type_def_a33e13c28b1a70e6164417abb026d7a22} 
+\mbox{\hyperlink{group___d_m_a___exported___types_ga41b754a906b86bce54dc79938970138b}{DMA\+\_\+\+Handle\+Type\+Def}}\texorpdfstring{$\ast$}{*} hdmatx}
+
+I2S Tx DMA handle parameters \Hypertarget{struct_____i2_s___handle_type_def_a578c0cfc11e016a6ea29e052a9f652c7}\index{\_\_I2S\_HandleTypeDef@{\_\_I2S\_HandleTypeDef}!Init@{Init}}
+\index{Init@{Init}!\_\_I2S\_HandleTypeDef@{\_\_I2S\_HandleTypeDef}}
+\doxysubsubsection{\texorpdfstring{Init}{Init}}
+{\footnotesize\ttfamily \label{struct_____i2_s___handle_type_def_a578c0cfc11e016a6ea29e052a9f652c7} 
+\mbox{\hyperlink{struct_i2_s___init_type_def}{I2\+S\+\_\+\+Init\+Type\+Def}} Init}
+
+I2S communication parameters \Hypertarget{struct_____i2_s___handle_type_def_aa5c715deaf693cc2dbfa90f40681ee1d}\index{\_\_I2S\_HandleTypeDef@{\_\_I2S\_HandleTypeDef}!Instance@{Instance}}
+\index{Instance@{Instance}!\_\_I2S\_HandleTypeDef@{\_\_I2S\_HandleTypeDef}}
+\doxysubsubsection{\texorpdfstring{Instance}{Instance}}
+{\footnotesize\ttfamily \label{struct_____i2_s___handle_type_def_aa5c715deaf693cc2dbfa90f40681ee1d} 
+\mbox{\hyperlink{struct_s_p_i___type_def}{SPI\+\_\+\+Type\+Def}}\texorpdfstring{$\ast$}{*} Instance}
+
+I2S registers base address \Hypertarget{struct_____i2_s___handle_type_def_aed7b18dc763064a4e581ee381b38dc2d}\index{\_\_I2S\_HandleTypeDef@{\_\_I2S\_HandleTypeDef}!IrqHandlerISR@{IrqHandlerISR}}
+\index{IrqHandlerISR@{IrqHandlerISR}!\_\_I2S\_HandleTypeDef@{\_\_I2S\_HandleTypeDef}}
+\doxysubsubsection{\texorpdfstring{IrqHandlerISR}{IrqHandlerISR}}
+{\footnotesize\ttfamily \label{struct_____i2_s___handle_type_def_aed7b18dc763064a4e581ee381b38dc2d} 
+void(\texorpdfstring{$\ast$}{*} Irq\+Handler\+ISR) (struct \mbox{\hyperlink{struct_____i2_s___handle_type_def}{\+\_\+\+\_\+\+I2\+S\+\_\+\+Handle\+Type\+Def}} \texorpdfstring{$\ast$}{*}hi2s)}
+
+I2S function pointer on Irq\+Handler \Hypertarget{struct_____i2_s___handle_type_def_a2fcaf7965ee94947d34e5dc6eb75c313}\index{\_\_I2S\_HandleTypeDef@{\_\_I2S\_HandleTypeDef}!Lock@{Lock}}
+\index{Lock@{Lock}!\_\_I2S\_HandleTypeDef@{\_\_I2S\_HandleTypeDef}}
+\doxysubsubsection{\texorpdfstring{Lock}{Lock}}
+{\footnotesize\ttfamily \label{struct_____i2_s___handle_type_def_a2fcaf7965ee94947d34e5dc6eb75c313} 
+\mbox{\hyperlink{core__armv81mml_8h_aec43007d9998a0a0e01faede4133d6be}{\+\_\+\+\_\+\+IO}} \mbox{\hyperlink{stm32f4xx__hal__def_8h_ab367482e943333a1299294eadaad284b}{HAL\+\_\+\+Lock\+Type\+Def}} Lock}
+
+I2S locking object \Hypertarget{struct_____i2_s___handle_type_def_a5d6fc2bd3b9dae2d28fb939b32867a77}\index{\_\_I2S\_HandleTypeDef@{\_\_I2S\_HandleTypeDef}!pRxBuffPtr@{pRxBuffPtr}}
+\index{pRxBuffPtr@{pRxBuffPtr}!\_\_I2S\_HandleTypeDef@{\_\_I2S\_HandleTypeDef}}
+\doxysubsubsection{\texorpdfstring{pRxBuffPtr}{pRxBuffPtr}}
+{\footnotesize\ttfamily \label{struct_____i2_s___handle_type_def_a5d6fc2bd3b9dae2d28fb939b32867a77} 
+uint16\+\_\+t\texorpdfstring{$\ast$}{*} p\+Rx\+Buff\+Ptr}
+
+Pointer to I2S Rx transfer buffer \Hypertarget{struct_____i2_s___handle_type_def_a18ef962d60fea84ef86146de2f90d883}\index{\_\_I2S\_HandleTypeDef@{\_\_I2S\_HandleTypeDef}!pTxBuffPtr@{pTxBuffPtr}}
+\index{pTxBuffPtr@{pTxBuffPtr}!\_\_I2S\_HandleTypeDef@{\_\_I2S\_HandleTypeDef}}
+\doxysubsubsection{\texorpdfstring{pTxBuffPtr}{pTxBuffPtr}}
+{\footnotesize\ttfamily \label{struct_____i2_s___handle_type_def_a18ef962d60fea84ef86146de2f90d883} 
+uint16\+\_\+t\texorpdfstring{$\ast$}{*} p\+Tx\+Buff\+Ptr}
+
+Pointer to I2S Tx transfer buffer \Hypertarget{struct_____i2_s___handle_type_def_ad95a26d6b12b7087bba3d1b769175db2}\index{\_\_I2S\_HandleTypeDef@{\_\_I2S\_HandleTypeDef}!RxXferCount@{RxXferCount}}
+\index{RxXferCount@{RxXferCount}!\_\_I2S\_HandleTypeDef@{\_\_I2S\_HandleTypeDef}}
+\doxysubsubsection{\texorpdfstring{RxXferCount}{RxXferCount}}
+{\footnotesize\ttfamily \label{struct_____i2_s___handle_type_def_ad95a26d6b12b7087bba3d1b769175db2} 
+\mbox{\hyperlink{core__armv81mml_8h_aec43007d9998a0a0e01faede4133d6be}{\+\_\+\+\_\+\+IO}} uint16\+\_\+t Rx\+Xfer\+Count}
+
+I2S Rx transfer counter (This field is initialized at the same value as transfer size at the beginning of the transfer and decremented when a sample is received Nb\+Samples\+Received = Rx\+Buffer\+Size-\/\+Rx\+Buffer\+Count) \Hypertarget{struct_____i2_s___handle_type_def_a0c194e8f6f444cce318dbd261e1d8ba4}\index{\_\_I2S\_HandleTypeDef@{\_\_I2S\_HandleTypeDef}!RxXferSize@{RxXferSize}}
+\index{RxXferSize@{RxXferSize}!\_\_I2S\_HandleTypeDef@{\_\_I2S\_HandleTypeDef}}
+\doxysubsubsection{\texorpdfstring{RxXferSize}{RxXferSize}}
+{\footnotesize\ttfamily \label{struct_____i2_s___handle_type_def_a0c194e8f6f444cce318dbd261e1d8ba4} 
+\mbox{\hyperlink{core__armv81mml_8h_aec43007d9998a0a0e01faede4133d6be}{\+\_\+\+\_\+\+IO}} uint16\+\_\+t Rx\+Xfer\+Size}
+
+I2S Rx transfer size \Hypertarget{struct_____i2_s___handle_type_def_af312c98864464dac5591cbfe1b32bde3}\index{\_\_I2S\_HandleTypeDef@{\_\_I2S\_HandleTypeDef}!State@{State}}
+\index{State@{State}!\_\_I2S\_HandleTypeDef@{\_\_I2S\_HandleTypeDef}}
+\doxysubsubsection{\texorpdfstring{State}{State}}
+{\footnotesize\ttfamily \label{struct_____i2_s___handle_type_def_af312c98864464dac5591cbfe1b32bde3} 
+\mbox{\hyperlink{core__armv81mml_8h_aec43007d9998a0a0e01faede4133d6be}{\+\_\+\+\_\+\+IO}} \mbox{\hyperlink{group___i2_s___exported___types_ga2588a0c71baf7cd6d2c1b9b11120bef0}{HAL\+\_\+\+I2\+S\+\_\+\+State\+Type\+Def}} State}
+
+I2S communication state \Hypertarget{struct_____i2_s___handle_type_def_a1823437fbed80bdd1510782ced4e5532}\index{\_\_I2S\_HandleTypeDef@{\_\_I2S\_HandleTypeDef}!TxXferCount@{TxXferCount}}
+\index{TxXferCount@{TxXferCount}!\_\_I2S\_HandleTypeDef@{\_\_I2S\_HandleTypeDef}}
+\doxysubsubsection{\texorpdfstring{TxXferCount}{TxXferCount}}
+{\footnotesize\ttfamily \label{struct_____i2_s___handle_type_def_a1823437fbed80bdd1510782ced4e5532} 
+\mbox{\hyperlink{core__armv81mml_8h_aec43007d9998a0a0e01faede4133d6be}{\+\_\+\+\_\+\+IO}} uint16\+\_\+t Tx\+Xfer\+Count}
+
+I2S Tx transfer Counter \Hypertarget{struct_____i2_s___handle_type_def_a1d38bf13df64f7bd58b6722b1fd8c2ab}\index{\_\_I2S\_HandleTypeDef@{\_\_I2S\_HandleTypeDef}!TxXferSize@{TxXferSize}}
+\index{TxXferSize@{TxXferSize}!\_\_I2S\_HandleTypeDef@{\_\_I2S\_HandleTypeDef}}
+\doxysubsubsection{\texorpdfstring{TxXferSize}{TxXferSize}}
+{\footnotesize\ttfamily \label{struct_____i2_s___handle_type_def_a1d38bf13df64f7bd58b6722b1fd8c2ab} 
+\mbox{\hyperlink{core__armv81mml_8h_aec43007d9998a0a0e01faede4133d6be}{\+\_\+\+\_\+\+IO}} uint16\+\_\+t Tx\+Xfer\+Size}
+
+I2S Tx transfer size 
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Drivers/\+STM32\+F4xx\+\_\+\+HAL\+\_\+\+Driver/\+Inc/\mbox{\hyperlink{stm32f4xx__hal__i2s_8h}{stm32f4xx\+\_\+hal\+\_\+i2s.\+h}}\end{DoxyCompactItemize}

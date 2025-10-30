@@ -1,0 +1,348 @@
+\doxysection{Middlewares/\+ST/\+STM32\+\_\+\+USB\+\_\+\+Host\+\_\+\+Library/\+Core/\+Inc/usbh\+\_\+def.h File Reference}
+\hypertarget{usbh__def_8h}{}\label{usbh__def_8h}\index{Middlewares/ST/STM32\_USB\_Host\_Library/Core/Inc/usbh\_def.h@{Middlewares/ST/STM32\_USB\_Host\_Library/Core/Inc/usbh\_def.h}}
+
+
+Definitions used in the USB host library.  
+
+
+{\ttfamily \#include "{}usbh\+\_\+conf.\+h"{}}\newline
+\doxysubsubsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+union \mbox{\hyperlink{unionuint16__t__uint8__t}{uint16\+\_\+t\+\_\+uint8\+\_\+t}}
+\item 
+struct \mbox{\hyperlink{structuint16__t__uint8__t_1_1_b_w}{uint16\+\_\+t\+\_\+uint8\+\_\+t\+::\+BW}}
+\item 
+union \mbox{\hyperlink{union___u_s_b___setup}{\+\_\+\+USB\+\_\+\+Setup}}
+\item 
+struct \mbox{\hyperlink{struct___u_s_b___setup_1_1___setup_pkt___struc}{\+\_\+\+USB\+\_\+\+Setup\+::\+\_\+\+Setup\+Pkt\+\_\+\+Struc}}
+\item 
+struct \mbox{\hyperlink{struct___desc_header}{\+\_\+\+Desc\+Header}}
+\item 
+struct \mbox{\hyperlink{struct___device_descriptor}{\+\_\+\+Device\+Descriptor}}
+\item 
+struct \mbox{\hyperlink{struct___endpoint_descriptor}{\+\_\+\+Endpoint\+Descriptor}}
+\item 
+struct \mbox{\hyperlink{struct___interface_descriptor}{\+\_\+\+Interface\+Descriptor}}
+\item 
+struct \mbox{\hyperlink{struct___configuration_descriptor}{\+\_\+\+Configuration\+Descriptor}}
+\item 
+struct \mbox{\hyperlink{struct_u_s_b_h___ctrl_type_def}{USBH\+\_\+\+Ctrl\+Type\+Def}}
+\item 
+struct \mbox{\hyperlink{struct_u_s_b_h___device_type_def}{USBH\+\_\+\+Device\+Type\+Def}}
+\item 
+struct \mbox{\hyperlink{struct_u_s_b_h___class_type_def}{USBH\+\_\+\+Class\+Type\+Def}}
+\item 
+struct \mbox{\hyperlink{struct___u_s_b_h___handle_type_def}{\+\_\+\+USBH\+\_\+\+Handle\+Type\+Def}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define {\bfseries NULL}~0U
+\item 
+\#define {\bfseries FALSE}~0U
+\item 
+\#define {\bfseries TRUE}~1U
+\item 
+\#define {\bfseries USBH\+\_\+\+DEV\+\_\+\+RESET\+\_\+\+TIMEOUT}~1000U
+\item 
+\#define \mbox{\hyperlink{group___u_s_b_h___d_e_f_ga27d59a58fd971ab8309c6744057c72e2}{Val\+Bit}}(VAR,  POS)
+\item 
+\#define \mbox{\hyperlink{group___u_s_b_h___d_e_f_gab3343f204ad3d870d31c76fc13e150a3}{Set\+Bit}}(VAR,  POS)
+\item 
+\#define \mbox{\hyperlink{group___u_s_b_h___d_e_f_ga063fe8c4c648bed15887ed1efdf721f9}{Clr\+Bit}}(VAR,  POS)
+\item 
+\#define \mbox{\hyperlink{group___u_s_b_h___d_e_f_ga3acffbd305ee72dcd4593c0d8af64a4f}{MIN}}(a,  b)
+\item 
+\#define \mbox{\hyperlink{group___u_s_b_h___d_e_f_gafa99ec4acc4ecb2dc3c2d05da15d0e3f}{MAX}}(a,  b)
+\item 
+\#define \mbox{\hyperlink{group___u_s_b_h___d_e_f_ga2eec44f823cba5a691d04eaf6454352b}{LE16}}(addr)
+\item 
+\#define \mbox{\hyperlink{group___u_s_b_h___d_e_f_gafeb4f141b96dd0a22e5333eb645b2822}{LE24}}(addr)
+\item 
+\#define \mbox{\hyperlink{group___u_s_b_h___d_e_f_gabd9ff0f2f7eaf4a79259859e054f8411}{LE32}}(addr)
+\item 
+\#define \mbox{\hyperlink{group___u_s_b_h___d_e_f_gaf7e2101398a8c966afd75287727e5b59}{LE64}}(addr)
+\item 
+\#define \mbox{\hyperlink{group___u_s_b_h___d_e_f_gaddfdf1deba6c72c6d3184d225f3889ec}{LE16S}}(addr)
+\item 
+\#define \mbox{\hyperlink{group___u_s_b_h___d_e_f_ga20e760b82ab606bbc52f53e7daac7bdb}{LE24S}}(addr)
+\item 
+\#define \mbox{\hyperlink{group___u_s_b_h___d_e_f_ga1433f85ffae8f486f4573a10c98ecb60}{LE32S}}(addr)
+\item 
+\#define \mbox{\hyperlink{group___u_s_b_h___d_e_f_ga7d75790600e1140c1be7cc92317a3826}{LE64S}}(addr)
+\item 
+\#define {\bfseries USBH\+\_\+\+MAX\+\_\+\+DATA\+\_\+\+BUFFER}~0x400U
+\item 
+\#define {\bfseries USBH\+\_\+\+MAX\+\_\+\+EP\+\_\+\+PACKET\+\_\+\+SIZE}~0x400U
+\item 
+\#define {\bfseries USB\+\_\+\+LEN\+\_\+\+DESC\+\_\+\+HDR}~0x02U
+\item 
+\#define {\bfseries USB\+\_\+\+LEN\+\_\+\+DEV\+\_\+\+DESC}~0x12U
+\item 
+\#define {\bfseries USB\+\_\+\+LEN\+\_\+\+CFG\+\_\+\+DESC}~0x09U
+\item 
+\#define {\bfseries USB\+\_\+\+LEN\+\_\+\+IF\+\_\+\+DESC}~0x09U
+\item 
+\#define {\bfseries USB\+\_\+\+LEN\+\_\+\+EP\+\_\+\+DESC}~0x07U
+\item 
+\#define {\bfseries USB\+\_\+\+LEN\+\_\+\+OTG\+\_\+\+DESC}~0x03U
+\item 
+\#define {\bfseries USB\+\_\+\+LEN\+\_\+\+SETUP\+\_\+\+PKT}~0x08U
+\item 
+\#define {\bfseries USB\+\_\+\+REQ\+\_\+\+DIR\+\_\+\+MASK}~0x80U
+\item 
+\#define {\bfseries USB\+\_\+\+H2D}~0x00U
+\item 
+\#define {\bfseries USB\+\_\+\+D2H}~0x80U
+\item 
+\#define {\bfseries USB\+\_\+\+REQ\+\_\+\+TYPE\+\_\+\+STANDARD}~0x00U
+\item 
+\#define {\bfseries USB\+\_\+\+REQ\+\_\+\+TYPE\+\_\+\+CLASS}~0x20U
+\item 
+\#define {\bfseries USB\+\_\+\+REQ\+\_\+\+TYPE\+\_\+\+VENDOR}~0x40U
+\item 
+\#define {\bfseries USB\+\_\+\+REQ\+\_\+\+TYPE\+\_\+\+RESERVED}~0x60U
+\item 
+\#define {\bfseries USB\+\_\+\+REQ\+\_\+\+RECIPIENT\+\_\+\+DEVICE}~0x00U
+\item 
+\#define {\bfseries USB\+\_\+\+REQ\+\_\+\+RECIPIENT\+\_\+\+INTERFACE}~0x01U
+\item 
+\#define {\bfseries USB\+\_\+\+REQ\+\_\+\+RECIPIENT\+\_\+\+ENDPOINT}~0x02U
+\item 
+\#define {\bfseries USB\+\_\+\+REQ\+\_\+\+RECIPIENT\+\_\+\+OTHER}~0x03U
+\item 
+\#define {\bfseries USB\+\_\+\+REQ\+\_\+\+GET\+\_\+\+STATUS}~0x00U
+\item 
+\#define {\bfseries USB\+\_\+\+REQ\+\_\+\+CLEAR\+\_\+\+FEATURE}~0x01U
+\item 
+\#define {\bfseries USB\+\_\+\+REQ\+\_\+\+SET\+\_\+\+FEATURE}~0x03U
+\item 
+\#define {\bfseries USB\+\_\+\+REQ\+\_\+\+SET\+\_\+\+ADDRESS}~0x05U
+\item 
+\#define {\bfseries USB\+\_\+\+REQ\+\_\+\+GET\+\_\+\+DESCRIPTOR}~0x06U
+\item 
+\#define {\bfseries USB\+\_\+\+REQ\+\_\+\+SET\+\_\+\+DESCRIPTOR}~0x07U
+\item 
+\#define {\bfseries USB\+\_\+\+REQ\+\_\+\+GET\+\_\+\+CONFIGURATION}~0x08U
+\item 
+\#define {\bfseries USB\+\_\+\+REQ\+\_\+\+SET\+\_\+\+CONFIGURATION}~0x09U
+\item 
+\#define {\bfseries USB\+\_\+\+REQ\+\_\+\+GET\+\_\+\+INTERFACE}~0x0\+AU
+\item 
+\#define {\bfseries USB\+\_\+\+REQ\+\_\+\+SET\+\_\+\+INTERFACE}~0x0\+BU
+\item 
+\#define {\bfseries USB\+\_\+\+REQ\+\_\+\+SYNCH\+\_\+\+FRAME}~0x0\+CU
+\item 
+\#define {\bfseries USB\+\_\+\+DESC\+\_\+\+TYPE\+\_\+\+DEVICE}~0x01U
+\item 
+\#define {\bfseries USB\+\_\+\+DESC\+\_\+\+TYPE\+\_\+\+CONFIGURATION}~0x02U
+\item 
+\#define {\bfseries USB\+\_\+\+DESC\+\_\+\+TYPE\+\_\+\+STRING}~0x03U
+\item 
+\#define {\bfseries USB\+\_\+\+DESC\+\_\+\+TYPE\+\_\+\+INTERFACE}~0x04U
+\item 
+\#define {\bfseries USB\+\_\+\+DESC\+\_\+\+TYPE\+\_\+\+ENDPOINT}~0x05U
+\item 
+\#define {\bfseries USB\+\_\+\+DESC\+\_\+\+TYPE\+\_\+\+DEVICE\+\_\+\+QUALIFIER}~0x06U
+\item 
+\#define {\bfseries USB\+\_\+\+DESC\+\_\+\+TYPE\+\_\+\+OTHER\+\_\+\+SPEED\+\_\+\+CONFIGURATION}~0x07U
+\item 
+\#define {\bfseries USB\+\_\+\+DESC\+\_\+\+TYPE\+\_\+\+INTERFACE\+\_\+\+POWER}~0x08U
+\item 
+\#define {\bfseries USB\+\_\+\+DESC\+\_\+\+TYPE\+\_\+\+HID}~0x21U
+\item 
+\#define {\bfseries USB\+\_\+\+DESC\+\_\+\+TYPE\+\_\+\+HID\+\_\+\+REPORT}~0x22U
+\item 
+\#define {\bfseries USB\+\_\+\+DEVICE\+\_\+\+DESC\+\_\+\+SIZE}~0x12U
+\item 
+\#define {\bfseries USB\+\_\+\+CONFIGURATION\+\_\+\+DESC\+\_\+\+SIZE}~0x09U
+\item 
+\#define {\bfseries USB\+\_\+\+HID\+\_\+\+DESC\+\_\+\+SIZE}~0x09U
+\item 
+\#define {\bfseries USB\+\_\+\+INTERFACE\+\_\+\+DESC\+\_\+\+SIZE}~0x09U
+\item 
+\#define {\bfseries USB\+\_\+\+ENDPOINT\+\_\+\+DESC\+\_\+\+SIZE}~0x07U
+\item 
+\#define {\bfseries USB\+\_\+\+DESC\+\_\+\+DEVICE}~((USB\+\_\+\+DESC\+\_\+\+TYPE\+\_\+\+DEVICE $<$$<$ 8) \& 0x\+FF00U)
+\item 
+\#define {\bfseries USB\+\_\+\+DESC\+\_\+\+CONFIGURATION}~((USB\+\_\+\+DESC\+\_\+\+TYPE\+\_\+\+CONFIGURATION $<$$<$ 8) \& 0x\+FF00U)
+\item 
+\#define {\bfseries USB\+\_\+\+DESC\+\_\+\+STRING}~((USB\+\_\+\+DESC\+\_\+\+TYPE\+\_\+\+STRING $<$$<$ 8) \& 0x\+FF00U)
+\item 
+\#define {\bfseries USB\+\_\+\+DESC\+\_\+\+INTERFACE}~((USB\+\_\+\+DESC\+\_\+\+TYPE\+\_\+\+INTERFACE $<$$<$ 8) \& 0x\+FF00U)
+\item 
+\#define {\bfseries USB\+\_\+\+DESC\+\_\+\+ENDPOINT}~((USB\+\_\+\+DESC\+\_\+\+TYPE\+\_\+\+INTERFACE $<$$<$ 8) \& 0x\+FF00U)
+\item 
+\#define {\bfseries USB\+\_\+\+DESC\+\_\+\+DEVICE\+\_\+\+QUALIFIER}~((USB\+\_\+\+DESC\+\_\+\+TYPE\+\_\+\+DEVICE\+\_\+\+QUALIFIER $<$$<$ 8) \& 0x\+FF00U)
+\item 
+\#define {\bfseries USB\+\_\+\+DESC\+\_\+\+OTHER\+\_\+\+SPEED\+\_\+\+CONFIGURATION}~((USB\+\_\+\+DESC\+\_\+\+TYPE\+\_\+\+OTHER\+\_\+\+SPEED\+\_\+\+CONFIGURATION $<$$<$ 8) \& 0x\+FF00U)
+\item 
+\#define {\bfseries USB\+\_\+\+DESC\+\_\+\+INTERFACE\+\_\+\+POWER}~((USB\+\_\+\+DESC\+\_\+\+TYPE\+\_\+\+INTERFACE\+\_\+\+POWER $<$$<$ 8) \& 0x\+FF00U)
+\item 
+\#define {\bfseries USB\+\_\+\+DESC\+\_\+\+HID\+\_\+\+REPORT}~((USB\+\_\+\+DESC\+\_\+\+TYPE\+\_\+\+HID\+\_\+\+REPORT $<$$<$ 8) \& 0x\+FF00U)
+\item 
+\#define {\bfseries USB\+\_\+\+DESC\+\_\+\+HID}~((USB\+\_\+\+DESC\+\_\+\+TYPE\+\_\+\+HID $<$$<$ 8) \& 0x\+FF00U)
+\item 
+\#define {\bfseries USB\+\_\+\+EP\+\_\+\+TYPE\+\_\+\+CTRL}~0x00U
+\item 
+\#define {\bfseries USB\+\_\+\+EP\+\_\+\+TYPE\+\_\+\+ISOC}~0x01U
+\item 
+\#define {\bfseries USB\+\_\+\+EP\+\_\+\+TYPE\+\_\+\+BULK}~0x02U
+\item 
+\#define {\bfseries USB\+\_\+\+EP\+\_\+\+TYPE\+\_\+\+INTR}~0x03U
+\item 
+\#define {\bfseries USB\+\_\+\+EP\+\_\+\+DIR\+\_\+\+OUT}~0x00U
+\item 
+\#define {\bfseries USB\+\_\+\+EP\+\_\+\+DIR\+\_\+\+IN}~0x80U
+\item 
+\#define {\bfseries USB\+\_\+\+EP\+\_\+\+DIR\+\_\+\+MSK}~0x80U
+\item 
+\#define {\bfseries USBH\+\_\+\+MAX\+\_\+\+PIPES\+\_\+\+NBR}~16U
+\item 
+\#define {\bfseries USBH\+\_\+\+NAK\+\_\+\+SOF\+\_\+\+COUNT}~0x01U
+\item 
+\#define {\bfseries USBH\+\_\+\+DEVICE\+\_\+\+ADDRESS\+\_\+\+DEFAULT}~0x00U
+\item 
+\#define {\bfseries USBH\+\_\+\+DEVICE\+\_\+\+ADDRESS}~0x01U
+\item 
+\#define {\bfseries USBH\+\_\+\+MAX\+\_\+\+ERROR\+\_\+\+COUNT}~0x02U
+\item 
+\#define \mbox{\hyperlink{group___u_s_b_h___l_i_b___c_o_r_e_ga3284dd377dd1460b4f566ebfadcc1460}{USBH\+\_\+\+CONFIGURATION\+\_\+\+DESCRIPTOR\+\_\+\+SIZE}}
+\item 
+\#define \mbox{\hyperlink{group___u_s_b_h___l_i_b___c_o_r_e_ga3621721e4f01119e385f88155ac2d782}{CONFIG\+\_\+\+DESC\+\_\+w\+TOTAL\+\_\+\+LENGTH}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef union \mbox{\hyperlink{union___u_s_b___setup}{\+\_\+\+USB\+\_\+\+Setup}} {\bfseries USB\+\_\+\+Setup\+\_\+\+Type\+Def}
+\item 
+typedef struct \mbox{\hyperlink{struct___desc_header}{\+\_\+\+Desc\+Header}} {\bfseries USBH\+\_\+\+Desc\+Header\+\_\+t}
+\item 
+typedef struct \mbox{\hyperlink{struct___device_descriptor}{\+\_\+\+Device\+Descriptor}} {\bfseries USBH\+\_\+\+Dev\+Desc\+Type\+Def}
+\item 
+typedef struct \mbox{\hyperlink{struct___endpoint_descriptor}{\+\_\+\+Endpoint\+Descriptor}} {\bfseries USBH\+\_\+\+Ep\+Desc\+Type\+Def}
+\item 
+typedef struct \mbox{\hyperlink{struct___interface_descriptor}{\+\_\+\+Interface\+Descriptor}} {\bfseries USBH\+\_\+\+Interface\+Desc\+Type\+Def}
+\item 
+typedef struct \mbox{\hyperlink{struct___configuration_descriptor}{\+\_\+\+Configuration\+Descriptor}} {\bfseries USBH\+\_\+\+Cfg\+Desc\+Type\+Def}
+\item 
+typedef struct \mbox{\hyperlink{struct___u_s_b_h___handle_type_def}{\+\_\+\+USBH\+\_\+\+Handle\+Type\+Def}} {\bfseries USBH\+\_\+\+Handle\+Type\+Def}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{group___u_s_b_h___l_i_b___c_o_r_e_ga8eea6421f433cdd3a15ed800cfff43b2}\label{group___u_s_b_h___l_i_b___c_o_r_e_ga8eea6421f433cdd3a15ed800cfff43b2} 
+enum {\bfseries USBH\+\_\+\+Status\+Type\+Def} \{ \newline
+{\bfseries USBH\+\_\+\+OK} = 0
+, {\bfseries USBH\+\_\+\+BUSY}
+, {\bfseries USBH\+\_\+\+FAIL}
+, {\bfseries USBH\+\_\+\+NOT\+\_\+\+SUPPORTED}
+, \newline
+{\bfseries USBH\+\_\+\+UNRECOVERED\+\_\+\+ERROR}
+, {\bfseries USBH\+\_\+\+ERROR\+\_\+\+SPEED\+\_\+\+UNKNOWN}
+ \}
+\item 
+\Hypertarget{group___u_s_b_h___c_o_r_e___exported___types_gabc2b09e7daec442d1efdad50fe79ffca}\label{group___u_s_b_h___c_o_r_e___exported___types_gabc2b09e7daec442d1efdad50fe79ffca} 
+enum {\bfseries USBH\+\_\+\+Speed\+Type\+Def} \{ {\bfseries USBH\+\_\+\+SPEED\+\_\+\+HIGH} = 0U
+, {\bfseries USBH\+\_\+\+SPEED\+\_\+\+FULL} = 1U
+, {\bfseries USBH\+\_\+\+SPEED\+\_\+\+LOW} = 2U
+ \}
+\item 
+\Hypertarget{group___u_s_b_h___c_o_r_e___exported___types_ga81eabd93c12fee3a5222bff76145f115}\label{group___u_s_b_h___c_o_r_e___exported___types_ga81eabd93c12fee3a5222bff76145f115} 
+enum {\bfseries HOST\+\_\+\+State\+Type\+Def} \{ \newline
+{\bfseries HOST\+\_\+\+IDLE} = 0U
+, {\bfseries HOST\+\_\+\+DEV\+\_\+\+WAIT\+\_\+\+FOR\+\_\+\+ATTACHMENT}
+, {\bfseries HOST\+\_\+\+DEV\+\_\+\+ATTACHED}
+, {\bfseries HOST\+\_\+\+DEV\+\_\+\+DISCONNECTED}
+, \newline
+{\bfseries HOST\+\_\+\+DETECT\+\_\+\+DEVICE\+\_\+\+SPEED}
+, {\bfseries HOST\+\_\+\+ENUMERATION}
+, {\bfseries HOST\+\_\+\+CLASS\+\_\+\+REQUEST}
+, {\bfseries HOST\+\_\+\+INPUT}
+, \newline
+{\bfseries HOST\+\_\+\+SET\+\_\+\+CONFIGURATION}
+, {\bfseries HOST\+\_\+\+SET\+\_\+\+WAKEUP\+\_\+\+FEATURE}
+, {\bfseries HOST\+\_\+\+CHECK\+\_\+\+CLASS}
+, {\bfseries HOST\+\_\+\+CLASS}
+, \newline
+{\bfseries HOST\+\_\+\+SUSPENDED}
+, {\bfseries HOST\+\_\+\+ABORT\+\_\+\+STATE}
+ \}
+\item 
+\Hypertarget{group___u_s_b_h___c_o_r_e___exported___types_ga8e75fecc709643844d56ffffbe7898f7}\label{group___u_s_b_h___c_o_r_e___exported___types_ga8e75fecc709643844d56ffffbe7898f7} 
+enum {\bfseries ENUM\+\_\+\+State\+Type\+Def} \{ \newline
+{\bfseries ENUM\+\_\+\+IDLE} = 0U
+, {\bfseries ENUM\+\_\+\+GET\+\_\+\+FULL\+\_\+\+DEV\+\_\+\+DESC}
+, {\bfseries ENUM\+\_\+\+SET\+\_\+\+ADDR}
+, {\bfseries ENUM\+\_\+\+GET\+\_\+\+CFG\+\_\+\+DESC}
+, \newline
+{\bfseries ENUM\+\_\+\+GET\+\_\+\+FULL\+\_\+\+CFG\+\_\+\+DESC}
+, {\bfseries ENUM\+\_\+\+GET\+\_\+\+MFC\+\_\+\+STRING\+\_\+\+DESC}
+, {\bfseries ENUM\+\_\+\+GET\+\_\+\+PRODUCT\+\_\+\+STRING\+\_\+\+DESC}
+, {\bfseries ENUM\+\_\+\+GET\+\_\+\+SERIALNUM\+\_\+\+STRING\+\_\+\+DESC}
+ \}
+\item 
+\Hypertarget{group___u_s_b_h___c_o_r_e___exported___types_ga4dbe17a58008a313bd2097e5e8572605}\label{group___u_s_b_h___c_o_r_e___exported___types_ga4dbe17a58008a313bd2097e5e8572605} 
+enum {\bfseries CTRL\+\_\+\+State\+Type\+Def} \{ \newline
+{\bfseries CTRL\+\_\+\+IDLE} = 0U
+, {\bfseries CTRL\+\_\+\+SETUP}
+, {\bfseries CTRL\+\_\+\+SETUP\+\_\+\+WAIT}
+, {\bfseries CTRL\+\_\+\+DATA\+\_\+\+IN}
+, \newline
+{\bfseries CTRL\+\_\+\+DATA\+\_\+\+IN\+\_\+\+WAIT}
+, {\bfseries CTRL\+\_\+\+DATA\+\_\+\+OUT}
+, {\bfseries CTRL\+\_\+\+DATA\+\_\+\+OUT\+\_\+\+WAIT}
+, {\bfseries CTRL\+\_\+\+STATUS\+\_\+\+IN}
+, \newline
+{\bfseries CTRL\+\_\+\+STATUS\+\_\+\+IN\+\_\+\+WAIT}
+, {\bfseries CTRL\+\_\+\+STATUS\+\_\+\+OUT}
+, {\bfseries CTRL\+\_\+\+STATUS\+\_\+\+OUT\+\_\+\+WAIT}
+, {\bfseries CTRL\+\_\+\+ERROR}
+, \newline
+{\bfseries CTRL\+\_\+\+STALLED}
+, {\bfseries CTRL\+\_\+\+COMPLETE}
+ \}
+\item 
+\Hypertarget{group___u_s_b_h___c_o_r_e___exported___types_ga717af3a61392bd11268916bc767f0318}\label{group___u_s_b_h___c_o_r_e___exported___types_ga717af3a61392bd11268916bc767f0318} 
+enum {\bfseries CMD\+\_\+\+State\+Type\+Def} \{ {\bfseries CMD\+\_\+\+IDLE} = 0U
+, {\bfseries CMD\+\_\+\+SEND}
+, {\bfseries CMD\+\_\+\+WAIT}
+ \}
+\item 
+\Hypertarget{group___u_s_b_h___c_o_r_e___exported___types_ga88037a8cb1d282dc42072c5d361591d5}\label{group___u_s_b_h___c_o_r_e___exported___types_ga88037a8cb1d282dc42072c5d361591d5} 
+enum {\bfseries USBH\+\_\+\+URBState\+Type\+Def} \{ \newline
+{\bfseries USBH\+\_\+\+URB\+\_\+\+IDLE} = 0U
+, {\bfseries USBH\+\_\+\+URB\+\_\+\+DONE}
+, {\bfseries USBH\+\_\+\+URB\+\_\+\+NOTREADY}
+, {\bfseries USBH\+\_\+\+URB\+\_\+\+NYET}
+, \newline
+{\bfseries USBH\+\_\+\+URB\+\_\+\+ERROR}
+, {\bfseries USBH\+\_\+\+URB\+\_\+\+STALL}
+, {\bfseries USBH\+\_\+\+URB\+\_\+\+NAK\+\_\+\+WAIT}
+ \}
+\item 
+\Hypertarget{group___u_s_b_h___c_o_r_e___exported___types_ga3c51368b2f45804a599a6b01e1d04369}\label{group___u_s_b_h___c_o_r_e___exported___types_ga3c51368b2f45804a599a6b01e1d04369} 
+enum {\bfseries USBH\+\_\+\+OSEvent\+Type\+Def} \{ \newline
+{\bfseries USBH\+\_\+\+PORT\+\_\+\+EVENT} = 1U
+, {\bfseries USBH\+\_\+\+URB\+\_\+\+EVENT}
+, {\bfseries USBH\+\_\+\+CONTROL\+\_\+\+EVENT}
+, {\bfseries USBH\+\_\+\+CLASS\+\_\+\+EVENT}
+, \newline
+{\bfseries USBH\+\_\+\+STATE\+\_\+\+CHANGED\+\_\+\+EVENT}
+ \}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Definitions used in the USB host library. 
+
+\begin{DoxyAuthor}{Author}
+MCD Application Team 
+\end{DoxyAuthor}
+\begin{DoxyAttention}{Attention}
+
+\end{DoxyAttention}
+Copyright (c) 2015 STMicroelectronics. All rights reserved.
+
+This software is licensed under terms that can be found in the LICENSE file in the root directory of this software component. If no LICENSE file comes with this software, it is provided AS-\/\+IS. 

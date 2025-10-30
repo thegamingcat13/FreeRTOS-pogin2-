@@ -1,0 +1,259 @@
+\doxysection{USB\+\_\+\+HOST/\+Target/usbh\+\_\+conf.c File Reference}
+\hypertarget{usbh__conf_8c}{}\label{usbh__conf_8c}\index{USB\_HOST/Target/usbh\_conf.c@{USB\_HOST/Target/usbh\_conf.c}}
+
+
+\+: This file implements the board support package for the USB host library  
+
+
+{\ttfamily \#include "{}usbh\+\_\+core.\+h"{}}\newline
+{\ttfamily \#include "{}usbh\+\_\+platform.\+h"{}}\newline
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{usbh__conf_8c_a1730ffe1e560465665eb47d9264826f9}{Error\+\_\+\+Handler}} (void)
+\begin{DoxyCompactList}\small\item\em This function is executed in case of error occurrence. \end{DoxyCompactList}\item 
+USBH\+\_\+\+Status\+Type\+Def \mbox{\hyperlink{usbh__conf_8c_a7d63dd7ffc3fdb239c5fd3f53bb5ebc9}{USBH\+\_\+\+Get\+\_\+\+USB\+\_\+\+Status}} (\mbox{\hyperlink{stm32f4xx__hal__def_8h_a63c0679d1cb8b8c684fbb0632743478f}{HAL\+\_\+\+Status\+Type\+Def}} hal\+\_\+status)
+\begin{DoxyCompactList}\small\item\em Returns the USB status depending on the HAL status\+: \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{usbh__conf_8c_ab745cd1515a40bf26795a7b946cf76c0}{HAL\+\_\+\+HCD\+\_\+\+Msp\+Init}} (HCD\+\_\+\+Handle\+Type\+Def \texorpdfstring{$\ast$}{*}hcd\+Handle)
+\item 
+void \mbox{\hyperlink{usbh__conf_8c_a2200e3ef34340f2ba54596ea36f63e43}{HAL\+\_\+\+HCD\+\_\+\+Msp\+De\+Init}} (HCD\+\_\+\+Handle\+Type\+Def \texorpdfstring{$\ast$}{*}hcd\+Handle)
+\item 
+void \mbox{\hyperlink{usbh__conf_8c_a4db2ea557e081600238759cb55353628}{HAL\+\_\+\+HCD\+\_\+\+SOF\+\_\+\+Callback}} (HCD\+\_\+\+Handle\+Type\+Def \texorpdfstring{$\ast$}{*}hhcd)
+\begin{DoxyCompactList}\small\item\em SOF callback. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{usbh__conf_8c_a95cbb5d1910e3cbf9bd462e057b3df33}{HAL\+\_\+\+HCD\+\_\+\+Connect\+\_\+\+Callback}} (HCD\+\_\+\+Handle\+Type\+Def \texorpdfstring{$\ast$}{*}hhcd)
+\begin{DoxyCompactList}\small\item\em SOF callback. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{usbh__conf_8c_ad59d0d3fdd9ef512faa0b0e56d83bfdc}{HAL\+\_\+\+HCD\+\_\+\+Disconnect\+\_\+\+Callback}} (HCD\+\_\+\+Handle\+Type\+Def \texorpdfstring{$\ast$}{*}hhcd)
+\begin{DoxyCompactList}\small\item\em SOF callback. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{usbh__conf_8c_a668704f16414d9ec2fa8023506b28e76}{HAL\+\_\+\+HCD\+\_\+\+HC\+\_\+\+Notify\+URBChange\+\_\+\+Callback}} (HCD\+\_\+\+Handle\+Type\+Def \texorpdfstring{$\ast$}{*}hhcd, uint8\+\_\+t chnum, HCD\+\_\+\+URBState\+Type\+Def urb\+\_\+state)
+\begin{DoxyCompactList}\small\item\em Notify URB state change callback. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{usbh__conf_8c_a1bcd77018cd407e7bc5a1e19c04d9a5c}{HAL\+\_\+\+HCD\+\_\+\+Port\+Enabled\+\_\+\+Callback}} (HCD\+\_\+\+Handle\+Type\+Def \texorpdfstring{$\ast$}{*}hhcd)
+\begin{DoxyCompactList}\small\item\em Port Port Enabled callback. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{usbh__conf_8c_a3ae64b00f420dc0df07d2951c4381bd5}{HAL\+\_\+\+HCD\+\_\+\+Port\+Disabled\+\_\+\+Callback}} (HCD\+\_\+\+Handle\+Type\+Def \texorpdfstring{$\ast$}{*}hhcd)
+\begin{DoxyCompactList}\small\item\em Port Port Disabled callback. \end{DoxyCompactList}\item 
+USBH\+\_\+\+Status\+Type\+Def \mbox{\hyperlink{group___u_s_b_h___c_o_r_e___exported___functions_prototype_ga5b46d8afbd254c9172b84d791d438306}{USBH\+\_\+\+LL\+\_\+\+Init}} (USBH\+\_\+\+Handle\+Type\+Def \texorpdfstring{$\ast$}{*}phost)
+\begin{DoxyCompactList}\small\item\em Initialize the low level portion of the host driver. \end{DoxyCompactList}\item 
+USBH\+\_\+\+Status\+Type\+Def \mbox{\hyperlink{group___u_s_b_h___c_o_r_e___exported___functions_prototype_ga69ba6969d548a428bc4a5aa6eb2e135a}{USBH\+\_\+\+LL\+\_\+\+De\+Init}} (USBH\+\_\+\+Handle\+Type\+Def \texorpdfstring{$\ast$}{*}phost)
+\begin{DoxyCompactList}\small\item\em De-\/\+Initialize the low level portion of the host driver. \end{DoxyCompactList}\item 
+USBH\+\_\+\+Status\+Type\+Def \mbox{\hyperlink{group___u_s_b_h___c_o_r_e___exported___functions_prototype_gae895412b62103a712cfd2f1841d1420a}{USBH\+\_\+\+LL\+\_\+\+Start}} (USBH\+\_\+\+Handle\+Type\+Def \texorpdfstring{$\ast$}{*}phost)
+\begin{DoxyCompactList}\small\item\em Start the low level portion of the host driver. \end{DoxyCompactList}\item 
+USBH\+\_\+\+Status\+Type\+Def \mbox{\hyperlink{group___u_s_b_h___c_o_r_e___exported___functions_prototype_ga874eb40ed9b76406ffa64c20e47258cd}{USBH\+\_\+\+LL\+\_\+\+Stop}} (USBH\+\_\+\+Handle\+Type\+Def \texorpdfstring{$\ast$}{*}phost)
+\begin{DoxyCompactList}\small\item\em Stop the low level portion of the host driver. \end{DoxyCompactList}\item 
+USBH\+\_\+\+Speed\+Type\+Def \mbox{\hyperlink{group___u_s_b_h___c_o_r_e___exported___functions_prototype_gaf3c4ca2987ab678661d8d293adb02095}{USBH\+\_\+\+LL\+\_\+\+Get\+Speed}} (USBH\+\_\+\+Handle\+Type\+Def \texorpdfstring{$\ast$}{*}phost)
+\begin{DoxyCompactList}\small\item\em Return the USB host speed from the low level driver. \end{DoxyCompactList}\item 
+USBH\+\_\+\+Status\+Type\+Def \mbox{\hyperlink{group___u_s_b_h___c_o_r_e___exported___functions_prototype_ga1844d882f66ca6a49f3c8eba7c88c24a}{USBH\+\_\+\+LL\+\_\+\+Reset\+Port}} (USBH\+\_\+\+Handle\+Type\+Def \texorpdfstring{$\ast$}{*}phost)
+\begin{DoxyCompactList}\small\item\em Reset the Host port of the low level driver. \end{DoxyCompactList}\item 
+uint32\+\_\+t \mbox{\hyperlink{group___u_s_b_h___c_o_r_e___exported___functions_prototype_ga46e36c65b21fa6bb30cc618588ed590c}{USBH\+\_\+\+LL\+\_\+\+Get\+Last\+Xfer\+Size}} (USBH\+\_\+\+Handle\+Type\+Def \texorpdfstring{$\ast$}{*}phost, uint8\+\_\+t pipe)
+\begin{DoxyCompactList}\small\item\em Return the last transferred packet size. \end{DoxyCompactList}\item 
+USBH\+\_\+\+Status\+Type\+Def \mbox{\hyperlink{group___u_s_b_h___c_o_r_e___exported___functions_prototype_ga0ce965d06b7a5595d724fd660e30f8a4}{USBH\+\_\+\+LL\+\_\+\+Open\+Pipe}} (USBH\+\_\+\+Handle\+Type\+Def \texorpdfstring{$\ast$}{*}phost, uint8\+\_\+t pipe, uint8\+\_\+t epnum, uint8\+\_\+t dev\+\_\+address, uint8\+\_\+t speed, uint8\+\_\+t ep\+\_\+type, uint16\+\_\+t mps)
+\begin{DoxyCompactList}\small\item\em Open a pipe of the low level driver. \end{DoxyCompactList}\item 
+USBH\+\_\+\+Status\+Type\+Def \mbox{\hyperlink{group___u_s_b_h___c_o_r_e___exported___functions_prototype_gaefb43a461debda9e4b1a5e4023e799ee}{USBH\+\_\+\+LL\+\_\+\+Close\+Pipe}} (USBH\+\_\+\+Handle\+Type\+Def \texorpdfstring{$\ast$}{*}phost, uint8\+\_\+t pipe)
+\begin{DoxyCompactList}\small\item\em Close a pipe of the low level driver. \end{DoxyCompactList}\item 
+USBH\+\_\+\+Status\+Type\+Def \mbox{\hyperlink{group___u_s_b_h___c_o_r_e___exported___functions_prototype_ga4ce660161ead87c67a251cf7ddb252ec}{USBH\+\_\+\+LL\+\_\+\+Activate\+Pipe}} (USBH\+\_\+\+Handle\+Type\+Def \texorpdfstring{$\ast$}{*}phost, uint8\+\_\+t pipe)
+\begin{DoxyCompactList}\small\item\em USBH\+\_\+\+LL\+\_\+\+Activate\+Pipe Activate a pipe of the Low Level Driver. \end{DoxyCompactList}\item 
+USBH\+\_\+\+Status\+Type\+Def \mbox{\hyperlink{group___u_s_b_h___c_o_r_e___exported___functions_prototype_ga6d5456368ad4cb95eecae935e54f49cb}{USBH\+\_\+\+LL\+\_\+\+Submit\+URB}} (USBH\+\_\+\+Handle\+Type\+Def \texorpdfstring{$\ast$}{*}phost, uint8\+\_\+t pipe, uint8\+\_\+t direction, uint8\+\_\+t ep\+\_\+type, uint8\+\_\+t token, uint8\+\_\+t \texorpdfstring{$\ast$}{*}pbuff, uint16\+\_\+t length, uint8\+\_\+t do\+\_\+ping)
+\begin{DoxyCompactList}\small\item\em Submit a new URB to the low level driver. \end{DoxyCompactList}\item 
+USBH\+\_\+\+URBState\+Type\+Def \mbox{\hyperlink{group___u_s_b_h___c_o_r_e___exported___functions_prototype_ga78cc4409546dfc6ddcb9477f94cc2659}{USBH\+\_\+\+LL\+\_\+\+Get\+URBState}} (USBH\+\_\+\+Handle\+Type\+Def \texorpdfstring{$\ast$}{*}phost, uint8\+\_\+t pipe)
+\begin{DoxyCompactList}\small\item\em Get a URB state from the low level driver. \end{DoxyCompactList}\item 
+USBH\+\_\+\+Status\+Type\+Def \mbox{\hyperlink{group___u_s_b_h___c_o_r_e___exported___functions_prototype_gacb4111af58651c28ebe4a557ca568b24}{USBH\+\_\+\+LL\+\_\+\+Driver\+VBUS}} (USBH\+\_\+\+Handle\+Type\+Def \texorpdfstring{$\ast$}{*}phost, uint8\+\_\+t state)
+\begin{DoxyCompactList}\small\item\em Drive VBUS. \end{DoxyCompactList}\item 
+USBH\+\_\+\+Status\+Type\+Def \mbox{\hyperlink{group___u_s_b_h___c_o_r_e___exported___functions_prototype_gab272f515d41419156ec959281d5716e0}{USBH\+\_\+\+LL\+\_\+\+Set\+Toggle}} (USBH\+\_\+\+Handle\+Type\+Def \texorpdfstring{$\ast$}{*}phost, uint8\+\_\+t pipe, uint8\+\_\+t toggle)
+\begin{DoxyCompactList}\small\item\em Set toggle for a pipe. \end{DoxyCompactList}\item 
+uint8\+\_\+t \mbox{\hyperlink{group___u_s_b_h___c_o_r_e___exported___functions_prototype_ga6271b251ae9bd23740e91276cdb7d3ba}{USBH\+\_\+\+LL\+\_\+\+Get\+Toggle}} (USBH\+\_\+\+Handle\+Type\+Def \texorpdfstring{$\ast$}{*}phost, uint8\+\_\+t pipe)
+\begin{DoxyCompactList}\small\item\em Return the current toggle of a pipe. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group___u_s_b_h___c_o_r_e___exported___functions_prototype_ga641108182e7e56c085e2d539ae060deb}{USBH\+\_\+\+Delay}} (uint32\+\_\+t Delay)
+\begin{DoxyCompactList}\small\item\em Delay routine for the USB Host Library. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{usbh__conf_8c_a135943d3578f7906d4be1d774650ecd0}\label{usbh__conf_8c_a135943d3578f7906d4be1d774650ecd0} 
+HCD\+\_\+\+Handle\+Type\+Def {\bfseries hhcd\+\_\+\+USB\+\_\+\+OTG\+\_\+\+FS}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\+: This file implements the board support package for the USB host library 
+
+\begin{DoxyVersion}{Version}
+\+: v1.\+0\+\_\+\+Cube 
+\end{DoxyVersion}
+\begin{DoxyAttention}{Attention}
+
+\end{DoxyAttention}
+\doxysubsubsection*{\begin{center}\copyright{} Copyright (c) 2021 STMicroelectronics. All rights reserved.\end{center} }
+
+This software component is licensed by ST under Ultimate Liberty license SLA0044, the "{}\+License"{}; You may not use this file except in compliance with the License. You may obtain a copy of the License at\+: www.\+st.\+com/\+SLA0044 
+
+\label{doc-func-members}
+\Hypertarget{usbh__conf_8c_doc-func-members}
+\doxysubsection{Function Documentation}
+\Hypertarget{usbh__conf_8c_a1730ffe1e560465665eb47d9264826f9}\index{usbh\_conf.c@{usbh\_conf.c}!Error\_Handler@{Error\_Handler}}
+\index{Error\_Handler@{Error\_Handler}!usbh\_conf.c@{usbh\_conf.c}}
+\doxysubsubsection{\texorpdfstring{Error\_Handler()}{Error\_Handler()}}
+{\footnotesize\ttfamily \label{usbh__conf_8c_a1730ffe1e560465665eb47d9264826f9} 
+void Error\+\_\+\+Handler (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})}
+
+
+
+This function is executed in case of error occurrence. 
+
+
+\begin{DoxyRetVals}{Return values}
+{\em None} & \\
+\hline
+\end{DoxyRetVals}
+\Hypertarget{usbh__conf_8c_a95cbb5d1910e3cbf9bd462e057b3df33}\index{usbh\_conf.c@{usbh\_conf.c}!HAL\_HCD\_Connect\_Callback@{HAL\_HCD\_Connect\_Callback}}
+\index{HAL\_HCD\_Connect\_Callback@{HAL\_HCD\_Connect\_Callback}!usbh\_conf.c@{usbh\_conf.c}}
+\doxysubsubsection{\texorpdfstring{HAL\_HCD\_Connect\_Callback()}{HAL\_HCD\_Connect\_Callback()}}
+{\footnotesize\ttfamily \label{usbh__conf_8c_a95cbb5d1910e3cbf9bd462e057b3df33} 
+void HAL\+\_\+\+HCD\+\_\+\+Connect\+\_\+\+Callback (\begin{DoxyParamCaption}\item[{HCD\+\_\+\+Handle\+Type\+Def \texorpdfstring{$\ast$}{*}}]{hhcd}{}\end{DoxyParamCaption})}
+
+
+
+SOF callback. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em hhcd} & HCD handle \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em None} & \\
+\hline
+\end{DoxyRetVals}
+\Hypertarget{usbh__conf_8c_ad59d0d3fdd9ef512faa0b0e56d83bfdc}\index{usbh\_conf.c@{usbh\_conf.c}!HAL\_HCD\_Disconnect\_Callback@{HAL\_HCD\_Disconnect\_Callback}}
+\index{HAL\_HCD\_Disconnect\_Callback@{HAL\_HCD\_Disconnect\_Callback}!usbh\_conf.c@{usbh\_conf.c}}
+\doxysubsubsection{\texorpdfstring{HAL\_HCD\_Disconnect\_Callback()}{HAL\_HCD\_Disconnect\_Callback()}}
+{\footnotesize\ttfamily \label{usbh__conf_8c_ad59d0d3fdd9ef512faa0b0e56d83bfdc} 
+void HAL\+\_\+\+HCD\+\_\+\+Disconnect\+\_\+\+Callback (\begin{DoxyParamCaption}\item[{HCD\+\_\+\+Handle\+Type\+Def \texorpdfstring{$\ast$}{*}}]{hhcd}{}\end{DoxyParamCaption})}
+
+
+
+SOF callback. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em hhcd} & HCD handle \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em None} & \\
+\hline
+\end{DoxyRetVals}
+\Hypertarget{usbh__conf_8c_a668704f16414d9ec2fa8023506b28e76}\index{usbh\_conf.c@{usbh\_conf.c}!HAL\_HCD\_HC\_NotifyURBChange\_Callback@{HAL\_HCD\_HC\_NotifyURBChange\_Callback}}
+\index{HAL\_HCD\_HC\_NotifyURBChange\_Callback@{HAL\_HCD\_HC\_NotifyURBChange\_Callback}!usbh\_conf.c@{usbh\_conf.c}}
+\doxysubsubsection{\texorpdfstring{HAL\_HCD\_HC\_NotifyURBChange\_Callback()}{HAL\_HCD\_HC\_NotifyURBChange\_Callback()}}
+{\footnotesize\ttfamily \label{usbh__conf_8c_a668704f16414d9ec2fa8023506b28e76} 
+void HAL\+\_\+\+HCD\+\_\+\+HC\+\_\+\+Notify\+URBChange\+\_\+\+Callback (\begin{DoxyParamCaption}\item[{HCD\+\_\+\+Handle\+Type\+Def \texorpdfstring{$\ast$}{*}}]{hhcd}{, }\item[{uint8\+\_\+t}]{chnum}{, }\item[{HCD\+\_\+\+URBState\+Type\+Def}]{urb\+\_\+state}{}\end{DoxyParamCaption})}
+
+
+
+Notify URB state change callback. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em hhcd} & HCD handle \\
+\hline
+{\em chnum} & channel number \\
+\hline
+{\em urb\+\_\+state} & state \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em None} & \\
+\hline
+\end{DoxyRetVals}
+\Hypertarget{usbh__conf_8c_a2200e3ef34340f2ba54596ea36f63e43}\index{usbh\_conf.c@{usbh\_conf.c}!HAL\_HCD\_MspDeInit@{HAL\_HCD\_MspDeInit}}
+\index{HAL\_HCD\_MspDeInit@{HAL\_HCD\_MspDeInit}!usbh\_conf.c@{usbh\_conf.c}}
+\doxysubsubsection{\texorpdfstring{HAL\_HCD\_MspDeInit()}{HAL\_HCD\_MspDeInit()}}
+{\footnotesize\ttfamily \label{usbh__conf_8c_a2200e3ef34340f2ba54596ea36f63e43} 
+void HAL\+\_\+\+HCD\+\_\+\+Msp\+De\+Init (\begin{DoxyParamCaption}\item[{HCD\+\_\+\+Handle\+Type\+Def \texorpdfstring{$\ast$}{*}}]{hcd\+Handle}{}\end{DoxyParamCaption})}
+
+USB\+\_\+\+OTG\+\_\+\+FS GPIO Configuration PA9 -\/-\/-\/-\/-\/-\/\texorpdfstring{$>$}{>} USB\+\_\+\+OTG\+\_\+\+FS\+\_\+\+VBUS PA10 -\/-\/-\/-\/-\/-\/\texorpdfstring{$>$}{>} USB\+\_\+\+OTG\+\_\+\+FS\+\_\+\+ID PA11 -\/-\/-\/-\/-\/-\/\texorpdfstring{$>$}{>} USB\+\_\+\+OTG\+\_\+\+FS\+\_\+\+DM PA12 -\/-\/-\/-\/-\/-\/\texorpdfstring{$>$}{>} USB\+\_\+\+OTG\+\_\+\+FS\+\_\+\+DP\Hypertarget{usbh__conf_8c_ab745cd1515a40bf26795a7b946cf76c0}\index{usbh\_conf.c@{usbh\_conf.c}!HAL\_HCD\_MspInit@{HAL\_HCD\_MspInit}}
+\index{HAL\_HCD\_MspInit@{HAL\_HCD\_MspInit}!usbh\_conf.c@{usbh\_conf.c}}
+\doxysubsubsection{\texorpdfstring{HAL\_HCD\_MspInit()}{HAL\_HCD\_MspInit()}}
+{\footnotesize\ttfamily \label{usbh__conf_8c_ab745cd1515a40bf26795a7b946cf76c0} 
+void HAL\+\_\+\+HCD\+\_\+\+Msp\+Init (\begin{DoxyParamCaption}\item[{HCD\+\_\+\+Handle\+Type\+Def \texorpdfstring{$\ast$}{*}}]{hcd\+Handle}{}\end{DoxyParamCaption})}
+
+USB\+\_\+\+OTG\+\_\+\+FS GPIO Configuration PA9 -\/-\/-\/-\/-\/-\/\texorpdfstring{$>$}{>} USB\+\_\+\+OTG\+\_\+\+FS\+\_\+\+VBUS PA10 -\/-\/-\/-\/-\/-\/\texorpdfstring{$>$}{>} USB\+\_\+\+OTG\+\_\+\+FS\+\_\+\+ID PA11 -\/-\/-\/-\/-\/-\/\texorpdfstring{$>$}{>} USB\+\_\+\+OTG\+\_\+\+FS\+\_\+\+DM PA12 -\/-\/-\/-\/-\/-\/\texorpdfstring{$>$}{>} USB\+\_\+\+OTG\+\_\+\+FS\+\_\+\+DP\Hypertarget{usbh__conf_8c_a3ae64b00f420dc0df07d2951c4381bd5}\index{usbh\_conf.c@{usbh\_conf.c}!HAL\_HCD\_PortDisabled\_Callback@{HAL\_HCD\_PortDisabled\_Callback}}
+\index{HAL\_HCD\_PortDisabled\_Callback@{HAL\_HCD\_PortDisabled\_Callback}!usbh\_conf.c@{usbh\_conf.c}}
+\doxysubsubsection{\texorpdfstring{HAL\_HCD\_PortDisabled\_Callback()}{HAL\_HCD\_PortDisabled\_Callback()}}
+{\footnotesize\ttfamily \label{usbh__conf_8c_a3ae64b00f420dc0df07d2951c4381bd5} 
+void HAL\+\_\+\+HCD\+\_\+\+Port\+Disabled\+\_\+\+Callback (\begin{DoxyParamCaption}\item[{HCD\+\_\+\+Handle\+Type\+Def \texorpdfstring{$\ast$}{*}}]{hhcd}{}\end{DoxyParamCaption})}
+
+
+
+Port Port Disabled callback. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em hhcd} & HCD handle \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em None} & \\
+\hline
+\end{DoxyRetVals}
+\Hypertarget{usbh__conf_8c_a1bcd77018cd407e7bc5a1e19c04d9a5c}\index{usbh\_conf.c@{usbh\_conf.c}!HAL\_HCD\_PortEnabled\_Callback@{HAL\_HCD\_PortEnabled\_Callback}}
+\index{HAL\_HCD\_PortEnabled\_Callback@{HAL\_HCD\_PortEnabled\_Callback}!usbh\_conf.c@{usbh\_conf.c}}
+\doxysubsubsection{\texorpdfstring{HAL\_HCD\_PortEnabled\_Callback()}{HAL\_HCD\_PortEnabled\_Callback()}}
+{\footnotesize\ttfamily \label{usbh__conf_8c_a1bcd77018cd407e7bc5a1e19c04d9a5c} 
+void HAL\+\_\+\+HCD\+\_\+\+Port\+Enabled\+\_\+\+Callback (\begin{DoxyParamCaption}\item[{HCD\+\_\+\+Handle\+Type\+Def \texorpdfstring{$\ast$}{*}}]{hhcd}{}\end{DoxyParamCaption})}
+
+
+
+Port Port Enabled callback. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em hhcd} & HCD handle \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em None} & \\
+\hline
+\end{DoxyRetVals}
+\Hypertarget{usbh__conf_8c_a4db2ea557e081600238759cb55353628}\index{usbh\_conf.c@{usbh\_conf.c}!HAL\_HCD\_SOF\_Callback@{HAL\_HCD\_SOF\_Callback}}
+\index{HAL\_HCD\_SOF\_Callback@{HAL\_HCD\_SOF\_Callback}!usbh\_conf.c@{usbh\_conf.c}}
+\doxysubsubsection{\texorpdfstring{HAL\_HCD\_SOF\_Callback()}{HAL\_HCD\_SOF\_Callback()}}
+{\footnotesize\ttfamily \label{usbh__conf_8c_a4db2ea557e081600238759cb55353628} 
+void HAL\+\_\+\+HCD\+\_\+\+SOF\+\_\+\+Callback (\begin{DoxyParamCaption}\item[{HCD\+\_\+\+Handle\+Type\+Def \texorpdfstring{$\ast$}{*}}]{hhcd}{}\end{DoxyParamCaption})}
+
+
+
+SOF callback. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em hhcd} & HCD handle \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em None} & \\
+\hline
+\end{DoxyRetVals}
+\Hypertarget{usbh__conf_8c_a7d63dd7ffc3fdb239c5fd3f53bb5ebc9}\index{usbh\_conf.c@{usbh\_conf.c}!USBH\_Get\_USB\_Status@{USBH\_Get\_USB\_Status}}
+\index{USBH\_Get\_USB\_Status@{USBH\_Get\_USB\_Status}!usbh\_conf.c@{usbh\_conf.c}}
+\doxysubsubsection{\texorpdfstring{USBH\_Get\_USB\_Status()}{USBH\_Get\_USB\_Status()}}
+{\footnotesize\ttfamily \label{usbh__conf_8c_a7d63dd7ffc3fdb239c5fd3f53bb5ebc9} 
+USBH\+\_\+\+Status\+Type\+Def USBH\+\_\+\+Get\+\_\+\+USB\+\_\+\+Status (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{stm32f4xx__hal__def_8h_a63c0679d1cb8b8c684fbb0632743478f}{HAL\+\_\+\+Status\+Type\+Def}}}]{hal\+\_\+status}{}\end{DoxyParamCaption})}
+
+
+
+Returns the USB status depending on the HAL status\+: 
+
+
+\begin{DoxyParams}{Parameters}
+{\em hal\+\_\+status} & HAL status \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em USB} & status \\
+\hline
+\end{DoxyRetVals}

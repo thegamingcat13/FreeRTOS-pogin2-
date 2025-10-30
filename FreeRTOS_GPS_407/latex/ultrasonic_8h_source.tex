@@ -1,0 +1,29 @@
+\doxysection{ultrasonic.\+h}
+\hypertarget{ultrasonic_8h_source}{}\label{ultrasonic_8h_source}\index{Core/MyApp/App/ultrasonic.h@{Core/MyApp/App/ultrasonic.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ ULTRASONIC\_H}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ ULTRASONIC\_H}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ "{}FreeRTOS.h"{}}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ "{}task.h"{}}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ "{}event\_groups.h"{}}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{admin_8h}{admin.h}}"{}}}
+\DoxyCodeLine{00008\ }
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#define\ ULTRASONIC\_PULSE\_COMPLETE\_BIT\ (1UL\ <<\ 0UL)\ }\textcolor{comment}{//\ Bit\ 0\ to\ signal\ pulse\ completion\ with\ eventgroup}}
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00011\ \textcolor{keyword}{extern}\ \mbox{\hyperlink{struct_t_i_m___handle_type_def}{TIM\_HandleTypeDef}}\ htim2;\ \textcolor{comment}{//\ used\ for\ delay\_us\ function}}
+\DoxyCodeLine{00012\ \textcolor{keyword}{extern}\ \mbox{\hyperlink{struct_t_i_m___handle_type_def}{TIM\_HandleTypeDef}}\ htim5;\ \textcolor{comment}{//\ used\ for\ pulse\ measurement}}
+\DoxyCodeLine{00013\ }
+\DoxyCodeLine{00014\ \textcolor{keyword}{extern}\ \textcolor{keyword}{volatile}\ uint32\_t\ rising\_edge\_time\_us;}
+\DoxyCodeLine{00015\ \textcolor{keyword}{extern}\ \textcolor{keyword}{volatile}\ uint32\_t\ falling\_edge\_time\_us;}
+\DoxyCodeLine{00016\ \textcolor{keyword}{extern}\ \textcolor{keyword}{volatile}\ uint8\_t\ echo\_state;}
+\DoxyCodeLine{00017\ \textcolor{keyword}{extern}\ \textcolor{keyword}{volatile}\ uint32\_t\ pulse\_duration\_us;}
+\DoxyCodeLine{00018\ }
+\DoxyCodeLine{00019\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{float}\ distance\_cm;}
+\DoxyCodeLine{00020\ }
+\DoxyCodeLine{00021\ \textcolor{keyword}{extern}\ EventGroupHandle\_t\ xEchoEventGroup;\ \textcolor{comment}{//\ Event\ group\ for\ signaling\ pulse\ completion}}
+\DoxyCodeLine{00022\ }
+\DoxyCodeLine{00023\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ ULTRASONIC\_H}}
+
+\end{DoxyCode}

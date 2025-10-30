@@ -1,0 +1,188 @@
+\doxysection{Drivers/\+STM32\+F4xx\+\_\+\+HAL\+\_\+\+Driver/\+Src/stm32f4xx\+\_\+hal\+\_\+i2s.c File Reference}
+\hypertarget{stm32f4xx__hal__i2s_8c}{}\label{stm32f4xx__hal__i2s_8c}\index{Drivers/STM32F4xx\_HAL\_Driver/Src/stm32f4xx\_hal\_i2s.c@{Drivers/STM32F4xx\_HAL\_Driver/Src/stm32f4xx\_hal\_i2s.c}}
+
+
+I2S HAL module driver. This file provides firmware functions to manage the following functionalities of the Integrated Interchip Sound (I2S) peripheral\+:  
+
+
+{\ttfamily \#include "{}stm32f4xx\+\_\+hal.\+h"{}}\newline
+
+
+\doxysubsection{Detailed Description}
+I2S HAL module driver. This file provides firmware functions to manage the following functionalities of the Integrated Interchip Sound (I2S) peripheral\+: 
+
+\begin{DoxyAuthor}{Author}
+MCD Application Team
+\begin{DoxyItemize}
+\item Initialization and de-\/initialization functions
+\item IO operation functions
+\item Peripheral State and Errors functions
+\end{DoxyItemize}
+\end{DoxyAuthor}
+\begin{DoxyAttention}{Attention}
+
+\end{DoxyAttention}
+Copyright (c) 2016 STMicroelectronics. All rights reserved.
+
+This software is licensed under terms that can be found in the LICENSE file in the root directory of this software component. If no LICENSE file comes with this software, it is provided AS-\/\+IS.
+
+\begin{DoxyVerb}===============================================================================
+                 ##### How to use this driver #####
+===============================================================================
+[..]
+   The I2S HAL driver can be used as follow:
+
+   (#) Declare a I2S_HandleTypeDef handle structure.
+   (#) Initialize the I2S low level resources by implement the HAL_I2S_MspInit() API:
+       (##) Enable the SPIx interface clock.
+       (##) I2S pins configuration:
+           (+++) Enable the clock for the I2S GPIOs.
+           (+++) Configure these I2S pins as alternate function pull-up.
+       (##) NVIC configuration if you need to use interrupt process (HAL_I2S_Transmit_IT()
+            and HAL_I2S_Receive_IT() APIs).
+           (+++) Configure the I2Sx interrupt priority.
+           (+++) Enable the NVIC I2S IRQ handle.
+       (##) DMA Configuration if you need to use DMA process (HAL_I2S_Transmit_DMA()
+            and HAL_I2S_Receive_DMA() APIs:
+           (+++) Declare a DMA handle structure for the Tx/Rx Stream/Channel.
+           (+++) Enable the DMAx interface clock.
+           (+++) Configure the declared DMA handle structure with the required Tx/Rx parameters.
+           (+++) Configure the DMA Tx/Rx Stream/Channel.
+           (+++) Associate the initialized DMA handle to the I2S DMA Tx/Rx handle.
+           (+++) Configure the priority and enable the NVIC for the transfer complete interrupt on the
+                 DMA Tx/Rx Stream/Channel.
+
+  (#) Program the Mode, Standard, Data Format, MCLK Output, Audio frequency and Polarity
+      using HAL_I2S_Init() function.
+
+  -@- The specific I2S interrupts (Transmission complete interrupt,
+      RXNE interrupt and Error Interrupts) will be managed using the macros
+      __HAL_I2S_ENABLE_IT() and __HAL_I2S_DISABLE_IT() inside the transmit and receive process.
+  -@- Make sure that either:
+       (+@) I2S PLL clock is configured or
+       (+@) External clock source is configured after setting correctly
+            the define constant EXTERNAL_CLOCK_VALUE in the stm32f4xx_hal_conf.h file.
+
+   (#) Three mode of operations are available within this driver :
+
+  *** Polling mode IO operation ***
+  =================================
+  [..]
+    (+) Send an amount of data in blocking mode using HAL_I2S_Transmit()
+    (+) Receive an amount of data in blocking mode using HAL_I2S_Receive()
+
+  *** Interrupt mode IO operation ***
+  ===================================
+  [..]
+    (+) Send an amount of data in non blocking mode using HAL_I2S_Transmit_IT()
+    (+) At transmission end of half transfer HAL_I2S_TxHalfCpltCallback is executed and user can
+        add his own code by customization of function pointer HAL_I2S_TxHalfCpltCallback
+    (+) At transmission end of transfer HAL_I2S_TxCpltCallback is executed and user can
+        add his own code by customization of function pointer HAL_I2S_TxCpltCallback
+    (+) Receive an amount of data in non blocking mode using HAL_I2S_Receive_IT()
+    (+) At reception end of half transfer HAL_I2S_RxHalfCpltCallback is executed and user can
+        add his own code by customization of function pointer HAL_I2S_RxHalfCpltCallback
+    (+) At reception end of transfer HAL_I2S_RxCpltCallback is executed and user can
+        add his own code by customization of function pointer HAL_I2S_RxCpltCallback
+    (+) In case of transfer Error, HAL_I2S_ErrorCallback() function is executed and user can
+        add his own code by customization of function pointer HAL_I2S_ErrorCallback
+
+  *** DMA mode IO operation ***
+  ==============================
+  [..]
+    (+) Send an amount of data in non blocking mode (DMA) using HAL_I2S_Transmit_DMA()
+    (+) At transmission end of half transfer HAL_I2S_TxHalfCpltCallback is executed and user can
+        add his own code by customization of function pointer HAL_I2S_TxHalfCpltCallback
+    (+) At transmission end of transfer HAL_I2S_TxCpltCallback is executed and user can
+        add his own code by customization of function pointer HAL_I2S_TxCpltCallback
+    (+) Receive an amount of data in non blocking mode (DMA) using HAL_I2S_Receive_DMA()
+    (+) At reception end of half transfer HAL_I2S_RxHalfCpltCallback is executed and user can
+        add his own code by customization of function pointer HAL_I2S_RxHalfCpltCallback
+    (+) At reception end of transfer HAL_I2S_RxCpltCallback is executed and user can
+        add his own code by customization of function pointer HAL_I2S_RxCpltCallback
+    (+) In case of transfer Error, HAL_I2S_ErrorCallback() function is executed and user can
+        add his own code by customization of function pointer HAL_I2S_ErrorCallback
+    (+) Pause the DMA Transfer using HAL_I2S_DMAPause()
+    (+) Resume the DMA Transfer using HAL_I2S_DMAResume()
+    (+) Stop the DMA Transfer using HAL_I2S_DMAStop()
+        In Slave mode, if HAL_I2S_DMAStop is used to stop the communication, an error
+        HAL_I2S_ERROR_BUSY_LINE_RX is raised as the master continue to transmit data.
+        In this case __HAL_I2S_FLUSH_RX_DR macro must be used to flush the remaining data
+        inside DR register and avoid using DeInit/Init process for the next transfer.
+
+  *** I2S HAL driver macros list ***
+  ===================================
+  [..]
+    Below the list of most used macros in I2S HAL driver.
+
+     (+) __HAL_I2S_ENABLE: Enable the specified SPI peripheral (in I2S mode)
+     (+) __HAL_I2S_DISABLE: Disable the specified SPI peripheral (in I2S mode)
+     (+) __HAL_I2S_ENABLE_IT : Enable the specified I2S interrupts
+     (+) __HAL_I2S_DISABLE_IT : Disable the specified I2S interrupts
+     (+) __HAL_I2S_GET_FLAG: Check whether the specified I2S flag is set or not
+     (+) __HAL_I2S_FLUSH_RX_DR: Read DR Register to Flush RX Data
+
+   [..]
+     (@) You can refer to the I2S HAL driver header file for more useful macros
+
+  *** I2S HAL driver macros list ***
+  ===================================
+  [..]
+      Callback registration:
+
+     (#) The compilation flag USE_HAL_I2S_REGISTER_CALLBACKS when set to 1U
+         allows the user to configure dynamically the driver callbacks.
+         Use Functions HAL_I2S_RegisterCallback() to register an interrupt callback.
+
+         Function HAL_I2S_RegisterCallback() allows to register following callbacks:
+           (++) TxCpltCallback        : I2S Tx Completed callback
+           (++) RxCpltCallback        : I2S Rx Completed callback
+           (++) TxRxCpltCallback      : I2S TxRx Completed callback
+           (++) TxHalfCpltCallback    : I2S Tx Half Completed callback
+           (++) RxHalfCpltCallback    : I2S Rx Half Completed callback
+           (++) ErrorCallback         : I2S Error callback
+           (++) MspInitCallback       : I2S Msp Init callback
+           (++) MspDeInitCallback     : I2S Msp DeInit callback
+         This function takes as parameters the HAL peripheral handle, the Callback ID
+         and a pointer to the user callback function.
+
+
+     (#) Use function HAL_I2S_UnRegisterCallback to reset a callback to the default
+         weak function.
+         HAL_I2S_UnRegisterCallback takes as parameters the HAL peripheral handle,
+         and the Callback ID.
+         This function allows to reset following callbacks:
+           (++) TxCpltCallback        : I2S Tx Completed callback
+           (++) RxCpltCallback        : I2S Rx Completed callback
+           (++) TxRxCpltCallback      : I2S TxRx Completed callback
+           (++) TxHalfCpltCallback    : I2S Tx Half Completed callback
+           (++) RxHalfCpltCallback    : I2S Rx Half Completed callback
+           (++) ErrorCallback         : I2S Error callback
+           (++) MspInitCallback       : I2S Msp Init callback
+           (++) MspDeInitCallback     : I2S Msp DeInit callback
+
+      [..]
+      By default, after the HAL_I2S_Init() and when the state is HAL_I2S_STATE_RESET
+      all callbacks are set to the corresponding weak functions:
+      examples HAL_I2S_MasterTxCpltCallback(), HAL_I2S_MasterRxCpltCallback().
+      Exception done for MspInit and MspDeInit functions that are
+      reset to the legacy weak functions in the HAL_I2S_Init()/ HAL_I2S_DeInit() only when
+      these callbacks are null (not registered beforehand).
+      If MspInit or MspDeInit are not null, the HAL_I2S_Init()/ HAL_I2S_DeInit()
+      keep and use the user MspInit/MspDeInit callbacks (registered beforehand) whatever the state.
+
+      [..]
+      Callbacks can be registered/unregistered in HAL_I2S_STATE_READY state only.
+      Exception done MspInit/MspDeInit functions that can be registered/unregistered
+      in HAL_I2S_STATE_READY or HAL_I2S_STATE_RESET state,
+      thus registered (user) MspInit/DeInit callbacks can be used during the Init/DeInit.
+      Then, the user first registers the MspInit/MspDeInit user callbacks
+      using HAL_I2S_RegisterCallback() before calling HAL_I2S_DeInit()
+      or HAL_I2S_Init() function.
+
+      [..]
+      When the compilation define USE_HAL_I2S_REGISTER_CALLBACKS is set to 0 or
+      not defined, the callback registering feature is not available
+      and weak (surcharged) callbacks are used.
+\end{DoxyVerb}
+ 

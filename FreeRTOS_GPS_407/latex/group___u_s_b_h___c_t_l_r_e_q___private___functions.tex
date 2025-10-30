@@ -1,0 +1,293 @@
+\doxysubsubsubsection{USBH\+\_\+\+CTLREQ\+\_\+\+Private\+\_\+\+Functions }
+\hypertarget{group___u_s_b_h___c_t_l_r_e_q___private___functions}{}\label{group___u_s_b_h___c_t_l_r_e_q___private___functions}\index{USBH\_CTLREQ\_Private\_Functions@{USBH\_CTLREQ\_Private\_Functions}}
+\doxysubsubsubsubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+USBH\+\_\+\+Status\+Type\+Def \mbox{\hyperlink{group___u_s_b_h___c_t_l_r_e_q___private___functions_ga1a203108be621678a48862542eca7e86}{USBH\+\_\+\+Get\+\_\+\+Dev\+Desc}} (USBH\+\_\+\+Handle\+Type\+Def \texorpdfstring{$\ast$}{*}phost, uint16\+\_\+t length)
+\begin{DoxyCompactList}\small\item\em USBH\+\_\+\+Get\+\_\+\+Dev\+Desc Issue Get Device Descriptor command to the device. Once the response received, it parses the device descriptor and updates the status. \end{DoxyCompactList}\item 
+USBH\+\_\+\+Status\+Type\+Def \mbox{\hyperlink{group___u_s_b_h___c_t_l_r_e_q___private___functions_ga8d08e1dada6297478ddc8c0b5452a8be}{USBH\+\_\+\+Get\+\_\+\+Cfg\+Desc}} (USBH\+\_\+\+Handle\+Type\+Def \texorpdfstring{$\ast$}{*}phost, uint16\+\_\+t length)
+\begin{DoxyCompactList}\small\item\em USBH\+\_\+\+Get\+\_\+\+Cfg\+Desc Issues Configuration Descriptor to the device. Once the response received, it parses the configuration descriptor and updates the status. \end{DoxyCompactList}\item 
+USBH\+\_\+\+Status\+Type\+Def \mbox{\hyperlink{group___u_s_b_h___c_t_l_r_e_q___private___functions_gac3f98f753df75f08d4ef94f0ea5b6616}{USBH\+\_\+\+Get\+\_\+\+String\+Desc}} (USBH\+\_\+\+Handle\+Type\+Def \texorpdfstring{$\ast$}{*}phost, uint8\+\_\+t string\+\_\+index, uint8\+\_\+t \texorpdfstring{$\ast$}{*}buff, uint16\+\_\+t length)
+\begin{DoxyCompactList}\small\item\em USBH\+\_\+\+Get\+\_\+\+String\+Desc Issues string Descriptor command to the device. Once the response received, it parses the string descriptor and updates the status. \end{DoxyCompactList}\item 
+USBH\+\_\+\+Status\+Type\+Def \mbox{\hyperlink{group___u_s_b_h___c_t_l_r_e_q___private___functions_gab3140a702c66e2f4141d276ae40d96ad}{USBH\+\_\+\+Get\+Descriptor}} (USBH\+\_\+\+Handle\+Type\+Def \texorpdfstring{$\ast$}{*}phost, uint8\+\_\+t req\+\_\+type, uint16\+\_\+t value\+\_\+idx, uint8\+\_\+t \texorpdfstring{$\ast$}{*}buff, uint16\+\_\+t length)
+\begin{DoxyCompactList}\small\item\em USBH\+\_\+\+Get\+Descriptor Issues Descriptor command to the device. Once the response received, it parses the descriptor and updates the status. \end{DoxyCompactList}\item 
+USBH\+\_\+\+Status\+Type\+Def \mbox{\hyperlink{group___u_s_b_h___c_t_l_r_e_q___private___functions_gabcdc05ccc311bee64d2b7d46ab3ba62b}{USBH\+\_\+\+Set\+Address}} (USBH\+\_\+\+Handle\+Type\+Def \texorpdfstring{$\ast$}{*}phost, uint8\+\_\+t Device\+Address)
+\begin{DoxyCompactList}\small\item\em USBH\+\_\+\+Set\+Address This command sets the address to the connected device. \end{DoxyCompactList}\item 
+USBH\+\_\+\+Status\+Type\+Def \mbox{\hyperlink{group___u_s_b_h___c_t_l_r_e_q___private___functions_gad5cc51282e4d25b665c219ca14315dcf}{USBH\+\_\+\+Set\+Cfg}} (USBH\+\_\+\+Handle\+Type\+Def \texorpdfstring{$\ast$}{*}phost, uint16\+\_\+t cfg\+\_\+idx)
+\begin{DoxyCompactList}\small\item\em USBH\+\_\+\+Set\+Cfg The command sets the configuration value to the connected device. \end{DoxyCompactList}\item 
+USBH\+\_\+\+Status\+Type\+Def \mbox{\hyperlink{group___u_s_b_h___c_t_l_r_e_q___private___functions_gac5c90b53cd042aa7608796da6f7218db}{USBH\+\_\+\+Set\+Interface}} (USBH\+\_\+\+Handle\+Type\+Def \texorpdfstring{$\ast$}{*}phost, uint8\+\_\+t ep\+\_\+num, uint8\+\_\+t alt\+Setting)
+\begin{DoxyCompactList}\small\item\em USBH\+\_\+\+Set\+Interface The command sets the Interface value to the connected device. \end{DoxyCompactList}\item 
+USBH\+\_\+\+Status\+Type\+Def \mbox{\hyperlink{group___u_s_b_h___c_t_l_r_e_q___private___functions_gaee669ad38d6b36078d5c925273e28366}{USBH\+\_\+\+Set\+Feature}} (USBH\+\_\+\+Handle\+Type\+Def \texorpdfstring{$\ast$}{*}phost, uint8\+\_\+t w\+Value)
+\begin{DoxyCompactList}\small\item\em USBH\+\_\+\+Set\+Feature The command sets the device features (remote wakeup feature,..). \end{DoxyCompactList}\item 
+USBH\+\_\+\+Status\+Type\+Def \mbox{\hyperlink{group___u_s_b_h___c_t_l_r_e_q___private___functions_gacc383546c83957b52ccecb27207572a9}{USBH\+\_\+\+Clr\+Feature}} (USBH\+\_\+\+Handle\+Type\+Def \texorpdfstring{$\ast$}{*}phost, uint8\+\_\+t ep\+\_\+num)
+\begin{DoxyCompactList}\small\item\em USBH\+\_\+\+Clr\+Feature This request is used to clear or disable a specific feature. \end{DoxyCompactList}\item 
+USBH\+\_\+\+Desc\+Header\+\_\+t \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{group___u_s_b_h___c_t_l_r_e_q___private___functions_gafa03f4b9dfcfcc9609cc15f3dbea5821}{USBH\+\_\+\+Get\+Next\+Desc}} (uint8\+\_\+t \texorpdfstring{$\ast$}{*}pbuf, uint16\+\_\+t \texorpdfstring{$\ast$}{*}ptr)
+\begin{DoxyCompactList}\small\item\em USBH\+\_\+\+Get\+Next\+Desc This function return the next descriptor header. \end{DoxyCompactList}\item 
+USBH\+\_\+\+Status\+Type\+Def \mbox{\hyperlink{group___u_s_b_h___c_t_l_r_e_q___private___functions_gaeb38a0e70c0faf2c542e9093ae7c6cc3}{USBH\+\_\+\+Ctl\+Req}} (USBH\+\_\+\+Handle\+Type\+Def \texorpdfstring{$\ast$}{*}phost, uint8\+\_\+t \texorpdfstring{$\ast$}{*}buff, uint16\+\_\+t length)
+\begin{DoxyCompactList}\small\item\em USBH\+\_\+\+Ctl\+Req USBH\+\_\+\+Ctl\+Req sends a control request and provide the status after completion of the request. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsubsubsubsection{Detailed Description}
+
+
+\label{doc-func-members}
+\Hypertarget{group___u_s_b_h___c_t_l_r_e_q___private___functions_doc-func-members}
+\doxysubsubsubsubsection{Function Documentation}
+\Hypertarget{group___u_s_b_h___c_t_l_r_e_q___private___functions_gacc383546c83957b52ccecb27207572a9}\index{USBH\_CTLREQ\_Private\_Functions@{USBH\_CTLREQ\_Private\_Functions}!USBH\_ClrFeature@{USBH\_ClrFeature}}
+\index{USBH\_ClrFeature@{USBH\_ClrFeature}!USBH\_CTLREQ\_Private\_Functions@{USBH\_CTLREQ\_Private\_Functions}}
+\doxysubsubsubsubsubsection{\texorpdfstring{USBH\_ClrFeature()}{USBH\_ClrFeature()}}
+{\footnotesize\ttfamily \label{group___u_s_b_h___c_t_l_r_e_q___private___functions_gacc383546c83957b52ccecb27207572a9} 
+USBH\+\_\+\+Status\+Type\+Def USBH\+\_\+\+Clr\+Feature (\begin{DoxyParamCaption}\item[{USBH\+\_\+\+Handle\+Type\+Def \texorpdfstring{$\ast$}{*}}]{phost}{, }\item[{uint8\+\_\+t}]{ep\+\_\+num}{}\end{DoxyParamCaption})}
+
+
+
+USBH\+\_\+\+Clr\+Feature This request is used to clear or disable a specific feature. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em phost} & Host Handle \\
+\hline
+{\em ep\+\_\+num} & endpoint number \\
+\hline
+{\em hc\+\_\+num} & Host channel number \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em USBH} & Status \\
+\hline
+\end{DoxyRetVals}
+\Hypertarget{group___u_s_b_h___c_t_l_r_e_q___private___functions_gaeb38a0e70c0faf2c542e9093ae7c6cc3}\index{USBH\_CTLREQ\_Private\_Functions@{USBH\_CTLREQ\_Private\_Functions}!USBH\_CtlReq@{USBH\_CtlReq}}
+\index{USBH\_CtlReq@{USBH\_CtlReq}!USBH\_CTLREQ\_Private\_Functions@{USBH\_CTLREQ\_Private\_Functions}}
+\doxysubsubsubsubsubsection{\texorpdfstring{USBH\_CtlReq()}{USBH\_CtlReq()}}
+{\footnotesize\ttfamily \label{group___u_s_b_h___c_t_l_r_e_q___private___functions_gaeb38a0e70c0faf2c542e9093ae7c6cc3} 
+USBH\+\_\+\+Status\+Type\+Def USBH\+\_\+\+Ctl\+Req (\begin{DoxyParamCaption}\item[{USBH\+\_\+\+Handle\+Type\+Def \texorpdfstring{$\ast$}{*}}]{phost}{, }\item[{uint8\+\_\+t \texorpdfstring{$\ast$}{*}}]{buff}{, }\item[{uint16\+\_\+t}]{length}{}\end{DoxyParamCaption})}
+
+
+
+USBH\+\_\+\+Ctl\+Req USBH\+\_\+\+Ctl\+Req sends a control request and provide the status after completion of the request. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em phost} & Host Handle \\
+\hline
+{\em req} & Setup Request Structure \\
+\hline
+{\em buff} & data buffer address to store the response \\
+\hline
+{\em length} & length of the response \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em USBH} & Status \\
+\hline
+\end{DoxyRetVals}
+\Hypertarget{group___u_s_b_h___c_t_l_r_e_q___private___functions_ga8d08e1dada6297478ddc8c0b5452a8be}\index{USBH\_CTLREQ\_Private\_Functions@{USBH\_CTLREQ\_Private\_Functions}!USBH\_Get\_CfgDesc@{USBH\_Get\_CfgDesc}}
+\index{USBH\_Get\_CfgDesc@{USBH\_Get\_CfgDesc}!USBH\_CTLREQ\_Private\_Functions@{USBH\_CTLREQ\_Private\_Functions}}
+\doxysubsubsubsubsubsection{\texorpdfstring{USBH\_Get\_CfgDesc()}{USBH\_Get\_CfgDesc()}}
+{\footnotesize\ttfamily \label{group___u_s_b_h___c_t_l_r_e_q___private___functions_ga8d08e1dada6297478ddc8c0b5452a8be} 
+USBH\+\_\+\+Status\+Type\+Def USBH\+\_\+\+Get\+\_\+\+Cfg\+Desc (\begin{DoxyParamCaption}\item[{USBH\+\_\+\+Handle\+Type\+Def \texorpdfstring{$\ast$}{*}}]{phost}{, }\item[{uint16\+\_\+t}]{length}{}\end{DoxyParamCaption})}
+
+
+
+USBH\+\_\+\+Get\+\_\+\+Cfg\+Desc Issues Configuration Descriptor to the device. Once the response received, it parses the configuration descriptor and updates the status. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em phost} & Host Handle \\
+\hline
+{\em length} & Length of the descriptor \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em USBH} & Status \\
+\hline
+\end{DoxyRetVals}
+\Hypertarget{group___u_s_b_h___c_t_l_r_e_q___private___functions_ga1a203108be621678a48862542eca7e86}\index{USBH\_CTLREQ\_Private\_Functions@{USBH\_CTLREQ\_Private\_Functions}!USBH\_Get\_DevDesc@{USBH\_Get\_DevDesc}}
+\index{USBH\_Get\_DevDesc@{USBH\_Get\_DevDesc}!USBH\_CTLREQ\_Private\_Functions@{USBH\_CTLREQ\_Private\_Functions}}
+\doxysubsubsubsubsubsection{\texorpdfstring{USBH\_Get\_DevDesc()}{USBH\_Get\_DevDesc()}}
+{\footnotesize\ttfamily \label{group___u_s_b_h___c_t_l_r_e_q___private___functions_ga1a203108be621678a48862542eca7e86} 
+USBH\+\_\+\+Status\+Type\+Def USBH\+\_\+\+Get\+\_\+\+Dev\+Desc (\begin{DoxyParamCaption}\item[{USBH\+\_\+\+Handle\+Type\+Def \texorpdfstring{$\ast$}{*}}]{phost}{, }\item[{uint16\+\_\+t}]{length}{}\end{DoxyParamCaption})}
+
+
+
+USBH\+\_\+\+Get\+\_\+\+Dev\+Desc Issue Get Device Descriptor command to the device. Once the response received, it parses the device descriptor and updates the status. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em phost} & Host Handle \\
+\hline
+{\em length} & Length of the descriptor \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em USBH} & Status \\
+\hline
+\end{DoxyRetVals}
+\Hypertarget{group___u_s_b_h___c_t_l_r_e_q___private___functions_gac3f98f753df75f08d4ef94f0ea5b6616}\index{USBH\_CTLREQ\_Private\_Functions@{USBH\_CTLREQ\_Private\_Functions}!USBH\_Get\_StringDesc@{USBH\_Get\_StringDesc}}
+\index{USBH\_Get\_StringDesc@{USBH\_Get\_StringDesc}!USBH\_CTLREQ\_Private\_Functions@{USBH\_CTLREQ\_Private\_Functions}}
+\doxysubsubsubsubsubsection{\texorpdfstring{USBH\_Get\_StringDesc()}{USBH\_Get\_StringDesc()}}
+{\footnotesize\ttfamily \label{group___u_s_b_h___c_t_l_r_e_q___private___functions_gac3f98f753df75f08d4ef94f0ea5b6616} 
+USBH\+\_\+\+Status\+Type\+Def USBH\+\_\+\+Get\+\_\+\+String\+Desc (\begin{DoxyParamCaption}\item[{USBH\+\_\+\+Handle\+Type\+Def \texorpdfstring{$\ast$}{*}}]{phost}{, }\item[{uint8\+\_\+t}]{string\+\_\+index}{, }\item[{uint8\+\_\+t \texorpdfstring{$\ast$}{*}}]{buff}{, }\item[{uint16\+\_\+t}]{length}{}\end{DoxyParamCaption})}
+
+
+
+USBH\+\_\+\+Get\+\_\+\+String\+Desc Issues string Descriptor command to the device. Once the response received, it parses the string descriptor and updates the status. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em phost} & Host Handle \\
+\hline
+{\em string\+\_\+index} & String index for the descriptor \\
+\hline
+{\em buff} & Buffer address for the descriptor \\
+\hline
+{\em length} & Length of the descriptor \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em USBH} & Status \\
+\hline
+\end{DoxyRetVals}
+\Hypertarget{group___u_s_b_h___c_t_l_r_e_q___private___functions_gab3140a702c66e2f4141d276ae40d96ad}\index{USBH\_CTLREQ\_Private\_Functions@{USBH\_CTLREQ\_Private\_Functions}!USBH\_GetDescriptor@{USBH\_GetDescriptor}}
+\index{USBH\_GetDescriptor@{USBH\_GetDescriptor}!USBH\_CTLREQ\_Private\_Functions@{USBH\_CTLREQ\_Private\_Functions}}
+\doxysubsubsubsubsubsection{\texorpdfstring{USBH\_GetDescriptor()}{USBH\_GetDescriptor()}}
+{\footnotesize\ttfamily \label{group___u_s_b_h___c_t_l_r_e_q___private___functions_gab3140a702c66e2f4141d276ae40d96ad} 
+USBH\+\_\+\+Status\+Type\+Def USBH\+\_\+\+Get\+Descriptor (\begin{DoxyParamCaption}\item[{USBH\+\_\+\+Handle\+Type\+Def \texorpdfstring{$\ast$}{*}}]{phost}{, }\item[{uint8\+\_\+t}]{req\+\_\+type}{, }\item[{uint16\+\_\+t}]{value\+\_\+idx}{, }\item[{uint8\+\_\+t \texorpdfstring{$\ast$}{*}}]{buff}{, }\item[{uint16\+\_\+t}]{length}{}\end{DoxyParamCaption})}
+
+
+
+USBH\+\_\+\+Get\+Descriptor Issues Descriptor command to the device. Once the response received, it parses the descriptor and updates the status. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em phost} & Host Handle \\
+\hline
+{\em req\+\_\+type} & Descriptor type \\
+\hline
+{\em value\+\_\+idx} & Value for the Get\+Descriptr request \\
+\hline
+{\em buff} & Buffer to store the descriptor \\
+\hline
+{\em length} & Length of the descriptor \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em USBH} & Status \\
+\hline
+\end{DoxyRetVals}
+\Hypertarget{group___u_s_b_h___c_t_l_r_e_q___private___functions_gafa03f4b9dfcfcc9609cc15f3dbea5821}\index{USBH\_CTLREQ\_Private\_Functions@{USBH\_CTLREQ\_Private\_Functions}!USBH\_GetNextDesc@{USBH\_GetNextDesc}}
+\index{USBH\_GetNextDesc@{USBH\_GetNextDesc}!USBH\_CTLREQ\_Private\_Functions@{USBH\_CTLREQ\_Private\_Functions}}
+\doxysubsubsubsubsubsection{\texorpdfstring{USBH\_GetNextDesc()}{USBH\_GetNextDesc()}}
+{\footnotesize\ttfamily \label{group___u_s_b_h___c_t_l_r_e_q___private___functions_gafa03f4b9dfcfcc9609cc15f3dbea5821} 
+USBH\+\_\+\+Desc\+Header\+\_\+t \texorpdfstring{$\ast$}{*} USBH\+\_\+\+Get\+Next\+Desc (\begin{DoxyParamCaption}\item[{uint8\+\_\+t \texorpdfstring{$\ast$}{*}}]{pbuf}{, }\item[{uint16\+\_\+t \texorpdfstring{$\ast$}{*}}]{ptr}{}\end{DoxyParamCaption})}
+
+
+
+USBH\+\_\+\+Get\+Next\+Desc This function return the next descriptor header. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em buf} & Buffer where the cfg descriptor is available \\
+\hline
+{\em ptr} & data pointer inside the cfg descriptor \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em next} & header \\
+\hline
+\end{DoxyRetVals}
+\Hypertarget{group___u_s_b_h___c_t_l_r_e_q___private___functions_gabcdc05ccc311bee64d2b7d46ab3ba62b}\index{USBH\_CTLREQ\_Private\_Functions@{USBH\_CTLREQ\_Private\_Functions}!USBH\_SetAddress@{USBH\_SetAddress}}
+\index{USBH\_SetAddress@{USBH\_SetAddress}!USBH\_CTLREQ\_Private\_Functions@{USBH\_CTLREQ\_Private\_Functions}}
+\doxysubsubsubsubsubsection{\texorpdfstring{USBH\_SetAddress()}{USBH\_SetAddress()}}
+{\footnotesize\ttfamily \label{group___u_s_b_h___c_t_l_r_e_q___private___functions_gabcdc05ccc311bee64d2b7d46ab3ba62b} 
+USBH\+\_\+\+Status\+Type\+Def USBH\+\_\+\+Set\+Address (\begin{DoxyParamCaption}\item[{USBH\+\_\+\+Handle\+Type\+Def \texorpdfstring{$\ast$}{*}}]{phost}{, }\item[{uint8\+\_\+t}]{Device\+Address}{}\end{DoxyParamCaption})}
+
+
+
+USBH\+\_\+\+Set\+Address This command sets the address to the connected device. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em phost} & Host Handle \\
+\hline
+{\em Device\+Address} & Device address to assign \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em USBH} & Status \\
+\hline
+\end{DoxyRetVals}
+\Hypertarget{group___u_s_b_h___c_t_l_r_e_q___private___functions_gad5cc51282e4d25b665c219ca14315dcf}\index{USBH\_CTLREQ\_Private\_Functions@{USBH\_CTLREQ\_Private\_Functions}!USBH\_SetCfg@{USBH\_SetCfg}}
+\index{USBH\_SetCfg@{USBH\_SetCfg}!USBH\_CTLREQ\_Private\_Functions@{USBH\_CTLREQ\_Private\_Functions}}
+\doxysubsubsubsubsubsection{\texorpdfstring{USBH\_SetCfg()}{USBH\_SetCfg()}}
+{\footnotesize\ttfamily \label{group___u_s_b_h___c_t_l_r_e_q___private___functions_gad5cc51282e4d25b665c219ca14315dcf} 
+USBH\+\_\+\+Status\+Type\+Def USBH\+\_\+\+Set\+Cfg (\begin{DoxyParamCaption}\item[{USBH\+\_\+\+Handle\+Type\+Def \texorpdfstring{$\ast$}{*}}]{phost}{, }\item[{uint16\+\_\+t}]{cfg\+\_\+idx}{}\end{DoxyParamCaption})}
+
+
+
+USBH\+\_\+\+Set\+Cfg The command sets the configuration value to the connected device. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em phost} & Host Handle \\
+\hline
+{\em cfg\+\_\+idx} & Configuration value \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em USBH} & Status \\
+\hline
+\end{DoxyRetVals}
+\Hypertarget{group___u_s_b_h___c_t_l_r_e_q___private___functions_gaee669ad38d6b36078d5c925273e28366}\index{USBH\_CTLREQ\_Private\_Functions@{USBH\_CTLREQ\_Private\_Functions}!USBH\_SetFeature@{USBH\_SetFeature}}
+\index{USBH\_SetFeature@{USBH\_SetFeature}!USBH\_CTLREQ\_Private\_Functions@{USBH\_CTLREQ\_Private\_Functions}}
+\doxysubsubsubsubsubsection{\texorpdfstring{USBH\_SetFeature()}{USBH\_SetFeature()}}
+{\footnotesize\ttfamily \label{group___u_s_b_h___c_t_l_r_e_q___private___functions_gaee669ad38d6b36078d5c925273e28366} 
+USBH\+\_\+\+Status\+Type\+Def USBH\+\_\+\+Set\+Feature (\begin{DoxyParamCaption}\item[{USBH\+\_\+\+Handle\+Type\+Def \texorpdfstring{$\ast$}{*}}]{phost}{, }\item[{uint8\+\_\+t}]{w\+Value}{}\end{DoxyParamCaption})}
+
+
+
+USBH\+\_\+\+Set\+Feature The command sets the device features (remote wakeup feature,..). 
+
+
+\begin{DoxyParams}{Parameters}
+{\em pdev} & Selected device \\
+\hline
+{\em itf\+\_\+idx} & \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em Status} & \\
+\hline
+\end{DoxyRetVals}
+\Hypertarget{group___u_s_b_h___c_t_l_r_e_q___private___functions_gac5c90b53cd042aa7608796da6f7218db}\index{USBH\_CTLREQ\_Private\_Functions@{USBH\_CTLREQ\_Private\_Functions}!USBH\_SetInterface@{USBH\_SetInterface}}
+\index{USBH\_SetInterface@{USBH\_SetInterface}!USBH\_CTLREQ\_Private\_Functions@{USBH\_CTLREQ\_Private\_Functions}}
+\doxysubsubsubsubsubsection{\texorpdfstring{USBH\_SetInterface()}{USBH\_SetInterface()}}
+{\footnotesize\ttfamily \label{group___u_s_b_h___c_t_l_r_e_q___private___functions_gac5c90b53cd042aa7608796da6f7218db} 
+USBH\+\_\+\+Status\+Type\+Def USBH\+\_\+\+Set\+Interface (\begin{DoxyParamCaption}\item[{USBH\+\_\+\+Handle\+Type\+Def \texorpdfstring{$\ast$}{*}}]{phost}{, }\item[{uint8\+\_\+t}]{ep\+\_\+num}{, }\item[{uint8\+\_\+t}]{alt\+Setting}{}\end{DoxyParamCaption})}
+
+
+
+USBH\+\_\+\+Set\+Interface The command sets the Interface value to the connected device. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em phost} & Host Handle \\
+\hline
+{\em alt\+Setting} & Interface value \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em USBH} & Status \\
+\hline
+\end{DoxyRetVals}

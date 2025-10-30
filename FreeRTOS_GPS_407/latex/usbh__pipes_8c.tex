@@ -1,0 +1,33 @@
+\doxysection{Middlewares/\+ST/\+STM32\+\_\+\+USB\+\_\+\+Host\+\_\+\+Library/\+Core/\+Src/usbh\+\_\+pipes.c File Reference}
+\hypertarget{usbh__pipes_8c}{}\label{usbh__pipes_8c}\index{Middlewares/ST/STM32\_USB\_Host\_Library/Core/Src/usbh\_pipes.c@{Middlewares/ST/STM32\_USB\_Host\_Library/Core/Src/usbh\_pipes.c}}
+
+
+This file implements functions for opening and closing Pipes.  
+
+
+{\ttfamily \#include "{}usbh\+\_\+pipes.\+h"{}}\newline
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+USBH\+\_\+\+Status\+Type\+Def \mbox{\hyperlink{group___u_s_b_h___p_i_p_e_s___private___functions_ga95e4dd6f05ca2c5943a7b63348b61d56}{USBH\+\_\+\+Open\+Pipe}} (USBH\+\_\+\+Handle\+Type\+Def \texorpdfstring{$\ast$}{*}phost, uint8\+\_\+t pipe\+\_\+num, uint8\+\_\+t epnum, uint8\+\_\+t dev\+\_\+address, uint8\+\_\+t speed, uint8\+\_\+t ep\+\_\+type, uint16\+\_\+t mps)
+\begin{DoxyCompactList}\small\item\em USBH\+\_\+\+Open\+\_\+\+Pipe Open a pipe. \end{DoxyCompactList}\item 
+USBH\+\_\+\+Status\+Type\+Def \mbox{\hyperlink{group___u_s_b_h___p_i_p_e_s___private___functions_gae0b745be17f5d3e5ef19032602f81b6f}{USBH\+\_\+\+Close\+Pipe}} (USBH\+\_\+\+Handle\+Type\+Def \texorpdfstring{$\ast$}{*}phost, uint8\+\_\+t pipe\+\_\+num)
+\begin{DoxyCompactList}\small\item\em USBH\+\_\+\+Close\+Pipe Close a pipe. \end{DoxyCompactList}\item 
+uint8\+\_\+t \mbox{\hyperlink{group___u_s_b_h___p_i_p_e_s___private___functions_ga35bd197654f5477fb9436eba06e9cad3}{USBH\+\_\+\+Alloc\+Pipe}} (USBH\+\_\+\+Handle\+Type\+Def \texorpdfstring{$\ast$}{*}phost, uint8\+\_\+t ep\+\_\+addr)
+\begin{DoxyCompactList}\small\item\em USBH\+\_\+\+Alloc\+\_\+\+Pipe Allocate a new Pipe. \end{DoxyCompactList}\item 
+USBH\+\_\+\+Status\+Type\+Def \mbox{\hyperlink{group___u_s_b_h___p_i_p_e_s___private___functions_gae5a6f5bd4f58b827e719c11835980966}{USBH\+\_\+\+Free\+Pipe}} (USBH\+\_\+\+Handle\+Type\+Def \texorpdfstring{$\ast$}{*}phost, uint8\+\_\+t idx)
+\begin{DoxyCompactList}\small\item\em USBH\+\_\+\+Free\+\_\+\+Pipe Free the USB Pipe. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+This file implements functions for opening and closing Pipes. 
+
+\begin{DoxyAuthor}{Author}
+MCD Application Team 
+\end{DoxyAuthor}
+\begin{DoxyAttention}{Attention}
+
+\end{DoxyAttention}
+Copyright (c) 2015 STMicroelectronics. All rights reserved.
+
+This software is licensed under terms that can be found in the LICENSE file in the root directory of this software component. If no LICENSE file comes with this software, it is provided AS-\/\+IS. 

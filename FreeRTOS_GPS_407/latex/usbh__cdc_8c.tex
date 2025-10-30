@@ -1,0 +1,72 @@
+\doxysection{Middlewares/\+ST/\+STM32\+\_\+\+USB\+\_\+\+Host\+\_\+\+Library/\+Class/\+CDC/\+Src/usbh\+\_\+cdc.c File Reference}
+\hypertarget{usbh__cdc_8c}{}\label{usbh__cdc_8c}\index{Middlewares/ST/STM32\_USB\_Host\_Library/Class/CDC/Src/usbh\_cdc.c@{Middlewares/ST/STM32\_USB\_Host\_Library/Class/CDC/Src/usbh\_cdc.c}}
+
+
+This file is the CDC Layer Handlers for USB Host CDC class.  
+
+
+{\ttfamily \#include "{}usbh\+\_\+cdc.\+h"{}}\newline
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define {\bfseries USBH\+\_\+\+CDC\+\_\+\+BUFFER\+\_\+\+SIZE}~1024
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+USBH\+\_\+\+Status\+Type\+Def \mbox{\hyperlink{group___u_s_b_h___c_d_c___c_o_r_e___private___functions_gaa41c8ff240fbc3b03b3f7390bd2eaced}{USBH\+\_\+\+CDC\+\_\+\+Stop}} (USBH\+\_\+\+Handle\+Type\+Def \texorpdfstring{$\ast$}{*}phost)
+\begin{DoxyCompactList}\small\item\em USBH\+\_\+\+CDC\+\_\+\+Stop Stop current CDC Transmission. \end{DoxyCompactList}\item 
+USBH\+\_\+\+Status\+Type\+Def \mbox{\hyperlink{group___u_s_b_h___c_d_c___c_o_r_e___private___functions_ga0a97cecdc325afda054708260d4a4cd4}{USBH\+\_\+\+CDC\+\_\+\+Set\+Line\+Coding}} (USBH\+\_\+\+Handle\+Type\+Def \texorpdfstring{$\ast$}{*}phost, CDC\+\_\+\+Line\+Coding\+Type\+Def \texorpdfstring{$\ast$}{*}linecoding)
+\begin{DoxyCompactList}\small\item\em This function prepares the state before issuing the class specific commands. \end{DoxyCompactList}\item 
+USBH\+\_\+\+Status\+Type\+Def \mbox{\hyperlink{group___u_s_b_h___c_d_c___c_o_r_e___private___functions_ga58896a873e5451cfa68e0199b62310c1}{USBH\+\_\+\+CDC\+\_\+\+Get\+Line\+Coding}} (USBH\+\_\+\+Handle\+Type\+Def \texorpdfstring{$\ast$}{*}phost, CDC\+\_\+\+Line\+Coding\+Type\+Def \texorpdfstring{$\ast$}{*}linecoding)
+\begin{DoxyCompactList}\small\item\em This function prepares the state before issuing the class specific commands. \end{DoxyCompactList}\item 
+uint16\+\_\+t \mbox{\hyperlink{group___u_s_b_h___c_d_c___c_o_r_e___private___functions_ga604e66c38a1c9bb300087a5f717fa744}{USBH\+\_\+\+CDC\+\_\+\+Get\+Last\+Received\+Data\+Size}} (USBH\+\_\+\+Handle\+Type\+Def \texorpdfstring{$\ast$}{*}phost)
+\begin{DoxyCompactList}\small\item\em This function return last received data size. \end{DoxyCompactList}\item 
+USBH\+\_\+\+Status\+Type\+Def \mbox{\hyperlink{group___u_s_b_h___c_d_c___c_o_r_e___private___functions_gaa665a75165250f23da58b07a0ccfdf85}{USBH\+\_\+\+CDC\+\_\+\+Transmit}} (USBH\+\_\+\+Handle\+Type\+Def \texorpdfstring{$\ast$}{*}phost, uint8\+\_\+t \texorpdfstring{$\ast$}{*}pbuff, uint32\+\_\+t length)
+\begin{DoxyCompactList}\small\item\em This function prepares the state before issuing the class specific commands. \end{DoxyCompactList}\item 
+USBH\+\_\+\+Status\+Type\+Def \mbox{\hyperlink{group___u_s_b_h___c_d_c___c_o_r_e___private___functions_ga541a5501a8392d124fe1ee0c6cbf0d1a}{USBH\+\_\+\+CDC\+\_\+\+Receive}} (USBH\+\_\+\+Handle\+Type\+Def \texorpdfstring{$\ast$}{*}phost, uint8\+\_\+t \texorpdfstring{$\ast$}{*}pbuff, uint32\+\_\+t length)
+\begin{DoxyCompactList}\small\item\em This function prepares the state before issuing the class specific commands. \end{DoxyCompactList}\item 
+\+\_\+\+\_\+weak void \mbox{\hyperlink{group___u_s_b_h___c_d_c___c_o_r_e___private___functions_gafe96a665474183a25be73db0617416b1}{USBH\+\_\+\+CDC\+\_\+\+Transmit\+Callback}} (USBH\+\_\+\+Handle\+Type\+Def \texorpdfstring{$\ast$}{*}phost)
+\begin{DoxyCompactList}\small\item\em The function informs user that data have been received. \end{DoxyCompactList}\item 
+\+\_\+\+\_\+weak void \mbox{\hyperlink{group___u_s_b_h___c_d_c___c_o_r_e___private___functions_ga99a5e19eda036445cb59a5121d58a242}{USBH\+\_\+\+CDC\+\_\+\+Receive\+Callback}} (USBH\+\_\+\+Handle\+Type\+Def \texorpdfstring{$\ast$}{*}phost)
+\begin{DoxyCompactList}\small\item\em The function informs user that data have been sent. \end{DoxyCompactList}\item 
+\+\_\+\+\_\+weak void \mbox{\hyperlink{group___u_s_b_h___c_d_c___c_o_r_e___private___functions_ga4cea710a38a9e37fe426627eab6fc7ce}{USBH\+\_\+\+CDC\+\_\+\+Line\+Coding\+Changed}} (USBH\+\_\+\+Handle\+Type\+Def \texorpdfstring{$\ast$}{*}phost)
+\begin{DoxyCompactList}\small\item\em The function informs user that Settings have been changed. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{struct_u_s_b_h___class_type_def}{USBH\+\_\+\+Class\+Type\+Def}} \mbox{\hyperlink{group___u_s_b_h___c_d_c___c_o_r_e___private___function_prototypes_gae4d7778959a0ff382241c513c5ad1b7b}{CDC\+\_\+\+Class}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+This file is the CDC Layer Handlers for USB Host CDC class. 
+
+\begin{DoxyAuthor}{Author}
+MCD Application Team 
+\end{DoxyAuthor}
+\begin{DoxyAttention}{Attention}
+
+\end{DoxyAttention}
+Copyright (c) 2015 STMicroelectronics. All rights reserved.
+
+This software is licensed under terms that can be found in the LICENSE file in the root directory of this software component. If no LICENSE file comes with this software, it is provided AS-\/\+IS.
+
+\begin{DoxyVerb}*
+*          ===================================================================
+*                                CDC Class Driver Description
+*          ===================================================================
+*           This driver manages the "Universal Serial Bus Class Definitions for Communications Devices
+*           Revision 1.2 November 16, 2007" and the sub-protocol specification of "Universal Serial Bus
+*           Communications Class Subclass Specification for PSTN Devices Revision 1.2 February 9, 2007"
+*           This driver implements the following aspects of the specification:
+*             - Device descriptor management
+*             - Configuration descriptor management
+*             - Enumeration as CDC device with 2 data endpoints (IN and OUT) and 1 command endpoint (IN)
+*             - Requests management (as described in section 6.2 in specification)
+*             - Abstract Control Model compliant
+*             - Union Functional collection (using 1 IN endpoint for control)
+*             - Data interface class
+*
+*  \end{DoxyVerb}
+ 

@@ -1,0 +1,126 @@
+\doxysection{Core/\+My\+App/\+App/ledjes.c File Reference}
+\hypertarget{ledjes_8c}{}\label{ledjes_8c}\index{Core/MyApp/App/ledjes.c@{Core/MyApp/App/ledjes.c}}
+
+
+Laat de werking van mutexes en tasknotification zien.~\newline
+ {\bfseries{Demonstreert\+: , x\+Semaphore\+Take(), x\+Semaphore\+Give(), x\+Task\+Notify\+Give(), ul\+Task\+Notify\+Take(), task\+YIELD().}}~\newline
+.  
+
+
+{\ttfamily \#include $<$admin.\+h$>$}\newline
+{\ttfamily \#include "{}main.\+h"{}}\newline
+{\ttfamily \#include "{}cmsis\+\_\+os.\+h"{}}\newline
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{ledjes_8c_aaf63dace9f7f47a694f8950fbe086df3}{LED\+\_\+\+Task1}} (void \texorpdfstring{$\ast$}{*}argument)
+\begin{DoxyCompactList}\small\item\em Tasks die ledjes manipuleren nadat ze eerst afgeschermd zijn met mutex semaphores. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{ledjes_8c_a827d2f52992b1ba443aabe4ee4cbc89d}{LED\+\_\+\+Task2}} (void \texorpdfstring{$\ast$}{*}argument)
+\begin{DoxyCompactList}\small\item\em Tasks die ledjes manipuleren nadat ze eerst afgeschermd zijn met mutex semaphores. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{ledjes_8c_ad23f4088808e5ccc47e28a69fdf155e6}{LED\+\_\+\+Task3}} (void \texorpdfstring{$\ast$}{*}argument)
+\begin{DoxyCompactList}\small\item\em Tasks die ledjes manipuleren nadat ze eerst afgeschermd zijn met mutex semaphores. Task 3 en 4 werken daarnaast nog met tasknotification. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{ledjes_8c_a46ab630af9d7344d8968a7874ec71578}{LED\+\_\+\+Task4}} (void \texorpdfstring{$\ast$}{*}argument)
+\begin{DoxyCompactList}\small\item\em Tasks die ledjes manipuleren nadat ze eerst afgeschermd zijn met mutex semaphores. Task 3 en 4 werken daarnaast nog met tasknotification. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{ledjes_8c_ac0e8ff7c2f49b0988165336ca423dcea}\label{ledjes_8c_ac0e8ff7c2f49b0988165336ca423dcea} 
+unsigned int {\bfseries os\+\_\+delay} = 100
+\begin{DoxyCompactList}\small\item\em default value 100MSEC, kan veranderd worden via Terminal (user interface) \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Laat de werking van mutexes en tasknotification zien.~\newline
+ {\bfseries{Demonstreert\+: , x\+Semaphore\+Take(), x\+Semaphore\+Give(), x\+Task\+Notify\+Give(), ul\+Task\+Notify\+Take(), task\+YIELD().}}~\newline
+. 
+
+\doxylink{ledjes_8c_aaf63dace9f7f47a694f8950fbe086df3}{LED\+\_\+\+Task1()}, \doxylink{ledjes_8c_a827d2f52992b1ba443aabe4ee4cbc89d}{LED\+\_\+\+Task2()}, \doxylink{ledjes_8c_ad23f4088808e5ccc47e28a69fdf155e6}{LED\+\_\+\+Task3()} en \doxylink{ledjes_8c_a46ab630af9d7344d8968a7874ec71578}{LED\+\_\+\+Task4()} tonen het mutual exclusion semaphore principe. ~\newline
+ Allemaal zetten ze de LEDs op een bepaalde manier aan en uit. {\itshape Doordat ze een semaphore gebruiken kunnen ze allemaal hun eigen loepje afmaken, zonder dat ze door een context switch onderbroken worden}. De semaphore zorgt ervoor dat ze steeds even zelf eigenaar zijn van de LEDs, en zolang ze de semaphore bezitten worden andere taken uitgesloten (hence\+: {\itshape Mutual Exclusion Semaphore}). Ze krijgen dan pas de beurt als de task die de mutex bezit, deze vrijgeeft (met semaphoregive). LED\+\_\+tasks 1 en 2 werken met het Round Robin principe. Dat kan door ze dezelfde prioriteit te geven.~\newline
+
+
+Stel, je wilt dat niet, dan moet je iets anders verzinnen, zie \doxylink{ledjes_8c_ad23f4088808e5ccc47e28a69fdf155e6}{LED\+\_\+\+Task3()} en \doxylink{ledjes_8c_a46ab630af9d7344d8968a7874ec71578}{LED\+\_\+\+Task4()}. Deze hebben een kleine toevoeging t.\+o.\+v. 1 en 2\+: Ze laten niet het OS bepalen wie aan de beurt is met Round Robin, maar bepalen het zelf met tasknotify! Ze geven steeds elkaar de beurt. Zo kun je werken met verschillende task-\/priorities, zonder dat tasks met een lage prioriteit \textquotesingle{}starven\textquotesingle{}, dus geen timeslices krijgen van het OS.~\newline
+ Want\+: Free\+RTOS bezit geen priority-\/inversion (u\+C//\+OSII bv. wel)! Daarbij gaat het OS een taak met een lage prioriteit die dreigt te \textquotesingle{}starven\textquotesingle{}, zelf ophogen zodat de taak wel aan de beurt komt.
+
+\begin{DoxyAuthor}{Author}
+MSC
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+5/5/2022 
+\end{DoxyDate}
+
+
+\label{doc-func-members}
+\Hypertarget{ledjes_8c_doc-func-members}
+\doxysubsection{Function Documentation}
+\Hypertarget{ledjes_8c_aaf63dace9f7f47a694f8950fbe086df3}\index{ledjes.c@{ledjes.c}!LED\_Task1@{LED\_Task1}}
+\index{LED\_Task1@{LED\_Task1}!ledjes.c@{ledjes.c}}
+\doxysubsubsection{\texorpdfstring{LED\_Task1()}{LED\_Task1()}}
+{\footnotesize\ttfamily \label{ledjes_8c_aaf63dace9f7f47a694f8950fbe086df3} 
+void LED\+\_\+\+Task1 (\begin{DoxyParamCaption}\item[{void \texorpdfstring{$\ast$}{*}}]{argument}{}\end{DoxyParamCaption})}
+
+
+
+Tasks die ledjes manipuleren nadat ze eerst afgeschermd zijn met mutex semaphores. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em \texorpdfstring{$\ast$}{*}argument} & Niet gebruikt, eventueel een waarde of string om te testen \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+\Hypertarget{ledjes_8c_a827d2f52992b1ba443aabe4ee4cbc89d}\index{ledjes.c@{ledjes.c}!LED\_Task2@{LED\_Task2}}
+\index{LED\_Task2@{LED\_Task2}!ledjes.c@{ledjes.c}}
+\doxysubsubsection{\texorpdfstring{LED\_Task2()}{LED\_Task2()}}
+{\footnotesize\ttfamily \label{ledjes_8c_a827d2f52992b1ba443aabe4ee4cbc89d} 
+void LED\+\_\+\+Task2 (\begin{DoxyParamCaption}\item[{void \texorpdfstring{$\ast$}{*}}]{argument}{}\end{DoxyParamCaption})}
+
+
+
+Tasks die ledjes manipuleren nadat ze eerst afgeschermd zijn met mutex semaphores. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em \texorpdfstring{$\ast$}{*}argument} & Niet gebruikt, eventueel een waarde of string om te testen \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+\Hypertarget{ledjes_8c_ad23f4088808e5ccc47e28a69fdf155e6}\index{ledjes.c@{ledjes.c}!LED\_Task3@{LED\_Task3}}
+\index{LED\_Task3@{LED\_Task3}!ledjes.c@{ledjes.c}}
+\doxysubsubsection{\texorpdfstring{LED\_Task3()}{LED\_Task3()}}
+{\footnotesize\ttfamily \label{ledjes_8c_ad23f4088808e5ccc47e28a69fdf155e6} 
+void LED\+\_\+\+Task3 (\begin{DoxyParamCaption}\item[{void \texorpdfstring{$\ast$}{*}}]{argument}{}\end{DoxyParamCaption})}
+
+
+
+Tasks die ledjes manipuleren nadat ze eerst afgeschermd zijn met mutex semaphores. Task 3 en 4 werken daarnaast nog met tasknotification. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em \texorpdfstring{$\ast$}{*}argument} & Niet gebruikt, eventueel een waarde of string om te testen \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+\Hypertarget{ledjes_8c_a46ab630af9d7344d8968a7874ec71578}\index{ledjes.c@{ledjes.c}!LED\_Task4@{LED\_Task4}}
+\index{LED\_Task4@{LED\_Task4}!ledjes.c@{ledjes.c}}
+\doxysubsubsection{\texorpdfstring{LED\_Task4()}{LED\_Task4()}}
+{\footnotesize\ttfamily \label{ledjes_8c_a46ab630af9d7344d8968a7874ec71578} 
+void LED\+\_\+\+Task4 (\begin{DoxyParamCaption}\item[{void \texorpdfstring{$\ast$}{*}}]{argument}{}\end{DoxyParamCaption})}
+
+
+
+Tasks die ledjes manipuleren nadat ze eerst afgeschermd zijn met mutex semaphores. Task 3 en 4 werken daarnaast nog met tasknotification. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em \texorpdfstring{$\ast$}{*}argument} & Niet gebruikt, eventueel een waarde of string om te testen \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}

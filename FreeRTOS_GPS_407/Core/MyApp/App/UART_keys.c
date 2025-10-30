@@ -18,6 +18,8 @@
 #include "cmsis_os.h"
 #include "uart.h"
 #include "gps.h"
+#include <stdbool.h>
+#include "ultrasonic.h"
 
 extern unsigned int os_delay; /// deze waarde kan hier veranderd worden.
 
@@ -311,6 +313,13 @@ void UART_menu (void *argument)
 			UART_printf(100, "\n\r Mode: %s", parsed_gnrmc.mode);				// 13. A=autonomous, D,E
 			UART_printf(100, "\n\r Cs: %s", parsed_gnrmc.cs);					// 14. checkum *34
 			break;
+
+		case 'A': /// A: print de gemeten afstand van de sr04 sensor
+			if (!sr04_debug)
+				sr04_debug = true;
+
+			if (sr04_debug)
+				sr04_debug = false;
 		}
 	}
 }

@@ -1,0 +1,88 @@
+\doxysection{Core/\+My\+App/\+App/gps.c File Reference}
+\hypertarget{gps_8c}{}\label{gps_8c}\index{Core/MyApp/App/gps.c@{Core/MyApp/App/gps.c}}
+
+
+Behandelt de gps input-\/strings (NMEA-\/protocol) van UART1.~\newline
+ {\bfseries{Demonstreert\+: x\+Message\+Buffer\+Read() }}~\newline
+ Aan UART1 is een interrupt gekoppeld (zie \doxylink{main_8c}{main.\+c}\+: \doxylink{group___u_a_r_t___exported___functions___group2_gae494a9643f29b87d6d81e5264e60e57b}{HAL\+\_\+\+UART\+\_\+\+Rx\+Cplt\+Callback()}, die de inkomende string op een messagebuffer zet, die we hier uitlezen en verwerken.~\newline
+.  
+
+
+{\ttfamily \#include "{}admin.\+h"{}}\newline
+{\ttfamily \#include "{}main.\+h"{}}\newline
+{\ttfamily \#include "{}cmsis\+\_\+os.\+h"{}}\newline
+{\ttfamily \#include "{}gps.\+h"{}}\newline
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{gps_8c_a279ae28c1e6a05f0495e2fc3688e4947}{Parsed\+GPS}} (void)
+\begin{DoxyCompactList}\small\item\em De chars van de binnengekomen GNRMC-\/string worden in data omgezet, dwz in een GNRMC-\/struct, mbv strtok(); De struct bevat nu alleen chars -\/ je kunt er ook voor kiezen om gelijk met doubles te werken, die je dan met atof(); omzet. \end{DoxyCompactList}\item 
+\Hypertarget{gps_8c_a294c695f1e114c0a4975cef5b91f8e7d}\label{gps_8c_a294c695f1e114c0a4975cef5b91f8e7d} 
+void {\bfseries fill\+\_\+\+GNRMC} (char \texorpdfstring{$\ast$}{*}message)
+\item 
+void \mbox{\hyperlink{gps_8c_af733a2317b43875d2c911c34f3a86823}{GPS\+\_\+get\+NMEA}} (void \texorpdfstring{$\ast$}{*}argument)
+\begin{DoxyCompactList}\small\item\em Leest de GPS-\/\+NMEA-\/strings die via de UART via interrupt-\/handler (HAL\+\_\+\+UART\+\_\+\+Rx\+Cplt\+Callback) binnenkomen. \texorpdfstring{$\ast$}{*} De handler zet elk inkomende character gelijk op een queue, die hier uitgelezen wordt. Vervolgens wordt hiervan een GPS-\/message opgebouwd en verwerkt. \end{DoxyCompactList}\item 
+\Hypertarget{gps_8c_a66735348a4e65644ec1762bdf37e4f19}\label{gps_8c_a66735348a4e65644ec1762bdf37e4f19} 
+int {\bfseries hex2int} (char \texorpdfstring{$\ast$}{*}c)
+\item 
+\Hypertarget{gps_8c_a49002bb606cdf9e9ffecb4dba16082c0}\label{gps_8c_a49002bb606cdf9e9ffecb4dba16082c0} 
+int {\bfseries hexchar2int} (char c)
+\item 
+\Hypertarget{gps_8c_a599d945c53e74265e35aff35847c15e2}\label{gps_8c_a599d945c53e74265e35aff35847c15e2} 
+int {\bfseries checksum\+\_\+valid} (char \texorpdfstring{$\ast$}{*}string)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{gps_8c_a0467b1a9289b2992a0c040d54b5409f3}\label{gps_8c_a0467b1a9289b2992a0c040d54b5409f3} 
+GNRMC {\bfseries gnrmc}
+\item 
+\Hypertarget{gps_8c_a5db9c6d8d2bec2ac1f04a9c89f156602}\label{gps_8c_a5db9c6d8d2bec2ac1f04a9c89f156602} 
+Parsed\+\_\+\+GNRMC {\bfseries parsed\+\_\+gnrmc}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Behandelt de gps input-\/strings (NMEA-\/protocol) van UART1.~\newline
+ {\bfseries{Demonstreert\+: x\+Message\+Buffer\+Read() }}~\newline
+ Aan UART1 is een interrupt gekoppeld (zie \doxylink{main_8c}{main.\+c}\+: \doxylink{group___u_a_r_t___exported___functions___group2_gae494a9643f29b87d6d81e5264e60e57b}{HAL\+\_\+\+UART\+\_\+\+Rx\+Cplt\+Callback()}, die de inkomende string op een messagebuffer zet, die we hier uitlezen en verwerken.~\newline
+. 
+
+\begin{DoxyAuthor}{Author}
+MSC
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+5/5/2023 
+\end{DoxyDate}
+
+
+\label{doc-func-members}
+\Hypertarget{gps_8c_doc-func-members}
+\doxysubsection{Function Documentation}
+\Hypertarget{gps_8c_af733a2317b43875d2c911c34f3a86823}\index{gps.c@{gps.c}!GPS\_getNMEA@{GPS\_getNMEA}}
+\index{GPS\_getNMEA@{GPS\_getNMEA}!gps.c@{gps.c}}
+\doxysubsubsection{\texorpdfstring{GPS\_getNMEA()}{GPS\_getNMEA()}}
+{\footnotesize\ttfamily \label{gps_8c_af733a2317b43875d2c911c34f3a86823} 
+void GPS\+\_\+get\+NMEA (\begin{DoxyParamCaption}\item[{void \texorpdfstring{$\ast$}{*}}]{argument}{}\end{DoxyParamCaption})}
+
+
+
+Leest de GPS-\/\+NMEA-\/strings die via de UART via interrupt-\/handler (HAL\+\_\+\+UART\+\_\+\+Rx\+Cplt\+Callback) binnenkomen. \texorpdfstring{$\ast$}{*} De handler zet elk inkomende character gelijk op een queue, die hier uitgelezen wordt. Vervolgens wordt hiervan een GPS-\/message opgebouwd en verwerkt. 
+
+\begin{DoxyReturn}{Returns}
+void/ 
+\end{DoxyReturn}
+\Hypertarget{gps_8c_a279ae28c1e6a05f0495e2fc3688e4947}\index{gps.c@{gps.c}!ParsedGPS@{ParsedGPS}}
+\index{ParsedGPS@{ParsedGPS}!gps.c@{gps.c}}
+\doxysubsubsection{\texorpdfstring{ParsedGPS()}{ParsedGPS()}}
+{\footnotesize\ttfamily \label{gps_8c_a279ae28c1e6a05f0495e2fc3688e4947} 
+void Parsed\+GPS (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})}
+
+
+
+De chars van de binnengekomen GNRMC-\/string worden in data omgezet, dwz in een GNRMC-\/struct, mbv strtok(); De struct bevat nu alleen chars -\/ je kunt er ook voor kiezen om gelijk met doubles te werken, die je dan met atof(); omzet. 
+
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}

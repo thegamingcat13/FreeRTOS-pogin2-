@@ -1,0 +1,80 @@
+\doxysection{Drivers/\+STM32\+F4xx\+\_\+\+HAL\+\_\+\+Driver/\+Src/stm32f4xx\+\_\+hal\+\_\+i2s\+\_\+ex.c File Reference}
+\hypertarget{stm32f4xx__hal__i2s__ex_8c}{}\label{stm32f4xx__hal__i2s__ex_8c}\index{Drivers/STM32F4xx\_HAL\_Driver/Src/stm32f4xx\_hal\_i2s\_ex.c@{Drivers/STM32F4xx\_HAL\_Driver/Src/stm32f4xx\_hal\_i2s\_ex.c}}
+
+
+I2S HAL module driver. This file provides firmware functions to manage the following functionalities of I2S extension peripheral\+:  
+
+
+{\ttfamily \#include "{}stm32f4xx\+\_\+hal.\+h"{}}\newline
+
+
+\doxysubsection{Detailed Description}
+I2S HAL module driver. This file provides firmware functions to manage the following functionalities of I2S extension peripheral\+: 
+
+\begin{DoxyAuthor}{Author}
+MCD Application Team
+\begin{DoxyItemize}
+\item Extension features Functions
+\end{DoxyItemize}
+\end{DoxyAuthor}
+\begin{DoxyAttention}{Attention}
+
+\end{DoxyAttention}
+Copyright (c) 2016 STMicroelectronics. All rights reserved.
+
+This software is licensed under terms that can be found in the LICENSE file in the root directory of this software component. If no LICENSE file comes with this software, it is provided AS-\/\+IS.
+
+\begin{DoxyVerb} ==============================================================================
+                   ##### I2S Extension features #####
+ ==============================================================================
+ [..]
+    (#) In I2S full duplex mode, each SPI peripheral is able to manage sending and receiving
+        data simultaneously using two data lines. Each SPI peripheral has an extended block
+        called I2Sxext (i.e I2S2ext for SPI2 and I2S3ext for SPI3).
+    (#) The extension block is not a full SPI IP, it is used only as I2S slave to
+        implement full duplex mode. The extension block uses the same clock sources
+        as its master.
+
+    (#) Both I2Sx and I2Sx_ext can be configured as transmitters or receivers.
+
+    [..]
+      (@) Only I2Sx can deliver SCK and WS to I2Sx_ext in full duplex mode, where
+        I2Sx can be I2S2 or I2S3.
+
+                 ##### How to use this driver #####
+===============================================================================
+[..]
+  Three operation modes are available within this driver :
+
+  *** Polling mode IO operation ***
+  =================================
+  [..]
+    (+) Send and receive in the same time an amount of data in blocking mode using HAL_I2SEx_TransmitReceive()
+
+  *** Interrupt mode IO operation ***
+  ===================================
+  [..]
+    (+) Send and receive in the same time an amount of data in non blocking mode using HAL_I2SEx_TransmitReceive_IT()
+    (+) At transmission/reception end of transfer HAL_I2SEx_TxRxCpltCallback is executed and user can
+        add his own code by customization of function pointer HAL_I2SEx_TxRxCpltCallback
+    (+) In case of transfer Error, HAL_I2S_ErrorCallback() function is executed and user can
+        add his own code by customization of function pointer HAL_I2S_ErrorCallback
+
+  *** DMA mode IO operation ***
+  ==============================
+  [..]
+    (+) Send and receive an amount of data in non blocking mode (DMA) using HAL_I2SEx_TransmitReceive_DMA()
+    (+) At transmission/reception end of transfer HAL_I2SEx_TxRxCpltCallback is executed and user can
+        add his own code by customization of function pointer HAL_I2S_TxRxCpltCallback
+    (+) In case of transfer Error, HAL_I2S_ErrorCallback() function is executed and user can
+        add his own code by customization of function pointer HAL_I2S_ErrorCallback
+    (+) __HAL_I2SEXT_FLUSH_RX_DR: In Full-Duplex Slave mode, if HAL_I2S_DMAStop is used to stop the
+        communication, an error HAL_I2S_ERROR_BUSY_LINE_RX is raised as the master continue to transmit data.
+        In this case __HAL_I2SEXT_FLUSH_RX_DR macro must be used to flush the remaining data
+        inside I2Sx and I2Sx_ext DR registers and avoid using DeInit/Init process for the next transfer.
+\end{DoxyVerb}
+
+
+Additional Figure\+: The Extended block uses the same clock sources as its master. \begin{DoxyVerb}           +-----------------------+
+\end{DoxyVerb}
+ I2\+Sx\+\_\+\+SCK \texorpdfstring{$\vert$}{|} \texorpdfstring{$\vert$}{|} -\/-\/-\/-\/-\/-\/-\/---+-\/-\/\texorpdfstring{$>$}{>}\texorpdfstring{$\vert$}{|} I2\+Sx \texorpdfstring{$\vert$}{|}-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/\texorpdfstring{$>$}{>}I2\+Sx\+\_\+\+SD(in/out) +--\texorpdfstring{$\vert$}{|}-\/-\/\texorpdfstring{$>$}{>}\texorpdfstring{$\vert$}{|} \texorpdfstring{$\vert$}{|} \texorpdfstring{$\vert$}{|} \texorpdfstring{$\vert$}{|} +-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/---+ \texorpdfstring{$\vert$}{|} \texorpdfstring{$\vert$}{|} I2\+S\+\_\+\+WS \texorpdfstring{$\vert$}{|} \texorpdfstring{$\vert$}{|} -\/-\/-\/-\/-\/-\/\texorpdfstring{$>$}{>}\texorpdfstring{$\vert$}{|} \texorpdfstring{$\vert$}{|} \texorpdfstring{$\vert$}{|} \texorpdfstring{$\vert$}{|} +-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/---+ \texorpdfstring{$\vert$}{|} +-\/-\/\texorpdfstring{$>$}{>}\texorpdfstring{$\vert$}{|} \texorpdfstring{$\vert$}{|} \texorpdfstring{$\vert$}{|} \texorpdfstring{$\vert$}{|} I2\+Sx\+\_\+ext \texorpdfstring{$\vert$}{|}-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/\texorpdfstring{$>$}{>}I2\+Sx\+\_\+ext\+SD(in/out) +-\/-\/-\/-\/-\/\texorpdfstring{$>$}{>}\texorpdfstring{$\vert$}{|} \texorpdfstring{$\vert$}{|} +-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/---+ 

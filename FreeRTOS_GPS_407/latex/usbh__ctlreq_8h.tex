@@ -1,0 +1,67 @@
+\doxysection{Middlewares/\+ST/\+STM32\+\_\+\+USB\+\_\+\+Host\+\_\+\+Library/\+Core/\+Inc/usbh\+\_\+ctlreq.h File Reference}
+\hypertarget{usbh__ctlreq_8h}{}\label{usbh__ctlreq_8h}\index{Middlewares/ST/STM32\_USB\_Host\_Library/Core/Inc/usbh\_ctlreq.h@{Middlewares/ST/STM32\_USB\_Host\_Library/Core/Inc/usbh\_ctlreq.h}}
+
+
+Header file for \doxylink{usbh__ctlreq_8c}{usbh\+\_\+ctlreq.\+c}.  
+
+
+{\ttfamily \#include "{}usbh\+\_\+core.\+h"{}}\newline
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define {\bfseries FEATURE\+\_\+\+SELECTOR\+\_\+\+ENDPOINT}~0x00U
+\item 
+\#define {\bfseries FEATURE\+\_\+\+SELECTOR\+\_\+\+DEVICE}~0x01U
+\item 
+\#define {\bfseries FEATURE\+\_\+\+SELECTOR\+\_\+\+REMOTEWAKEUP}~0\+X01U
+\item 
+\#define {\bfseries INTERFACE\+\_\+\+DESC\+\_\+\+TYPE}~0x04U
+\item 
+\#define {\bfseries ENDPOINT\+\_\+\+DESC\+\_\+\+TYPE}~0x05U
+\item 
+\#define {\bfseries INTERFACE\+\_\+\+DESC\+\_\+\+SIZE}~0x09U
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+USBH\+\_\+\+Status\+Type\+Def \mbox{\hyperlink{group___u_s_b_h___c_t_l_r_e_q___exported___functions_prototype_gaeb38a0e70c0faf2c542e9093ae7c6cc3}{USBH\+\_\+\+Ctl\+Req}} (USBH\+\_\+\+Handle\+Type\+Def \texorpdfstring{$\ast$}{*}phost, uint8\+\_\+t \texorpdfstring{$\ast$}{*}buff, uint16\+\_\+t length)
+\begin{DoxyCompactList}\small\item\em USBH\+\_\+\+Ctl\+Req USBH\+\_\+\+Ctl\+Req sends a control request and provide the status after completion of the request. \end{DoxyCompactList}\item 
+USBH\+\_\+\+Status\+Type\+Def \mbox{\hyperlink{group___u_s_b_h___c_t_l_r_e_q___exported___functions_prototype_gab3140a702c66e2f4141d276ae40d96ad}{USBH\+\_\+\+Get\+Descriptor}} (USBH\+\_\+\+Handle\+Type\+Def \texorpdfstring{$\ast$}{*}phost, uint8\+\_\+t req\+\_\+type, uint16\+\_\+t value\+\_\+idx, uint8\+\_\+t \texorpdfstring{$\ast$}{*}buff, uint16\+\_\+t length)
+\begin{DoxyCompactList}\small\item\em USBH\+\_\+\+Get\+Descriptor Issues Descriptor command to the device. Once the response received, it parses the descriptor and updates the status. \end{DoxyCompactList}\item 
+USBH\+\_\+\+Status\+Type\+Def \mbox{\hyperlink{group___u_s_b_h___c_t_l_r_e_q___exported___functions_prototype_ga1a203108be621678a48862542eca7e86}{USBH\+\_\+\+Get\+\_\+\+Dev\+Desc}} (USBH\+\_\+\+Handle\+Type\+Def \texorpdfstring{$\ast$}{*}phost, uint16\+\_\+t length)
+\begin{DoxyCompactList}\small\item\em USBH\+\_\+\+Get\+\_\+\+Dev\+Desc Issue Get Device Descriptor command to the device. Once the response received, it parses the device descriptor and updates the status. \end{DoxyCompactList}\item 
+USBH\+\_\+\+Status\+Type\+Def \mbox{\hyperlink{group___u_s_b_h___c_t_l_r_e_q___exported___functions_prototype_gac3f98f753df75f08d4ef94f0ea5b6616}{USBH\+\_\+\+Get\+\_\+\+String\+Desc}} (USBH\+\_\+\+Handle\+Type\+Def \texorpdfstring{$\ast$}{*}phost, uint8\+\_\+t string\+\_\+index, uint8\+\_\+t \texorpdfstring{$\ast$}{*}buff, uint16\+\_\+t length)
+\begin{DoxyCompactList}\small\item\em USBH\+\_\+\+Get\+\_\+\+String\+Desc Issues string Descriptor command to the device. Once the response received, it parses the string descriptor and updates the status. \end{DoxyCompactList}\item 
+USBH\+\_\+\+Status\+Type\+Def \mbox{\hyperlink{group___u_s_b_h___c_t_l_r_e_q___exported___functions_prototype_gad5cc51282e4d25b665c219ca14315dcf}{USBH\+\_\+\+Set\+Cfg}} (USBH\+\_\+\+Handle\+Type\+Def \texorpdfstring{$\ast$}{*}phost, uint16\+\_\+t cfg\+\_\+idx)
+\begin{DoxyCompactList}\small\item\em USBH\+\_\+\+Set\+Cfg The command sets the configuration value to the connected device. \end{DoxyCompactList}\item 
+USBH\+\_\+\+Status\+Type\+Def \mbox{\hyperlink{group___u_s_b_h___c_t_l_r_e_q___exported___functions_prototype_ga8d08e1dada6297478ddc8c0b5452a8be}{USBH\+\_\+\+Get\+\_\+\+Cfg\+Desc}} (USBH\+\_\+\+Handle\+Type\+Def \texorpdfstring{$\ast$}{*}phost, uint16\+\_\+t length)
+\begin{DoxyCompactList}\small\item\em USBH\+\_\+\+Get\+\_\+\+Cfg\+Desc Issues Configuration Descriptor to the device. Once the response received, it parses the configuration descriptor and updates the status. \end{DoxyCompactList}\item 
+USBH\+\_\+\+Status\+Type\+Def \mbox{\hyperlink{group___u_s_b_h___c_t_l_r_e_q___exported___functions_prototype_gabcdc05ccc311bee64d2b7d46ab3ba62b}{USBH\+\_\+\+Set\+Address}} (USBH\+\_\+\+Handle\+Type\+Def \texorpdfstring{$\ast$}{*}phost, uint8\+\_\+t Device\+Address)
+\begin{DoxyCompactList}\small\item\em USBH\+\_\+\+Set\+Address This command sets the address to the connected device. \end{DoxyCompactList}\item 
+USBH\+\_\+\+Status\+Type\+Def \mbox{\hyperlink{group___u_s_b_h___c_t_l_r_e_q___exported___functions_prototype_gac5c90b53cd042aa7608796da6f7218db}{USBH\+\_\+\+Set\+Interface}} (USBH\+\_\+\+Handle\+Type\+Def \texorpdfstring{$\ast$}{*}phost, uint8\+\_\+t ep\+\_\+num, uint8\+\_\+t alt\+Setting)
+\begin{DoxyCompactList}\small\item\em USBH\+\_\+\+Set\+Interface The command sets the Interface value to the connected device. \end{DoxyCompactList}\item 
+USBH\+\_\+\+Status\+Type\+Def \mbox{\hyperlink{group___u_s_b_h___c_t_l_r_e_q___exported___functions_prototype_gaee669ad38d6b36078d5c925273e28366}{USBH\+\_\+\+Set\+Feature}} (USBH\+\_\+\+Handle\+Type\+Def \texorpdfstring{$\ast$}{*}phost, uint8\+\_\+t w\+Value)
+\begin{DoxyCompactList}\small\item\em USBH\+\_\+\+Set\+Feature The command sets the device features (remote wakeup feature,..). \end{DoxyCompactList}\item 
+USBH\+\_\+\+Status\+Type\+Def \mbox{\hyperlink{group___u_s_b_h___c_t_l_r_e_q___exported___functions_prototype_gacc383546c83957b52ccecb27207572a9}{USBH\+\_\+\+Clr\+Feature}} (USBH\+\_\+\+Handle\+Type\+Def \texorpdfstring{$\ast$}{*}phost, uint8\+\_\+t ep\+\_\+num)
+\begin{DoxyCompactList}\small\item\em USBH\+\_\+\+Clr\+Feature This request is used to clear or disable a specific feature. \end{DoxyCompactList}\item 
+USBH\+\_\+\+Desc\+Header\+\_\+t \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{group___u_s_b_h___c_t_l_r_e_q___exported___functions_prototype_gafa03f4b9dfcfcc9609cc15f3dbea5821}{USBH\+\_\+\+Get\+Next\+Desc}} (uint8\+\_\+t \texorpdfstring{$\ast$}{*}pbuf, uint16\+\_\+t \texorpdfstring{$\ast$}{*}ptr)
+\begin{DoxyCompactList}\small\item\em USBH\+\_\+\+Get\+Next\+Desc This function return the next descriptor header. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+uint8\+\_\+t {\bfseries USBH\+\_\+\+Cfg\+Desc} \mbox{[}512\mbox{]}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Header file for \doxylink{usbh__ctlreq_8c}{usbh\+\_\+ctlreq.\+c}. 
+
+\begin{DoxyAuthor}{Author}
+MCD Application Team 
+\end{DoxyAuthor}
+\begin{DoxyAttention}{Attention}
+
+\end{DoxyAttention}
+Copyright (c) 2015 STMicroelectronics. All rights reserved.
+
+This software is licensed under terms that can be found in the LICENSE file in the root directory of this software component. If no LICENSE file comes with this software, it is provided AS-\/\+IS. 

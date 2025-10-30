@@ -1,0 +1,75 @@
+\doxysection{Core/\+My\+App/\+App/route\+\_\+performer.c File Reference}
+\hypertarget{route__performer_8c}{}\label{route__performer_8c}\index{Core/MyApp/App/route\_performer.c@{Core/MyApp/App/route\_performer.c}}
+
+
+Berekent de verschillen tussen de huidige locatie en de waypoint. Dit doet hij met het verschil tussen de lon en lat en de heading te berekenen.  
+
+
+{\ttfamily \#include $<$admin.\+h$>$}\newline
+{\ttfamily \#include $<$stdbool.\+h$>$}\newline
+{\ttfamily \#include "{}main.\+h"{}}\newline
+{\ttfamily \#include "{}gps.\+h"{}}\newline
+{\ttfamily \#include "{}cmsis\+\_\+os.\+h"{}}\newline
+{\ttfamily \#include $<$math.\+h$>$}\newline
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+Route\+Info \mbox{\hyperlink{route__performer_8c_af4a85680d3fac414e5b91f0cd16e8adf}{Get\+\_\+\+Waypoint\+\_\+\+Info}} (int waypoint)
+\begin{DoxyCompactList}\small\item\em Berekent het verschil tussen huidige lon en lat vergeleken met de waypoint. Geeft aan of wij het waypoint hebben berijkt of nog niet. De data wordt vanuit {\ttfamily parsed\+\_\+grmc} gehaald( zie {\ttfamily \doxylink{gps_8h_source}{gps.\+h}} voor de struct). \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{route__performer_8c_af36f3f68b66e5f85d4008363868269ac}{heading}} (int waypoint)
+\begin{DoxyCompactList}\small\item\em Berekent de heading eerst in radialen en daarna omgezet in graden. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{route__performer_8c_a70327aff7b4807668e49a589b69fe633}\label{route__performer_8c_a70327aff7b4807668e49a589b69fe633} 
+Route\+Info {\bfseries info}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Berekent de verschillen tussen de huidige locatie en de waypoint. Dit doet hij met het verschil tussen de lon en lat en de heading te berekenen. 
+
+\begin{DoxyDate}{Date}
+08/10/2025 
+\end{DoxyDate}
+
+
+\label{doc-func-members}
+\Hypertarget{route__performer_8c_doc-func-members}
+\doxysubsection{Function Documentation}
+\Hypertarget{route__performer_8c_af4a85680d3fac414e5b91f0cd16e8adf}\index{route\_performer.c@{route\_performer.c}!Get\_Waypoint\_Info@{Get\_Waypoint\_Info}}
+\index{Get\_Waypoint\_Info@{Get\_Waypoint\_Info}!route\_performer.c@{route\_performer.c}}
+\doxysubsubsection{\texorpdfstring{Get\_Waypoint\_Info()}{Get\_Waypoint\_Info()}}
+{\footnotesize\ttfamily \label{route__performer_8c_af4a85680d3fac414e5b91f0cd16e8adf} 
+Route\+Info Get\+\_\+\+Waypoint\+\_\+\+Info (\begin{DoxyParamCaption}\item[{int}]{waypoint}{}\end{DoxyParamCaption})}
+
+
+
+Berekent het verschil tussen huidige lon en lat vergeleken met de waypoint. Geeft aan of wij het waypoint hebben berijkt of nog niet. De data wordt vanuit {\ttfamily parsed\+\_\+grmc} gehaald( zie {\ttfamily \doxylink{gps_8h_source}{gps.\+h}} voor de struct). 
+
+
+\begin{DoxyParams}{Parameters}
+{\em waypoint} & de struct die lan en lon opslaat. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+diffs is het verschil in lon en lat. 
+\end{DoxyReturn}
+\Hypertarget{route__performer_8c_af36f3f68b66e5f85d4008363868269ac}\index{route\_performer.c@{route\_performer.c}!heading@{heading}}
+\index{heading@{heading}!route\_performer.c@{route\_performer.c}}
+\doxysubsubsection{\texorpdfstring{heading()}{heading()}}
+{\footnotesize\ttfamily \label{route__performer_8c_af36f3f68b66e5f85d4008363868269ac} 
+float heading (\begin{DoxyParamCaption}\item[{int}]{waypoint}{}\end{DoxyParamCaption})}
+
+
+
+Berekent de heading eerst in radialen en daarna omgezet in graden. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em waypoint} & de struct die lan en lon opslaat. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+heading\+\_\+deg de heading in graden. 
+\end{DoxyReturn}

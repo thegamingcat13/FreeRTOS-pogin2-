@@ -1,0 +1,263 @@
+\doxysubsubsubsection{USBH\+\_\+\+IOREQ\+\_\+\+Exported\+\_\+\+Functions\+Prototype }
+\hypertarget{group___u_s_b_h___i_o_r_e_q___exported___functions_prototype}{}\label{group___u_s_b_h___i_o_r_e_q___exported___functions_prototype}\index{USBH\_IOREQ\_Exported\_FunctionsPrototype@{USBH\_IOREQ\_Exported\_FunctionsPrototype}}
+\doxysubsubsubsubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+USBH\+\_\+\+Status\+Type\+Def \mbox{\hyperlink{group___u_s_b_h___i_o_r_e_q___exported___functions_prototype_ga174168b7bf3efbe5052b9337d036e168}{USBH\+\_\+\+Ctl\+Send\+Setup}} (USBH\+\_\+\+Handle\+Type\+Def \texorpdfstring{$\ast$}{*}phost, uint8\+\_\+t \texorpdfstring{$\ast$}{*}buff, uint8\+\_\+t pipe\+\_\+num)
+\begin{DoxyCompactList}\small\item\em USBH\+\_\+\+Ctl\+Send\+Setup Sends the Setup Packet to the Device. \end{DoxyCompactList}\item 
+USBH\+\_\+\+Status\+Type\+Def \mbox{\hyperlink{group___u_s_b_h___i_o_r_e_q___exported___functions_prototype_ga97b326e21dbe08e436d2953634d9f284}{USBH\+\_\+\+Ctl\+Send\+Data}} (USBH\+\_\+\+Handle\+Type\+Def \texorpdfstring{$\ast$}{*}phost, uint8\+\_\+t \texorpdfstring{$\ast$}{*}buff, uint16\+\_\+t length, uint8\+\_\+t pipe\+\_\+num, uint8\+\_\+t do\+\_\+ping)
+\begin{DoxyCompactList}\small\item\em USBH\+\_\+\+Ctl\+Send\+Data Sends a data Packet to the Device. \end{DoxyCompactList}\item 
+USBH\+\_\+\+Status\+Type\+Def \mbox{\hyperlink{group___u_s_b_h___i_o_r_e_q___exported___functions_prototype_gaae5faaa4aaed0c0ff68eb0c40a93c90b}{USBH\+\_\+\+Ctl\+Receive\+Data}} (USBH\+\_\+\+Handle\+Type\+Def \texorpdfstring{$\ast$}{*}phost, uint8\+\_\+t \texorpdfstring{$\ast$}{*}buff, uint16\+\_\+t length, uint8\+\_\+t pipe\+\_\+num)
+\begin{DoxyCompactList}\small\item\em USBH\+\_\+\+Ctl\+Receive\+Data Receives the Device Response to the Setup Packet. \end{DoxyCompactList}\item 
+USBH\+\_\+\+Status\+Type\+Def \mbox{\hyperlink{group___u_s_b_h___i_o_r_e_q___exported___functions_prototype_ga832ed1e4938daafe6c49b7a80f8bfa35}{USBH\+\_\+\+Bulk\+Receive\+Data}} (USBH\+\_\+\+Handle\+Type\+Def \texorpdfstring{$\ast$}{*}phost, uint8\+\_\+t \texorpdfstring{$\ast$}{*}buff, uint16\+\_\+t length, uint8\+\_\+t pipe\+\_\+num)
+\begin{DoxyCompactList}\small\item\em USBH\+\_\+\+Bulk\+Receive\+Data Receives IN bulk packet from device. \end{DoxyCompactList}\item 
+USBH\+\_\+\+Status\+Type\+Def \mbox{\hyperlink{group___u_s_b_h___i_o_r_e_q___exported___functions_prototype_ga1dcaf35bec574557e46b902364d4c35b}{USBH\+\_\+\+Bulk\+Send\+Data}} (USBH\+\_\+\+Handle\+Type\+Def \texorpdfstring{$\ast$}{*}phost, uint8\+\_\+t \texorpdfstring{$\ast$}{*}buff, uint16\+\_\+t length, uint8\+\_\+t pipe\+\_\+num, uint8\+\_\+t do\+\_\+ping)
+\begin{DoxyCompactList}\small\item\em USBH\+\_\+\+Bulk\+Send\+Data Sends the Bulk Packet to the device. \end{DoxyCompactList}\item 
+USBH\+\_\+\+Status\+Type\+Def \mbox{\hyperlink{group___u_s_b_h___i_o_r_e_q___exported___functions_prototype_ga0d68a8cdbd33f21cf31dd0baa3b90edf}{USBH\+\_\+\+Interrupt\+Receive\+Data}} (USBH\+\_\+\+Handle\+Type\+Def \texorpdfstring{$\ast$}{*}phost, uint8\+\_\+t \texorpdfstring{$\ast$}{*}buff, uint8\+\_\+t length, uint8\+\_\+t pipe\+\_\+num)
+\begin{DoxyCompactList}\small\item\em USBH\+\_\+\+Interrupt\+Receive\+Data Receives the Device Response to the Interrupt IN token. \end{DoxyCompactList}\item 
+USBH\+\_\+\+Status\+Type\+Def \mbox{\hyperlink{group___u_s_b_h___i_o_r_e_q___exported___functions_prototype_gab9fb0efb93cee153bad15486b61d5635}{USBH\+\_\+\+Interrupt\+Send\+Data}} (USBH\+\_\+\+Handle\+Type\+Def \texorpdfstring{$\ast$}{*}phost, uint8\+\_\+t \texorpdfstring{$\ast$}{*}buff, uint8\+\_\+t length, uint8\+\_\+t pipe\+\_\+num)
+\begin{DoxyCompactList}\small\item\em USBH\+\_\+\+Interrupt\+Send\+Data Sends the data on Interrupt OUT Endpoint. \end{DoxyCompactList}\item 
+USBH\+\_\+\+Status\+Type\+Def \mbox{\hyperlink{group___u_s_b_h___i_o_r_e_q___exported___functions_prototype_gab210c2c38b01baf953c24fc7fe7d1a75}{USBH\+\_\+\+Isoc\+Receive\+Data}} (USBH\+\_\+\+Handle\+Type\+Def \texorpdfstring{$\ast$}{*}phost, uint8\+\_\+t \texorpdfstring{$\ast$}{*}buff, uint32\+\_\+t length, uint8\+\_\+t pipe\+\_\+num)
+\begin{DoxyCompactList}\small\item\em USBH\+\_\+\+Isoc\+Receive\+Data Receives the Device Response to the Isochronous IN token. \end{DoxyCompactList}\item 
+USBH\+\_\+\+Status\+Type\+Def \mbox{\hyperlink{group___u_s_b_h___i_o_r_e_q___exported___functions_prototype_ga9c5ac11dfbedaeefdce63daeaf82b454}{USBH\+\_\+\+Isoc\+Send\+Data}} (USBH\+\_\+\+Handle\+Type\+Def \texorpdfstring{$\ast$}{*}phost, uint8\+\_\+t \texorpdfstring{$\ast$}{*}buff, uint32\+\_\+t length, uint8\+\_\+t pipe\+\_\+num)
+\begin{DoxyCompactList}\small\item\em USBH\+\_\+\+Isoc\+Send\+Data Sends the data on Isochronous OUT Endpoint. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsubsubsubsection{Detailed Description}
+
+
+\label{doc-func-members}
+\Hypertarget{group___u_s_b_h___i_o_r_e_q___exported___functions_prototype_doc-func-members}
+\doxysubsubsubsubsection{Function Documentation}
+\Hypertarget{group___u_s_b_h___i_o_r_e_q___exported___functions_prototype_ga832ed1e4938daafe6c49b7a80f8bfa35}\index{USBH\_IOREQ\_Exported\_FunctionsPrototype@{USBH\_IOREQ\_Exported\_FunctionsPrototype}!USBH\_BulkReceiveData@{USBH\_BulkReceiveData}}
+\index{USBH\_BulkReceiveData@{USBH\_BulkReceiveData}!USBH\_IOREQ\_Exported\_FunctionsPrototype@{USBH\_IOREQ\_Exported\_FunctionsPrototype}}
+\doxysubsubsubsubsubsection{\texorpdfstring{USBH\_BulkReceiveData()}{USBH\_BulkReceiveData()}}
+{\footnotesize\ttfamily \label{group___u_s_b_h___i_o_r_e_q___exported___functions_prototype_ga832ed1e4938daafe6c49b7a80f8bfa35} 
+USBH\+\_\+\+Status\+Type\+Def USBH\+\_\+\+Bulk\+Receive\+Data (\begin{DoxyParamCaption}\item[{USBH\+\_\+\+Handle\+Type\+Def \texorpdfstring{$\ast$}{*}}]{phost}{, }\item[{uint8\+\_\+t \texorpdfstring{$\ast$}{*}}]{buff}{, }\item[{uint16\+\_\+t}]{length}{, }\item[{uint8\+\_\+t}]{pipe\+\_\+num}{}\end{DoxyParamCaption})}
+
+
+
+USBH\+\_\+\+Bulk\+Receive\+Data Receives IN bulk packet from device. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em phost} & Host Handle \\
+\hline
+{\em buff} & Buffer pointer in which the received data packet to be copied \\
+\hline
+{\em length} & Length of the data to be received \\
+\hline
+{\em pipe\+\_\+num} & Pipe Number \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em USBH} & Status. \\
+\hline
+\end{DoxyRetVals}
+\Hypertarget{group___u_s_b_h___i_o_r_e_q___exported___functions_prototype_ga1dcaf35bec574557e46b902364d4c35b}\index{USBH\_IOREQ\_Exported\_FunctionsPrototype@{USBH\_IOREQ\_Exported\_FunctionsPrototype}!USBH\_BulkSendData@{USBH\_BulkSendData}}
+\index{USBH\_BulkSendData@{USBH\_BulkSendData}!USBH\_IOREQ\_Exported\_FunctionsPrototype@{USBH\_IOREQ\_Exported\_FunctionsPrototype}}
+\doxysubsubsubsubsubsection{\texorpdfstring{USBH\_BulkSendData()}{USBH\_BulkSendData()}}
+{\footnotesize\ttfamily \label{group___u_s_b_h___i_o_r_e_q___exported___functions_prototype_ga1dcaf35bec574557e46b902364d4c35b} 
+USBH\+\_\+\+Status\+Type\+Def USBH\+\_\+\+Bulk\+Send\+Data (\begin{DoxyParamCaption}\item[{USBH\+\_\+\+Handle\+Type\+Def \texorpdfstring{$\ast$}{*}}]{phost}{, }\item[{uint8\+\_\+t \texorpdfstring{$\ast$}{*}}]{buff}{, }\item[{uint16\+\_\+t}]{length}{, }\item[{uint8\+\_\+t}]{pipe\+\_\+num}{, }\item[{uint8\+\_\+t}]{do\+\_\+ping}{}\end{DoxyParamCaption})}
+
+
+
+USBH\+\_\+\+Bulk\+Send\+Data Sends the Bulk Packet to the device. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em phost} & Host Handle \\
+\hline
+{\em buff} & Buffer pointer from which the Data will be sent to Device \\
+\hline
+{\em length} & Length of the data to be sent \\
+\hline
+{\em pipe\+\_\+num} & Pipe Number \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em USBH} & Status \\
+\hline
+\end{DoxyRetVals}
+\Hypertarget{group___u_s_b_h___i_o_r_e_q___exported___functions_prototype_gaae5faaa4aaed0c0ff68eb0c40a93c90b}\index{USBH\_IOREQ\_Exported\_FunctionsPrototype@{USBH\_IOREQ\_Exported\_FunctionsPrototype}!USBH\_CtlReceiveData@{USBH\_CtlReceiveData}}
+\index{USBH\_CtlReceiveData@{USBH\_CtlReceiveData}!USBH\_IOREQ\_Exported\_FunctionsPrototype@{USBH\_IOREQ\_Exported\_FunctionsPrototype}}
+\doxysubsubsubsubsubsection{\texorpdfstring{USBH\_CtlReceiveData()}{USBH\_CtlReceiveData()}}
+{\footnotesize\ttfamily \label{group___u_s_b_h___i_o_r_e_q___exported___functions_prototype_gaae5faaa4aaed0c0ff68eb0c40a93c90b} 
+USBH\+\_\+\+Status\+Type\+Def USBH\+\_\+\+Ctl\+Receive\+Data (\begin{DoxyParamCaption}\item[{USBH\+\_\+\+Handle\+Type\+Def \texorpdfstring{$\ast$}{*}}]{phost}{, }\item[{uint8\+\_\+t \texorpdfstring{$\ast$}{*}}]{buff}{, }\item[{uint16\+\_\+t}]{length}{, }\item[{uint8\+\_\+t}]{pipe\+\_\+num}{}\end{DoxyParamCaption})}
+
+
+
+USBH\+\_\+\+Ctl\+Receive\+Data Receives the Device Response to the Setup Packet. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em phost} & Host Handle \\
+\hline
+{\em buff} & Buffer pointer in which the response needs to be copied \\
+\hline
+{\em length} & Length of the data to be received \\
+\hline
+{\em pipe\+\_\+num} & Pipe Number \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em USBH} & Status. \\
+\hline
+\end{DoxyRetVals}
+\Hypertarget{group___u_s_b_h___i_o_r_e_q___exported___functions_prototype_ga97b326e21dbe08e436d2953634d9f284}\index{USBH\_IOREQ\_Exported\_FunctionsPrototype@{USBH\_IOREQ\_Exported\_FunctionsPrototype}!USBH\_CtlSendData@{USBH\_CtlSendData}}
+\index{USBH\_CtlSendData@{USBH\_CtlSendData}!USBH\_IOREQ\_Exported\_FunctionsPrototype@{USBH\_IOREQ\_Exported\_FunctionsPrototype}}
+\doxysubsubsubsubsubsection{\texorpdfstring{USBH\_CtlSendData()}{USBH\_CtlSendData()}}
+{\footnotesize\ttfamily \label{group___u_s_b_h___i_o_r_e_q___exported___functions_prototype_ga97b326e21dbe08e436d2953634d9f284} 
+USBH\+\_\+\+Status\+Type\+Def USBH\+\_\+\+Ctl\+Send\+Data (\begin{DoxyParamCaption}\item[{USBH\+\_\+\+Handle\+Type\+Def \texorpdfstring{$\ast$}{*}}]{phost}{, }\item[{uint8\+\_\+t \texorpdfstring{$\ast$}{*}}]{buff}{, }\item[{uint16\+\_\+t}]{length}{, }\item[{uint8\+\_\+t}]{pipe\+\_\+num}{, }\item[{uint8\+\_\+t}]{do\+\_\+ping}{}\end{DoxyParamCaption})}
+
+
+
+USBH\+\_\+\+Ctl\+Send\+Data Sends a data Packet to the Device. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em phost} & Host Handle \\
+\hline
+{\em buff} & Buffer pointer from which the Data will be sent to Device \\
+\hline
+{\em length} & Length of the data to be sent \\
+\hline
+{\em pipe\+\_\+num} & Pipe Number \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em USBH} & Status \\
+\hline
+\end{DoxyRetVals}
+\Hypertarget{group___u_s_b_h___i_o_r_e_q___exported___functions_prototype_ga174168b7bf3efbe5052b9337d036e168}\index{USBH\_IOREQ\_Exported\_FunctionsPrototype@{USBH\_IOREQ\_Exported\_FunctionsPrototype}!USBH\_CtlSendSetup@{USBH\_CtlSendSetup}}
+\index{USBH\_CtlSendSetup@{USBH\_CtlSendSetup}!USBH\_IOREQ\_Exported\_FunctionsPrototype@{USBH\_IOREQ\_Exported\_FunctionsPrototype}}
+\doxysubsubsubsubsubsection{\texorpdfstring{USBH\_CtlSendSetup()}{USBH\_CtlSendSetup()}}
+{\footnotesize\ttfamily \label{group___u_s_b_h___i_o_r_e_q___exported___functions_prototype_ga174168b7bf3efbe5052b9337d036e168} 
+USBH\+\_\+\+Status\+Type\+Def USBH\+\_\+\+Ctl\+Send\+Setup (\begin{DoxyParamCaption}\item[{USBH\+\_\+\+Handle\+Type\+Def \texorpdfstring{$\ast$}{*}}]{phost}{, }\item[{uint8\+\_\+t \texorpdfstring{$\ast$}{*}}]{buff}{, }\item[{uint8\+\_\+t}]{pipe\+\_\+num}{}\end{DoxyParamCaption})}
+
+
+
+USBH\+\_\+\+Ctl\+Send\+Setup Sends the Setup Packet to the Device. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em phost} & Host Handle \\
+\hline
+{\em buff} & Buffer pointer from which the Data will be send to Device \\
+\hline
+{\em pipe\+\_\+num} & Pipe Number \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em USBH} & Status \\
+\hline
+\end{DoxyRetVals}
+\Hypertarget{group___u_s_b_h___i_o_r_e_q___exported___functions_prototype_ga0d68a8cdbd33f21cf31dd0baa3b90edf}\index{USBH\_IOREQ\_Exported\_FunctionsPrototype@{USBH\_IOREQ\_Exported\_FunctionsPrototype}!USBH\_InterruptReceiveData@{USBH\_InterruptReceiveData}}
+\index{USBH\_InterruptReceiveData@{USBH\_InterruptReceiveData}!USBH\_IOREQ\_Exported\_FunctionsPrototype@{USBH\_IOREQ\_Exported\_FunctionsPrototype}}
+\doxysubsubsubsubsubsection{\texorpdfstring{USBH\_InterruptReceiveData()}{USBH\_InterruptReceiveData()}}
+{\footnotesize\ttfamily \label{group___u_s_b_h___i_o_r_e_q___exported___functions_prototype_ga0d68a8cdbd33f21cf31dd0baa3b90edf} 
+USBH\+\_\+\+Status\+Type\+Def USBH\+\_\+\+Interrupt\+Receive\+Data (\begin{DoxyParamCaption}\item[{USBH\+\_\+\+Handle\+Type\+Def \texorpdfstring{$\ast$}{*}}]{phost}{, }\item[{uint8\+\_\+t \texorpdfstring{$\ast$}{*}}]{buff}{, }\item[{uint8\+\_\+t}]{length}{, }\item[{uint8\+\_\+t}]{pipe\+\_\+num}{}\end{DoxyParamCaption})}
+
+
+
+USBH\+\_\+\+Interrupt\+Receive\+Data Receives the Device Response to the Interrupt IN token. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em phost} & Host Handle \\
+\hline
+{\em buff} & Buffer pointer in which the response needs to be copied \\
+\hline
+{\em length} & Length of the data to be received \\
+\hline
+{\em pipe\+\_\+num} & Pipe Number \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em USBH} & Status. \\
+\hline
+\end{DoxyRetVals}
+\Hypertarget{group___u_s_b_h___i_o_r_e_q___exported___functions_prototype_gab9fb0efb93cee153bad15486b61d5635}\index{USBH\_IOREQ\_Exported\_FunctionsPrototype@{USBH\_IOREQ\_Exported\_FunctionsPrototype}!USBH\_InterruptSendData@{USBH\_InterruptSendData}}
+\index{USBH\_InterruptSendData@{USBH\_InterruptSendData}!USBH\_IOREQ\_Exported\_FunctionsPrototype@{USBH\_IOREQ\_Exported\_FunctionsPrototype}}
+\doxysubsubsubsubsubsection{\texorpdfstring{USBH\_InterruptSendData()}{USBH\_InterruptSendData()}}
+{\footnotesize\ttfamily \label{group___u_s_b_h___i_o_r_e_q___exported___functions_prototype_gab9fb0efb93cee153bad15486b61d5635} 
+USBH\+\_\+\+Status\+Type\+Def USBH\+\_\+\+Interrupt\+Send\+Data (\begin{DoxyParamCaption}\item[{USBH\+\_\+\+Handle\+Type\+Def \texorpdfstring{$\ast$}{*}}]{phost}{, }\item[{uint8\+\_\+t \texorpdfstring{$\ast$}{*}}]{buff}{, }\item[{uint8\+\_\+t}]{length}{, }\item[{uint8\+\_\+t}]{pipe\+\_\+num}{}\end{DoxyParamCaption})}
+
+
+
+USBH\+\_\+\+Interrupt\+Send\+Data Sends the data on Interrupt OUT Endpoint. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em phost} & Host Handle \\
+\hline
+{\em buff} & Buffer pointer from where the data needs to be copied \\
+\hline
+{\em length} & Length of the data to be sent \\
+\hline
+{\em pipe\+\_\+num} & Pipe Number \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em USBH} & Status. \\
+\hline
+\end{DoxyRetVals}
+\Hypertarget{group___u_s_b_h___i_o_r_e_q___exported___functions_prototype_gab210c2c38b01baf953c24fc7fe7d1a75}\index{USBH\_IOREQ\_Exported\_FunctionsPrototype@{USBH\_IOREQ\_Exported\_FunctionsPrototype}!USBH\_IsocReceiveData@{USBH\_IsocReceiveData}}
+\index{USBH\_IsocReceiveData@{USBH\_IsocReceiveData}!USBH\_IOREQ\_Exported\_FunctionsPrototype@{USBH\_IOREQ\_Exported\_FunctionsPrototype}}
+\doxysubsubsubsubsubsection{\texorpdfstring{USBH\_IsocReceiveData()}{USBH\_IsocReceiveData()}}
+{\footnotesize\ttfamily \label{group___u_s_b_h___i_o_r_e_q___exported___functions_prototype_gab210c2c38b01baf953c24fc7fe7d1a75} 
+USBH\+\_\+\+Status\+Type\+Def USBH\+\_\+\+Isoc\+Receive\+Data (\begin{DoxyParamCaption}\item[{USBH\+\_\+\+Handle\+Type\+Def \texorpdfstring{$\ast$}{*}}]{phost}{, }\item[{uint8\+\_\+t \texorpdfstring{$\ast$}{*}}]{buff}{, }\item[{uint32\+\_\+t}]{length}{, }\item[{uint8\+\_\+t}]{pipe\+\_\+num}{}\end{DoxyParamCaption})}
+
+
+
+USBH\+\_\+\+Isoc\+Receive\+Data Receives the Device Response to the Isochronous IN token. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em phost} & Host Handle \\
+\hline
+{\em buff} & Buffer pointer in which the response needs to be copied \\
+\hline
+{\em length} & Length of the data to be received \\
+\hline
+{\em pipe\+\_\+num} & Pipe Number \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em USBH} & Status. \\
+\hline
+\end{DoxyRetVals}
+\Hypertarget{group___u_s_b_h___i_o_r_e_q___exported___functions_prototype_ga9c5ac11dfbedaeefdce63daeaf82b454}\index{USBH\_IOREQ\_Exported\_FunctionsPrototype@{USBH\_IOREQ\_Exported\_FunctionsPrototype}!USBH\_IsocSendData@{USBH\_IsocSendData}}
+\index{USBH\_IsocSendData@{USBH\_IsocSendData}!USBH\_IOREQ\_Exported\_FunctionsPrototype@{USBH\_IOREQ\_Exported\_FunctionsPrototype}}
+\doxysubsubsubsubsubsection{\texorpdfstring{USBH\_IsocSendData()}{USBH\_IsocSendData()}}
+{\footnotesize\ttfamily \label{group___u_s_b_h___i_o_r_e_q___exported___functions_prototype_ga9c5ac11dfbedaeefdce63daeaf82b454} 
+USBH\+\_\+\+Status\+Type\+Def USBH\+\_\+\+Isoc\+Send\+Data (\begin{DoxyParamCaption}\item[{USBH\+\_\+\+Handle\+Type\+Def \texorpdfstring{$\ast$}{*}}]{phost}{, }\item[{uint8\+\_\+t \texorpdfstring{$\ast$}{*}}]{buff}{, }\item[{uint32\+\_\+t}]{length}{, }\item[{uint8\+\_\+t}]{pipe\+\_\+num}{}\end{DoxyParamCaption})}
+
+
+
+USBH\+\_\+\+Isoc\+Send\+Data Sends the data on Isochronous OUT Endpoint. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em phost} & Host Handle \\
+\hline
+{\em buff} & Buffer pointer from where the data needs to be copied \\
+\hline
+{\em length} & Length of the data to be sent \\
+\hline
+{\em pipe\+\_\+num} & Pipe Number \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em USBH} & Status. \\
+\hline
+\end{DoxyRetVals}

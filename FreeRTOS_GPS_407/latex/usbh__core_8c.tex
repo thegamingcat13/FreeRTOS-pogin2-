@@ -1,0 +1,70 @@
+\doxysection{Middlewares/\+ST/\+STM32\+\_\+\+USB\+\_\+\+Host\+\_\+\+Library/\+Core/\+Src/usbh\+\_\+core.c File Reference}
+\hypertarget{usbh__core_8c}{}\label{usbh__core_8c}\index{Middlewares/ST/STM32\_USB\_Host\_Library/Core/Src/usbh\_core.c@{Middlewares/ST/STM32\_USB\_Host\_Library/Core/Src/usbh\_core.c}}
+
+
+This file implements the functions for the core state machine process the enumeration and the control transfer process.  
+
+
+{\ttfamily \#include "{}usbh\+\_\+core.\+h"{}}\newline
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define {\bfseries USBH\+\_\+\+ADDRESS\+\_\+\+DEFAULT}~0x00U
+\item 
+\#define {\bfseries USBH\+\_\+\+ADDRESS\+\_\+\+ASSIGNED}~0x01U
+\item 
+\#define {\bfseries USBH\+\_\+\+MPS\+\_\+\+DEFAULT}~0x40U
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+USBH\+\_\+\+Status\+Type\+Def \mbox{\hyperlink{group___u_s_b_h___c_o_r_e___private___functions_gaba8ea76d522fd97f9b70308dced05326}{USBH\+\_\+\+Init}} (USBH\+\_\+\+Handle\+Type\+Def \texorpdfstring{$\ast$}{*}phost, void(\texorpdfstring{$\ast$}{*}p\+Usr\+Func)(USBH\+\_\+\+Handle\+Type\+Def \texorpdfstring{$\ast$}{*}phost, uint8\+\_\+t id), uint8\+\_\+t id)
+\begin{DoxyCompactList}\small\item\em HCD\+\_\+\+Init Initialize the HOST Core. \end{DoxyCompactList}\item 
+USBH\+\_\+\+Status\+Type\+Def \mbox{\hyperlink{group___u_s_b_h___c_o_r_e___private___functions_ga4efaf12e10a729ffc6720fb4052f7710}{USBH\+\_\+\+De\+Init}} (USBH\+\_\+\+Handle\+Type\+Def \texorpdfstring{$\ast$}{*}phost)
+\begin{DoxyCompactList}\small\item\em HCD\+\_\+\+Init De-\/\+Initialize the Host portion of the driver. \end{DoxyCompactList}\item 
+USBH\+\_\+\+Status\+Type\+Def \mbox{\hyperlink{group___u_s_b_h___c_o_r_e___private___functions_ga180cf3b55f4fc5de077039882acd487b}{USBH\+\_\+\+Register\+Class}} (USBH\+\_\+\+Handle\+Type\+Def \texorpdfstring{$\ast$}{*}phost, \mbox{\hyperlink{struct_u_s_b_h___class_type_def}{USBH\+\_\+\+Class\+Type\+Def}} \texorpdfstring{$\ast$}{*}pclass)
+\begin{DoxyCompactList}\small\item\em USBH\+\_\+\+Register\+Class Link class driver to Host Core. \end{DoxyCompactList}\item 
+USBH\+\_\+\+Status\+Type\+Def \mbox{\hyperlink{group___u_s_b_h___c_o_r_e___private___functions_ga13d5830fd9ded5d562814d33d52e8fe4}{USBH\+\_\+\+Select\+Interface}} (USBH\+\_\+\+Handle\+Type\+Def \texorpdfstring{$\ast$}{*}phost, uint8\+\_\+t interface)
+\begin{DoxyCompactList}\small\item\em USBH\+\_\+\+Select\+Interface Select current interface. \end{DoxyCompactList}\item 
+uint8\+\_\+t \mbox{\hyperlink{group___u_s_b_h___c_o_r_e___private___functions_ga260b30701dc2ed2baa1c4515d13132da}{USBH\+\_\+\+Get\+Active\+Class}} (USBH\+\_\+\+Handle\+Type\+Def \texorpdfstring{$\ast$}{*}phost)
+\begin{DoxyCompactList}\small\item\em USBH\+\_\+\+Get\+Active\+Class Return Device Class. \end{DoxyCompactList}\item 
+uint8\+\_\+t \mbox{\hyperlink{group___u_s_b_h___c_o_r_e___private___functions_ga1bc80c793ec0bf42a700109223103fe3}{USBH\+\_\+\+Find\+Interface}} (USBH\+\_\+\+Handle\+Type\+Def \texorpdfstring{$\ast$}{*}phost, uint8\+\_\+t Class, uint8\+\_\+t Sub\+Class, uint8\+\_\+t Protocol)
+\begin{DoxyCompactList}\small\item\em USBH\+\_\+\+Find\+Interface Find the interface index for a specific class. \end{DoxyCompactList}\item 
+uint8\+\_\+t \mbox{\hyperlink{group___u_s_b_h___c_o_r_e___private___functions_gaea6efa21c1d2a874877a79ba346ea7e8}{USBH\+\_\+\+Find\+Interface\+Index}} (USBH\+\_\+\+Handle\+Type\+Def \texorpdfstring{$\ast$}{*}phost, uint8\+\_\+t interface\+\_\+number, uint8\+\_\+t alt\+\_\+settings)
+\begin{DoxyCompactList}\small\item\em USBH\+\_\+\+Find\+Interface\+Index Find the interface index for a specific class interface and alternate setting number. \end{DoxyCompactList}\item 
+USBH\+\_\+\+Status\+Type\+Def \mbox{\hyperlink{group___u_s_b_h___c_o_r_e___private___functions_gaa267a3a2318063e408c98c1dd5c9ab7c}{USBH\+\_\+\+Start}} (USBH\+\_\+\+Handle\+Type\+Def \texorpdfstring{$\ast$}{*}phost)
+\begin{DoxyCompactList}\small\item\em USBH\+\_\+\+Start Start the USB Host Core. \end{DoxyCompactList}\item 
+USBH\+\_\+\+Status\+Type\+Def \mbox{\hyperlink{group___u_s_b_h___c_o_r_e___private___functions_ga142f35af61cbaa7b46ad05192e110f3e}{USBH\+\_\+\+Stop}} (USBH\+\_\+\+Handle\+Type\+Def \texorpdfstring{$\ast$}{*}phost)
+\begin{DoxyCompactList}\small\item\em USBH\+\_\+\+Stop Stop the USB Host Core. \end{DoxyCompactList}\item 
+USBH\+\_\+\+Status\+Type\+Def \mbox{\hyperlink{group___u_s_b_h___c_o_r_e___private___functions_gadeee2cb33967ba983115df499122641c}{USBH\+\_\+\+Re\+Enumerate}} (USBH\+\_\+\+Handle\+Type\+Def \texorpdfstring{$\ast$}{*}phost)
+\begin{DoxyCompactList}\small\item\em HCD\+\_\+\+Re\+Enumerate Perform a new Enumeration phase. \end{DoxyCompactList}\item 
+USBH\+\_\+\+Status\+Type\+Def \mbox{\hyperlink{group___u_s_b_h___c_o_r_e___private___functions_ga062f57a607ec9bcd9866d09f9bbbe9a8}{USBH\+\_\+\+Process}} (USBH\+\_\+\+Handle\+Type\+Def \texorpdfstring{$\ast$}{*}phost)
+\begin{DoxyCompactList}\small\item\em USBH\+\_\+\+Process Background process of the USB Core. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group___u_s_b_h___c_o_r_e___private___functions_gaf8dfc197668e8ffd47a9ee2e162ad2d5}{USBH\+\_\+\+LL\+\_\+\+Set\+Timer}} (USBH\+\_\+\+Handle\+Type\+Def \texorpdfstring{$\ast$}{*}phost, uint32\+\_\+t time)
+\begin{DoxyCompactList}\small\item\em USBH\+\_\+\+LL\+\_\+\+Set\+Timer Set the initial Host Timer tick. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group___u_s_b_h___c_o_r_e___private___functions_gae0f681d7955eda8cd450cc7cf5ea081e}{USBH\+\_\+\+LL\+\_\+\+Inc\+Timer}} (USBH\+\_\+\+Handle\+Type\+Def \texorpdfstring{$\ast$}{*}phost)
+\begin{DoxyCompactList}\small\item\em USBH\+\_\+\+LL\+\_\+\+Inc\+Timer Increment Host Timer tick. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group___u_s_b_h___c_o_r_e___private___functions_ga891d5594f8a37d6d7b3d951a4a67337a}{USBH\+\_\+\+LL\+\_\+\+Port\+Enabled}} (USBH\+\_\+\+Handle\+Type\+Def \texorpdfstring{$\ast$}{*}phost)
+\begin{DoxyCompactList}\small\item\em USBH\+\_\+\+Port\+Enabled Port Enabled. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group___u_s_b_h___c_o_r_e___private___functions_gaae127a7825c1f34cc7f362efe64351a1}{USBH\+\_\+\+LL\+\_\+\+Port\+Disabled}} (USBH\+\_\+\+Handle\+Type\+Def \texorpdfstring{$\ast$}{*}phost)
+\begin{DoxyCompactList}\small\item\em USBH\+\_\+\+LL\+\_\+\+Port\+Disabled Port Disabled. \end{DoxyCompactList}\item 
+uint8\+\_\+t \mbox{\hyperlink{group___u_s_b_h___c_o_r_e___private___functions_ga23b501db3410c909e438087e3578f126}{USBH\+\_\+\+Is\+Port\+Enabled}} (USBH\+\_\+\+Handle\+Type\+Def \texorpdfstring{$\ast$}{*}phost)
+\begin{DoxyCompactList}\small\item\em HCD\+\_\+\+Is\+Port\+Enabled Is Port Enabled. \end{DoxyCompactList}\item 
+USBH\+\_\+\+Status\+Type\+Def \mbox{\hyperlink{group___u_s_b_h___c_o_r_e___private___functions_ga2f6ef784e583c4a5f7e50dac45908d4c}{USBH\+\_\+\+LL\+\_\+\+Connect}} (USBH\+\_\+\+Handle\+Type\+Def \texorpdfstring{$\ast$}{*}phost)
+\begin{DoxyCompactList}\small\item\em USBH\+\_\+\+LL\+\_\+\+Connect Handle USB Host connection event. \end{DoxyCompactList}\item 
+USBH\+\_\+\+Status\+Type\+Def \mbox{\hyperlink{group___u_s_b_h___c_o_r_e___private___functions_ga31fdc6286963f6456a543524d5c79085}{USBH\+\_\+\+LL\+\_\+\+Disconnect}} (USBH\+\_\+\+Handle\+Type\+Def \texorpdfstring{$\ast$}{*}phost)
+\begin{DoxyCompactList}\small\item\em USBH\+\_\+\+LL\+\_\+\+Disconnect Handle USB Host disconnection event. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+This file implements the functions for the core state machine process the enumeration and the control transfer process. 
+
+\begin{DoxyAuthor}{Author}
+MCD Application Team 
+\end{DoxyAuthor}
+\begin{DoxyAttention}{Attention}
+
+\end{DoxyAttention}
+Copyright (c) 2015 STMicroelectronics. All rights reserved.
+
+This software is licensed under terms that can be found in the LICENSE file in the root directory of this software component. If no LICENSE file comes with this software, it is provided AS-\/\+IS. 

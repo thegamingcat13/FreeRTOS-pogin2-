@@ -1,0 +1,409 @@
+\doxysubsubsection{USBH\+\_\+\+CORE\+\_\+\+Exported\+\_\+\+Types }
+\hypertarget{group___u_s_b_h___c_o_r_e___exported___types}{}\label{group___u_s_b_h___c_o_r_e___exported___types}\index{USBH\_CORE\_Exported\_Types@{USBH\_CORE\_Exported\_Types}}
+\doxysubsubsubsubsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structuint16__t__uint8__t_1_1_b_w}{uint16\+\_\+t\+\_\+uint8\+\_\+t\+::\+BW}}
+\item 
+struct \mbox{\hyperlink{struct___u_s_b___setup_1_1___setup_pkt___struc}{\+\_\+\+USB\+\_\+\+Setup\+::\+\_\+\+Setup\+Pkt\+\_\+\+Struc}}
+\item 
+struct \mbox{\hyperlink{struct_u_s_b_h___ctrl_type_def}{USBH\+\_\+\+Ctrl\+Type\+Def}}
+\item 
+struct \mbox{\hyperlink{struct_u_s_b_h___device_type_def}{USBH\+\_\+\+Device\+Type\+Def}}
+\item 
+struct \mbox{\hyperlink{struct_u_s_b_h___class_type_def}{USBH\+\_\+\+Class\+Type\+Def}}
+\item 
+struct \mbox{\hyperlink{struct___u_s_b_h___handle_type_def}{\+\_\+\+USBH\+\_\+\+Handle\+Type\+Def}}
+\end{DoxyCompactItemize}
+\doxysubsubsubsubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{group___u_s_b_h___c_o_r_e___exported___types_gabd1c4389061dcd7b9f84f5adf15d58f1}\label{group___u_s_b_h___c_o_r_e___exported___types_gabd1c4389061dcd7b9f84f5adf15d58f1} 
+typedef struct \mbox{\hyperlink{struct___u_s_b_h___handle_type_def}{\+\_\+\+USBH\+\_\+\+Handle\+Type\+Def}} {\bfseries USBH\+\_\+\+Handle\+Type\+Def}
+\end{DoxyCompactItemize}
+\doxysubsubsubsubsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{group___u_s_b_h___c_o_r_e___exported___types_gabc2b09e7daec442d1efdad50fe79ffca}\label{group___u_s_b_h___c_o_r_e___exported___types_gabc2b09e7daec442d1efdad50fe79ffca} 
+enum {\bfseries USBH\+\_\+\+Speed\+Type\+Def} \{ {\bfseries USBH\+\_\+\+SPEED\+\_\+\+HIGH} = 0U
+, {\bfseries USBH\+\_\+\+SPEED\+\_\+\+FULL} = 1U
+, {\bfseries USBH\+\_\+\+SPEED\+\_\+\+LOW} = 2U
+ \}
+\item 
+\Hypertarget{group___u_s_b_h___c_o_r_e___exported___types_ga81eabd93c12fee3a5222bff76145f115}\label{group___u_s_b_h___c_o_r_e___exported___types_ga81eabd93c12fee3a5222bff76145f115} 
+enum {\bfseries HOST\+\_\+\+State\+Type\+Def} \{ \newline
+{\bfseries HOST\+\_\+\+IDLE} = 0U
+, {\bfseries HOST\+\_\+\+DEV\+\_\+\+WAIT\+\_\+\+FOR\+\_\+\+ATTACHMENT}
+, {\bfseries HOST\+\_\+\+DEV\+\_\+\+ATTACHED}
+, {\bfseries HOST\+\_\+\+DEV\+\_\+\+DISCONNECTED}
+, \newline
+{\bfseries HOST\+\_\+\+DETECT\+\_\+\+DEVICE\+\_\+\+SPEED}
+, {\bfseries HOST\+\_\+\+ENUMERATION}
+, {\bfseries HOST\+\_\+\+CLASS\+\_\+\+REQUEST}
+, {\bfseries HOST\+\_\+\+INPUT}
+, \newline
+{\bfseries HOST\+\_\+\+SET\+\_\+\+CONFIGURATION}
+, {\bfseries HOST\+\_\+\+SET\+\_\+\+WAKEUP\+\_\+\+FEATURE}
+, {\bfseries HOST\+\_\+\+CHECK\+\_\+\+CLASS}
+, {\bfseries HOST\+\_\+\+CLASS}
+, \newline
+{\bfseries HOST\+\_\+\+SUSPENDED}
+, {\bfseries HOST\+\_\+\+ABORT\+\_\+\+STATE}
+ \}
+\item 
+\Hypertarget{group___u_s_b_h___c_o_r_e___exported___types_ga8e75fecc709643844d56ffffbe7898f7}\label{group___u_s_b_h___c_o_r_e___exported___types_ga8e75fecc709643844d56ffffbe7898f7} 
+enum {\bfseries ENUM\+\_\+\+State\+Type\+Def} \{ \newline
+{\bfseries ENUM\+\_\+\+IDLE} = 0U
+, {\bfseries ENUM\+\_\+\+GET\+\_\+\+FULL\+\_\+\+DEV\+\_\+\+DESC}
+, {\bfseries ENUM\+\_\+\+SET\+\_\+\+ADDR}
+, {\bfseries ENUM\+\_\+\+GET\+\_\+\+CFG\+\_\+\+DESC}
+, \newline
+{\bfseries ENUM\+\_\+\+GET\+\_\+\+FULL\+\_\+\+CFG\+\_\+\+DESC}
+, {\bfseries ENUM\+\_\+\+GET\+\_\+\+MFC\+\_\+\+STRING\+\_\+\+DESC}
+, {\bfseries ENUM\+\_\+\+GET\+\_\+\+PRODUCT\+\_\+\+STRING\+\_\+\+DESC}
+, {\bfseries ENUM\+\_\+\+GET\+\_\+\+SERIALNUM\+\_\+\+STRING\+\_\+\+DESC}
+ \}
+\item 
+\Hypertarget{group___u_s_b_h___c_o_r_e___exported___types_ga4dbe17a58008a313bd2097e5e8572605}\label{group___u_s_b_h___c_o_r_e___exported___types_ga4dbe17a58008a313bd2097e5e8572605} 
+enum {\bfseries CTRL\+\_\+\+State\+Type\+Def} \{ \newline
+{\bfseries CTRL\+\_\+\+IDLE} = 0U
+, {\bfseries CTRL\+\_\+\+SETUP}
+, {\bfseries CTRL\+\_\+\+SETUP\+\_\+\+WAIT}
+, {\bfseries CTRL\+\_\+\+DATA\+\_\+\+IN}
+, \newline
+{\bfseries CTRL\+\_\+\+DATA\+\_\+\+IN\+\_\+\+WAIT}
+, {\bfseries CTRL\+\_\+\+DATA\+\_\+\+OUT}
+, {\bfseries CTRL\+\_\+\+DATA\+\_\+\+OUT\+\_\+\+WAIT}
+, {\bfseries CTRL\+\_\+\+STATUS\+\_\+\+IN}
+, \newline
+{\bfseries CTRL\+\_\+\+STATUS\+\_\+\+IN\+\_\+\+WAIT}
+, {\bfseries CTRL\+\_\+\+STATUS\+\_\+\+OUT}
+, {\bfseries CTRL\+\_\+\+STATUS\+\_\+\+OUT\+\_\+\+WAIT}
+, {\bfseries CTRL\+\_\+\+ERROR}
+, \newline
+{\bfseries CTRL\+\_\+\+STALLED}
+, {\bfseries CTRL\+\_\+\+COMPLETE}
+ \}
+\item 
+\Hypertarget{group___u_s_b_h___c_o_r_e___exported___types_ga717af3a61392bd11268916bc767f0318}\label{group___u_s_b_h___c_o_r_e___exported___types_ga717af3a61392bd11268916bc767f0318} 
+enum {\bfseries CMD\+\_\+\+State\+Type\+Def} \{ {\bfseries CMD\+\_\+\+IDLE} = 0U
+, {\bfseries CMD\+\_\+\+SEND}
+, {\bfseries CMD\+\_\+\+WAIT}
+ \}
+\item 
+\Hypertarget{group___u_s_b_h___c_o_r_e___exported___types_ga88037a8cb1d282dc42072c5d361591d5}\label{group___u_s_b_h___c_o_r_e___exported___types_ga88037a8cb1d282dc42072c5d361591d5} 
+enum {\bfseries USBH\+\_\+\+URBState\+Type\+Def} \{ \newline
+{\bfseries USBH\+\_\+\+URB\+\_\+\+IDLE} = 0U
+, {\bfseries USBH\+\_\+\+URB\+\_\+\+DONE}
+, {\bfseries USBH\+\_\+\+URB\+\_\+\+NOTREADY}
+, {\bfseries USBH\+\_\+\+URB\+\_\+\+NYET}
+, \newline
+{\bfseries USBH\+\_\+\+URB\+\_\+\+ERROR}
+, {\bfseries USBH\+\_\+\+URB\+\_\+\+STALL}
+, {\bfseries USBH\+\_\+\+URB\+\_\+\+NAK\+\_\+\+WAIT}
+ \}
+\item 
+\Hypertarget{group___u_s_b_h___c_o_r_e___exported___types_ga3c51368b2f45804a599a6b01e1d04369}\label{group___u_s_b_h___c_o_r_e___exported___types_ga3c51368b2f45804a599a6b01e1d04369} 
+enum {\bfseries USBH\+\_\+\+OSEvent\+Type\+Def} \{ \newline
+{\bfseries USBH\+\_\+\+PORT\+\_\+\+EVENT} = 1U
+, {\bfseries USBH\+\_\+\+URB\+\_\+\+EVENT}
+, {\bfseries USBH\+\_\+\+CONTROL\+\_\+\+EVENT}
+, {\bfseries USBH\+\_\+\+CLASS\+\_\+\+EVENT}
+, \newline
+{\bfseries USBH\+\_\+\+STATE\+\_\+\+CHANGED\+\_\+\+EVENT}
+ \}
+\end{DoxyCompactItemize}
+\doxysubsubsubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{group___u_s_b_h___c_o_r_e___exported___types_ga69e28057d97f59f81862a467cc6299fc}\label{group___u_s_b_h___c_o_r_e___exported___types_ga69e28057d97f59f81862a467cc6299fc} 
+uint16\+\_\+t {\bfseries w}
+\item 
+\Hypertarget{group___u_s_b_h___c_o_r_e___exported___types_ga3af713bb809b28be014ad661021590a8}\label{group___u_s_b_h___c_o_r_e___exported___types_ga3af713bb809b28be014ad661021590a8} 
+uint8\+\_\+t {\bfseries msb}
+\item 
+\Hypertarget{group___u_s_b_h___c_o_r_e___exported___types_gac04c35971c92b7a0ddc152c107c02780}\label{group___u_s_b_h___c_o_r_e___exported___types_gac04c35971c92b7a0ddc152c107c02780} 
+uint8\+\_\+t {\bfseries lsb}
+\item 
+\Hypertarget{group___u_s_b_h___c_o_r_e___exported___types_ga1aef377c504e7ae697f1536208e4cae3}\label{group___u_s_b_h___c_o_r_e___exported___types_ga1aef377c504e7ae697f1536208e4cae3} 
+struct \mbox{\hyperlink{structuint16__t__uint8__t_1_1_b_w}{uint16\+\_\+t\+\_\+uint8\+\_\+t\+::\+BW}} {\bfseries bw}
+\item 
+\Hypertarget{group___u_s_b_h___c_o_r_e___exported___types_gad75601a5827d969e9786ba554bf5cccf}\label{group___u_s_b_h___c_o_r_e___exported___types_gad75601a5827d969e9786ba554bf5cccf} 
+uint32\+\_\+t {\bfseries d8} \mbox{[}2\mbox{]}
+\item 
+\Hypertarget{group___u_s_b_h___c_o_r_e___exported___types_gabea120ea756eb0abdb8aafb8713f61f4}\label{group___u_s_b_h___c_o_r_e___exported___types_gabea120ea756eb0abdb8aafb8713f61f4} 
+uint8\+\_\+t {\bfseries bm\+Request\+Type}
+\item 
+\Hypertarget{group___u_s_b_h___c_o_r_e___exported___types_ga1e7be110861bd4ff75c86d5214f31543}\label{group___u_s_b_h___c_o_r_e___exported___types_ga1e7be110861bd4ff75c86d5214f31543} 
+uint8\+\_\+t {\bfseries b\+Request}
+\item 
+\Hypertarget{group___u_s_b_h___c_o_r_e___exported___types_ga711bb67218783636524c4320d8a4e231}\label{group___u_s_b_h___c_o_r_e___exported___types_ga711bb67218783636524c4320d8a4e231} 
+\mbox{\hyperlink{unionuint16__t__uint8__t}{uint16\+\_\+t\+\_\+uint8\+\_\+t}} {\bfseries w\+Value}
+\item 
+\Hypertarget{group___u_s_b_h___c_o_r_e___exported___types_ga470cf397c45ef7268648451565973462}\label{group___u_s_b_h___c_o_r_e___exported___types_ga470cf397c45ef7268648451565973462} 
+\mbox{\hyperlink{unionuint16__t__uint8__t}{uint16\+\_\+t\+\_\+uint8\+\_\+t}} {\bfseries w\+Index}
+\item 
+\Hypertarget{group___u_s_b_h___c_o_r_e___exported___types_ga887edd4ba9ded1357939a543b7b27bbc}\label{group___u_s_b_h___c_o_r_e___exported___types_ga887edd4ba9ded1357939a543b7b27bbc} 
+\mbox{\hyperlink{unionuint16__t__uint8__t}{uint16\+\_\+t\+\_\+uint8\+\_\+t}} {\bfseries w\+Length}
+\item 
+\Hypertarget{group___u_s_b_h___c_o_r_e___exported___types_ga6a19bc3447a0bdf63dff304855656cfe}\label{group___u_s_b_h___c_o_r_e___exported___types_ga6a19bc3447a0bdf63dff304855656cfe} 
+struct \mbox{\hyperlink{struct___u_s_b___setup_1_1___setup_pkt___struc}{\+\_\+\+USB\+\_\+\+Setup\+::\+\_\+\+Setup\+Pkt\+\_\+\+Struc}} {\bfseries b}
+\item 
+\Hypertarget{group___u_s_b_h___c_o_r_e___exported___types_ga1deca1f1d6e5815b290e6e1015bce5b8}\label{group___u_s_b_h___c_o_r_e___exported___types_ga1deca1f1d6e5815b290e6e1015bce5b8} 
+uint8\+\_\+t {\bfseries b\+Length}
+\item 
+\Hypertarget{group___u_s_b_h___c_o_r_e___exported___types_ga67d7027b9eb9ed268d28e84fbc675707}\label{group___u_s_b_h___c_o_r_e___exported___types_ga67d7027b9eb9ed268d28e84fbc675707} 
+uint8\+\_\+t {\bfseries b\+Descriptor\+Type}
+\item 
+\Hypertarget{group___u_s_b_h___c_o_r_e___exported___types_ga1deca1f1d6e5815b290e6e1015bce5b8}\label{group___u_s_b_h___c_o_r_e___exported___types_ga1deca1f1d6e5815b290e6e1015bce5b8} 
+uint8\+\_\+t {\bfseries b\+Length}
+\item 
+\Hypertarget{group___u_s_b_h___c_o_r_e___exported___types_ga67d7027b9eb9ed268d28e84fbc675707}\label{group___u_s_b_h___c_o_r_e___exported___types_ga67d7027b9eb9ed268d28e84fbc675707} 
+uint8\+\_\+t {\bfseries b\+Descriptor\+Type}
+\item 
+\Hypertarget{group___u_s_b_h___c_o_r_e___exported___types_ga8f2450b83d08617906b5b63640f559af}\label{group___u_s_b_h___c_o_r_e___exported___types_ga8f2450b83d08617906b5b63640f559af} 
+uint16\+\_\+t {\bfseries bcd\+USB}
+\item 
+\Hypertarget{group___u_s_b_h___c_o_r_e___exported___types_gab8e1b1fca77a607c39bba2278623d4f4}\label{group___u_s_b_h___c_o_r_e___exported___types_gab8e1b1fca77a607c39bba2278623d4f4} 
+uint8\+\_\+t {\bfseries b\+Device\+Class}
+\item 
+\Hypertarget{group___u_s_b_h___c_o_r_e___exported___types_ga260eec0b4e7279e6ecae808ca34c2604}\label{group___u_s_b_h___c_o_r_e___exported___types_ga260eec0b4e7279e6ecae808ca34c2604} 
+uint8\+\_\+t {\bfseries b\+Device\+Sub\+Class}
+\item 
+\Hypertarget{group___u_s_b_h___c_o_r_e___exported___types_ga44e204b5f7158f4048edcb944351ce27}\label{group___u_s_b_h___c_o_r_e___exported___types_ga44e204b5f7158f4048edcb944351ce27} 
+uint8\+\_\+t {\bfseries b\+Device\+Protocol}
+\item 
+\Hypertarget{group___u_s_b_h___c_o_r_e___exported___types_gaaa33fbf697ca2702a56c65c51422d7ec}\label{group___u_s_b_h___c_o_r_e___exported___types_gaaa33fbf697ca2702a56c65c51422d7ec} 
+uint8\+\_\+t {\bfseries b\+Max\+Packet\+Size}
+\item 
+\Hypertarget{group___u_s_b_h___c_o_r_e___exported___types_gab393e07556e3858fed36ed2e260d4b4c}\label{group___u_s_b_h___c_o_r_e___exported___types_gab393e07556e3858fed36ed2e260d4b4c} 
+uint16\+\_\+t {\bfseries id\+Vendor}
+\item 
+\Hypertarget{group___u_s_b_h___c_o_r_e___exported___types_ga2cf29745398a958349d784b1911c6b2b}\label{group___u_s_b_h___c_o_r_e___exported___types_ga2cf29745398a958349d784b1911c6b2b} 
+uint16\+\_\+t {\bfseries id\+Product}
+\item 
+\Hypertarget{group___u_s_b_h___c_o_r_e___exported___types_ga4ac87bf0a9ee1a9e0eec6d50a8b0e3f9}\label{group___u_s_b_h___c_o_r_e___exported___types_ga4ac87bf0a9ee1a9e0eec6d50a8b0e3f9} 
+uint16\+\_\+t {\bfseries bcd\+Device}
+\item 
+\Hypertarget{group___u_s_b_h___c_o_r_e___exported___types_ga7ee6ae41b483f3c49d1ddb39a83a8a43}\label{group___u_s_b_h___c_o_r_e___exported___types_ga7ee6ae41b483f3c49d1ddb39a83a8a43} 
+uint8\+\_\+t {\bfseries i\+Manufacturer}
+\item 
+\Hypertarget{group___u_s_b_h___c_o_r_e___exported___types_ga77c33850b90ff7617243c40ce61d9168}\label{group___u_s_b_h___c_o_r_e___exported___types_ga77c33850b90ff7617243c40ce61d9168} 
+uint8\+\_\+t {\bfseries i\+Product}
+\item 
+\Hypertarget{group___u_s_b_h___c_o_r_e___exported___types_gaeb129fc0d41494f69369da70d73eac11}\label{group___u_s_b_h___c_o_r_e___exported___types_gaeb129fc0d41494f69369da70d73eac11} 
+uint8\+\_\+t {\bfseries i\+Serial\+Number}
+\item 
+\Hypertarget{group___u_s_b_h___c_o_r_e___exported___types_gabde4f60e84b2d9b10c27aa23bae62595}\label{group___u_s_b_h___c_o_r_e___exported___types_gabde4f60e84b2d9b10c27aa23bae62595} 
+uint8\+\_\+t {\bfseries b\+Num\+Configurations}
+\item 
+\Hypertarget{group___u_s_b_h___c_o_r_e___exported___types_ga1deca1f1d6e5815b290e6e1015bce5b8}\label{group___u_s_b_h___c_o_r_e___exported___types_ga1deca1f1d6e5815b290e6e1015bce5b8} 
+uint8\+\_\+t {\bfseries b\+Length}
+\item 
+\Hypertarget{group___u_s_b_h___c_o_r_e___exported___types_ga67d7027b9eb9ed268d28e84fbc675707}\label{group___u_s_b_h___c_o_r_e___exported___types_ga67d7027b9eb9ed268d28e84fbc675707} 
+uint8\+\_\+t {\bfseries b\+Descriptor\+Type}
+\item 
+\Hypertarget{group___u_s_b_h___c_o_r_e___exported___types_ga527afb0f25cdd442d8d32c7df8e18c45}\label{group___u_s_b_h___c_o_r_e___exported___types_ga527afb0f25cdd442d8d32c7df8e18c45} 
+uint8\+\_\+t {\bfseries b\+Endpoint\+Address}
+\item 
+\Hypertarget{group___u_s_b_h___c_o_r_e___exported___types_gae7c63b4cda39953db5710012a5d91c6f}\label{group___u_s_b_h___c_o_r_e___exported___types_gae7c63b4cda39953db5710012a5d91c6f} 
+uint8\+\_\+t {\bfseries bm\+Attributes}
+\item 
+\Hypertarget{group___u_s_b_h___c_o_r_e___exported___types_gabcc8edb1d5094ce6a16b42c1a7ae67d8}\label{group___u_s_b_h___c_o_r_e___exported___types_gabcc8edb1d5094ce6a16b42c1a7ae67d8} 
+uint16\+\_\+t {\bfseries w\+Max\+Packet\+Size}
+\item 
+\Hypertarget{group___u_s_b_h___c_o_r_e___exported___types_gaff92277eea8536f7de1a88d818c91b9e}\label{group___u_s_b_h___c_o_r_e___exported___types_gaff92277eea8536f7de1a88d818c91b9e} 
+uint8\+\_\+t {\bfseries b\+Interval}
+\item 
+\Hypertarget{group___u_s_b_h___c_o_r_e___exported___types_ga1deca1f1d6e5815b290e6e1015bce5b8}\label{group___u_s_b_h___c_o_r_e___exported___types_ga1deca1f1d6e5815b290e6e1015bce5b8} 
+uint8\+\_\+t {\bfseries b\+Length}
+\item 
+\Hypertarget{group___u_s_b_h___c_o_r_e___exported___types_ga67d7027b9eb9ed268d28e84fbc675707}\label{group___u_s_b_h___c_o_r_e___exported___types_ga67d7027b9eb9ed268d28e84fbc675707} 
+uint8\+\_\+t {\bfseries b\+Descriptor\+Type}
+\item 
+\Hypertarget{group___u_s_b_h___c_o_r_e___exported___types_ga3d66d88c5e928462aef62633449f1eb0}\label{group___u_s_b_h___c_o_r_e___exported___types_ga3d66d88c5e928462aef62633449f1eb0} 
+uint8\+\_\+t {\bfseries b\+Interface\+Number}
+\item 
+\Hypertarget{group___u_s_b_h___c_o_r_e___exported___types_ga4cdd7aab185365e51a1e722f43073b8c}\label{group___u_s_b_h___c_o_r_e___exported___types_ga4cdd7aab185365e51a1e722f43073b8c} 
+uint8\+\_\+t {\bfseries b\+Alternate\+Setting}
+\item 
+\Hypertarget{group___u_s_b_h___c_o_r_e___exported___types_gacec2e7d68271baace354a0539f3d7e3d}\label{group___u_s_b_h___c_o_r_e___exported___types_gacec2e7d68271baace354a0539f3d7e3d} 
+uint8\+\_\+t {\bfseries b\+Num\+Endpoints}
+\item 
+\Hypertarget{group___u_s_b_h___c_o_r_e___exported___types_gae899427763e325f03241afc69a6e1ea0}\label{group___u_s_b_h___c_o_r_e___exported___types_gae899427763e325f03241afc69a6e1ea0} 
+uint8\+\_\+t {\bfseries b\+Interface\+Class}
+\item 
+\Hypertarget{group___u_s_b_h___c_o_r_e___exported___types_ga3b3919d1203cd42550d77287f7585595}\label{group___u_s_b_h___c_o_r_e___exported___types_ga3b3919d1203cd42550d77287f7585595} 
+uint8\+\_\+t {\bfseries b\+Interface\+Sub\+Class}
+\item 
+\Hypertarget{group___u_s_b_h___c_o_r_e___exported___types_ga6872c4ec51fd061e2955f84d97bea2a7}\label{group___u_s_b_h___c_o_r_e___exported___types_ga6872c4ec51fd061e2955f84d97bea2a7} 
+uint8\+\_\+t {\bfseries b\+Interface\+Protocol}
+\item 
+\Hypertarget{group___u_s_b_h___c_o_r_e___exported___types_ga2e4535908d90f195c6347a91e15b544d}\label{group___u_s_b_h___c_o_r_e___exported___types_ga2e4535908d90f195c6347a91e15b544d} 
+uint8\+\_\+t {\bfseries i\+Interface}
+\item 
+\Hypertarget{group___u_s_b_h___c_o_r_e___exported___types_ga5e8400ce5448648cdb156346688f4c68}\label{group___u_s_b_h___c_o_r_e___exported___types_ga5e8400ce5448648cdb156346688f4c68} 
+USBH\+\_\+\+Ep\+Desc\+Type\+Def {\bfseries Ep\+\_\+\+Desc} \mbox{[}USBH\+\_\+\+MAX\+\_\+\+NUM\+\_\+\+ENDPOINTS\mbox{]}
+\item 
+\Hypertarget{group___u_s_b_h___c_o_r_e___exported___types_ga1deca1f1d6e5815b290e6e1015bce5b8}\label{group___u_s_b_h___c_o_r_e___exported___types_ga1deca1f1d6e5815b290e6e1015bce5b8} 
+uint8\+\_\+t {\bfseries b\+Length}
+\item 
+\Hypertarget{group___u_s_b_h___c_o_r_e___exported___types_ga67d7027b9eb9ed268d28e84fbc675707}\label{group___u_s_b_h___c_o_r_e___exported___types_ga67d7027b9eb9ed268d28e84fbc675707} 
+uint8\+\_\+t {\bfseries b\+Descriptor\+Type}
+\item 
+\Hypertarget{group___u_s_b_h___c_o_r_e___exported___types_ga866c5d9bb8a60f25805d37b7a5b5f9e8}\label{group___u_s_b_h___c_o_r_e___exported___types_ga866c5d9bb8a60f25805d37b7a5b5f9e8} 
+uint16\+\_\+t {\bfseries w\+Total\+Length}
+\item 
+\Hypertarget{group___u_s_b_h___c_o_r_e___exported___types_ga1ad144333e75b0d867e72f8a337cd510}\label{group___u_s_b_h___c_o_r_e___exported___types_ga1ad144333e75b0d867e72f8a337cd510} 
+uint8\+\_\+t {\bfseries b\+Num\+Interfaces}
+\item 
+\Hypertarget{group___u_s_b_h___c_o_r_e___exported___types_gaecb9ae30bca0b044d2941120f21c2b29}\label{group___u_s_b_h___c_o_r_e___exported___types_gaecb9ae30bca0b044d2941120f21c2b29} 
+uint8\+\_\+t {\bfseries b\+Configuration\+Value}
+\item 
+\Hypertarget{group___u_s_b_h___c_o_r_e___exported___types_ga5ad4440b4eb1935d66b154d274f8a272}\label{group___u_s_b_h___c_o_r_e___exported___types_ga5ad4440b4eb1935d66b154d274f8a272} 
+uint8\+\_\+t {\bfseries i\+Configuration}
+\item 
+\Hypertarget{group___u_s_b_h___c_o_r_e___exported___types_gae7c63b4cda39953db5710012a5d91c6f}\label{group___u_s_b_h___c_o_r_e___exported___types_gae7c63b4cda39953db5710012a5d91c6f} 
+uint8\+\_\+t {\bfseries bm\+Attributes}
+\item 
+\Hypertarget{group___u_s_b_h___c_o_r_e___exported___types_gad3ac74420252d7a6a03e1e9d7b481f9b}\label{group___u_s_b_h___c_o_r_e___exported___types_gad3ac74420252d7a6a03e1e9d7b481f9b} 
+uint8\+\_\+t {\bfseries b\+Max\+Power}
+\item 
+\Hypertarget{group___u_s_b_h___c_o_r_e___exported___types_ga4971d3c667012677ff93ab2638636eb4}\label{group___u_s_b_h___c_o_r_e___exported___types_ga4971d3c667012677ff93ab2638636eb4} 
+USBH\+\_\+\+Interface\+Desc\+Type\+Def {\bfseries Itf\+\_\+\+Desc} \mbox{[}USBH\+\_\+\+MAX\+\_\+\+NUM\+\_\+\+INTERFACES\mbox{]}
+\item 
+\Hypertarget{group___u_s_b_h___c_o_r_e___exported___types_ga1161ce0fa686719b840db77ccc712353}\label{group___u_s_b_h___c_o_r_e___exported___types_ga1161ce0fa686719b840db77ccc712353} 
+uint8\+\_\+t {\bfseries pipe\+\_\+in}
+\item 
+\Hypertarget{group___u_s_b_h___c_o_r_e___exported___types_ga0f111002becf19058aa5436ba91c609b}\label{group___u_s_b_h___c_o_r_e___exported___types_ga0f111002becf19058aa5436ba91c609b} 
+uint8\+\_\+t {\bfseries pipe\+\_\+out}
+\item 
+\Hypertarget{group___u_s_b_h___c_o_r_e___exported___types_gab180d7c1a97766d1029097abc9db965e}\label{group___u_s_b_h___c_o_r_e___exported___types_gab180d7c1a97766d1029097abc9db965e} 
+uint8\+\_\+t {\bfseries pipe\+\_\+size}
+\item 
+\Hypertarget{group___u_s_b_h___c_o_r_e___exported___types_ga8b212742c92a124f2eb4a244acc19f7c}\label{group___u_s_b_h___c_o_r_e___exported___types_ga8b212742c92a124f2eb4a244acc19f7c} 
+uint8\+\_\+t \texorpdfstring{$\ast$}{*} {\bfseries buff}
+\item 
+\Hypertarget{group___u_s_b_h___c_o_r_e___exported___types_ga1892eba2086d12ac2b09005aeb09ea3b}\label{group___u_s_b_h___c_o_r_e___exported___types_ga1892eba2086d12ac2b09005aeb09ea3b} 
+uint16\+\_\+t {\bfseries length}
+\item 
+\Hypertarget{group___u_s_b_h___c_o_r_e___exported___types_gaea00c2c1dec6e8f58532f25c65210d9e}\label{group___u_s_b_h___c_o_r_e___exported___types_gaea00c2c1dec6e8f58532f25c65210d9e} 
+uint16\+\_\+t {\bfseries timer}
+\item 
+\Hypertarget{group___u_s_b_h___c_o_r_e___exported___types_ga4123f4992c22d3be25bc733897e6a290}\label{group___u_s_b_h___c_o_r_e___exported___types_ga4123f4992c22d3be25bc733897e6a290} 
+USB\+\_\+\+Setup\+\_\+\+Type\+Def {\bfseries setup}
+\item 
+\Hypertarget{group___u_s_b_h___c_o_r_e___exported___types_ga712e14f4ff3c8fab4464854c7df64edb}\label{group___u_s_b_h___c_o_r_e___exported___types_ga712e14f4ff3c8fab4464854c7df64edb} 
+CTRL\+\_\+\+State\+Type\+Def {\bfseries state}
+\item 
+\Hypertarget{group___u_s_b_h___c_o_r_e___exported___types_gac8235383da3c2d61b0ba72a33d5229ed}\label{group___u_s_b_h___c_o_r_e___exported___types_gac8235383da3c2d61b0ba72a33d5229ed} 
+uint8\+\_\+t {\bfseries errorcount}
+\item 
+\Hypertarget{group___u_s_b_h___c_o_r_e___exported___types_ga7d0bc0ac30e9f59bf93cd0d32cea2a72}\label{group___u_s_b_h___c_o_r_e___exported___types_ga7d0bc0ac30e9f59bf93cd0d32cea2a72} 
+uint8\+\_\+t {\bfseries Cfg\+Desc\+\_\+\+Raw} \mbox{[}USBH\+\_\+\+MAX\+\_\+\+SIZE\+\_\+\+CONFIGURATION\mbox{]}
+\item 
+\Hypertarget{group___u_s_b_h___c_o_r_e___exported___types_ga242e099ad8ccc1efd8caa299e4bc1e31}\label{group___u_s_b_h___c_o_r_e___exported___types_ga242e099ad8ccc1efd8caa299e4bc1e31} 
+uint8\+\_\+t {\bfseries Data} \mbox{[}USBH\+\_\+\+MAX\+\_\+\+DATA\+\_\+\+BUFFER\mbox{]}
+\item 
+\Hypertarget{group___u_s_b_h___c_o_r_e___exported___types_gaf3f726014b044194def151079f1f2d89}\label{group___u_s_b_h___c_o_r_e___exported___types_gaf3f726014b044194def151079f1f2d89} 
+uint8\+\_\+t {\bfseries address}
+\item 
+\Hypertarget{group___u_s_b_h___c_o_r_e___exported___types_gaae32029df16a54aa86c0aec2df9f7bb7}\label{group___u_s_b_h___c_o_r_e___exported___types_gaae32029df16a54aa86c0aec2df9f7bb7} 
+uint8\+\_\+t {\bfseries speed}
+\item 
+\Hypertarget{group___u_s_b_h___c_o_r_e___exported___types_ga1eeccd164632b6d557aebd408bace4c3}\label{group___u_s_b_h___c_o_r_e___exported___types_ga1eeccd164632b6d557aebd408bace4c3} 
+uint8\+\_\+t {\bfseries Enum\+Cnt}
+\item 
+\Hypertarget{group___u_s_b_h___c_o_r_e___exported___types_gabf28acc28edc41ad57784c3e99a836d4}\label{group___u_s_b_h___c_o_r_e___exported___types_gabf28acc28edc41ad57784c3e99a836d4} 
+uint8\+\_\+t {\bfseries Rst\+Cnt}
+\item 
+\Hypertarget{group___u_s_b_h___c_o_r_e___exported___types_ga4f8f5329d4eb6dfcb1877ae53589b4b4}\label{group___u_s_b_h___c_o_r_e___exported___types_ga4f8f5329d4eb6dfcb1877ae53589b4b4} 
+\mbox{\hyperlink{core__armv81mml_8h_aec43007d9998a0a0e01faede4133d6be}{\+\_\+\+\_\+\+IO}} uint8\+\_\+t {\bfseries is\+\_\+connected}
+\item 
+\Hypertarget{group___u_s_b_h___c_o_r_e___exported___types_gadb36446667113864a5cc46d5c59e50ab}\label{group___u_s_b_h___c_o_r_e___exported___types_gadb36446667113864a5cc46d5c59e50ab} 
+\mbox{\hyperlink{core__armv81mml_8h_aec43007d9998a0a0e01faede4133d6be}{\+\_\+\+\_\+\+IO}} uint8\+\_\+t {\bfseries is\+\_\+disconnected}
+\item 
+\Hypertarget{group___u_s_b_h___c_o_r_e___exported___types_ga99c6586c7ac2478e532dc608d677c52a}\label{group___u_s_b_h___c_o_r_e___exported___types_ga99c6586c7ac2478e532dc608d677c52a} 
+\mbox{\hyperlink{core__armv81mml_8h_aec43007d9998a0a0e01faede4133d6be}{\+\_\+\+\_\+\+IO}} uint8\+\_\+t {\bfseries is\+\_\+\+Re\+Enumerated}
+\item 
+\Hypertarget{group___u_s_b_h___c_o_r_e___exported___types_ga9734b95ea96e4cb40aeccc1d4148e4ff}\label{group___u_s_b_h___c_o_r_e___exported___types_ga9734b95ea96e4cb40aeccc1d4148e4ff} 
+\mbox{\hyperlink{core__armv81mml_8h_aec43007d9998a0a0e01faede4133d6be}{\+\_\+\+\_\+\+IO}} uint8\+\_\+t {\bfseries Port\+Enabled}
+\item 
+\Hypertarget{group___u_s_b_h___c_o_r_e___exported___types_ga9f10c5bb38d9152d9d3a1e15073ef35b}\label{group___u_s_b_h___c_o_r_e___exported___types_ga9f10c5bb38d9152d9d3a1e15073ef35b} 
+uint8\+\_\+t {\bfseries current\+\_\+interface}
+\item 
+\Hypertarget{group___u_s_b_h___c_o_r_e___exported___types_ga5e85de6cc23c0df035a14a2b87ba5370}\label{group___u_s_b_h___c_o_r_e___exported___types_ga5e85de6cc23c0df035a14a2b87ba5370} 
+USBH\+\_\+\+Dev\+Desc\+Type\+Def {\bfseries Dev\+Desc}
+\item 
+\Hypertarget{group___u_s_b_h___c_o_r_e___exported___types_ga36daeb32e1b9a8283d6f162ec412fe07}\label{group___u_s_b_h___c_o_r_e___exported___types_ga36daeb32e1b9a8283d6f162ec412fe07} 
+USBH\+\_\+\+Cfg\+Desc\+Type\+Def {\bfseries Cfg\+Desc}
+\item 
+\Hypertarget{group___u_s_b_h___c_o_r_e___exported___types_ga760b4e07b204e4852e7fb55e25567623}\label{group___u_s_b_h___c_o_r_e___exported___types_ga760b4e07b204e4852e7fb55e25567623} 
+const char \texorpdfstring{$\ast$}{*} {\bfseries Name}
+\item 
+\Hypertarget{group___u_s_b_h___c_o_r_e___exported___types_gae97ec4706b6875de32b89f69d16399ce}\label{group___u_s_b_h___c_o_r_e___exported___types_gae97ec4706b6875de32b89f69d16399ce} 
+uint8\+\_\+t {\bfseries Class\+Code}
+\item 
+\Hypertarget{group___u_s_b_h___c_o_r_e___exported___types_gab311a249329d88a19ec31d9b5dd2d073}\label{group___u_s_b_h___c_o_r_e___exported___types_gab311a249329d88a19ec31d9b5dd2d073} 
+USBH\+\_\+\+Status\+Type\+Def(\texorpdfstring{$\ast$}{*} {\bfseries Init} )(struct \mbox{\hyperlink{struct___u_s_b_h___handle_type_def}{\+\_\+\+USBH\+\_\+\+Handle\+Type\+Def}} \texorpdfstring{$\ast$}{*}phost)
+\item 
+\Hypertarget{group___u_s_b_h___c_o_r_e___exported___types_ga8f3977dcfaddad0ba50355f4f6715628}\label{group___u_s_b_h___c_o_r_e___exported___types_ga8f3977dcfaddad0ba50355f4f6715628} 
+USBH\+\_\+\+Status\+Type\+Def(\texorpdfstring{$\ast$}{*} {\bfseries De\+Init} )(struct \mbox{\hyperlink{struct___u_s_b_h___handle_type_def}{\+\_\+\+USBH\+\_\+\+Handle\+Type\+Def}} \texorpdfstring{$\ast$}{*}phost)
+\item 
+\Hypertarget{group___u_s_b_h___c_o_r_e___exported___types_ga588bdddb90c429bab228c543710682dd}\label{group___u_s_b_h___c_o_r_e___exported___types_ga588bdddb90c429bab228c543710682dd} 
+USBH\+\_\+\+Status\+Type\+Def(\texorpdfstring{$\ast$}{*} {\bfseries Requests} )(struct \mbox{\hyperlink{struct___u_s_b_h___handle_type_def}{\+\_\+\+USBH\+\_\+\+Handle\+Type\+Def}} \texorpdfstring{$\ast$}{*}phost)
+\item 
+\Hypertarget{group___u_s_b_h___c_o_r_e___exported___types_ga391fe58f25a0007fc0c5ff2f6bfd43b3}\label{group___u_s_b_h___c_o_r_e___exported___types_ga391fe58f25a0007fc0c5ff2f6bfd43b3} 
+USBH\+\_\+\+Status\+Type\+Def(\texorpdfstring{$\ast$}{*} {\bfseries Bgnd\+Process} )(struct \mbox{\hyperlink{struct___u_s_b_h___handle_type_def}{\+\_\+\+USBH\+\_\+\+Handle\+Type\+Def}} \texorpdfstring{$\ast$}{*}phost)
+\item 
+\Hypertarget{group___u_s_b_h___c_o_r_e___exported___types_gaacf19885cfe7f0438f8faf40f2352eb7}\label{group___u_s_b_h___c_o_r_e___exported___types_gaacf19885cfe7f0438f8faf40f2352eb7} 
+USBH\+\_\+\+Status\+Type\+Def(\texorpdfstring{$\ast$}{*} {\bfseries SOFProcess} )(struct \mbox{\hyperlink{struct___u_s_b_h___handle_type_def}{\+\_\+\+USBH\+\_\+\+Handle\+Type\+Def}} \texorpdfstring{$\ast$}{*}phost)
+\item 
+\Hypertarget{group___u_s_b_h___c_o_r_e___exported___types_gaa92f08987c51e4eb7b92e84944ca2af3}\label{group___u_s_b_h___c_o_r_e___exported___types_gaa92f08987c51e4eb7b92e84944ca2af3} 
+void \texorpdfstring{$\ast$}{*} {\bfseries p\+Data}
+\item 
+\Hypertarget{group___u_s_b_h___c_o_r_e___exported___types_ga148dea34161890b0fd2a6d0a237bf0c6}\label{group___u_s_b_h___c_o_r_e___exported___types_ga148dea34161890b0fd2a6d0a237bf0c6} 
+\mbox{\hyperlink{core__armv81mml_8h_aec43007d9998a0a0e01faede4133d6be}{\+\_\+\+\_\+\+IO}} HOST\+\_\+\+State\+Type\+Def {\bfseries g\+State}
+\item 
+\Hypertarget{group___u_s_b_h___c_o_r_e___exported___types_ga2a1a3ddbe0287d08c0a9e324ee73e006}\label{group___u_s_b_h___c_o_r_e___exported___types_ga2a1a3ddbe0287d08c0a9e324ee73e006} 
+ENUM\+\_\+\+State\+Type\+Def {\bfseries Enum\+State}
+\item 
+\Hypertarget{group___u_s_b_h___c_o_r_e___exported___types_ga283f8c0112cd3c619d9e7b57fce24693}\label{group___u_s_b_h___c_o_r_e___exported___types_ga283f8c0112cd3c619d9e7b57fce24693} 
+CMD\+\_\+\+State\+Type\+Def {\bfseries Request\+State}
+\item 
+\Hypertarget{group___u_s_b_h___c_o_r_e___exported___types_ga8babf4f7606d576b8b857591f575d891}\label{group___u_s_b_h___c_o_r_e___exported___types_ga8babf4f7606d576b8b857591f575d891} 
+\mbox{\hyperlink{struct_u_s_b_h___ctrl_type_def}{USBH\+\_\+\+Ctrl\+Type\+Def}} {\bfseries Control}
+\item 
+\Hypertarget{group___u_s_b_h___c_o_r_e___exported___types_ga179dfc4df147db822673e2b1e4fdbf9e}\label{group___u_s_b_h___c_o_r_e___exported___types_ga179dfc4df147db822673e2b1e4fdbf9e} 
+\mbox{\hyperlink{struct_u_s_b_h___device_type_def}{USBH\+\_\+\+Device\+Type\+Def}} {\bfseries device}
+\item 
+\Hypertarget{group___u_s_b_h___c_o_r_e___exported___types_ga979b4cffe902517cd2a08af2288b67b0}\label{group___u_s_b_h___c_o_r_e___exported___types_ga979b4cffe902517cd2a08af2288b67b0} 
+\mbox{\hyperlink{struct_u_s_b_h___class_type_def}{USBH\+\_\+\+Class\+Type\+Def}} \texorpdfstring{$\ast$}{*} {\bfseries p\+Class} \mbox{[}USBH\+\_\+\+MAX\+\_\+\+NUM\+\_\+\+SUPPORTED\+\_\+\+CLASS\mbox{]}
+\item 
+\Hypertarget{group___u_s_b_h___c_o_r_e___exported___types_ga69e0d9caf6376c61e4dd27919dd97c4f}\label{group___u_s_b_h___c_o_r_e___exported___types_ga69e0d9caf6376c61e4dd27919dd97c4f} 
+\mbox{\hyperlink{struct_u_s_b_h___class_type_def}{USBH\+\_\+\+Class\+Type\+Def}} \texorpdfstring{$\ast$}{*} {\bfseries p\+Active\+Class}
+\item 
+\Hypertarget{group___u_s_b_h___c_o_r_e___exported___types_ga5b0cae04c1e55f7200ae26d67b301f07}\label{group___u_s_b_h___c_o_r_e___exported___types_ga5b0cae04c1e55f7200ae26d67b301f07} 
+uint32\+\_\+t {\bfseries Class\+Number}
+\item 
+\Hypertarget{group___u_s_b_h___c_o_r_e___exported___types_gafa0e0c3b3447ba6f2538afd0e2df8e73}\label{group___u_s_b_h___c_o_r_e___exported___types_gafa0e0c3b3447ba6f2538afd0e2df8e73} 
+uint32\+\_\+t {\bfseries Pipes} \mbox{[}16\mbox{]}
+\item 
+\Hypertarget{group___u_s_b_h___c_o_r_e___exported___types_ga58fdd1b0b9ffa1859d4cbff5c4da4813}\label{group___u_s_b_h___c_o_r_e___exported___types_ga58fdd1b0b9ffa1859d4cbff5c4da4813} 
+\mbox{\hyperlink{core__armv81mml_8h_aec43007d9998a0a0e01faede4133d6be}{\+\_\+\+\_\+\+IO}} uint32\+\_\+t {\bfseries Timer}
+\item 
+\Hypertarget{group___u_s_b_h___c_o_r_e___exported___types_gac32e3b19d6fb5d4056cebee773e128ed}\label{group___u_s_b_h___c_o_r_e___exported___types_gac32e3b19d6fb5d4056cebee773e128ed} 
+uint32\+\_\+t {\bfseries Timeout}
+\item 
+\Hypertarget{group___u_s_b_h___c_o_r_e___exported___types_ga1e6927fa1486224044e568f9c370519b}\label{group___u_s_b_h___c_o_r_e___exported___types_ga1e6927fa1486224044e568f9c370519b} 
+uint8\+\_\+t {\bfseries id}
+\item 
+\Hypertarget{group___u_s_b_h___c_o_r_e___exported___types_gaa92f08987c51e4eb7b92e84944ca2af3}\label{group___u_s_b_h___c_o_r_e___exported___types_gaa92f08987c51e4eb7b92e84944ca2af3} 
+void \texorpdfstring{$\ast$}{*} {\bfseries p\+Data}
+\item 
+\Hypertarget{group___u_s_b_h___c_o_r_e___exported___types_ga89490edab40b4685bf76d813f7539f87}\label{group___u_s_b_h___c_o_r_e___exported___types_ga89490edab40b4685bf76d813f7539f87} 
+void(\texorpdfstring{$\ast$}{*} {\bfseries p\+User} )(struct \mbox{\hyperlink{struct___u_s_b_h___handle_type_def}{\+\_\+\+USBH\+\_\+\+Handle\+Type\+Def}} \texorpdfstring{$\ast$}{*}p\+Handle, uint8\+\_\+t id)
+\end{DoxyCompactItemize}
+
+
+\doxysubsubsubsection{Detailed Description}

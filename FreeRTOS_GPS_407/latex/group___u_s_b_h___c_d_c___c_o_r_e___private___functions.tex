@@ -1,0 +1,211 @@
+\doxysubsubsubsubsection{USBH\+\_\+\+CDC\+\_\+\+CORE\+\_\+\+Private\+\_\+\+Functions }
+\hypertarget{group___u_s_b_h___c_d_c___c_o_r_e___private___functions}{}\label{group___u_s_b_h___c_d_c___c_o_r_e___private___functions}\index{USBH\_CDC\_CORE\_Private\_Functions@{USBH\_CDC\_CORE\_Private\_Functions}}
+\doxysubsubsubsubsubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+USBH\+\_\+\+Status\+Type\+Def \mbox{\hyperlink{group___u_s_b_h___c_d_c___c_o_r_e___private___functions_gaa41c8ff240fbc3b03b3f7390bd2eaced}{USBH\+\_\+\+CDC\+\_\+\+Stop}} (USBH\+\_\+\+Handle\+Type\+Def \texorpdfstring{$\ast$}{*}phost)
+\begin{DoxyCompactList}\small\item\em USBH\+\_\+\+CDC\+\_\+\+Stop Stop current CDC Transmission. \end{DoxyCompactList}\item 
+USBH\+\_\+\+Status\+Type\+Def \mbox{\hyperlink{group___u_s_b_h___c_d_c___c_o_r_e___private___functions_ga0a97cecdc325afda054708260d4a4cd4}{USBH\+\_\+\+CDC\+\_\+\+Set\+Line\+Coding}} (USBH\+\_\+\+Handle\+Type\+Def \texorpdfstring{$\ast$}{*}phost, CDC\+\_\+\+Line\+Coding\+Type\+Def \texorpdfstring{$\ast$}{*}linecoding)
+\begin{DoxyCompactList}\small\item\em This function prepares the state before issuing the class specific commands. \end{DoxyCompactList}\item 
+USBH\+\_\+\+Status\+Type\+Def \mbox{\hyperlink{group___u_s_b_h___c_d_c___c_o_r_e___private___functions_ga58896a873e5451cfa68e0199b62310c1}{USBH\+\_\+\+CDC\+\_\+\+Get\+Line\+Coding}} (USBH\+\_\+\+Handle\+Type\+Def \texorpdfstring{$\ast$}{*}phost, CDC\+\_\+\+Line\+Coding\+Type\+Def \texorpdfstring{$\ast$}{*}linecoding)
+\begin{DoxyCompactList}\small\item\em This function prepares the state before issuing the class specific commands. \end{DoxyCompactList}\item 
+uint16\+\_\+t \mbox{\hyperlink{group___u_s_b_h___c_d_c___c_o_r_e___private___functions_ga604e66c38a1c9bb300087a5f717fa744}{USBH\+\_\+\+CDC\+\_\+\+Get\+Last\+Received\+Data\+Size}} (USBH\+\_\+\+Handle\+Type\+Def \texorpdfstring{$\ast$}{*}phost)
+\begin{DoxyCompactList}\small\item\em This function return last received data size. \end{DoxyCompactList}\item 
+USBH\+\_\+\+Status\+Type\+Def \mbox{\hyperlink{group___u_s_b_h___c_d_c___c_o_r_e___private___functions_gaa665a75165250f23da58b07a0ccfdf85}{USBH\+\_\+\+CDC\+\_\+\+Transmit}} (USBH\+\_\+\+Handle\+Type\+Def \texorpdfstring{$\ast$}{*}phost, uint8\+\_\+t \texorpdfstring{$\ast$}{*}pbuff, uint32\+\_\+t length)
+\begin{DoxyCompactList}\small\item\em This function prepares the state before issuing the class specific commands. \end{DoxyCompactList}\item 
+USBH\+\_\+\+Status\+Type\+Def \mbox{\hyperlink{group___u_s_b_h___c_d_c___c_o_r_e___private___functions_ga541a5501a8392d124fe1ee0c6cbf0d1a}{USBH\+\_\+\+CDC\+\_\+\+Receive}} (USBH\+\_\+\+Handle\+Type\+Def \texorpdfstring{$\ast$}{*}phost, uint8\+\_\+t \texorpdfstring{$\ast$}{*}pbuff, uint32\+\_\+t length)
+\begin{DoxyCompactList}\small\item\em This function prepares the state before issuing the class specific commands. \end{DoxyCompactList}\item 
+\+\_\+\+\_\+weak void \mbox{\hyperlink{group___u_s_b_h___c_d_c___c_o_r_e___private___functions_gafe96a665474183a25be73db0617416b1}{USBH\+\_\+\+CDC\+\_\+\+Transmit\+Callback}} (USBH\+\_\+\+Handle\+Type\+Def \texorpdfstring{$\ast$}{*}phost)
+\begin{DoxyCompactList}\small\item\em The function informs user that data have been received. \end{DoxyCompactList}\item 
+\+\_\+\+\_\+weak void \mbox{\hyperlink{group___u_s_b_h___c_d_c___c_o_r_e___private___functions_ga99a5e19eda036445cb59a5121d58a242}{USBH\+\_\+\+CDC\+\_\+\+Receive\+Callback}} (USBH\+\_\+\+Handle\+Type\+Def \texorpdfstring{$\ast$}{*}phost)
+\begin{DoxyCompactList}\small\item\em The function informs user that data have been sent. \end{DoxyCompactList}\item 
+\+\_\+\+\_\+weak void \mbox{\hyperlink{group___u_s_b_h___c_d_c___c_o_r_e___private___functions_ga4cea710a38a9e37fe426627eab6fc7ce}{USBH\+\_\+\+CDC\+\_\+\+Line\+Coding\+Changed}} (USBH\+\_\+\+Handle\+Type\+Def \texorpdfstring{$\ast$}{*}phost)
+\begin{DoxyCompactList}\small\item\em The function informs user that Settings have been changed. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsubsubsubsubsection{Detailed Description}
+
+
+\label{doc-func-members}
+\Hypertarget{group___u_s_b_h___c_d_c___c_o_r_e___private___functions_doc-func-members}
+\doxysubsubsubsubsubsection{Function Documentation}
+\Hypertarget{group___u_s_b_h___c_d_c___c_o_r_e___private___functions_ga604e66c38a1c9bb300087a5f717fa744}\index{USBH\_CDC\_CORE\_Private\_Functions@{USBH\_CDC\_CORE\_Private\_Functions}!USBH\_CDC\_GetLastReceivedDataSize@{USBH\_CDC\_GetLastReceivedDataSize}}
+\index{USBH\_CDC\_GetLastReceivedDataSize@{USBH\_CDC\_GetLastReceivedDataSize}!USBH\_CDC\_CORE\_Private\_Functions@{USBH\_CDC\_CORE\_Private\_Functions}}
+\doxysubsubsubsubsubsubsection{\texorpdfstring{USBH\_CDC\_GetLastReceivedDataSize()}{USBH\_CDC\_GetLastReceivedDataSize()}}
+{\footnotesize\ttfamily \label{group___u_s_b_h___c_d_c___c_o_r_e___private___functions_ga604e66c38a1c9bb300087a5f717fa744} 
+uint16\+\_\+t USBH\+\_\+\+CDC\+\_\+\+Get\+Last\+Received\+Data\+Size (\begin{DoxyParamCaption}\item[{USBH\+\_\+\+Handle\+Type\+Def \texorpdfstring{$\ast$}{*}}]{phost}{}\end{DoxyParamCaption})}
+
+
+
+This function return last received data size. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em None} & \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em None} & \\
+\hline
+\end{DoxyRetVals}
+\Hypertarget{group___u_s_b_h___c_d_c___c_o_r_e___private___functions_ga58896a873e5451cfa68e0199b62310c1}\index{USBH\_CDC\_CORE\_Private\_Functions@{USBH\_CDC\_CORE\_Private\_Functions}!USBH\_CDC\_GetLineCoding@{USBH\_CDC\_GetLineCoding}}
+\index{USBH\_CDC\_GetLineCoding@{USBH\_CDC\_GetLineCoding}!USBH\_CDC\_CORE\_Private\_Functions@{USBH\_CDC\_CORE\_Private\_Functions}}
+\doxysubsubsubsubsubsubsection{\texorpdfstring{USBH\_CDC\_GetLineCoding()}{USBH\_CDC\_GetLineCoding()}}
+{\footnotesize\ttfamily \label{group___u_s_b_h___c_d_c___c_o_r_e___private___functions_ga58896a873e5451cfa68e0199b62310c1} 
+USBH\+\_\+\+Status\+Type\+Def USBH\+\_\+\+CDC\+\_\+\+Get\+Line\+Coding (\begin{DoxyParamCaption}\item[{USBH\+\_\+\+Handle\+Type\+Def \texorpdfstring{$\ast$}{*}}]{phost}{, }\item[{CDC\+\_\+\+Line\+Coding\+Type\+Def \texorpdfstring{$\ast$}{*}}]{linecoding}{}\end{DoxyParamCaption})}
+
+
+
+This function prepares the state before issuing the class specific commands. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em None} & \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em None} & \\
+\hline
+\end{DoxyRetVals}
+\Hypertarget{group___u_s_b_h___c_d_c___c_o_r_e___private___functions_ga4cea710a38a9e37fe426627eab6fc7ce}\index{USBH\_CDC\_CORE\_Private\_Functions@{USBH\_CDC\_CORE\_Private\_Functions}!USBH\_CDC\_LineCodingChanged@{USBH\_CDC\_LineCodingChanged}}
+\index{USBH\_CDC\_LineCodingChanged@{USBH\_CDC\_LineCodingChanged}!USBH\_CDC\_CORE\_Private\_Functions@{USBH\_CDC\_CORE\_Private\_Functions}}
+\doxysubsubsubsubsubsubsection{\texorpdfstring{USBH\_CDC\_LineCodingChanged()}{USBH\_CDC\_LineCodingChanged()}}
+{\footnotesize\ttfamily \label{group___u_s_b_h___c_d_c___c_o_r_e___private___functions_ga4cea710a38a9e37fe426627eab6fc7ce} 
+\+\_\+\+\_\+weak void USBH\+\_\+\+CDC\+\_\+\+Line\+Coding\+Changed (\begin{DoxyParamCaption}\item[{USBH\+\_\+\+Handle\+Type\+Def \texorpdfstring{$\ast$}{*}}]{phost}{}\end{DoxyParamCaption})}
+
+
+
+The function informs user that Settings have been changed. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em pdev} & Selected device \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em None} & \\
+\hline
+\end{DoxyRetVals}
+\Hypertarget{group___u_s_b_h___c_d_c___c_o_r_e___private___functions_ga541a5501a8392d124fe1ee0c6cbf0d1a}\index{USBH\_CDC\_CORE\_Private\_Functions@{USBH\_CDC\_CORE\_Private\_Functions}!USBH\_CDC\_Receive@{USBH\_CDC\_Receive}}
+\index{USBH\_CDC\_Receive@{USBH\_CDC\_Receive}!USBH\_CDC\_CORE\_Private\_Functions@{USBH\_CDC\_CORE\_Private\_Functions}}
+\doxysubsubsubsubsubsubsection{\texorpdfstring{USBH\_CDC\_Receive()}{USBH\_CDC\_Receive()}}
+{\footnotesize\ttfamily \label{group___u_s_b_h___c_d_c___c_o_r_e___private___functions_ga541a5501a8392d124fe1ee0c6cbf0d1a} 
+USBH\+\_\+\+Status\+Type\+Def USBH\+\_\+\+CDC\+\_\+\+Receive (\begin{DoxyParamCaption}\item[{USBH\+\_\+\+Handle\+Type\+Def \texorpdfstring{$\ast$}{*}}]{phost}{, }\item[{uint8\+\_\+t \texorpdfstring{$\ast$}{*}}]{pbuff}{, }\item[{uint32\+\_\+t}]{length}{}\end{DoxyParamCaption})}
+
+
+
+This function prepares the state before issuing the class specific commands. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em None} & \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em None} & \\
+\hline
+\end{DoxyRetVals}
+\Hypertarget{group___u_s_b_h___c_d_c___c_o_r_e___private___functions_ga99a5e19eda036445cb59a5121d58a242}\index{USBH\_CDC\_CORE\_Private\_Functions@{USBH\_CDC\_CORE\_Private\_Functions}!USBH\_CDC\_ReceiveCallback@{USBH\_CDC\_ReceiveCallback}}
+\index{USBH\_CDC\_ReceiveCallback@{USBH\_CDC\_ReceiveCallback}!USBH\_CDC\_CORE\_Private\_Functions@{USBH\_CDC\_CORE\_Private\_Functions}}
+\doxysubsubsubsubsubsubsection{\texorpdfstring{USBH\_CDC\_ReceiveCallback()}{USBH\_CDC\_ReceiveCallback()}}
+{\footnotesize\ttfamily \label{group___u_s_b_h___c_d_c___c_o_r_e___private___functions_ga99a5e19eda036445cb59a5121d58a242} 
+\+\_\+\+\_\+weak void USBH\+\_\+\+CDC\+\_\+\+Receive\+Callback (\begin{DoxyParamCaption}\item[{USBH\+\_\+\+Handle\+Type\+Def \texorpdfstring{$\ast$}{*}}]{phost}{}\end{DoxyParamCaption})}
+
+
+
+The function informs user that data have been sent. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em pdev} & Selected device \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em None} & \\
+\hline
+\end{DoxyRetVals}
+\Hypertarget{group___u_s_b_h___c_d_c___c_o_r_e___private___functions_ga0a97cecdc325afda054708260d4a4cd4}\index{USBH\_CDC\_CORE\_Private\_Functions@{USBH\_CDC\_CORE\_Private\_Functions}!USBH\_CDC\_SetLineCoding@{USBH\_CDC\_SetLineCoding}}
+\index{USBH\_CDC\_SetLineCoding@{USBH\_CDC\_SetLineCoding}!USBH\_CDC\_CORE\_Private\_Functions@{USBH\_CDC\_CORE\_Private\_Functions}}
+\doxysubsubsubsubsubsubsection{\texorpdfstring{USBH\_CDC\_SetLineCoding()}{USBH\_CDC\_SetLineCoding()}}
+{\footnotesize\ttfamily \label{group___u_s_b_h___c_d_c___c_o_r_e___private___functions_ga0a97cecdc325afda054708260d4a4cd4} 
+USBH\+\_\+\+Status\+Type\+Def USBH\+\_\+\+CDC\+\_\+\+Set\+Line\+Coding (\begin{DoxyParamCaption}\item[{USBH\+\_\+\+Handle\+Type\+Def \texorpdfstring{$\ast$}{*}}]{phost}{, }\item[{CDC\+\_\+\+Line\+Coding\+Type\+Def \texorpdfstring{$\ast$}{*}}]{linecoding}{}\end{DoxyParamCaption})}
+
+
+
+This function prepares the state before issuing the class specific commands. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em None} & \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em None} & \\
+\hline
+\end{DoxyRetVals}
+\Hypertarget{group___u_s_b_h___c_d_c___c_o_r_e___private___functions_gaa41c8ff240fbc3b03b3f7390bd2eaced}\index{USBH\_CDC\_CORE\_Private\_Functions@{USBH\_CDC\_CORE\_Private\_Functions}!USBH\_CDC\_Stop@{USBH\_CDC\_Stop}}
+\index{USBH\_CDC\_Stop@{USBH\_CDC\_Stop}!USBH\_CDC\_CORE\_Private\_Functions@{USBH\_CDC\_CORE\_Private\_Functions}}
+\doxysubsubsubsubsubsubsection{\texorpdfstring{USBH\_CDC\_Stop()}{USBH\_CDC\_Stop()}}
+{\footnotesize\ttfamily \label{group___u_s_b_h___c_d_c___c_o_r_e___private___functions_gaa41c8ff240fbc3b03b3f7390bd2eaced} 
+USBH\+\_\+\+Status\+Type\+Def USBH\+\_\+\+CDC\+\_\+\+Stop (\begin{DoxyParamCaption}\item[{USBH\+\_\+\+Handle\+Type\+Def \texorpdfstring{$\ast$}{*}}]{phost}{}\end{DoxyParamCaption})}
+
+
+
+USBH\+\_\+\+CDC\+\_\+\+Stop Stop current CDC Transmission. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em phost} & Host handle \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em USBH} & Status \\
+\hline
+\end{DoxyRetVals}
+\Hypertarget{group___u_s_b_h___c_d_c___c_o_r_e___private___functions_gaa665a75165250f23da58b07a0ccfdf85}\index{USBH\_CDC\_CORE\_Private\_Functions@{USBH\_CDC\_CORE\_Private\_Functions}!USBH\_CDC\_Transmit@{USBH\_CDC\_Transmit}}
+\index{USBH\_CDC\_Transmit@{USBH\_CDC\_Transmit}!USBH\_CDC\_CORE\_Private\_Functions@{USBH\_CDC\_CORE\_Private\_Functions}}
+\doxysubsubsubsubsubsubsection{\texorpdfstring{USBH\_CDC\_Transmit()}{USBH\_CDC\_Transmit()}}
+{\footnotesize\ttfamily \label{group___u_s_b_h___c_d_c___c_o_r_e___private___functions_gaa665a75165250f23da58b07a0ccfdf85} 
+USBH\+\_\+\+Status\+Type\+Def USBH\+\_\+\+CDC\+\_\+\+Transmit (\begin{DoxyParamCaption}\item[{USBH\+\_\+\+Handle\+Type\+Def \texorpdfstring{$\ast$}{*}}]{phost}{, }\item[{uint8\+\_\+t \texorpdfstring{$\ast$}{*}}]{pbuff}{, }\item[{uint32\+\_\+t}]{length}{}\end{DoxyParamCaption})}
+
+
+
+This function prepares the state before issuing the class specific commands. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em None} & \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em None} & \\
+\hline
+\end{DoxyRetVals}
+\Hypertarget{group___u_s_b_h___c_d_c___c_o_r_e___private___functions_gafe96a665474183a25be73db0617416b1}\index{USBH\_CDC\_CORE\_Private\_Functions@{USBH\_CDC\_CORE\_Private\_Functions}!USBH\_CDC\_TransmitCallback@{USBH\_CDC\_TransmitCallback}}
+\index{USBH\_CDC\_TransmitCallback@{USBH\_CDC\_TransmitCallback}!USBH\_CDC\_CORE\_Private\_Functions@{USBH\_CDC\_CORE\_Private\_Functions}}
+\doxysubsubsubsubsubsubsection{\texorpdfstring{USBH\_CDC\_TransmitCallback()}{USBH\_CDC\_TransmitCallback()}}
+{\footnotesize\ttfamily \label{group___u_s_b_h___c_d_c___c_o_r_e___private___functions_gafe96a665474183a25be73db0617416b1} 
+\+\_\+\+\_\+weak void USBH\+\_\+\+CDC\+\_\+\+Transmit\+Callback (\begin{DoxyParamCaption}\item[{USBH\+\_\+\+Handle\+Type\+Def \texorpdfstring{$\ast$}{*}}]{phost}{}\end{DoxyParamCaption})}
+
+
+
+The function informs user that data have been received. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em pdev} & Selected device \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em None} & \\
+\hline
+\end{DoxyRetVals}

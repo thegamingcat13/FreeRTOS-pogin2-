@@ -1,0 +1,210 @@
+\doxysubsubsubsection{USBH\+\_\+\+CDC\+\_\+\+CORE }
+\hypertarget{group___u_s_b_h___c_d_c___c_o_r_e}{}\label{group___u_s_b_h___c_d_c___c_o_r_e}\index{USBH\_CDC\_CORE@{USBH\_CDC\_CORE}}
+
+
+This file is the Header file for \doxylink{usbh__core_8c}{usbh\+\_\+core.\+c}.  
+
+
+\doxysubsubsubsubsubsection*{Topics}
+\begin{DoxyCompactItemize}
+\item 
+\item \contentsline{section}{USBH\+\_\+\+CDC\+\_\+\+CORE\+\_\+\+Private\+\_\+\+Types\+Definitions }{\pageref{group___u_s_b_h___c_d_c___c_o_r_e___private___types_definitions}}{}
+
+\item 
+\item \contentsline{section}{USBH\+\_\+\+CDC\+\_\+\+CORE\+\_\+\+Private\+\_\+\+Defines }{\pageref{group___u_s_b_h___c_d_c___c_o_r_e___private___defines}}{}
+
+\item 
+\item \contentsline{section}{USBH\+\_\+\+CDC\+\_\+\+CORE\+\_\+\+Private\+\_\+\+Macros }{\pageref{group___u_s_b_h___c_d_c___c_o_r_e___private___macros}}{}
+
+\item 
+\item \contentsline{section}{USBH\+\_\+\+CDC\+\_\+\+CORE\+\_\+\+Private\+\_\+\+Variables }{\pageref{group___u_s_b_h___c_d_c___c_o_r_e___private___variables}}{}
+
+\item 
+\item \contentsline{section}{USBH\+\_\+\+CDC\+\_\+\+CORE\+\_\+\+Private\+\_\+\+Function\+Prototypes }{\pageref{group___u_s_b_h___c_d_c___c_o_r_e___private___function_prototypes}}{}
+
+\item 
+\item \contentsline{section}{USBH\+\_\+\+CDC\+\_\+\+CORE\+\_\+\+Private\+\_\+\+Functions }{\pageref{group___u_s_b_h___c_d_c___c_o_r_e___private___functions}}{}
+
+\end{DoxyCompactItemize}
+\doxysubsubsubsubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{group___u_s_b_h___c_d_c___c_o_r_e_ga892d098e0e9d88d71d047bd8d764ad36}\label{group___u_s_b_h___c_d_c___c_o_r_e_ga892d098e0e9d88d71d047bd8d764ad36} 
+\#define {\bfseries USB\+\_\+\+CDC\+\_\+\+CLASS}~0x02U
+\item 
+\Hypertarget{group___u_s_b_h___c_d_c___c_o_r_e_gaaf5157761f47583f41cbedddc580aa2d}\label{group___u_s_b_h___c_d_c___c_o_r_e_gaaf5157761f47583f41cbedddc580aa2d} 
+\#define {\bfseries COMMUNICATION\+\_\+\+INTERFACE\+\_\+\+CLASS\+\_\+\+CODE}~0x02U
+\item 
+\Hypertarget{group___u_s_b_h___c_d_c___c_o_r_e_ga0e40cdadfa5c216d4c4cb6e6243955d7}\label{group___u_s_b_h___c_d_c___c_o_r_e_ga0e40cdadfa5c216d4c4cb6e6243955d7} 
+\#define {\bfseries DATA\+\_\+\+INTERFACE\+\_\+\+CLASS\+\_\+\+CODE}~0x0\+AU
+\item 
+\Hypertarget{group___u_s_b_h___c_d_c___c_o_r_e_ga56701f18aaad537f7fc0e9be309503c3}\label{group___u_s_b_h___c_d_c___c_o_r_e_ga56701f18aaad537f7fc0e9be309503c3} 
+\#define {\bfseries RESERVED}~0x00U
+\item 
+\Hypertarget{group___u_s_b_h___c_d_c___c_o_r_e_ga0f7ed295a1daba8822f20efbc7f9b96e}\label{group___u_s_b_h___c_d_c___c_o_r_e_ga0f7ed295a1daba8822f20efbc7f9b96e} 
+\#define {\bfseries DIRECT\+\_\+\+LINE\+\_\+\+CONTROL\+\_\+\+MODEL}~0x01U
+\item 
+\Hypertarget{group___u_s_b_h___c_d_c___c_o_r_e_gab163532d901057d093ebbddd4bfdff46}\label{group___u_s_b_h___c_d_c___c_o_r_e_gab163532d901057d093ebbddd4bfdff46} 
+\#define {\bfseries ABSTRACT\+\_\+\+CONTROL\+\_\+\+MODEL}~0x02U
+\item 
+\Hypertarget{group___u_s_b_h___c_d_c___c_o_r_e_gae1de4953d1235e15b3f56133d6099ecd}\label{group___u_s_b_h___c_d_c___c_o_r_e_gae1de4953d1235e15b3f56133d6099ecd} 
+\#define {\bfseries TELEPHONE\+\_\+\+CONTROL\+\_\+\+MODEL}~0x03U
+\item 
+\Hypertarget{group___u_s_b_h___c_d_c___c_o_r_e_ga1b021a70aa55703bcbdbead234e8cf86}\label{group___u_s_b_h___c_d_c___c_o_r_e_ga1b021a70aa55703bcbdbead234e8cf86} 
+\#define {\bfseries MULTICHANNEL\+\_\+\+CONTROL\+\_\+\+MODEL}~0x04U
+\item 
+\Hypertarget{group___u_s_b_h___c_d_c___c_o_r_e_ga016a0fc6a0f2a4fa35482fb0e86d0923}\label{group___u_s_b_h___c_d_c___c_o_r_e_ga016a0fc6a0f2a4fa35482fb0e86d0923} 
+\#define {\bfseries CAPI\+\_\+\+CONTROL\+\_\+\+MODEL}~0x05U
+\item 
+\Hypertarget{group___u_s_b_h___c_d_c___c_o_r_e_gae1e770d89c2d9e281fe2b13df816aeb5}\label{group___u_s_b_h___c_d_c___c_o_r_e_gae1e770d89c2d9e281fe2b13df816aeb5} 
+\#define {\bfseries ETHERNET\+\_\+\+NETWORKING\+\_\+\+CONTROL\+\_\+\+MODEL}~0x06U
+\item 
+\Hypertarget{group___u_s_b_h___c_d_c___c_o_r_e_ga0db106816923b548b5742e7c0b9a116f}\label{group___u_s_b_h___c_d_c___c_o_r_e_ga0db106816923b548b5742e7c0b9a116f} 
+\#define {\bfseries ATM\+\_\+\+NETWORKING\+\_\+\+CONTROL\+\_\+\+MODEL}~0x07U
+\item 
+\Hypertarget{group___u_s_b_h___c_d_c___c_o_r_e_gaa6970c71cb1f8902d5b9153c8c1f81fb}\label{group___u_s_b_h___c_d_c___c_o_r_e_gaa6970c71cb1f8902d5b9153c8c1f81fb} 
+\#define {\bfseries NO\+\_\+\+CLASS\+\_\+\+SPECIFIC\+\_\+\+PROTOCOL\+\_\+\+CODE}~0x00U
+\item 
+\Hypertarget{group___u_s_b_h___c_d_c___c_o_r_e_gab40260bd25c21ebb8204a67f0d7bf791}\label{group___u_s_b_h___c_d_c___c_o_r_e_gab40260bd25c21ebb8204a67f0d7bf791} 
+\#define {\bfseries COMMON\+\_\+\+AT\+\_\+\+COMMAND}~0x01U
+\item 
+\Hypertarget{group___u_s_b_h___c_d_c___c_o_r_e_ga88e46cb953774da31e26318cf5d7f282}\label{group___u_s_b_h___c_d_c___c_o_r_e_ga88e46cb953774da31e26318cf5d7f282} 
+\#define {\bfseries VENDOR\+\_\+\+SPECIFIC}~0x\+FFU
+\item 
+\Hypertarget{group___u_s_b_h___c_d_c___c_o_r_e_ga104f7f440633d5d270fba57dfa0666d0}\label{group___u_s_b_h___c_d_c___c_o_r_e_ga104f7f440633d5d270fba57dfa0666d0} 
+\#define {\bfseries CS\+\_\+\+INTERFACE}~0x24U
+\item 
+\Hypertarget{group___u_s_b_h___c_d_c___c_o_r_e_ga5ba92edf14f7b06965d9e19cbdf879da}\label{group___u_s_b_h___c_d_c___c_o_r_e_ga5ba92edf14f7b06965d9e19cbdf879da} 
+\#define {\bfseries CDC\+\_\+\+PAGE\+\_\+\+SIZE\+\_\+64}~0x40U
+\item 
+\Hypertarget{group___u_s_b_h___c_d_c___c_o_r_e_ga7aaa245703a0a2191c27697715f3727c}\label{group___u_s_b_h___c_d_c___c_o_r_e_ga7aaa245703a0a2191c27697715f3727c} 
+\#define {\bfseries CDC\+\_\+\+SEND\+\_\+\+ENCAPSULATED\+\_\+\+COMMAND}~0x00U
+\item 
+\Hypertarget{group___u_s_b_h___c_d_c___c_o_r_e_ga6170632c774a3163b5a9927cc4e960ec}\label{group___u_s_b_h___c_d_c___c_o_r_e_ga6170632c774a3163b5a9927cc4e960ec} 
+\#define {\bfseries CDC\+\_\+\+GET\+\_\+\+ENCAPSULATED\+\_\+\+RESPONSE}~0x01U
+\item 
+\Hypertarget{group___u_s_b_h___c_d_c___c_o_r_e_ga893b79445f99070657e8d45f6495b174}\label{group___u_s_b_h___c_d_c___c_o_r_e_ga893b79445f99070657e8d45f6495b174} 
+\#define {\bfseries CDC\+\_\+\+SET\+\_\+\+COMM\+\_\+\+FEATURE}~0x02U
+\item 
+\Hypertarget{group___u_s_b_h___c_d_c___c_o_r_e_gad0912dac888d01142b225b0c6f8a508f}\label{group___u_s_b_h___c_d_c___c_o_r_e_gad0912dac888d01142b225b0c6f8a508f} 
+\#define {\bfseries CDC\+\_\+\+GET\+\_\+\+COMM\+\_\+\+FEATURE}~0x03U
+\item 
+\Hypertarget{group___u_s_b_h___c_d_c___c_o_r_e_ga6c79b8666110840333ad3785bf7ce87c}\label{group___u_s_b_h___c_d_c___c_o_r_e_ga6c79b8666110840333ad3785bf7ce87c} 
+\#define {\bfseries CDC\+\_\+\+CLEAR\+\_\+\+COMM\+\_\+\+FEATURE}~0x04U
+\item 
+\Hypertarget{group___u_s_b_h___c_d_c___c_o_r_e_gac39a42b128864ba4fae224be0078adba}\label{group___u_s_b_h___c_d_c___c_o_r_e_gac39a42b128864ba4fae224be0078adba} 
+\#define {\bfseries CDC\+\_\+\+SET\+\_\+\+AUX\+\_\+\+LINE\+\_\+\+STATE}~0x10U
+\item 
+\Hypertarget{group___u_s_b_h___c_d_c___c_o_r_e_ga367e07b7ce50e3a17703da1dea7f05a1}\label{group___u_s_b_h___c_d_c___c_o_r_e_ga367e07b7ce50e3a17703da1dea7f05a1} 
+\#define {\bfseries CDC\+\_\+\+SET\+\_\+\+HOOK\+\_\+\+STATE}~0x11U
+\item 
+\Hypertarget{group___u_s_b_h___c_d_c___c_o_r_e_gaab5439915442bd5b835d7c755ba5fec1}\label{group___u_s_b_h___c_d_c___c_o_r_e_gaab5439915442bd5b835d7c755ba5fec1} 
+\#define {\bfseries CDC\+\_\+\+PULSE\+\_\+\+SETUP}~0x12U
+\item 
+\Hypertarget{group___u_s_b_h___c_d_c___c_o_r_e_gaf83535db4560a2fa52c72571f914dfc1}\label{group___u_s_b_h___c_d_c___c_o_r_e_gaf83535db4560a2fa52c72571f914dfc1} 
+\#define {\bfseries CDC\+\_\+\+SEND\+\_\+\+PULSE}~0x13U
+\item 
+\Hypertarget{group___u_s_b_h___c_d_c___c_o_r_e_ga83ededfa85fdc32e603f9d1cdccbad78}\label{group___u_s_b_h___c_d_c___c_o_r_e_ga83ededfa85fdc32e603f9d1cdccbad78} 
+\#define {\bfseries CDC\+\_\+\+SET\+\_\+\+PULSE\+\_\+\+TIME}~0x14U
+\item 
+\Hypertarget{group___u_s_b_h___c_d_c___c_o_r_e_ga763f022025ebdaa3e6fb3dd6b5bef118}\label{group___u_s_b_h___c_d_c___c_o_r_e_ga763f022025ebdaa3e6fb3dd6b5bef118} 
+\#define {\bfseries CDC\+\_\+\+RING\+\_\+\+AUX\+\_\+\+JACK}~0x15U
+\item 
+\Hypertarget{group___u_s_b_h___c_d_c___c_o_r_e_gad07ce089c8757b8d2ff37ddd83dc9351}\label{group___u_s_b_h___c_d_c___c_o_r_e_gad07ce089c8757b8d2ff37ddd83dc9351} 
+\#define {\bfseries CDC\+\_\+\+SET\+\_\+\+LINE\+\_\+\+CODING}~0x20U
+\item 
+\Hypertarget{group___u_s_b_h___c_d_c___c_o_r_e_ga1068ab45668e413d964a01bc36fa2d43}\label{group___u_s_b_h___c_d_c___c_o_r_e_ga1068ab45668e413d964a01bc36fa2d43} 
+\#define {\bfseries CDC\+\_\+\+GET\+\_\+\+LINE\+\_\+\+CODING}~0x21U
+\item 
+\Hypertarget{group___u_s_b_h___c_d_c___c_o_r_e_ga11c392243dec4d03970f1eaa1f8053ae}\label{group___u_s_b_h___c_d_c___c_o_r_e_ga11c392243dec4d03970f1eaa1f8053ae} 
+\#define {\bfseries CDC\+\_\+\+SET\+\_\+\+CONTROL\+\_\+\+LINE\+\_\+\+STATE}~0x22U
+\item 
+\Hypertarget{group___u_s_b_h___c_d_c___c_o_r_e_ga868c480caf0abda6b458c82281dda8ad}\label{group___u_s_b_h___c_d_c___c_o_r_e_ga868c480caf0abda6b458c82281dda8ad} 
+\#define {\bfseries CDC\+\_\+\+SEND\+\_\+\+BREAK}~0x23U
+\item 
+\Hypertarget{group___u_s_b_h___c_d_c___c_o_r_e_gaacceff07ade4b94b3c924d4f4ad6b139}\label{group___u_s_b_h___c_d_c___c_o_r_e_gaacceff07ade4b94b3c924d4f4ad6b139} 
+\#define {\bfseries CDC\+\_\+\+SET\+\_\+\+RINGER\+\_\+\+PARMS}~0x30U
+\item 
+\Hypertarget{group___u_s_b_h___c_d_c___c_o_r_e_ga7a17ca0755e655bd1fe6ac97b68ec10f}\label{group___u_s_b_h___c_d_c___c_o_r_e_ga7a17ca0755e655bd1fe6ac97b68ec10f} 
+\#define {\bfseries CDC\+\_\+\+GET\+\_\+\+RINGER\+\_\+\+PARMS}~0x31U
+\item 
+\Hypertarget{group___u_s_b_h___c_d_c___c_o_r_e_ga437557c6adb23d8cdde7842b62a03a21}\label{group___u_s_b_h___c_d_c___c_o_r_e_ga437557c6adb23d8cdde7842b62a03a21} 
+\#define {\bfseries CDC\+\_\+\+SET\+\_\+\+OPERATION\+\_\+\+PARMS}~0x32U
+\item 
+\Hypertarget{group___u_s_b_h___c_d_c___c_o_r_e_ga257e7150670c8cc0b1d90c8f19c36b38}\label{group___u_s_b_h___c_d_c___c_o_r_e_ga257e7150670c8cc0b1d90c8f19c36b38} 
+\#define {\bfseries CDC\+\_\+\+GET\+\_\+\+OPERATION\+\_\+\+PARMS}~0x33U
+\item 
+\Hypertarget{group___u_s_b_h___c_d_c___c_o_r_e_ga74433e0421d2cfd59982db6417a8ea41}\label{group___u_s_b_h___c_d_c___c_o_r_e_ga74433e0421d2cfd59982db6417a8ea41} 
+\#define {\bfseries CDC\+\_\+\+SET\+\_\+\+LINE\+\_\+\+PARMS}~0x34U
+\item 
+\Hypertarget{group___u_s_b_h___c_d_c___c_o_r_e_ga725da0e1d595c7aebacb9fa3df4d7231}\label{group___u_s_b_h___c_d_c___c_o_r_e_ga725da0e1d595c7aebacb9fa3df4d7231} 
+\#define {\bfseries CDC\+\_\+\+GET\+\_\+\+LINE\+\_\+\+PARMS}~0x35U
+\item 
+\Hypertarget{group___u_s_b_h___c_d_c___c_o_r_e_ga4d1029757801882e8d6589c05a3c41db}\label{group___u_s_b_h___c_d_c___c_o_r_e_ga4d1029757801882e8d6589c05a3c41db} 
+\#define {\bfseries CDC\+\_\+\+DIAL\+\_\+\+DIGITS}~0x36U
+\item 
+\Hypertarget{group___u_s_b_h___c_d_c___c_o_r_e_gaf6288535dffb72bcbdce329546eede03}\label{group___u_s_b_h___c_d_c___c_o_r_e_gaf6288535dffb72bcbdce329546eede03} 
+\#define {\bfseries CDC\+\_\+\+SET\+\_\+\+UNIT\+\_\+\+PARAMETER}~0x37U
+\item 
+\Hypertarget{group___u_s_b_h___c_d_c___c_o_r_e_gafbcb9dcbc2139a1e0dc9a171033ca6e4}\label{group___u_s_b_h___c_d_c___c_o_r_e_gafbcb9dcbc2139a1e0dc9a171033ca6e4} 
+\#define {\bfseries CDC\+\_\+\+GET\+\_\+\+UNIT\+\_\+\+PARAMETER}~0x38U
+\item 
+\Hypertarget{group___u_s_b_h___c_d_c___c_o_r_e_ga296b7ff8f411cbec0beb3ca081807851}\label{group___u_s_b_h___c_d_c___c_o_r_e_ga296b7ff8f411cbec0beb3ca081807851} 
+\#define {\bfseries CDC\+\_\+\+CLEAR\+\_\+\+UNIT\+\_\+\+PARAMETER}~0x39U
+\item 
+\Hypertarget{group___u_s_b_h___c_d_c___c_o_r_e_gadc210559fe7b278167eaac01c504b048}\label{group___u_s_b_h___c_d_c___c_o_r_e_gadc210559fe7b278167eaac01c504b048} 
+\#define {\bfseries CDC\+\_\+\+GET\+\_\+\+PROFILE}~0x3\+AU
+\item 
+\Hypertarget{group___u_s_b_h___c_d_c___c_o_r_e_ga9abaa51e99db04219620a328c719d9b4}\label{group___u_s_b_h___c_d_c___c_o_r_e_ga9abaa51e99db04219620a328c719d9b4} 
+\#define {\bfseries CDC\+\_\+\+SET\+\_\+\+ETHERNET\+\_\+\+MULTICAST\+\_\+\+FILTERS}~0x40U
+\item 
+\Hypertarget{group___u_s_b_h___c_d_c___c_o_r_e_ga64f6d322af7de3bafd2e240014b3b26c}\label{group___u_s_b_h___c_d_c___c_o_r_e_ga64f6d322af7de3bafd2e240014b3b26c} 
+\#define {\bfseries CDC\+\_\+\+SET\+\_\+\+ETHERNET\+\_\+\+POWER\+\_\+\+MANAGEMENT\+\_\+\+PATTERN}~FILTER        0x41U
+\item 
+\Hypertarget{group___u_s_b_h___c_d_c___c_o_r_e_gaa39d3aab55f5a6a008f312ebab1cb0d0}\label{group___u_s_b_h___c_d_c___c_o_r_e_gaa39d3aab55f5a6a008f312ebab1cb0d0} 
+\#define {\bfseries CDC\+\_\+\+GET\+\_\+\+ETHERNET\+\_\+\+POWER\+\_\+\+MANAGEMENT\+\_\+\+PATTERN}~FILTER        0x42U
+\item 
+\Hypertarget{group___u_s_b_h___c_d_c___c_o_r_e_ga5776aef3d254f11c1b6cca8b9c25ea77}\label{group___u_s_b_h___c_d_c___c_o_r_e_ga5776aef3d254f11c1b6cca8b9c25ea77} 
+\#define {\bfseries CDC\+\_\+\+SET\+\_\+\+ETHERNET\+\_\+\+PACKET\+\_\+\+FILTER}~0x43U
+\item 
+\Hypertarget{group___u_s_b_h___c_d_c___c_o_r_e_gaee82eef61bdf0892cfbc3e2024b20416}\label{group___u_s_b_h___c_d_c___c_o_r_e_gaee82eef61bdf0892cfbc3e2024b20416} 
+\#define {\bfseries CDC\+\_\+\+GET\+\_\+\+ETHERNET\+\_\+\+STATISTIC}~0x44U
+\item 
+\Hypertarget{group___u_s_b_h___c_d_c___c_o_r_e_gaa035b52c9857b59480234cde9624c89c}\label{group___u_s_b_h___c_d_c___c_o_r_e_gaa035b52c9857b59480234cde9624c89c} 
+\#define {\bfseries CDC\+\_\+\+SET\+\_\+\+ATM\+\_\+\+DATA\+\_\+\+FORMAT}~0x50U
+\item 
+\Hypertarget{group___u_s_b_h___c_d_c___c_o_r_e_gae6533ac7d829cdb9c496a81cee1e94d7}\label{group___u_s_b_h___c_d_c___c_o_r_e_gae6533ac7d829cdb9c496a81cee1e94d7} 
+\#define {\bfseries CDC\+\_\+\+GET\+\_\+\+ATM\+\_\+\+DEVICE\+\_\+\+STATISTICS}~0x51U
+\item 
+\Hypertarget{group___u_s_b_h___c_d_c___c_o_r_e_gab3fad775e9da8b7d0223cddfb444c4d2}\label{group___u_s_b_h___c_d_c___c_o_r_e_gab3fad775e9da8b7d0223cddfb444c4d2} 
+\#define {\bfseries CDC\+\_\+\+SET\+\_\+\+ATM\+\_\+\+DEFAULT\+\_\+\+VC}~0x52U
+\item 
+\Hypertarget{group___u_s_b_h___c_d_c___c_o_r_e_gaf1e526400896ec1ae50b4b49225a3cde}\label{group___u_s_b_h___c_d_c___c_o_r_e_gaf1e526400896ec1ae50b4b49225a3cde} 
+\#define {\bfseries CDC\+\_\+\+GET\+\_\+\+ATM\+\_\+\+VC\+\_\+\+STATISTICS}~0x53U
+\item 
+\Hypertarget{group___u_s_b_h___c_d_c___c_o_r_e_ga564299c85ebbd3d1717e770f7e7a6956}\label{group___u_s_b_h___c_d_c___c_o_r_e_ga564299c85ebbd3d1717e770f7e7a6956} 
+\#define {\bfseries CDC\+\_\+\+ACTIVATE\+\_\+\+CARRIER\+\_\+\+SIGNAL\+\_\+\+RTS}~0x0002U
+\item 
+\Hypertarget{group___u_s_b_h___c_d_c___c_o_r_e_gaec09da5ccc3b77e6260d436c90710263}\label{group___u_s_b_h___c_d_c___c_o_r_e_gaec09da5ccc3b77e6260d436c90710263} 
+\#define {\bfseries CDC\+\_\+\+DEACTIVATE\+\_\+\+CARRIER\+\_\+\+SIGNAL\+\_\+\+RTS}~0x0000U
+\item 
+\Hypertarget{group___u_s_b_h___c_d_c___c_o_r_e_ga0a5d7609229ef45e4ac8f941523b4c7a}\label{group___u_s_b_h___c_d_c___c_o_r_e_ga0a5d7609229ef45e4ac8f941523b4c7a} 
+\#define {\bfseries CDC\+\_\+\+ACTIVATE\+\_\+\+SIGNAL\+\_\+\+DTR}~0x0001U
+\item 
+\Hypertarget{group___u_s_b_h___c_d_c___c_o_r_e_ga7617d996c64a37cb0617435162bb6061}\label{group___u_s_b_h___c_d_c___c_o_r_e_ga7617d996c64a37cb0617435162bb6061} 
+\#define {\bfseries CDC\+\_\+\+DEACTIVATE\+\_\+\+SIGNAL\+\_\+\+DTR}~0x0000U
+\item 
+\Hypertarget{group___u_s_b_h___c_d_c___c_o_r_e_ga093e64ddc93c87a158db918bf4c2a70c}\label{group___u_s_b_h___c_d_c___c_o_r_e_ga093e64ddc93c87a158db918bf4c2a70c} 
+\#define {\bfseries LINE\+\_\+\+CODING\+\_\+\+STRUCTURE\+\_\+\+SIZE}~0x07U
+\end{DoxyCompactItemize}
+
+
+\doxysubsubsubsubsection{Detailed Description}
+This file is the Header file for \doxylink{usbh__core_8c}{usbh\+\_\+core.\+c}. 
+
+This file includes CDC Layer Handlers for USB Host CDC class.\input{group___u_s_b_h___c_d_c___c_o_r_e___private___types_definitions}
+\input{group___u_s_b_h___c_d_c___c_o_r_e___private___defines}
+\input{group___u_s_b_h___c_d_c___c_o_r_e___private___macros}
+\input{group___u_s_b_h___c_d_c___c_o_r_e___private___variables}
+\input{group___u_s_b_h___c_d_c___c_o_r_e___private___function_prototypes}
+\input{group___u_s_b_h___c_d_c___c_o_r_e___private___functions}
