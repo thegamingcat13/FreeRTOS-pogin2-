@@ -18,6 +18,8 @@ volatile uint32_t falling_edge_time_us = 0;
 volatile uint8_t echo_state = 0;
 volatile uint32_t pulse_duration_us = 0;
 
+float distance_cm;
+
 void delay_us(int us)
 {
 	__HAL_TIM_SET_COUNTER(&htim2, 0); 				// Reset timer 2 counter
@@ -29,7 +31,6 @@ void delay_us(int us)
 void SR04_Task (void *argument)
 {
 	int current_duration_us;
-	float distance_cm;
 
 	HAL_TIM_Base_Start(&htim5);
 

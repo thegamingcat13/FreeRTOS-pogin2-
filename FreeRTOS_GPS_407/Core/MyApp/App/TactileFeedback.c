@@ -12,6 +12,7 @@
 #include "gps.h"
 #include "cmsis_os.h"
 #include <math.h>
+#include "ultrasonic.h"
 
 int CurrentWaypoint = 0;
 int WaypointCount = STRC_AMOUNT;
@@ -32,6 +33,7 @@ char Turn_right[]= "Turn_right";
 char Stop[]= "stop";
 char motor[]= "motor";
 char waypoint[]= "waypoint";
+char course_char;
 bool FirstRun = true;
 
 TaskHandle_t hReachWP;
@@ -72,6 +74,18 @@ void drive_forward()
 	HAL_GPIO_WritePin(M1_2_GPIO_Port, M1_2_Pin, RESET);
 	HAL_GPIO_WritePin(M2_1_GPIO_Port, M2_1_Pin, RESET);
 	HAL_GPIO_WritePin(M2_2_GPIO_Port, M2_2_Pin, SET);
+	logWrite(6, Drive_forward);
+}
+/**
+* @brief Functie voor het naar achteren rijden.
+* @return void
+*/
+void drive_backward()
+{
+	HAL_GPIO_WritePin(M1_1_GPIO_Port, M1_1_Pin, RESET);
+	HAL_GPIO_WritePin(M1_2_GPIO_Port, M1_2_Pin, SET);
+	HAL_GPIO_WritePin(M2_1_GPIO_Port, M2_1_Pin, SET);
+	HAL_GPIO_WritePin(M2_2_GPIO_Port, M2_2_Pin, RESET);
 	logWrite(6, Drive_forward);
 }
 /**
@@ -134,6 +148,19 @@ void ReachWPTask(void *argument)
 
 		while (CurrentWaypoint <= WaypointCount) // Controleer of we nog bezig zijn met een waypoint waar data in zit.
 		{
+			if (distance_cm < 20 && distance_cm > 0)
+			{
+				drive_backward();
+				osDelay(1000);
+				turn_left();
+				osDelay(1000);
+				drive_forward();
+				osDelay(1000);
+				turn_right();
+				osDelay(1000);
+				stop();
+			}
+
 			if (CurrentWaypoint >= WaypointCount)
 			{
 				stop();
@@ -157,7 +184,9 @@ void ReachWPTask(void *argument)
 			{
 				current_cog = parsed_gnrmc.course;
 				current_speed = parsed_gnrmc.speed;
-				Current_Heading = parsed_gnrmc.course;
+				CurrentHeading = parsed_gnrmc.course;
+				itoa(parsed_gnrmc.course, course_char, 10);
+				LCD_puts(course_char);
 				xSemaphoreGive(hGpsDataMutex);
 			}
 
