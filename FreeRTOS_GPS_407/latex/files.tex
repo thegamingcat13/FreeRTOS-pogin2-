@@ -31,7 +31,11 @@ Here is a list of all documented files with brief descriptions\+:\begin{DoxyComp
  {\bfseries{Demonstreert\+: IRQ-\/handling, queue-\/handling, tasknotifcation, string-\/handling (strtok, pointers).}}~\newline
  Aan de UART is een interrupt gekoppeld, waarvan de ISR (zie\+: \doxylink{group___u_a_r_t___exported___functions___group2_gae494a9643f29b87d6d81e5264e60e57b}{HAL\+\_\+\+UART\+\_\+\+Rx\+Cplt\+Callback()}) in \doxylink{main_8c}{main.\+c} gegenereerd is. Elke toets (character), die in een terminalprogramma ingedrukt wordt, wordt in de ISR in een queue gezet.~\newline
  De task \doxylink{_u_a_r_t__keys_8c_a2f8c9b40e09f1da12285de5c47e13856}{UART\+\_\+keys\+\_\+\+IRQ()} leest de queue uit nadat het LINEFEED-\/character is gevonden (nadat ENTER gedrukt is). De task leest de queue uit en vult een eigen buffer. Deze buffer wordt via Task\+Notify doorgestuurd naar de task die deze buffer interpreteert\+: \doxylink{_u_a_r_t__keys_8c_a54d4ec6474d826f35cbf28a391cc68a0}{UART\+\_\+menu()} }{\pageref{_u_a_r_t__keys_8c}}{}
-\item\contentsline{section}{Core/\+My\+App/\+App/\mbox{\hyperlink{ultrasonic_8c}{ultrasonic.\+c}} \\*Task voor het aanzetten en uitlezen van de sensor }{\pageref{ultrasonic_8c}}{}
+\item\contentsline{section}{Core/\+My\+App/\+App/\mbox{\hyperlink{ultrasonic_8c}{ultrasonic.\+c}} \\*Task voor het aanzetten en uitlezen van de sensor. Deze taak doet het volgende\+:~\newline
+ Aanzetten van de sensor~\newline
+ Uitlezen van de sensor~\newline
+ Beslissingen maken aan de hand van data van de sensor~\newline
+ }{\pageref{ultrasonic_8c}}{}
 \item\contentsline{section}{Core/\+My\+App/\+App/\mbox{\hyperlink{ultrasonic_8h}{ultrasonic.\+h}} \\*Bestand voor definities/externals van ultrasoninc.\+c }{\pageref{ultrasonic_8h}}{}
 \item\contentsline{section}{Core/\+My\+App/\+Ports/\mbox{\hyperlink{buzzer_8h_source}{buzzer.\+h}} }{\pageref{buzzer_8h_source}}{}
 \item\contentsline{section}{Core/\+My\+App/\+Ports/\mbox{\hyperlink{keys_8h_source}{keys.\+h}} }{\pageref{keys_8h_source}}{}

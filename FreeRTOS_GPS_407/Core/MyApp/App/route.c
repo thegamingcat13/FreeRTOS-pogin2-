@@ -1,10 +1,10 @@
 /**
  * @file route.c
  * @brief Functies rondom waypoints: controleren, opslaan en uitlezen van GPS-data.
- * Dit bestand bevat functies om:
- * <li>GPS-data te controleren en op te slaan in een struct-array.</li>
- * <li>Alle opgeslagen waypoints uit te printen.</li>
- * <li>Handmatig de waypoint-counter aan te passen.</li>
+ * Dit bestand bevat functies om:<br>
+ * -GPS-data te controleren en op te slaan in een struct-array.<br>
+ * -Alle opgeslagen waypoints uit te printen.<br>
+ * -Handmatig de waypoint-counter aan te passen.<br>
  *
  * @date 28/10/2025
  */
