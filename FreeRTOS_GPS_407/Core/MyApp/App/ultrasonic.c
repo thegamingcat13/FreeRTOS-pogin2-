@@ -1,9 +1,7 @@
 /**
  * @file ultrasonic.c
  * @brief Task voor het aanzetten en uitlezen van de sensor.
- *
- * Deze taak doet het volgende:
- *
+ * Deze taak doet het volgende:<br>
  *   Aanzetten van de sensor<br>
  *   Uitlezen van de sensor<br>
  *   Beslissingen maken aan de hand van data van de sensor<br>
