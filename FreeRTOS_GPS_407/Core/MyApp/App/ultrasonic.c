@@ -1,10 +1,11 @@
 /**
  * @file ultrasonic.c
- * @brief Task/ voor het:
+ * @brief Task voor het aanzetten en uitlezen van de sensor.
  *
+ * Deze taak doet het volgende:
  * \- Aanzetten van de sensor
- * \- Uitlezen van sensor
- * \- Beslissingen maken aan de hand van data sensor
+ * \- Uitlezen van de sensor
+ * \- Beslissingen maken aan de hand van data van de sensor
  *
  * @date 30/10/2025
  */
