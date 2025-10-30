@@ -3,9 +3,11 @@
  * @brief Task voor het aanzetten en uitlezen van de sensor.
  *
  * Deze taak doet het volgende:
+ * <ul>
  * <li>Aanzetten van de sensor</li>
  * <li>Uitlezen van de sensor</li>
  * <li> Beslissingen maken aan de hand van data van de sensor</li>
+ * </ul>
  *
  * @date 30/10/2025
  */
