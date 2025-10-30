@@ -272,12 +272,20 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>Waypoint</b> ()</td><
 <tr class="memdesc:ae101eafad5ce91c38146e960eaed0c50"><td class="mdescLeft">&#160;</td><td class="mdescRight">slaat alle data op in een structure array. Zoals gps data, motor besturing, knoppen die worden ingedrukt.  <br /></td></tr>
 <tr class="memitem:a2ebdc8837802eba656d049ffab377c30" id="r_a2ebdc8837802eba656d049ffab377c30"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2ebdc8837802eba656d049ffab377c30">printLogs</a> (void)</td></tr>
 <tr class="memdesc:a2ebdc8837802eba656d049ffab377c30"><td class="mdescLeft">&#160;</td><td class="mdescRight">deze functie print alle gegevens die zijn opgelslagen in de Log-structure-arrray. de hoeveelheid lijnen die moeten worden uitgeprint worden automatisch bepaald voor elke logCount.  <br /></td></tr>
-<tr class="memitem:a3f88352450dad51d82e4bf84a0a439a1" id="r_a3f88352450dad51d82e4bf84a0a439a1"><td class="memItemLeft" align="right" valign="top"><a id="a3f88352450dad51d82e4bf84a0a439a1" name="a3f88352450dad51d82e4bf84a0a439a1"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>delay_us</b> (int us)</td></tr>
-<tr class="memitem:acba72bb75efaeba8bfbb4bd856cc49c3" id="r_acba72bb75efaeba8bfbb4bd856cc49c3"><td class="memItemLeft" align="right" valign="top"><a id="acba72bb75efaeba8bfbb4bd856cc49c3" name="acba72bb75efaeba8bfbb4bd856cc49c3"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>SR04_Task</b> (void *)</td></tr>
+<tr class="memitem:a3f88352450dad51d82e4bf84a0a439a1" id="r_a3f88352450dad51d82e4bf84a0a439a1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3f88352450dad51d82e4bf84a0a439a1">delay_us</a> (int us)</td></tr>
+<tr class="memdesc:a3f88352450dad51d82e4bf84a0a439a1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Functie voor het creeren van de timer, nodig voor het corect werken van de sensor.  <br /></td></tr>
+<tr class="memitem:acba72bb75efaeba8bfbb4bd856cc49c3" id="r_acba72bb75efaeba8bfbb4bd856cc49c3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#acba72bb75efaeba8bfbb4bd856cc49c3">SR04_Task</a> (void *)</td></tr>
+<tr class="memdesc:acba72bb75efaeba8bfbb4bd856cc49c3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Functie voor het aansturen en het uitlezen van de sensor. Daarnaast berekent hij de afstand, en maakt hij een keuze op basis van deze afstand.  <br /></td></tr>
 <tr class="memitem:a70f05e6a13ceea6e6c44a03cfa90059b" id="r_a70f05e6a13ceea6e6c44a03cfa90059b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a70f05e6a13ceea6e6c44a03cfa90059b">drive_forward</a> (void)</td></tr>
 <tr class="memdesc:a70f05e6a13ceea6e6c44a03cfa90059b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Functie voor het naar voren rijden.  <br /></td></tr>
+<tr class="memitem:a984a089ed87e45a3f221747b1199403b" id="r_a984a089ed87e45a3f221747b1199403b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a984a089ed87e45a3f221747b1199403b">turn_left</a> (void)</td></tr>
+<tr class="memdesc:a984a089ed87e45a3f221747b1199403b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Functie voor het draaien naar links.  <br /></td></tr>
+<tr class="memitem:a3d336b48993609629f204ac0babbd8db" id="r_a3d336b48993609629f204ac0babbd8db"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3d336b48993609629f204ac0babbd8db">turn_right</a> (void)</td></tr>
+<tr class="memdesc:a3d336b48993609629f204ac0babbd8db"><td class="mdescLeft">&#160;</td><td class="mdescRight">Functie voor het draaien naar rechts.  <br /></td></tr>
+<tr class="memitem:a464fa1880ef5cea26035bc54a25aa685" id="r_a464fa1880ef5cea26035bc54a25aa685"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a464fa1880ef5cea26035bc54a25aa685">drive_backward</a> (void)</td></tr>
+<tr class="memdesc:a464fa1880ef5cea26035bc54a25aa685"><td class="mdescLeft">&#160;</td><td class="mdescRight">Functie voor het naar achteren rijden.  <br /></td></tr>
+<tr class="memitem:aacf6bf8e121fea8b0a92d7197b73fe27" id="r_aacf6bf8e121fea8b0a92d7197b73fe27"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aacf6bf8e121fea8b0a92d7197b73fe27">stop</a> (void)</td></tr>
+<tr class="memdesc:aacf6bf8e121fea8b0a92d7197b73fe27"><td class="mdescLeft">&#160;</td><td class="mdescRight">Functie voor het stoppen van alle motoren.  <br /></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-var-members" class="groupheader"><a id="var-members" name="var-members"></a>
 Variables</h2></td></tr>
@@ -563,6 +571,39 @@ TaskHandle_t&#160;</td><td class="memItemRight" valign="bottom"><b>hReachWP</b><
 
 </div>
 </div>
+<a id="a3f88352450dad51d82e4bf84a0a439a1" name="a3f88352450dad51d82e4bf84a0a439a1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3f88352450dad51d82e4bf84a0a439a1">&#9670;&#160;</a></span>delay_us()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void delay_us </td>
+          <td>(</td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>us</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel extern">extern</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Functie voor het creeren van de timer, nodig voor het corect werken van de sensor. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname"></td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <a id="a93467475af28d4b75cafb508f95578bf" name="a93467475af28d4b75cafb508f95578bf"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a93467475af28d4b75cafb508f95578bf">&#9670;&#160;</a></span>DisplayMenu()</h2>
 
@@ -615,6 +656,34 @@ TaskHandle_t&#160;</td><td class="memItemRight" valign="bottom"><b>hReachWP</b><
 <dl class="section remark"><dt>Remarks</dt><dd>DEEL 1 van <a class="el" href="admin_8c.html" title="Bestaat uit 3 onderdelen:   Deel 1. Initialisatieoutput naar uart en lcd-scherm.  Deel 2....">admin.c</a> Bevat de functies voor de initialisatie output, vooral naar UART, zoals het 'menu' Schrijft applicatiedata (versie, werking, menu) naar UART. Les: je ziet hoe je handig een lange string kunt opstellen met het '\'-karakter. </dd></dl>
 <dl class="section return"><dt>Returns</dt><dd>void </dd></dl>
 <dl class="section author"><dt>Author</dt><dd>MSC </dd></dl>
+
+</div>
+</div>
+<a id="a464fa1880ef5cea26035bc54a25aa685" name="a464fa1880ef5cea26035bc54a25aa685"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a464fa1880ef5cea26035bc54a25aa685">&#9670;&#160;</a></span>drive_backward()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void drive_backward </td>
+          <td>(</td>
+          <td class="paramtype">void</td>          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel extern">extern</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Functie voor het naar achteren rijden. </p>
+<dl class="section return"><dt>Returns</dt><dd>void </dd></dl>
 
 </div>
 </div>
@@ -1210,6 +1279,40 @@ TaskHandle_t&#160;</td><td class="memItemRight" valign="bottom"><b>hReachWP</b><
 
 </div>
 </div>
+<a id="acba72bb75efaeba8bfbb4bd856cc49c3" name="acba72bb75efaeba8bfbb4bd856cc49c3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acba72bb75efaeba8bfbb4bd856cc49c3">&#9670;&#160;</a></span>SR04_Task()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void SR04_Task </td>
+          <td>(</td>
+          <td class="paramtype">void *</td>          <td class="paramname"><span class="paramname"><em>argument</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel extern">extern</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Functie voor het aansturen en het uitlezen van de sensor. Daarnaast berekent hij de afstand, en maakt hij een keuze op basis van deze afstand. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">*argument</td><td>Niet gebruikt </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>void </dd></dl>
+
+</div>
+</div>
 <a id="a0c9aab30edaac2fecc7fd1c21f5763a2" name="a0c9aab30edaac2fecc7fd1c21f5763a2"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a0c9aab30edaac2fecc7fd1c21f5763a2">&#9670;&#160;</a></span>StartStopTask()</h2>
 
@@ -1234,6 +1337,34 @@ TaskHandle_t&#160;</td><td class="memItemRight" valign="bottom"><b>hReachWP</b><
 </div><div class="memdoc">
 
 <p>Suspends (stopt) of Resumes (start) een task. Pas op. Als een task suspended wordt als hij een mutex bezet houdt blokkeer je alle tasks die op die mutex wachten. En als je de task stopt die de UART leest, schiet je jezelf ook in de voet. </p>
+<dl class="section return"><dt>Returns</dt><dd>void </dd></dl>
+
+</div>
+</div>
+<a id="aacf6bf8e121fea8b0a92d7197b73fe27" name="aacf6bf8e121fea8b0a92d7197b73fe27"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aacf6bf8e121fea8b0a92d7197b73fe27">&#9670;&#160;</a></span>stop()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void stop </td>
+          <td>(</td>
+          <td class="paramtype">void</td>          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel extern">extern</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Functie voor het stoppen van alle motoren. </p>
 <dl class="section return"><dt>Returns</dt><dd>void </dd></dl>
 
 </div>
@@ -1302,6 +1433,62 @@ TaskHandle_t&#160;</td><td class="memItemRight" valign="bottom"><b>hReachWP</b><
   </table>
   </dd>
 </dl>
+<dl class="section return"><dt>Returns</dt><dd>void </dd></dl>
+
+</div>
+</div>
+<a id="a984a089ed87e45a3f221747b1199403b" name="a984a089ed87e45a3f221747b1199403b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a984a089ed87e45a3f221747b1199403b">&#9670;&#160;</a></span>turn_left()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void turn_left </td>
+          <td>(</td>
+          <td class="paramtype">void</td>          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel extern">extern</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Functie voor het draaien naar links. </p>
+<dl class="section return"><dt>Returns</dt><dd>void </dd></dl>
+
+</div>
+</div>
+<a id="a3d336b48993609629f204ac0babbd8db" name="a3d336b48993609629f204ac0babbd8db"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3d336b48993609629f204ac0babbd8db">&#9670;&#160;</a></span>turn_right()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void turn_right </td>
+          <td>(</td>
+          <td class="paramtype">void</td>          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel extern">extern</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Functie voor het draaien naar rechts. </p>
 <dl class="section return"><dt>Returns</dt><dd>void </dd></dl>
 
 </div>
@@ -1425,6 +1612,7 @@ TaskHandle_t&#160;</td><td class="memItemRight" valign="bottom"><b>hReachWP</b><
 <p>C: Verandert huidige waypoint commando, als: <b>"c,4"</b> betekent: Set waypoint naar 4</p>
 <p>R: Registreer een waypoint met de huidige gps data</p>
 <p>G: Print de parsed gps structre</p>
+<p>A: print de gemeten afstand van de sr04 sensor</p>
 
 </div>
 </div>

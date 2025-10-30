@@ -13,6 +13,8 @@ Behandelt de communicatie met de UART.~\newline
 {\ttfamily \#include "{}cmsis\+\_\+os.\+h"{}}\newline
 {\ttfamily \#include "{}uart.\+h"{}}\newline
 {\ttfamily \#include "{}gps.\+h"{}}\newline
+{\ttfamily \#include $<$stdbool.\+h$>$}\newline
+{\ttfamily \#include "{}ultrasonic.\+h"{}}\newline
 \doxysubsubsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
@@ -132,3 +134,5 @@ C\+: Verandert huidige waypoint commando, als\+: {\bfseries{"{}c,4"{}}} betekent
 R\+: Registreer een waypoint met de huidige gps data
 
 G\+: Print de parsed gps structre
+
+A\+: print de gemeten afstand van de sr04 sensor

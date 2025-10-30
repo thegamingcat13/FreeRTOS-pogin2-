@@ -214,14 +214,20 @@ void \mbox{\hyperlink{admin_8h_ae101eafad5ce91c38146e960eaed0c50}{log\+Write}} (
 \begin{DoxyCompactList}\small\item\em slaat alle data op in een structure array. Zoals gps data, motor besturing, knoppen die worden ingedrukt. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{admin_8h_a2ebdc8837802eba656d049ffab377c30}{print\+Logs}} (void)
 \begin{DoxyCompactList}\small\item\em deze functie print alle gegevens die zijn opgelslagen in de Log-\/structure-\/arrray. de hoeveelheid lijnen die moeten worden uitgeprint worden automatisch bepaald voor elke log\+Count. \end{DoxyCompactList}\item 
-\Hypertarget{admin_8h_a3f88352450dad51d82e4bf84a0a439a1}\label{admin_8h_a3f88352450dad51d82e4bf84a0a439a1} 
-void {\bfseries delay\+\_\+us} (int us)
-\item 
-\Hypertarget{admin_8h_acba72bb75efaeba8bfbb4bd856cc49c3}\label{admin_8h_acba72bb75efaeba8bfbb4bd856cc49c3} 
-void {\bfseries SR04\+\_\+\+Task} (void \texorpdfstring{$\ast$}{*})
-\item 
+void \mbox{\hyperlink{admin_8h_a3f88352450dad51d82e4bf84a0a439a1}{delay\+\_\+us}} (int us)
+\begin{DoxyCompactList}\small\item\em Functie voor het creeren van de timer, nodig voor het corect werken van de sensor. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{admin_8h_acba72bb75efaeba8bfbb4bd856cc49c3}{SR04\+\_\+\+Task}} (void \texorpdfstring{$\ast$}{*})
+\begin{DoxyCompactList}\small\item\em Functie voor het aansturen en het uitlezen van de sensor. Daarnaast berekent hij de afstand, en maakt hij een keuze op basis van deze afstand. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{admin_8h_a70f05e6a13ceea6e6c44a03cfa90059b}{drive\+\_\+forward}} (void)
-\begin{DoxyCompactList}\small\item\em Functie voor het naar voren rijden. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Functie voor het naar voren rijden. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{admin_8h_a984a089ed87e45a3f221747b1199403b}{turn\+\_\+left}} (void)
+\begin{DoxyCompactList}\small\item\em Functie voor het draaien naar links. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{admin_8h_a3d336b48993609629f204ac0babbd8db}{turn\+\_\+right}} (void)
+\begin{DoxyCompactList}\small\item\em Functie voor het draaien naar rechts. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{admin_8h_a464fa1880ef5cea26035bc54a25aa685}{drive\+\_\+backward}} (void)
+\begin{DoxyCompactList}\small\item\em Functie voor het naar achteren rijden. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{admin_8h_aacf6bf8e121fea8b0a92d7197b73fe27}{stop}} (void)
+\begin{DoxyCompactList}\small\item\em Functie voor het stoppen van alle motoren. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsubsection*{Variables}
 \begin{DoxyCompactItemize}
 \item 
@@ -400,6 +406,21 @@ Wijzigt handmatig de huidige waypoint.
 \begin{DoxyReturn}{Returns}
 int 1 als de wijziging gelukt is, 0 als niet. 
 \end{DoxyReturn}
+\Hypertarget{admin_8h_a3f88352450dad51d82e4bf84a0a439a1}\index{admin.h@{admin.h}!delay\_us@{delay\_us}}
+\index{delay\_us@{delay\_us}!admin.h@{admin.h}}
+\doxysubsubsection{\texorpdfstring{delay\_us()}{delay\_us()}}
+{\footnotesize\ttfamily \label{admin_8h_a3f88352450dad51d82e4bf84a0a439a1} 
+void delay\+\_\+us (\begin{DoxyParamCaption}\item[{int}]{us}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Functie voor het creeren van de timer, nodig voor het corect werken van de sensor. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em } & \\
+\hline
+\end{DoxyParams}
 \Hypertarget{admin_8h_a93467475af28d4b75cafb508f95578bf}\index{admin.h@{admin.h}!DisplayMenu@{DisplayMenu}}
 \index{DisplayMenu@{DisplayMenu}!admin.h@{admin.h}}
 \doxysubsubsection{\texorpdfstring{DisplayMenu()}{DisplayMenu()}}
@@ -427,6 +448,19 @@ void
 \begin{DoxyAuthor}{Author}
 MSC 
 \end{DoxyAuthor}
+\Hypertarget{admin_8h_a464fa1880ef5cea26035bc54a25aa685}\index{admin.h@{admin.h}!drive\_backward@{drive\_backward}}
+\index{drive\_backward@{drive\_backward}!admin.h@{admin.h}}
+\doxysubsubsection{\texorpdfstring{drive\_backward()}{drive\_backward()}}
+{\footnotesize\ttfamily \label{admin_8h_a464fa1880ef5cea26035bc54a25aa685} 
+void drive\+\_\+backward (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Functie voor het naar achteren rijden. 
+
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
 \Hypertarget{admin_8h_a70f05e6a13ceea6e6c44a03cfa90059b}\index{admin.h@{admin.h}!drive\_forward@{drive\_forward}}
 \index{drive\_forward@{drive\_forward}!admin.h@{admin.h}}
 \doxysubsubsection{\texorpdfstring{drive\_forward()}{drive\_forward()}}
@@ -730,6 +764,24 @@ Skip\+Waypoint wordt gebruikt om een waypoint over te slaan. Deze functie wordt 
 \begin{DoxyReturn}{Returns}
 1 = waypoint behaald, verhoog {\ttfamily Current\+Waypoint} met 1 voor volgende waypoint. 0 = waypoint nog niet bereikt. 
 \end{DoxyReturn}
+\Hypertarget{admin_8h_acba72bb75efaeba8bfbb4bd856cc49c3}\index{admin.h@{admin.h}!SR04\_Task@{SR04\_Task}}
+\index{SR04\_Task@{SR04\_Task}!admin.h@{admin.h}}
+\doxysubsubsection{\texorpdfstring{SR04\_Task()}{SR04\_Task()}}
+{\footnotesize\ttfamily \label{admin_8h_acba72bb75efaeba8bfbb4bd856cc49c3} 
+void SR04\+\_\+\+Task (\begin{DoxyParamCaption}\item[{void \texorpdfstring{$\ast$}{*}}]{argument}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Functie voor het aansturen en het uitlezen van de sensor. Daarnaast berekent hij de afstand, en maakt hij een keuze op basis van deze afstand. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em \texorpdfstring{$\ast$}{*}argument} & Niet gebruikt \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
 \Hypertarget{admin_8h_a0c9aab30edaac2fecc7fd1c21f5763a2}\index{admin.h@{admin.h}!StartStopTask@{StartStopTask}}
 \index{StartStopTask@{StartStopTask}!admin.h@{admin.h}}
 \doxysubsubsection{\texorpdfstring{StartStopTask()}{StartStopTask()}}
@@ -739,6 +791,19 @@ void Start\+Stop\+Task (\begin{DoxyParamCaption}\item[{int}]{task\+\_\+id}{}\end
 
 
 Suspends (stopt) of Resumes (start) een task. Pas op. Als een task suspended wordt als hij een mutex bezet houdt blokkeer je alle tasks die op die mutex wachten. En als je de task stopt die de UART leest, schiet je jezelf ook in de voet. 
+
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+\Hypertarget{admin_8h_aacf6bf8e121fea8b0a92d7197b73fe27}\index{admin.h@{admin.h}!stop@{stop}}
+\index{stop@{stop}!admin.h@{admin.h}}
+\doxysubsubsection{\texorpdfstring{stop()}{stop()}}
+{\footnotesize\ttfamily \label{admin_8h_aacf6bf8e121fea8b0a92d7197b73fe27} 
+void stop (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Functie voor het stoppen van alle motoren. 
 
 \begin{DoxyReturn}{Returns}
 void 
@@ -776,6 +841,32 @@ Vangt de Free\+RTOS software-\/interrupt op en toggelt een ledje.
 {\em h\+Timer1} & De handle van de timer \\
 \hline
 \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+\Hypertarget{admin_8h_a984a089ed87e45a3f221747b1199403b}\index{admin.h@{admin.h}!turn\_left@{turn\_left}}
+\index{turn\_left@{turn\_left}!admin.h@{admin.h}}
+\doxysubsubsection{\texorpdfstring{turn\_left()}{turn\_left()}}
+{\footnotesize\ttfamily \label{admin_8h_a984a089ed87e45a3f221747b1199403b} 
+void turn\+\_\+left (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Functie voor het draaien naar links. 
+
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+\Hypertarget{admin_8h_a3d336b48993609629f204ac0babbd8db}\index{admin.h@{admin.h}!turn\_right@{turn\_right}}
+\index{turn\_right@{turn\_right}!admin.h@{admin.h}}
+\doxysubsubsection{\texorpdfstring{turn\_right()}{turn\_right()}}
+{\footnotesize\ttfamily \label{admin_8h_a3d336b48993609629f204ac0babbd8db} 
+void turn\+\_\+right (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Functie voor het draaien naar rechts. 
+
 \begin{DoxyReturn}{Returns}
 void 
 \end{DoxyReturn}
@@ -864,6 +955,8 @@ C\+: Verandert huidige waypoint commando, als\+: {\bfseries{"{}c,4"{}}} betekent
 R\+: Registreer een waypoint met de huidige gps data
 
 G\+: Print de parsed gps structre
+
+A\+: print de gemeten afstand van de sr04 sensor
 
 \label{doc-var-members}
 \Hypertarget{admin_8h_doc-var-members}

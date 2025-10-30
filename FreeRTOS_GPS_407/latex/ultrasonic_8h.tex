@@ -1,0 +1,69 @@
+\doxysection{Core/\+My\+App/\+App/ultrasonic.h File Reference}
+\hypertarget{ultrasonic_8h}{}\label{ultrasonic_8h}\index{Core/MyApp/App/ultrasonic.h@{Core/MyApp/App/ultrasonic.h}}
+
+
+Bestand voor definities/externals van ultrasoninc.\+c.  
+
+
+{\ttfamily \#include "{}Free\+RTOS.\+h"{}}\newline
+{\ttfamily \#include "{}task.\+h"{}}\newline
+{\ttfamily \#include "{}event\+\_\+groups.\+h"{}}\newline
+{\ttfamily \#include "{}admin.\+h"{}}\newline
+{\ttfamily \#include $<$stdbool.\+h$>$}\newline
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{ultrasonic_8h_a107e08275c9018e059f6816a237a4bd8}\label{ultrasonic_8h_a107e08275c9018e059f6816a237a4bd8} 
+\#define {\bfseries ULTRASONIC\+\_\+\+PULSE\+\_\+\+COMPLETE\+\_\+\+BIT}~(1UL $<$$<$ 0\+UL)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{ultrasonic_8h_a2c80fd5510e2990a59a5c90d745c716c}\label{ultrasonic_8h_a2c80fd5510e2990a59a5c90d745c716c} 
+\mbox{\hyperlink{struct_t_i_m___handle_type_def}{TIM\+\_\+\+Handle\+Type\+Def}} {\bfseries htim2}
+\item 
+\Hypertarget{ultrasonic_8h_acefaeaaa3856ddddae7083b2d220fe4b}\label{ultrasonic_8h_acefaeaaa3856ddddae7083b2d220fe4b} 
+\mbox{\hyperlink{struct_t_i_m___handle_type_def}{TIM\+\_\+\+Handle\+Type\+Def}} {\bfseries htim5}
+\item 
+\Hypertarget{ultrasonic_8h_a5b11bda5a261b13aa02f2dc8d8f1758d}\label{ultrasonic_8h_a5b11bda5a261b13aa02f2dc8d8f1758d} 
+volatile uint32\+\_\+t {\bfseries rising\+\_\+edge\+\_\+time\+\_\+us}
+\item 
+\Hypertarget{ultrasonic_8h_a39b964ce2a64a19483c45d172f0f2998}\label{ultrasonic_8h_a39b964ce2a64a19483c45d172f0f2998} 
+volatile uint32\+\_\+t {\bfseries falling\+\_\+edge\+\_\+time\+\_\+us}
+\item 
+\Hypertarget{ultrasonic_8h_a8a6e8c4d6645f2f82f0551bb3dd5da78}\label{ultrasonic_8h_a8a6e8c4d6645f2f82f0551bb3dd5da78} 
+volatile uint8\+\_\+t {\bfseries echo\+\_\+state}
+\item 
+\Hypertarget{ultrasonic_8h_ac9ae20ca6e251aa28d8ad6c9bbcd3c37}\label{ultrasonic_8h_ac9ae20ca6e251aa28d8ad6c9bbcd3c37} 
+volatile uint32\+\_\+t {\bfseries pulse\+\_\+duration\+\_\+us}
+\item 
+bool \mbox{\hyperlink{ultrasonic_8h_a4653e57faac0975f85e9f0d6b19c94fc}{sr04\+\_\+debug}}
+\begin{DoxyCompactList}\small\item\em Provides a blocking microsecond delay using timer 2. \end{DoxyCompactList}\item 
+\Hypertarget{ultrasonic_8h_a7474ab22834d3f7c041f6a2155437168}\label{ultrasonic_8h_a7474ab22834d3f7c041f6a2155437168} 
+Event\+Group\+Handle\+\_\+t {\bfseries x\+Echo\+Event\+Group}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Bestand voor definities/externals van ultrasoninc.\+c. 
+
+
+
+\label{doc-var-members}
+\Hypertarget{ultrasonic_8h_doc-var-members}
+\doxysubsection{Variable Documentation}
+\Hypertarget{ultrasonic_8h_a4653e57faac0975f85e9f0d6b19c94fc}\index{ultrasonic.h@{ultrasonic.h}!sr04\_debug@{sr04\_debug}}
+\index{sr04\_debug@{sr04\_debug}!ultrasonic.h@{ultrasonic.h}}
+\doxysubsubsection{\texorpdfstring{sr04\_debug}{sr04\_debug}}
+{\footnotesize\ttfamily \label{ultrasonic_8h_a4653e57faac0975f85e9f0d6b19c94fc} 
+bool sr04\+\_\+debug\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Provides a blocking microsecond delay using timer 2. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em us} & Number of microseconds to delay \\
+\hline
+\end{DoxyParams}

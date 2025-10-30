@@ -1,0 +1,118 @@
+\doxysection{Core/\+My\+App/\+App/ultrasonic.c File Reference}
+\hypertarget{ultrasonic_8c}{}\label{ultrasonic_8c}\index{Core/MyApp/App/ultrasonic.c@{Core/MyApp/App/ultrasonic.c}}
+
+
+Functies voor het\+:  
+
+
+{\ttfamily \#include "{}admin.\+h"{}}\newline
+{\ttfamily \#include "{}main.\+h"{}}\newline
+{\ttfamily \#include "{}cmsis\+\_\+os.\+h"{}}\newline
+{\ttfamily \#include "{}gps.\+h"{}}\newline
+{\ttfamily \#include "{}ultrasonic.\+h"{}}\newline
+{\ttfamily \#include "{}usb\+\_\+host.\+h"{}}\newline
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include $<$stdbool.\+h$>$}\newline
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{ultrasonic_8c_a3f88352450dad51d82e4bf84a0a439a1}{delay\+\_\+us}} (int us)
+\begin{DoxyCompactList}\small\item\em Functie voor het creeren van de timer, nodig voor het corect werken van de sensor. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{ultrasonic_8c_abbc295f35f3b064af728432caf7aa338}{SR04\+\_\+\+Task}} (void \texorpdfstring{$\ast$}{*}argument)
+\begin{DoxyCompactList}\small\item\em Functie voor het aansturen en het uitlezen van de sensor. Daarnaast berekent hij de afstand, en maakt hij een keuze op basis van deze afstand. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+bool \mbox{\hyperlink{ultrasonic_8c_a4653e57faac0975f85e9f0d6b19c94fc}{sr04\+\_\+debug}} = false
+\begin{DoxyCompactList}\small\item\em Provides a blocking microsecond delay using timer 2. \end{DoxyCompactList}\item 
+\Hypertarget{ultrasonic_8c_a7474ab22834d3f7c041f6a2155437168}\label{ultrasonic_8c_a7474ab22834d3f7c041f6a2155437168} 
+Event\+Group\+Handle\+\_\+t {\bfseries x\+Echo\+Event\+Group}
+\item 
+\Hypertarget{ultrasonic_8c_a5b11bda5a261b13aa02f2dc8d8f1758d}\label{ultrasonic_8c_a5b11bda5a261b13aa02f2dc8d8f1758d} 
+volatile uint32\+\_\+t {\bfseries rising\+\_\+edge\+\_\+time\+\_\+us} = 0
+\item 
+\Hypertarget{ultrasonic_8c_a39b964ce2a64a19483c45d172f0f2998}\label{ultrasonic_8c_a39b964ce2a64a19483c45d172f0f2998} 
+volatile uint32\+\_\+t {\bfseries falling\+\_\+edge\+\_\+time\+\_\+us} = 0
+\item 
+\Hypertarget{ultrasonic_8c_a8a6e8c4d6645f2f82f0551bb3dd5da78}\label{ultrasonic_8c_a8a6e8c4d6645f2f82f0551bb3dd5da78} 
+volatile uint8\+\_\+t {\bfseries echo\+\_\+state} = 0
+\item 
+\Hypertarget{ultrasonic_8c_ac9ae20ca6e251aa28d8ad6c9bbcd3c37}\label{ultrasonic_8c_ac9ae20ca6e251aa28d8ad6c9bbcd3c37} 
+volatile uint32\+\_\+t {\bfseries pulse\+\_\+duration\+\_\+us} = 0
+\item 
+\Hypertarget{ultrasonic_8c_ac6da963a9dd01bd3f2f5169dc4bce380}\label{ultrasonic_8c_ac6da963a9dd01bd3f2f5169dc4bce380} 
+float {\bfseries distance\+\_\+cm}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Functies voor het\+: 
+
+
+\begin{DoxyItemize}
+\item Aanzetten van de sensor
+\item Uitlezen van sensor
+\item Beslissingen maken aan de hand van data sensor
+\end{DoxyItemize}
+
+\begin{DoxyDate}{Date}
+30/10/2025 
+\end{DoxyDate}
+
+
+\label{doc-func-members}
+\Hypertarget{ultrasonic_8c_doc-func-members}
+\doxysubsection{Function Documentation}
+\Hypertarget{ultrasonic_8c_a3f88352450dad51d82e4bf84a0a439a1}\index{ultrasonic.c@{ultrasonic.c}!delay\_us@{delay\_us}}
+\index{delay\_us@{delay\_us}!ultrasonic.c@{ultrasonic.c}}
+\doxysubsubsection{\texorpdfstring{delay\_us()}{delay\_us()}}
+{\footnotesize\ttfamily \label{ultrasonic_8c_a3f88352450dad51d82e4bf84a0a439a1} 
+void delay\+\_\+us (\begin{DoxyParamCaption}\item[{int}]{us}{}\end{DoxyParamCaption})}
+
+
+
+Functie voor het creeren van de timer, nodig voor het corect werken van de sensor. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em } & \\
+\hline
+\end{DoxyParams}
+\Hypertarget{ultrasonic_8c_abbc295f35f3b064af728432caf7aa338}\index{ultrasonic.c@{ultrasonic.c}!SR04\_Task@{SR04\_Task}}
+\index{SR04\_Task@{SR04\_Task}!ultrasonic.c@{ultrasonic.c}}
+\doxysubsubsection{\texorpdfstring{SR04\_Task()}{SR04\_Task()}}
+{\footnotesize\ttfamily \label{ultrasonic_8c_abbc295f35f3b064af728432caf7aa338} 
+void SR04\+\_\+\+Task (\begin{DoxyParamCaption}\item[{void \texorpdfstring{$\ast$}{*}}]{argument}{}\end{DoxyParamCaption})}
+
+
+
+Functie voor het aansturen en het uitlezen van de sensor. Daarnaast berekent hij de afstand, en maakt hij een keuze op basis van deze afstand. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em \texorpdfstring{$\ast$}{*}argument} & Niet gebruikt \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+
+
+\label{doc-var-members}
+\Hypertarget{ultrasonic_8c_doc-var-members}
+\doxysubsection{Variable Documentation}
+\Hypertarget{ultrasonic_8c_a4653e57faac0975f85e9f0d6b19c94fc}\index{ultrasonic.c@{ultrasonic.c}!sr04\_debug@{sr04\_debug}}
+\index{sr04\_debug@{sr04\_debug}!ultrasonic.c@{ultrasonic.c}}
+\doxysubsubsection{\texorpdfstring{sr04\_debug}{sr04\_debug}}
+{\footnotesize\ttfamily \label{ultrasonic_8c_a4653e57faac0975f85e9f0d6b19c94fc} 
+bool sr04\+\_\+debug = false}
+
+
+
+Provides a blocking microsecond delay using timer 2. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em us} & Number of microseconds to delay \\
+\hline
+\end{DoxyParams}

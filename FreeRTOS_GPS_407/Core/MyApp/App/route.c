@@ -3,6 +3,7 @@
  * @brief Functies rondom waypoints: controleren, opslaan en uitlezen van GPS-data.
  *
  * Dit bestand bevat functies om:
+ *
  * - GPS-data te controleren en op te slaan in een struct-array.
  * - Alle opgeslagen waypoints uit te printen.
  * - Handmatig de waypoint-counter aan te passen.

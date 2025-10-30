@@ -1,6 +1,7 @@
 /**
  * @file ultrasonic.c
- * @brief Functies voor het:
+ * @brief Task/ voor het:
+ *
  * 		- Aanzetten van de sensor
  * 		- Uitlezen van sensor
  * 		- Beslissingen maken aan de hand van data sensor
