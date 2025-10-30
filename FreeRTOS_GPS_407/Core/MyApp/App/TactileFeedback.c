@@ -23,7 +23,6 @@ float MAX_HEADING_DIFFERENCE = 10;
 float wpLat = 0;
 float wpLat_temp = 0;
 float wpLon = 0;
-float current_cog = 0;
 float current_speed = 0;
 char desiredheading[]= "desired_heading";
 char currentheading[]= "current_heading";
@@ -138,7 +137,6 @@ void ReachWPTask(void *argument)
 			if (info.distance_m < ARRIVAL_RADIUS_METERS)
 			{
 				stop();
-
 				CurrentWaypoint++;
 				osDelay(500);
 			}
@@ -146,7 +144,6 @@ void ReachWPTask(void *argument)
 
 			if (xSemaphoreTake(hGpsDataMutex, portMAX_DELAY) == pdTRUE)
 			{
-				current_cog = parsed_gnrmc.course;
 				current_speed = parsed_gnrmc.speed;
 				CurrentHeading = parsed_gnrmc.course;
 				xSemaphoreGive(hGpsDataMutex);

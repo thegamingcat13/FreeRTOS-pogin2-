@@ -18,10 +18,7 @@
 #include <stdlib.h>
 #include <stdbool.h>
 
-/**
- * @brief Provides a blocking microsecond delay using timer 2
- * @param us: Number of microseconds to delay
- */
+
 
 bool sr04_debug = false;
 EventGroupHandle_t xEchoEventGroup; // Event group for signaling pulse completion
@@ -34,8 +31,8 @@ volatile uint32_t pulse_duration_us = 0;
 float distance_cm;
 
 /**
- * @brief Functie voor het creeren van de timer, nodig voor het corect werken van de sensor.
- * @param
+ * @brief Functie die een delay creeërt in microseconden i.p.v. de standaart miliseconden hiervoor word timer 2 gebruikt.
+ * @param us: Aantal microseconden (us) om te wachten.
  */
 void delay_us(int us)
 {
