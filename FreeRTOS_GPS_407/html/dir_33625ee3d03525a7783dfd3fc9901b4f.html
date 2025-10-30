@@ -108,7 +108,11 @@ Files</h2></td></tr>
  <b>Demonstreert: , xSemaphoreTake(), xSemaphoreGive(), xTaskNotifyGive(), ulTaskNotifyTake(), taskYIELD().</b><br  />
 . <br /></td></tr>
 <tr class="memitem:route_2Ec" id="r_route_2Ec"><td class="memItemLeft" align="right" valign="top"><span class="icondoc"><div class="doc-icon"></div></span>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="route_8c.html">route.c</a></td></tr>
-<tr class="memdesc:route_8c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Functies rondom waypoints: controleren, opslaan en uitlezen van GPS-data. Dit bestand bevat functies om: GPS-data te controleren en op te slaan in een struct-array. Alle opgeslagen waypoints uit te printen. Handmatig de waypoint-counter aan te passen.. <br /></td></tr>
+<tr class="memdesc:route_8c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Functies rondom waypoints: controleren, opslaan en uitlezen van GPS-data. Dit bestand bevat functies om:<br  />
+ -GPS-data te controleren en op te slaan in een struct-array.<br  />
+ -Alle opgeslagen waypoints uit te printen.<br  />
+ -Handmatig de waypoint-counter aan te passen.<br  />
+. <br /></td></tr>
 <tr class="memitem:route_5Fperformer_2Ec" id="r_route_5Fperformer_2Ec"><td class="memItemLeft" align="right" valign="top"><span class="icondoc"><div class="doc-icon"></div></span>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="route__performer_8c.html">route_performer.c</a></td></tr>
 <tr class="memdesc:route__performer_8c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Berekent de verschillen tussen de huidige locatie en de waypoint. Dit doet hij met het verschil tussen de lon en lat en de heading te berekenen. <br /></td></tr>
 <tr class="memitem:student_2Ec" id="r_student_2Ec"><td class="memItemLeft" align="right" valign="top"><span class="icondoc"><div class="doc-icon"></div></span>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="student_8c.html">student.c</a></td></tr>
@@ -121,10 +125,10 @@ Files</h2></td></tr>
  Aan de UART is een interrupt gekoppeld, waarvan de ISR (zie: <a class="el" href="group___u_a_r_t___exported___functions___group2.html#gae494a9643f29b87d6d81e5264e60e57b" title="ISR die UART-characters op een Queue zet. De core-functie wordt gegenereerd.">HAL_UART_RxCpltCallback()</a>) in <a class="el" href="main_8c.html" title=": Main program body">main.c</a> gegenereerd is. Elke toets (character), die in een terminalprogramma ingedrukt wordt, wordt in de ISR in een queue gezet.<br  />
  De task <a class="el" href="admin_8h.html#af42059fd155a512774c89e7fc38bc03c" title="Leest characters in die de gebruiker via Terminalprogramma intikt.">UART_keys_IRQ()</a> leest de queue uit nadat het LINEFEED-character is gevonden (nadat ENTER gedrukt is). De task leest de queue uit en vult een eigen buffer. Deze buffer wordt via TaskNotify doorgestuurd naar de task die deze buffer interpreteert: <a class="el" href="admin_8h.html#af909ca669055035da2246051d81ae747" title="User Interface. De task wacht op kant en klare user-strings (TaskNotifyTake) van ISR-handler,...">UART_menu()</a>. <br /></td></tr>
 <tr class="memitem:ultrasonic_2Ec" id="r_ultrasonic_2Ec"><td class="memItemLeft" align="right" valign="top"><span class="icondoc"><div class="doc-icon"></div></span>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ultrasonic_8c.html">ultrasonic.c</a></td></tr>
-<tr class="memdesc:ultrasonic_8c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Task voor het aanzetten en uitlezen van de sensor. Deze taak doet het volgende:<br  />
- Aanzetten van de sensor<br  />
- Uitlezen van de sensor<br  />
- Beslissingen maken aan de hand van data van de sensor<br  />
+<tr class="memdesc:ultrasonic_8c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Task/functie rondom de ultrasoon sensor. Deze taak doet het volgende:<br  />
+ -Aanzetten van de sensor<br  />
+ -Uitlezen van de sensor<br  />
+ -Beslissingen maken aan de hand van data van de sensor<br  />
 . <br /></td></tr>
 <tr class="memitem:ultrasonic_2Eh" id="r_ultrasonic_2Eh"><td class="memItemLeft" align="right" valign="top"><a href="ultrasonic_8h_source.html"><span class="icondoc"><div class="doc-icon"></div></span></a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ultrasonic_8h.html">ultrasonic.h</a></td></tr>
 <tr class="memdesc:ultrasonic_8h"><td class="mdescLeft">&#160;</td><td class="mdescRight">Bestand voor definities/externals van ultrasoninc.c. <br /></td></tr>
