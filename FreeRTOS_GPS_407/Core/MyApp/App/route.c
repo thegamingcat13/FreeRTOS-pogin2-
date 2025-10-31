@@ -89,13 +89,11 @@ float returnWaypoints (int pointNumber, int type)
 				lat = aWaypoints[pointNumber].lat;
 				return lat;
 				break;
-
 		case 2: //
 				float lon;
 				lon = aWaypoints[pointNumber].lon;
 				return lon;
 				break;
-
 		default: //
 				return 475.39182; //if we see this number in the terminal we know that something is verrrryyyyyy wrong. Should not happen :)
 				break;

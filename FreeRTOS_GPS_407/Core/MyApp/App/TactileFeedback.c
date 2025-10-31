@@ -43,62 +43,55 @@ TaskHandle_t hReachWP;
  * @brief Functie voor het draaien naar links.
  * @return void
  */
-void turn_left()
-{
-	HAL_GPIO_WritePin(GPIOE, M1_1, SET);
-	HAL_GPIO_WritePin(GPIOE, M1_2, RESET);
-	HAL_GPIO_WritePin(GPIOE, M2_1, SET);
-	HAL_GPIO_WritePin(GPIOE, M2_2, RESET);
-	logWrite(6, Turn_left);
-}
-/**
- * @brief Functie voor het draaien naar rechts.
- * @return void
- */
-void turn_right()
-{
-	HAL_GPIO_WritePin(GPIOE, M1_1, RESET);
-	HAL_GPIO_WritePin(GPIOE, M1_2, SET);
-	HAL_GPIO_WritePin(GPIOE, M2_1, RESET);
-	HAL_GPIO_WritePin(GPIOE, M2_2, SET);
-	logWrite(6, Turn_right);
-}
 
-/**
- * @brief Functie voor het naar voren rijden.
- * @return void
- */
-void drive_forward()
+extern TIM_HandleTypeDef htim8;  // PWM timer
+
+void setMotors(int direction, uint16_t speed)
 {
-	HAL_GPIO_WritePin(M1_1_GPIO_Port, M1_1_Pin, SET);
-	HAL_GPIO_WritePin(M1_2_GPIO_Port, M1_2_Pin, RESET);
-	HAL_GPIO_WritePin(M2_1_GPIO_Port, M2_1_Pin, RESET);
-	HAL_GPIO_WritePin(M2_2_GPIO_Port, M2_2_Pin, SET);
-	logWrite(6, Drive_forward);
-}
-/**
-* @brief Functie voor het naar achteren rijden.
-* @return void
-*/
-void drive_backward()
-{
-	HAL_GPIO_WritePin(M1_1_GPIO_Port, M1_1_Pin, RESET);
-	HAL_GPIO_WritePin(M1_2_GPIO_Port, M1_2_Pin, SET);
-	HAL_GPIO_WritePin(M2_1_GPIO_Port, M2_1_Pin, SET);
-	HAL_GPIO_WritePin(M2_2_GPIO_Port, M2_2_Pin, RESET);
-	logWrite(6, Drive_backward);
-}
-/**
- * @brief Functie voor het stoppen van alle motoren.
- * @return void
- */
-void stop()
-{
-	HAL_GPIO_WritePin(GPIOE, M1_1, RESET);
-	HAL_GPIO_WritePin(GPIOE, M1_2, RESET);
-	HAL_GPIO_WritePin(GPIOE, M2_1, RESET);
-	HAL_GPIO_WritePin(GPIOE, M2_2, RESET);
-	logWrite(6, Stop);
+    if (speed > htim8.Init.Period)
+        speed = htim8.Init.Period;
+
+    switch (direction)
+    {
+        case 1: // vooruit
+            HAL_GPIO_WritePin(M1_1_GPIO_Port, M1_1_Pin, GPIO_PIN_SET);
+            HAL_GPIO_WritePin(M1_2_GPIO_Port, M1_2_Pin, GPIO_PIN_RESET);
+            HAL_GPIO_WritePin(M2_1_GPIO_Port, M2_1_Pin, GPIO_PIN_RESET);
+            HAL_GPIO_WritePin(M2_2_GPIO_Port, M2_2_Pin, GPIO_PIN_SET);
+            break;
+
+        case -1: // achteruit
+            HAL_GPIO_WritePin(M1_1_GPIO_Port, M1_1_Pin, GPIO_PIN_RESET);
+            HAL_GPIO_WritePin(M1_2_GPIO_Port, M1_2_Pin, GPIO_PIN_SET);
+            HAL_GPIO_WritePin(M2_1_GPIO_Port, M2_1_Pin, GPIO_PIN_SET);
+            HAL_GPIO_WritePin(M2_2_GPIO_Port, M2_2_Pin, GPIO_PIN_RESET);
+            break;
+
+        case 2: // draai rechts (linker motor vooruit, rechter achteruit)
+            HAL_GPIO_WritePin(M1_1_GPIO_Port, M1_1_Pin, GPIO_PIN_SET);
+            HAL_GPIO_WritePin(M1_2_GPIO_Port, M1_2_Pin, GPIO_PIN_RESET);
+            HAL_GPIO_WritePin(M2_1_GPIO_Port, M2_1_Pin, GPIO_PIN_SET);
+            HAL_GPIO_WritePin(M2_2_GPIO_Port, M2_2_Pin, GPIO_PIN_RESET);
+            break;
+
+        case -2: // draai links (linker achteruit, rechter vooruit)
+            HAL_GPIO_WritePin(M1_1_GPIO_Port, M1_1_Pin, GPIO_PIN_RESET);
+            HAL_GPIO_WritePin(M1_2_GPIO_Port, M1_2_Pin, GPIO_PIN_SET);
+            HAL_GPIO_WritePin(M2_1_GPIO_Port, M2_1_Pin, GPIO_PIN_RESET);
+            HAL_GPIO_WritePin(M2_2_GPIO_Port, M2_2_Pin, GPIO_PIN_SET);
+            break;
+
+        default: // stop
+            HAL_GPIO_WritePin(M1_1_GPIO_Port, M1_1_Pin, GPIO_PIN_RESET);
+            HAL_GPIO_WritePin(M1_2_GPIO_Port, M1_2_Pin, GPIO_PIN_RESET);
+            HAL_GPIO_WritePin(M2_1_GPIO_Port, M2_1_Pin, GPIO_PIN_RESET);
+            HAL_GPIO_WritePin(M2_2_GPIO_Port, M2_2_Pin, GPIO_PIN_RESET);
+            speed = 0;
+            break;
+    }
+
+    // PWM duty instellen (zelfde op beide motoren hier)
+    __HAL_TIM_SET_COMPARE(&htim8, TIM_CHANNEL_1, speed);
 }
 
 /**
@@ -110,6 +103,8 @@ void ReachWPTask(void *argument)
 {
 	while (TRUE)
 	{
+
+
 		ulTaskNotifyTake(pdTRUE, portMAX_DELAY);
 		if (FirstRun == true)
 		{
@@ -166,14 +161,14 @@ void ReachWPTask(void *argument)
 				if (fabs(heading_error) > MAX_HEADING_DIFFERENCE)
 				{
 					if (heading_error > 0)
-						turn_right();
+						setMotors(2, 3000); //turn right
 
 					if (heading_error < 0)
-						turn_left();
+						setMotors(-2, 3000); //turn left
 				} else
-					drive_forward();
+					setMotors(1, 4000); //go foward
 			} else
-				drive_forward();
+				setMotors(1, 4000); //go foward
 
 			osDelay(200);
 		}

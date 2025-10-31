@@ -24,6 +24,7 @@
 /* USER CODE BEGIN Includes */
 
 /* USER CODE END Includes */
+extern DMA_HandleTypeDef hdma_tim8_ch1;
 
 /* Private typedef -----------------------------------------------------------*/
 /* USER CODE BEGIN TD */
@@ -58,7 +59,9 @@
 /* USER CODE BEGIN 0 */
 
 /* USER CODE END 0 */
-/**
+
+void HAL_TIM_MspPostInit(TIM_HandleTypeDef *htim);
+                    /**
   * Initializes the Global MSP.
   */
 void HAL_MspInit(void)
@@ -342,6 +345,78 @@ void HAL_TIM_Base_MspInit(TIM_HandleTypeDef* htim_base)
 }
 
 /**
+  * @brief TIM_PWM MSP Initialization
+  * This function configures the hardware resources used in this example
+  * @param htim_pwm: TIM_PWM handle pointer
+  * @retval None
+  */
+void HAL_TIM_PWM_MspInit(TIM_HandleTypeDef* htim_pwm)
+{
+  if(htim_pwm->Instance==TIM8)
+  {
+    /* USER CODE BEGIN TIM8_MspInit 0 */
+
+    /* USER CODE END TIM8_MspInit 0 */
+    /* Peripheral clock enable */
+    __HAL_RCC_TIM8_CLK_ENABLE();
+
+    /* TIM8 DMA Init */
+    /* TIM8_CH1 Init */
+    hdma_tim8_ch1.Instance = DMA2_Stream2;
+    hdma_tim8_ch1.Init.Channel = DMA_CHANNEL_7;
+    hdma_tim8_ch1.Init.Direction = DMA_MEMORY_TO_PERIPH;
+    hdma_tim8_ch1.Init.PeriphInc = DMA_PINC_DISABLE;
+    hdma_tim8_ch1.Init.MemInc = DMA_MINC_ENABLE;
+    hdma_tim8_ch1.Init.PeriphDataAlignment = DMA_PDATAALIGN_HALFWORD;
+    hdma_tim8_ch1.Init.MemDataAlignment = DMA_MDATAALIGN_WORD;
+    hdma_tim8_ch1.Init.Mode = DMA_NORMAL;
+    hdma_tim8_ch1.Init.Priority = DMA_PRIORITY_LOW;
+    hdma_tim8_ch1.Init.FIFOMode = DMA_FIFOMODE_ENABLE;
+    hdma_tim8_ch1.Init.FIFOThreshold = DMA_FIFO_THRESHOLD_FULL;
+    hdma_tim8_ch1.Init.MemBurst = DMA_MBURST_SINGLE;
+    hdma_tim8_ch1.Init.PeriphBurst = DMA_PBURST_SINGLE;
+    if (HAL_DMA_Init(&hdma_tim8_ch1) != HAL_OK)
+    {
+      Error_Handler();
+    }
+
+    __HAL_LINKDMA(htim_pwm,hdma[TIM_DMA_ID_CC1],hdma_tim8_ch1);
+
+    /* USER CODE BEGIN TIM8_MspInit 1 */
+
+    /* USER CODE END TIM8_MspInit 1 */
+
+  }
+
+}
+
+void HAL_TIM_MspPostInit(TIM_HandleTypeDef* htim)
+{
+  GPIO_InitTypeDef GPIO_InitStruct = {0};
+  if(htim->Instance==TIM8)
+  {
+    /* USER CODE BEGIN TIM8_MspPostInit 0 */
+
+    /* USER CODE END TIM8_MspPostInit 0 */
+
+    __HAL_RCC_GPIOC_CLK_ENABLE();
+    /**TIM8 GPIO Configuration
+    PC6     ------> TIM8_CH1
+    */
+    GPIO_InitStruct.Pin = GPIO_PIN_6;
+    GPIO_InitStruct.Mode = GPIO_MODE_AF_PP;
+    GPIO_InitStruct.Pull = GPIO_NOPULL;
+    GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
+    GPIO_InitStruct.Alternate = GPIO_AF3_TIM8;
+    HAL_GPIO_Init(GPIOC, &GPIO_InitStruct);
+
+    /* USER CODE BEGIN TIM8_MspPostInit 1 */
+
+    /* USER CODE END TIM8_MspPostInit 1 */
+  }
+
+}
+/**
   * @brief TIM_Base MSP De-Initialization
   * This function freeze the hardware resources used in this example
   * @param htim_base: TIM_Base handle pointer
@@ -370,6 +445,31 @@ void HAL_TIM_Base_MspDeInit(TIM_HandleTypeDef* htim_base)
     /* USER CODE BEGIN TIM5_MspDeInit 1 */
 
     /* USER CODE END TIM5_MspDeInit 1 */
+  }
+
+}
+
+/**
+  * @brief TIM_PWM MSP De-Initialization
+  * This function freeze the hardware resources used in this example
+  * @param htim_pwm: TIM_PWM handle pointer
+  * @retval None
+  */
+void HAL_TIM_PWM_MspDeInit(TIM_HandleTypeDef* htim_pwm)
+{
+  if(htim_pwm->Instance==TIM8)
+  {
+    /* USER CODE BEGIN TIM8_MspDeInit 0 */
+
+    /* USER CODE END TIM8_MspDeInit 0 */
+    /* Peripheral clock disable */
+    __HAL_RCC_TIM8_CLK_DISABLE();
+
+    /* TIM8 DMA DeInit */
+    HAL_DMA_DeInit(htim_pwm->hdma[TIM_DMA_ID_CC1]);
+    /* USER CODE BEGIN TIM8_MspDeInit 1 */
+
+    /* USER CODE END TIM8_MspDeInit 1 */
   }
 
 }

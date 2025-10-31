@@ -31,20 +31,11 @@ void ParsedGPS(void)
 	{
 		if (xSemaphoreTake(hGpsDataMutex, portMAX_DELAY) == pdTRUE)
 		{
-			strncpy(parsed_gnrmc.head, gnrmc.head, sizeof(parsed_gnrmc.head) - 1);
-			parsed_gnrmc.time = atoi(gnrmc.time);
 			parsed_gnrmc.status = gnrmc.status;
 			parsed_gnrmc.latitude = atof(gnrmc.latitude);
-			parsed_gnrmc.NS_ind = gnrmc.NS_ind;
 			parsed_gnrmc.longitude = atof(gnrmc.longitude);
-			parsed_gnrmc.EW_ind = gnrmc.EW_ind;
 			parsed_gnrmc.speed = atof(gnrmc.speed);
 			parsed_gnrmc.course = atof(gnrmc.course);
-			strncpy(parsed_gnrmc.date, gnrmc.date, sizeof(parsed_gnrmc.date) - 1);
-			parsed_gnrmc.mag_var = atof(gnrmc.mag_var);
-			parsed_gnrmc.mag_var_pos = gnrmc.mag_var_pos;
-			parsed_gnrmc.mode = gnrmc.mode;
-			strncpy(parsed_gnrmc.cs, gnrmc.cs, sizeof(parsed_gnrmc.cs) - 1);
 		}
 		xSemaphoreGive(hGpsDataMutex);
 	}

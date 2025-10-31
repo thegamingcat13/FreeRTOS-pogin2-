@@ -298,20 +298,11 @@ void UART_menu (void *argument)
 
 		case 'G': /// G: Print de parsed gps structre
 			UART_puts("\n\n\rParsed GPS data:");
-			UART_printf(100, "\n\r Head: %s", parsed_gnrmc.head);				// 1. header
-			UART_printf(100, "\n\r Time: %d", parsed_gnrmc.time);				// 2. hhmmss.sss
 			UART_printf(100, "\n\r Status: %s", parsed_gnrmc.status);			// 3. A=valid, V=not valid
 			UART_printf(100, "\n\r Latitude: %d", parsed_gnrmc.latitude);		// 4. ddmm.mmmm
-			UART_printf(100, "\n\r NS_ind %s", parsed_gnrmc.NS_ind);			// 5. N,S
 			UART_printf(100, "\n\r Longitude: %d", parsed_gnrmc.longitude);		// 6. ddmm.mmmm
-			UART_printf(100, "\n\r EW_ind %s", parsed_gnrmc.EW_ind);			// 7. E,W
 			UART_printf(100, "\n\r Speed: %f", parsed_gnrmc.speed);				// 8. 0.13 knots
 			UART_printf(100, "\n\r Course: %f", parsed_gnrmc.course);			// 9. 309.62 degrees
-			UART_printf(100, "\n\r Date: %s", parsed_gnrmc.date);				// 10. ddmmyy
-			UART_printf(100, "\n\r Mag_var: %f", parsed_gnrmc.mag_var);			// 11. E,W degrees
-			UART_printf(100, "\n\r Mag_var_pos : %s", parsed_gnrmc.mag_var_pos);// 12.
-			UART_printf(100, "\n\r Mode: %s", parsed_gnrmc.mode);				// 13. A=autonomous, D,E
-			UART_printf(100, "\n\r Cs: %s", parsed_gnrmc.cs);					// 14. checkum *34
 			break;
 
 		case 'A': /// A: print de gemeten afstand van de sr04 sensor
