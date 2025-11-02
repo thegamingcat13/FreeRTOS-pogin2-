@@ -200,7 +200,7 @@ extern RouteInfo Get_Waypoint_Info (int waypoint);
 extern int SkipWaypoint (void);
 extern int BackWaypoint (void);
 extern void ShowWaypoint (void);
-extern void setMotors(int direction, uint16_t speed);
+extern void setMotors(int direction, uint16_t speed_l, uint16_t speed_r);
 
 // dataretention.c
 extern void logWrite(int type, void* info);

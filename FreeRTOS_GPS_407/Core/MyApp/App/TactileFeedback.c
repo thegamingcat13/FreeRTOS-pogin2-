@@ -46,10 +46,13 @@ TaskHandle_t hReachWP;
 
 extern TIM_HandleTypeDef htim8;  // PWM timer
 
-void setMotors(int direction, uint16_t speed)
+void setMotors(int direction, uint16_t speed_l, uint16_t speed_r)
 {
-    if (speed > htim8.Init.Period)
-        speed = htim8.Init.Period;
+    if (speed_l > htim8.Init.Period)
+        speed_l = htim8.Init.Period;
+
+    if (speed_r > htim8.Init.Period)
+    	speed_r = htim8.Init.Period;
 
     switch (direction)
     {
@@ -86,12 +89,14 @@ void setMotors(int direction, uint16_t speed)
             HAL_GPIO_WritePin(M1_2_GPIO_Port, M1_2_Pin, GPIO_PIN_RESET);
             HAL_GPIO_WritePin(M2_1_GPIO_Port, M2_1_Pin, GPIO_PIN_RESET);
             HAL_GPIO_WritePin(M2_2_GPIO_Port, M2_2_Pin, GPIO_PIN_RESET);
-            speed = 0;
+            speed_l = 0;
+            speed_r = 0;
             break;
     }
 
     // PWM duty instellen (zelfde op beide motoren hier)
-    __HAL_TIM_SET_COMPARE(&htim8, TIM_CHANNEL_1, speed);
+    __HAL_TIM_SET_COMPARE(&htim8, TIM_CHANNEL_1, speed_l);
+    __HAL_TIM_SET_COMPARE(&htim8, TIM_CHANNEL_4, speed_r);
 }
 
 /**
@@ -121,7 +126,7 @@ void ReachWPTask(void *argument)
 		{
 			if (CurrentWaypoint >= WaypointCount)
 			{
-				setMotors(0,0);
+				setMotors(0,0,0);
 				osDelay(5000);
 				continue;
 			}
@@ -131,7 +136,7 @@ void ReachWPTask(void *argument)
 
 			if (info.distance_m < ARRIVAL_RADIUS_METERS)
 			{
-				setMotors(0,0);
+				setMotors(0,0,0);
 				CurrentWaypoint++;
 				osDelay(500);
 			}
@@ -161,14 +166,14 @@ void ReachWPTask(void *argument)
 				if (fabs(heading_error) > MAX_HEADING_DIFFERENCE)
 				{
 					if (heading_error > 0)
-						setMotors(2, 3000); //turn right
+						setMotors(2, 3000, 3000); //turn right
 
 					if (heading_error < 0)
-						setMotors(-2, 3000); //turn left
+						setMotors(-2, 3000, 3000); //turn left
 				} else
-					setMotors(1, 4000); //go foward
+					setMotors(1, 4000, 4000); //go foward
 			} else
-				setMotors(1, 4000); //go foward
+				setMotors(1, 4000, 4000); //go foward
 
 			osDelay(200);
 		}
