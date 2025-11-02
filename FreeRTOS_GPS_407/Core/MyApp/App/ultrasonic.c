@@ -97,15 +97,15 @@ void SR04_Task (void *argument)
 			{
 				LCD_clear();
 				LCD_puts("Object  gedetecteerd"); //Dubbele spatie is voor spacing op het LCD scherm
-				drive_backward();
+				setMotors(-1, 3000);
 				osDelay(1000);
-				turn_left();
+				setMotors(-2, 3000);
 				osDelay(1000);
-				drive_forward();
+				setMotors(1, 3000);
 				osDelay(1000);
-				turn_right();
+				setMotors(2, 3000);
 				osDelay(1000);
-				stop();
+				setMotors(0,0);
 			}
 			if (sr04_debug)
 				UART_printf(100, "\n\n\rDistance: %.2f cm", distance_cm);

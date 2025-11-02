@@ -117,6 +117,8 @@ void Error_Handler(void);
 #define Echo_Pin GPIO_PIN_11
 #define Echo_GPIO_Port GPIOB
 #define Echo_EXTI_IRQn EXTI15_10_IRQn
+#define Dummy_buzzer_Pin GPIO_PIN_9
+#define Dummy_buzzer_GPIO_Port GPIOD
 #define Trigger_Pin GPIO_PIN_10
 #define Trigger_GPIO_Port GPIOD
 #define LD4_Pin GPIO_PIN_12

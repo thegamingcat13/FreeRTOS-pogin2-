@@ -121,7 +121,7 @@ void ReachWPTask(void *argument)
 		{
 			if (CurrentWaypoint >= WaypointCount)
 			{
-				stop();
+				setMotors(0,0);
 				osDelay(5000);
 				continue;
 			}
@@ -131,7 +131,7 @@ void ReachWPTask(void *argument)
 
 			if (info.distance_m < ARRIVAL_RADIUS_METERS)
 			{
-				stop();
+				setMotors(0,0);
 				CurrentWaypoint++;
 				osDelay(500);
 			}

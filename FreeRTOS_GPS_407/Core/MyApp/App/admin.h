@@ -200,6 +200,7 @@ extern RouteInfo Get_Waypoint_Info (int waypoint);
 extern int SkipWaypoint (void);
 extern int BackWaypoint (void);
 extern void ShowWaypoint (void);
+extern void setMotors(int direction, uint16_t speed);
 
 // dataretention.c
 extern void logWrite(int type, void* info);
@@ -208,10 +209,6 @@ extern void printLogs(void);
 extern void delay_us (int us);
 extern void SR04_Task (void *);
 
-extern void drive_forward(void);
-extern void turn_left(void);
-extern void turn_right(void);
-extern void drive_backward(void);
-extern void stop(void);
+
 
 #endif // ADMIM_H

@@ -25,9 +25,9 @@ void BUZZER_set(int counter)
 {
 	while(counter--)
 	{
-		HAL_GPIO_WritePin(Buzzer_GPIO_Port, Buzzer_Pin, GPIO_PIN_SET);
+		HAL_GPIO_WritePin(Dummy_buzzer_GPIO_Port, Dummy_buzzer_Pin, GPIO_PIN_SET);
 		HAL_Delay(1);
-		HAL_GPIO_WritePin(Buzzer_GPIO_Port, Buzzer_Pin, GPIO_PIN_RESET);
+		HAL_GPIO_WritePin(Dummy_buzzer_GPIO_Port, Dummy_buzzer_Pin, GPIO_PIN_RESET);
 		HAL_Delay(1);
 	}
 }
@@ -47,9 +47,9 @@ void BUZZER_put(unsigned int time)
 
 	while (k++<100)
     {
-		HAL_GPIO_WritePin(Buzzer_GPIO_Port, Buzzer_Pin, GPIO_PIN_SET);
+		HAL_GPIO_WritePin(Dummy_buzzer_GPIO_Port, Dummy_buzzer_Pin, GPIO_PIN_SET);
 		for (i=0;i<(time+k);i++);
-		HAL_GPIO_WritePin(Buzzer_GPIO_Port, Buzzer_Pin, GPIO_PIN_RESET);
+		HAL_GPIO_WritePin(Dummy_buzzer_GPIO_Port, Dummy_buzzer_Pin, GPIO_PIN_RESET);
 		for (i=0;(i<time+k);i++);
 	}
 }

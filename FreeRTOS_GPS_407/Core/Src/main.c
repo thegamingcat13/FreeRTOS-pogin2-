@@ -628,8 +628,8 @@ static void MX_GPIO_Init(void)
   HAL_GPIO_WritePin(GPIOB, LED_RCK_Pin|LED_SCK_Pin, GPIO_PIN_RESET);
 
   /*Configure GPIO pin Output Level */
-  HAL_GPIO_WritePin(GPIOD, Trigger_Pin|LD4_Pin|LD3_Pin|LD5_Pin
-                          |LD6_Pin|Audio_RST_Pin, GPIO_PIN_RESET);
+  HAL_GPIO_WritePin(GPIOD, Dummy_buzzer_Pin|Trigger_Pin|LD4_Pin|LD3_Pin
+                          |LD5_Pin|LD6_Pin|Audio_RST_Pin, GPIO_PIN_RESET);
 
   /*Configure GPIO pin Output Level */
   HAL_GPIO_WritePin(LED_SER_GPIO_Port, LED_SER_Pin, GPIO_PIN_RESET);
@@ -697,21 +697,21 @@ static void MX_GPIO_Init(void)
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   HAL_GPIO_Init(Echo_GPIO_Port, &GPIO_InitStruct);
 
+  /*Configure GPIO pins : Dummy_buzzer_Pin LD4_Pin LD3_Pin LD5_Pin
+                           LD6_Pin Audio_RST_Pin */
+  GPIO_InitStruct.Pin = Dummy_buzzer_Pin|LD4_Pin|LD3_Pin|LD5_Pin
+                          |LD6_Pin|Audio_RST_Pin;
+  GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
+  GPIO_InitStruct.Pull = GPIO_NOPULL;
+  GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
+  HAL_GPIO_Init(GPIOD, &GPIO_InitStruct);
+
   /*Configure GPIO pin : Trigger_Pin */
   GPIO_InitStruct.Pin = Trigger_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_VERY_HIGH;
   HAL_GPIO_Init(Trigger_GPIO_Port, &GPIO_InitStruct);
-
-  /*Configure GPIO pins : LD4_Pin LD3_Pin LD5_Pin LD6_Pin
-                           Audio_RST_Pin */
-  GPIO_InitStruct.Pin = LD4_Pin|LD3_Pin|LD5_Pin|LD6_Pin
-                          |Audio_RST_Pin;
-  GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
-  GPIO_InitStruct.Pull = GPIO_NOPULL;
-  GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
-  HAL_GPIO_Init(GPIOD, &GPIO_InitStruct);
 
   /*Configure GPIO pin : LED_SER_Pin */
   GPIO_InitStruct.Pin = LED_SER_Pin;
