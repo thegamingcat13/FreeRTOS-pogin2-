@@ -1,7 +1,12 @@
 /**
  * @file TactileFeedback.c
- * @brief De functies voor het aansturen van de L298N dual H-bridge driver.
- * En de functies voor de besturing van de motors.
+ * @brief Hierin staan verschillende tasks en functies.<br>
+ * @verbatim
+ *		- Motor aansturing<br>
+ * 		- Bereiken van de waypoint<br>
+ * 		- Overslaan en terug gaan naar waypoints<br>
+ * 		- Uitlezen van waypoint op LCD<br>
+ *@endverbatim
  *
  * @date 28/10/2025
  */
