@@ -96,7 +96,7 @@ Design: overview van de applicatie</h1>
 Hieronder zie je het *graphical design* van de applicatie (gemaakt in Powerpoint).<br> 
 Het doel van het graphisch design is om snel inzicht te krijgen in de samenhang en werking van de applicatie. Daarom zijn alleen de belangrijkste zaken weergegeven. (Er is bijvoorbeeld ook een software-timer (timer.c), maar die is in het design niet weergegeven.)
 
-<img src="../FreeRTOS_GPS_407_design.png" alt="FreeRTOS_GPS design" width="100%"/>
+<img src="../FreeRTOS_Flowchart.png" alt="FreeRTOS_GPS design" width="100%"/>
 
 De verschillende elementen:
 <ul style="font-family:'Corbel';">
