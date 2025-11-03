@@ -83,7 +83,7 @@ TASKDATA tasks[] =
 { GPS_getNMEA,  NULL, .attr.name = "GPS_getNMEA",  	.attr.stack_size = 1200, 	.attr.priority = osPriorityBelowNormal1 },
 
   // student.c
-{ Student_task1,NULL, .attr.name = "Student_task1",	.attr.stack_size = 700, 	.attr.priority = osPriorityBelowNormal7 },
+//{ Student_task1,NULL, .attr.name = "Student_task1",	.attr.stack_size = 700, 	.attr.priority = osPriorityBelowNormal7 },
 
 { ReachWPTask,  NULL, .attr.name = "hReachWP",	    .attr.stack_size = 2000, 	.attr.priority = osPriorityBelowNormal7 },
 

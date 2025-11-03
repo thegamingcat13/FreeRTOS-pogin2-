@@ -166,14 +166,14 @@ void ReachWPTask(void *argument)
 				if (fabs(heading_error) > MAX_HEADING_DIFFERENCE)
 				{
 					if (heading_error > 0)
-						setMotors(2, 3000, 3000); //turn right
+						setMotors(2, MEDIUM, MEDIUM); //turn right
 
 					if (heading_error < 0)
-						setMotors(-2, 3000, 3000); //turn left
+						setMotors(-2, MEDIUM, MEDIUM); //turn left
 				} else
-					setMotors(1, 4000, 4000); //go foward
+					setMotors(1, MEDIUM, MEDIUM); //go foward
 			} else
-				setMotors(1, 4000, 4000); //go foward
+				setMotors(1, MEDIUM, MEDIUM); //go foward
 
 			osDelay(200);
 		}

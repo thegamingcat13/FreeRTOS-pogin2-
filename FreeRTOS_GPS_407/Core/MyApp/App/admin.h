@@ -29,6 +29,12 @@
 /// set queue op 10 elementen
 #define QSIZE_UART 10
 
+/// motor speeds defines
+#define SLOW 1000
+#define MEDIUM 2000
+#define FAST 3000
+#define VERY_FAST 400
+
 /// set software timer 1000 msecs
 #define TIMER1_DELAY 1000
 
@@ -99,6 +105,7 @@ extern TimerHandle_t      hTimer1;
 /// handle zodat de waypoint task extern genotified kan worden
 extern TaskHandle_t   	  hWaypointTask;
 extern TaskHandle_t		  hReachWP;
+
 
 
 /// debug naar uart output, zie uart_keys.c
