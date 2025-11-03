@@ -29,9 +29,10 @@ var searchData=
   ['hsicalibrationvalue_26',['HSICalibrationValue',['../struct_r_c_c___osc_init_type_def.html#ad28b977e258a3ee788cd6c2d72430c30',1,'RCC_OscInitTypeDef']]],
   ['hsistate_27',['HSIState',['../struct_r_c_c___osc_init_type_def.html#a49183e0be5cf522de0fa1968df0bf0d7',1,'RCC_OscInitTypeDef']]],
   ['htask_28',['hTask',['../struct_task_data.html#a00081de8efdf72da5c61ecf1780936a7',1,'TaskData']]],
-  ['htimer1_29',['hTimer1',['../admin_8c.html#af1a9410a47225cac12eb96a84b51b035',1,'hTimer1:&#160;admin.c'],['../admin_8h.html#af1a9410a47225cac12eb96a84b51b035',1,'hTimer1:&#160;admin.c']]],
-  ['htr_30',['HTR',['../struct_a_d_c___type_def.html#a24c3512abcc90ef75cf3e9145e5dbe9b',1,'ADC_TypeDef']]],
-  ['huart_5fqueue_31',['hUART_Queue',['../admin_8c.html#a1db415a0f7c5ecff145e4bb53cc54dbe',1,'hUART_Queue:&#160;admin.c'],['../admin_8h.html#a1db415a0f7c5ecff145e4bb53cc54dbe',1,'hUART_Queue:&#160;admin.c']]],
-  ['hwaypointtask_32',['hWaypointTask',['../admin_8h.html#ab0334f032bcc3014435a9a3ce0dbcb43',1,'hWaypointTask:&#160;route.c'],['../route_8c.html#ab0334f032bcc3014435a9a3ce0dbcb43',1,'hWaypointTask:&#160;route.c']]],
-  ['hwflowctl_33',['HwFlowCtl',['../struct_u_a_r_t___init_type_def.html#a0a933d213b17470c582c8fec23a24d09',1,'UART_InitTypeDef']]]
+  ['htim8_29',['htim8',['../_tactile_feedback_8c.html#a5faa27108379f799afb6984010bf0384',1,'htim8:&#160;main.c'],['../main_8c.html#a5faa27108379f799afb6984010bf0384',1,'htim8:&#160;main.c']]],
+  ['htimer1_30',['hTimer1',['../admin_8c.html#af1a9410a47225cac12eb96a84b51b035',1,'hTimer1:&#160;admin.c'],['../admin_8h.html#af1a9410a47225cac12eb96a84b51b035',1,'hTimer1:&#160;admin.c']]],
+  ['htr_31',['HTR',['../struct_a_d_c___type_def.html#a24c3512abcc90ef75cf3e9145e5dbe9b',1,'ADC_TypeDef']]],
+  ['huart_5fqueue_32',['hUART_Queue',['../admin_8c.html#a1db415a0f7c5ecff145e4bb53cc54dbe',1,'hUART_Queue:&#160;admin.c'],['../admin_8h.html#a1db415a0f7c5ecff145e4bb53cc54dbe',1,'hUART_Queue:&#160;admin.c']]],
+  ['hwaypointtask_33',['hWaypointTask',['../admin_8h.html#ab0334f032bcc3014435a9a3ce0dbcb43',1,'hWaypointTask:&#160;route.c'],['../route_8c.html#ab0334f032bcc3014435a9a3ce0dbcb43',1,'hWaypointTask:&#160;route.c']]],
+  ['hwflowctl_34',['HwFlowCtl',['../struct_u_a_r_t___init_type_def.html#a0a933d213b17470c582c8fec23a24d09',1,'UART_InitTypeDef']]]
 ];

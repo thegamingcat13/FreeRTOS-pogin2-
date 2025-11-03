@@ -101,14 +101,14 @@ $(function() {
 <tr class="heading"><td colspan="2"><h2 id="header-func-members" class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
 <tr class="memitem:a3f88352450dad51d82e4bf84a0a439a1" id="r_a3f88352450dad51d82e4bf84a0a439a1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3f88352450dad51d82e4bf84a0a439a1">delay_us</a> (int us)</td></tr>
-<tr class="memdesc:a3f88352450dad51d82e4bf84a0a439a1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Functie voor het creeren van de timer, nodig voor het corect werken van de sensor.  <br /></td></tr>
+<tr class="memdesc:a3f88352450dad51d82e4bf84a0a439a1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Functie die een delay creeërt in microseconden i.p.v. de standaart miliseconden hiervoor word timer 2 gebruikt.  <br /></td></tr>
 <tr class="memitem:abbc295f35f3b064af728432caf7aa338" id="r_abbc295f35f3b064af728432caf7aa338"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#abbc295f35f3b064af728432caf7aa338">SR04_Task</a> (void *argument)</td></tr>
 <tr class="memdesc:abbc295f35f3b064af728432caf7aa338"><td class="mdescLeft">&#160;</td><td class="mdescRight">Functie voor het aansturen en het uitlezen van de sensor. Daarnaast berekent hij de afstand, en maakt hij een keuze op basis van deze afstand.  <br /></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-var-members" class="groupheader"><a id="var-members" name="var-members"></a>
 Variables</h2></td></tr>
-<tr class="memitem:a4653e57faac0975f85e9f0d6b19c94fc" id="r_a4653e57faac0975f85e9f0d6b19c94fc"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4653e57faac0975f85e9f0d6b19c94fc">sr04_debug</a> = false</td></tr>
-<tr class="memdesc:a4653e57faac0975f85e9f0d6b19c94fc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Provides a blocking microsecond delay using timer 2.  <br /></td></tr>
+<tr class="memitem:a4653e57faac0975f85e9f0d6b19c94fc" id="r_a4653e57faac0975f85e9f0d6b19c94fc"><td class="memItemLeft" align="right" valign="top"><a id="a4653e57faac0975f85e9f0d6b19c94fc" name="a4653e57faac0975f85e9f0d6b19c94fc"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><b>sr04_debug</b> = false</td></tr>
 <tr class="memitem:a7474ab22834d3f7c041f6a2155437168" id="r_a7474ab22834d3f7c041f6a2155437168"><td class="memItemLeft" align="right" valign="top"><a id="a7474ab22834d3f7c041f6a2155437168" name="a7474ab22834d3f7c041f6a2155437168"></a>
 EventGroupHandle_t&#160;</td><td class="memItemRight" valign="bottom"><b>xEchoEventGroup</b></td></tr>
 <tr class="memitem:a5b11bda5a261b13aa02f2dc8d8f1758d" id="r_a5b11bda5a261b13aa02f2dc8d8f1758d"><td class="memItemLeft" align="right" valign="top"><a id="a5b11bda5a261b13aa02f2dc8d8f1758d" name="a5b11bda5a261b13aa02f2dc8d8f1758d"></a>
@@ -145,10 +145,10 @@ float&#160;</td><td class="memItemRight" valign="bottom"><b>distance_cm</b></td>
       </table>
 </div><div class="memdoc">
 
-<p>Functie voor het creeren van de timer, nodig voor het corect werken van de sensor. </p>
+<p>Functie die een delay creeërt in microseconden i.p.v. de standaart miliseconden hiervoor word timer 2 gebruikt. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname"></td><td></td></tr>
+    <tr><td class="paramname">us</td><td>Aantal microseconden (us) om te wachten. </td></tr>
   </table>
   </dd>
 </dl>
@@ -178,29 +178,6 @@ float&#160;</td><td class="memItemRight" valign="bottom"><b>distance_cm</b></td>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>void </dd></dl>
-
-</div>
-</div>
-<a name="doc-var-members" id="doc-var-members"></a><h2 id="header-doc-var-members" class="groupheader">Variable Documentation</h2>
-<a id="a4653e57faac0975f85e9f0d6b19c94fc" name="a4653e57faac0975f85e9f0d6b19c94fc"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a4653e57faac0975f85e9f0d6b19c94fc">&#9670;&#160;</a></span>sr04_debug</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">bool sr04_debug = false</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Provides a blocking microsecond delay using timer 2. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">us</td><td>Number of microseconds to delay </td></tr>
-  </table>
-  </dd>
-</dl>
 
 </div>
 </div>

@@ -24,159 +24,162 @@
 \DoxyCodeLine{00028\ }
 \DoxyCodeLine{00030\ \textcolor{preprocessor}{\#define\ QSIZE\_UART\ 10}}
 \DoxyCodeLine{00031\ }
-\DoxyCodeLine{00033\ \textcolor{preprocessor}{\#define\ TIMER1\_DELAY\ 1000}}
-\DoxyCodeLine{00034\ }
-\DoxyCodeLine{00035\ \textcolor{preprocessor}{\#define\ GPS\_MAXLEN\ 79+4\ }\textcolor{preprocessor}{}}
-\DoxyCodeLine{00041\ }
-\DoxyCodeLine{00042\ \textcolor{preprocessor}{\#define\ STRC\_AMOUNT\ 20\ }\textcolor{comment}{//\ amount\ of\ waypoints\ that\ will\ be\ created}}
-\DoxyCodeLine{00043\ }
-\DoxyCodeLine{00044\ \textcolor{preprocessor}{\#define\ LAT\_PREC\ 0.000045\ }\textcolor{comment}{//\ level\ of\ precision\ for\ gps\ parser}}
-\DoxyCodeLine{00045\ \textcolor{preprocessor}{\#define\ LON\_PREC\ 0.000074\ }\textcolor{comment}{//\ level\ of\ precision\ for\ gps\ parser}}
-\DoxyCodeLine{00046\ \textcolor{preprocessor}{\#define\ METER\_PER\_DEG\_LAT\ 111132.0f}}
-\DoxyCodeLine{00047\ \textcolor{preprocessor}{\#define\ METER\_PER\_DEG\_LON\ 67890.0f}}
-\DoxyCodeLine{00048\ }
-\DoxyCodeLine{00049\ \textcolor{preprocessor}{\#define\ MAX\_HEADING\_DIFFERENCE\_DEG\ 5.0f\ }\textcolor{comment}{//\ level\ of\ precision\ for\ the\ heading\ were\ going\ to}}
-\DoxyCodeLine{00050\ \textcolor{preprocessor}{\#define\ ARRIVAL\_RADIUS\_METERS\ 1.0f\ }\textcolor{comment}{//\ set\ arrival\ radius\ to\ 1\ meter}}
-\DoxyCodeLine{00051\ \textcolor{preprocessor}{\#define\ MIN\_COG\_SPEED\ 0.5f}}
-\DoxyCodeLine{00052\ }
-\DoxyCodeLine{00053\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_route_info__s}{RouteInfo\_s}}\{}
-\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ latdifference;}
-\DoxyCodeLine{00055\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ londifference;}
-\DoxyCodeLine{00056\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ distance\_m;}
-\DoxyCodeLine{00057\ \ \ \ \ \}\ RouteInfo;}
+\DoxyCodeLine{00033\ \textcolor{preprocessor}{\#define\ SLOW\ 1000}}
+\DoxyCodeLine{00034\ \textcolor{preprocessor}{\#define\ MEDIUM\ 2000}}
+\DoxyCodeLine{00035\ \textcolor{preprocessor}{\#define\ FAST\ 3000}}
+\DoxyCodeLine{00036\ \textcolor{preprocessor}{\#define\ VERY\_FAST\ 4000}}
+\DoxyCodeLine{00037\ }
+\DoxyCodeLine{00039\ \textcolor{preprocessor}{\#define\ TIMER1\_DELAY\ 1000}}
+\DoxyCodeLine{00040\ }
+\DoxyCodeLine{00041\ \textcolor{preprocessor}{\#define\ GPS\_MAXLEN\ 79+4\ }\textcolor{preprocessor}{}}
+\DoxyCodeLine{00047\ }
+\DoxyCodeLine{00048\ \textcolor{preprocessor}{\#define\ STRC\_AMOUNT\ 20\ }\textcolor{comment}{//\ amount\ of\ waypoints\ that\ will\ be\ created}}
+\DoxyCodeLine{00049\ }
+\DoxyCodeLine{00050\ \textcolor{preprocessor}{\#define\ LAT\_PREC\ 0.000045\ }\textcolor{comment}{//\ level\ of\ precision\ for\ gps\ parser}}
+\DoxyCodeLine{00051\ \textcolor{preprocessor}{\#define\ LON\_PREC\ 0.000074\ }\textcolor{comment}{//\ level\ of\ precision\ for\ gps\ parser}}
+\DoxyCodeLine{00052\ \textcolor{preprocessor}{\#define\ METER\_PER\_DEG\_LAT\ 111132.0f}}
+\DoxyCodeLine{00053\ \textcolor{preprocessor}{\#define\ METER\_PER\_DEG\_LON\ 67890.0f}}
+\DoxyCodeLine{00054\ }
+\DoxyCodeLine{00055\ \textcolor{preprocessor}{\#define\ MAX\_HEADING\_DIFFERENCE\_DEG\ 5.0f\ }\textcolor{comment}{//\ level\ of\ precision\ for\ the\ heading\ were\ going\ to}}
+\DoxyCodeLine{00056\ \textcolor{preprocessor}{\#define\ ARRIVAL\_RADIUS\_METERS\ 1.0f\ }\textcolor{comment}{//\ set\ arrival\ radius\ to\ 1\ meter}}
+\DoxyCodeLine{00057\ \textcolor{preprocessor}{\#define\ MIN\_COG\_SPEED\ 0.5f}}
 \DoxyCodeLine{00058\ }
-\DoxyCodeLine{00059\ \textcolor{keyword}{extern}\ RouteInfo\ info;}
-\DoxyCodeLine{00060\ }
-\DoxyCodeLine{00061\ \textcolor{comment}{//\ dataretention.c}}
-\DoxyCodeLine{00062\ \textcolor{preprocessor}{\#define\ MAX\_LOGS\ 100\ }\textcolor{comment}{//\ Define\ the\ maximum\ number\ of\ logs}}
-\DoxyCodeLine{00063\ }
-\DoxyCodeLine{00064\ \textcolor{comment}{//\ data\ retention\ log\ structure}}
-\DoxyCodeLine{00065\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structlog}{log}}}
-\DoxyCodeLine{00066\ \{}
-\DoxyCodeLine{00067\ \ \ \ \ \textcolor{keywordtype}{char}\ \ \ \ latitude[10];\ \ \textcolor{comment}{//\ 4.\ ddmm.mmmm\ (double)}}
-\DoxyCodeLine{00068\ \ \ \ \ \textcolor{keywordtype}{char}\ \ \ \ longitude[10];\ \textcolor{comment}{//\ 6.\ ddmm.mmmm\ (double)}}
-\DoxyCodeLine{00069\ \ \ \ \ \textcolor{keywordtype}{char}\ \ \ \ heading\_current[8];\ \ \ \ \ \textcolor{comment}{//\ 9.\ 309.62\ degrees\ (double)}}
-\DoxyCodeLine{00070\ \ \ \ \ \textcolor{keywordtype}{char}\ \ \ \ heading\_desired[8];}
-\DoxyCodeLine{00071\ \ \ \ \ \textcolor{keywordtype}{char}\ \ \ \ buttons\_pressed[25];\ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 13.\ A=autonomous,\ D,E}}
-\DoxyCodeLine{00072\ \ \ \ \ \textcolor{keywordtype}{char}\ \ \ \ commands[10];\ \ \ \ \ \ \textcolor{comment}{//\ motor\ commands}}
-\DoxyCodeLine{00073\ \}\ Slog;}
-\DoxyCodeLine{00074\ }
-\DoxyCodeLine{00076\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_task_data}{TaskData}}}
-\DoxyCodeLine{00077\ \{}
-\DoxyCodeLine{00078\ \ \ \ \ osThreadFunc\_t\ \ \ \ \ \ \ func;\ \ \ \ \ }
-\DoxyCodeLine{00079\ \ \ \ \ \textcolor{keywordtype}{void}\ *\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{struct_task_data_a6a0147ed63ef3f0f7e291aa5f6f48191}{argument}};\ }
-\DoxyCodeLine{00080\ \ \ \ \ \mbox{\hyperlink{structos_thread_attr__t}{osThreadAttr\_t}}\ \ \ \ \ \ \ \mbox{\hyperlink{struct_task_data_aeab588ea33fe027c4408d552ea7fd965}{attr}};\ \ \ \ \ }
-\DoxyCodeLine{00081\ \ \ \ \ osThreadId\_t\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{struct_task_data_a00081de8efdf72da5c61ecf1780936a7}{hTask}};\ \ \ \ }
-\DoxyCodeLine{00082\ \}\ \mbox{\hyperlink{admin_8h_a7f8e353159968ff0f0becfe26d3bf630}{TASKDATA}},\ *PTASKDATA;\ \ \ \ \ \ \ \ \ \ \ \ }
-\DoxyCodeLine{00083\ }
-\DoxyCodeLine{00084\ }
-\DoxyCodeLine{00085\ }
-\DoxyCodeLine{00088\ \textcolor{keyword}{extern}\ QueueHandle\_t\ \ \ \ \ \ \mbox{\hyperlink{admin_8c_a1db415a0f7c5ecff145e4bb53cc54dbe}{hUART\_Queue}};}
-\DoxyCodeLine{00090\ \textcolor{keyword}{extern}\ QueueHandle\_t\ \ \ \ \ \ \mbox{\hyperlink{admin_8c_a77d12f838c966d96a18a31e503b7955c}{hGPS\_Queue}};}
-\DoxyCodeLine{00092\ \textcolor{keyword}{extern}\ SemaphoreHandle\_t\ \ \mbox{\hyperlink{admin_8c_a011b1349f4d8c02977b852c7587f0581}{hLED\_Sem}};}
-\DoxyCodeLine{00094\ \textcolor{keyword}{extern}\ SemaphoreHandle\_t\ \ \mbox{\hyperlink{admin_8c_acb75afe78edbc0029054eef295bbd316}{hGpsDataMutex}};}
-\DoxyCodeLine{00096\ \textcolor{keyword}{extern}\ EventGroupHandle\_t\ \mbox{\hyperlink{admin_8c_ada55e3a3cc32b9d16e1bbc08d83431c9}{hKEY\_Event}};}
-\DoxyCodeLine{00098\ \textcolor{keyword}{extern}\ TimerHandle\_t\ \ \ \ \ \ \mbox{\hyperlink{admin_8c_af1a9410a47225cac12eb96a84b51b035}{hTimer1}};}
-\DoxyCodeLine{00100\ \textcolor{keyword}{extern}\ TaskHandle\_t\ \ \ \ \ \ \ \mbox{\hyperlink{admin_8h_ab0334f032bcc3014435a9a3ce0dbcb43}{hWaypointTask}};}
-\DoxyCodeLine{00101\ \textcolor{keyword}{extern}\ TaskHandle\_t\ \ \ \ \ \ \ hReachWP;}
-\DoxyCodeLine{00102\ }
-\DoxyCodeLine{00103\ }
-\DoxyCodeLine{00106\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{admin_8c_a952449da34b356e2651de547daf4312c}{Uart\_debug\_out}};}
-\DoxyCodeLine{00108\ \textcolor{preprocessor}{\#define\ DEBUG\_OUT\_NONE\ \ \ \ \ \ 0x00}}
-\DoxyCodeLine{00110\ \textcolor{preprocessor}{\#define\ DEBUG\_OUT\_ALL\ \ \ \ \ \ \ 0xff}}
-\DoxyCodeLine{00111\ }
-\DoxyCodeLine{00113\ \textcolor{preprocessor}{\#define\ LEDS\_DEBUG\_OUT\ \ \ \ \ \ 0x01}}
-\DoxyCodeLine{00115\ \textcolor{preprocessor}{\#define\ ARMKEYS\_DEBUG\_OUT\ \ \ 0x02}}
-\DoxyCodeLine{00117\ \textcolor{preprocessor}{\#define\ UART\_DEBUG\_OUT\ \ \ \ \ \ 0x04}}
-\DoxyCodeLine{00119\ \textcolor{preprocessor}{\#define\ STUDENT\_DEBUG\_OUT\ \ \ 0x08}}
-\DoxyCodeLine{00121\ \textcolor{preprocessor}{\#define\ GPS\_DEBUG\_OUT\ \ \ \ \ \ \ 0x10}}
-\DoxyCodeLine{00123\ \textcolor{preprocessor}{\#define\ GPS\_DEBUG\_RAW\_OUT\ \ \ 0x20}}
-\DoxyCodeLine{00125\ \textcolor{preprocessor}{\#define\ RESERVED1\_OUT\ \ \ \ \ \ \ 0x40}}
-\DoxyCodeLine{00127\ \textcolor{preprocessor}{\#define\ RESERVED2\_OUT\ \ \ \ \ \ \ 0x80}}
-\DoxyCodeLine{00128\ }
-\DoxyCodeLine{00131\ \textcolor{preprocessor}{\#define\ LEDGREEN\ \ GPIO\_PIN\_12}}
-\DoxyCodeLine{00133\ \textcolor{preprocessor}{\#define\ LEDRED\ \ \ \ GPIO\_PIN\_13}}
-\DoxyCodeLine{00135\ \textcolor{preprocessor}{\#define\ LEDORANGE\ GPIO\_PIN\_14}}
-\DoxyCodeLine{00137\ \textcolor{preprocessor}{\#define\ LEDBLUE\ \ \ GPIO\_PIN\_15}}
-\DoxyCodeLine{00138\ }
-\DoxyCodeLine{00139\ \textcolor{preprocessor}{\#define\ M1\_1\ \ \ \ \ \ GPIO\_PIN\_7}}
-\DoxyCodeLine{00140\ }
-\DoxyCodeLine{00141\ \textcolor{preprocessor}{\#define\ M1\_2\ \ \ \ \ \ GPIO\_PIN\_8}}
-\DoxyCodeLine{00142\ }
-\DoxyCodeLine{00143\ \textcolor{preprocessor}{\#define\ M2\_1\ \ \ \ \ \ GPIO\_PIN\_9}}
-\DoxyCodeLine{00144\ }
-\DoxyCodeLine{00145\ \textcolor{preprocessor}{\#define\ M2\_2\ \ \ \ \ \ GPIO\_PIN\_10}}
-\DoxyCodeLine{00146\ }
-\DoxyCodeLine{00147\ \textcolor{preprocessor}{\#define\ M1\_ANALOG\ GPIO\_PIN\_11}}
-\DoxyCodeLine{00148\ }
-\DoxyCodeLine{00149\ \textcolor{preprocessor}{\#define\ M2\_ANALOG\ GPIO\_PIN\_12}}
-\DoxyCodeLine{00150\ }
-\DoxyCodeLine{00151\ \textcolor{comment}{//\ my\_app.c}}
-\DoxyCodeLine{00152\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{admin_8h_a9dec45875121142b6466b9475691b40a}{DisplayVersion}}\ (\textcolor{keywordtype}{void});}
-\DoxyCodeLine{00153\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{admin_8h_a93467475af28d4b75cafb508f95578bf}{DisplayMenu}}\ \ \ \ (\textcolor{keywordtype}{void});}
-\DoxyCodeLine{00154\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{admin_8h_ac7a60a0c0a7a24b63849288395b81b59}{error\_HaltOS}}\ \ \ (\textcolor{keywordtype}{char}\ *);}
+\DoxyCodeLine{00059\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_route_info__s}{RouteInfo\_s}}\{}
+\DoxyCodeLine{00060\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ latdifference;}
+\DoxyCodeLine{00061\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ londifference;}
+\DoxyCodeLine{00062\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ distance\_m;}
+\DoxyCodeLine{00063\ \ \ \ \ \}\ RouteInfo;}
+\DoxyCodeLine{00064\ }
+\DoxyCodeLine{00065\ \textcolor{keyword}{extern}\ RouteInfo\ info;}
+\DoxyCodeLine{00066\ }
+\DoxyCodeLine{00067\ \textcolor{comment}{//\ dataretention.c}}
+\DoxyCodeLine{00068\ \textcolor{preprocessor}{\#define\ MAX\_LOGS\ 100\ }\textcolor{comment}{//\ Define\ the\ maximum\ number\ of\ logs}}
+\DoxyCodeLine{00069\ }
+\DoxyCodeLine{00070\ \textcolor{comment}{//\ data\ retention\ log\ structure}}
+\DoxyCodeLine{00071\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structlog}{log}}}
+\DoxyCodeLine{00072\ \{}
+\DoxyCodeLine{00073\ \ \ \ \ \textcolor{keywordtype}{char}\ \ \ \ latitude[10];\ \ \textcolor{comment}{//\ 4.\ ddmm.mmmm\ (double)}}
+\DoxyCodeLine{00074\ \ \ \ \ \textcolor{keywordtype}{char}\ \ \ \ longitude[10];\ \textcolor{comment}{//\ 6.\ ddmm.mmmm\ (double)}}
+\DoxyCodeLine{00075\ \ \ \ \ \textcolor{keywordtype}{char}\ \ \ \ heading\_current[8];\ \ \ \ \ \textcolor{comment}{//\ 9.\ 309.62\ degrees\ (double)}}
+\DoxyCodeLine{00076\ \ \ \ \ \textcolor{keywordtype}{char}\ \ \ \ heading\_desired[8];}
+\DoxyCodeLine{00077\ \ \ \ \ \textcolor{keywordtype}{char}\ \ \ \ buttons\_pressed[25];\ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 13.\ A=autonomous,\ D,E}}
+\DoxyCodeLine{00078\ \ \ \ \ \textcolor{keywordtype}{char}\ \ \ \ commands[10];\ \ \ \ \ \ \textcolor{comment}{//\ motor\ commands}}
+\DoxyCodeLine{00079\ \}\ Slog;}
+\DoxyCodeLine{00080\ }
+\DoxyCodeLine{00082\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_task_data}{TaskData}}}
+\DoxyCodeLine{00083\ \{}
+\DoxyCodeLine{00084\ \ \ \ \ osThreadFunc\_t\ \ \ \ \ \ \ func;\ \ \ \ \ }
+\DoxyCodeLine{00085\ \ \ \ \ \textcolor{keywordtype}{void}\ *\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{struct_task_data_a6a0147ed63ef3f0f7e291aa5f6f48191}{argument}};\ }
+\DoxyCodeLine{00086\ \ \ \ \ \mbox{\hyperlink{structos_thread_attr__t}{osThreadAttr\_t}}\ \ \ \ \ \ \ \mbox{\hyperlink{struct_task_data_aeab588ea33fe027c4408d552ea7fd965}{attr}};\ \ \ \ \ }
+\DoxyCodeLine{00087\ \ \ \ \ osThreadId\_t\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{struct_task_data_a00081de8efdf72da5c61ecf1780936a7}{hTask}};\ \ \ \ }
+\DoxyCodeLine{00088\ \}\ \mbox{\hyperlink{admin_8h_a7f8e353159968ff0f0becfe26d3bf630}{TASKDATA}},\ *PTASKDATA;\ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00089\ }
+\DoxyCodeLine{00090\ }
+\DoxyCodeLine{00091\ }
+\DoxyCodeLine{00094\ \textcolor{keyword}{extern}\ QueueHandle\_t\ \ \ \ \ \ \mbox{\hyperlink{admin_8c_a1db415a0f7c5ecff145e4bb53cc54dbe}{hUART\_Queue}};}
+\DoxyCodeLine{00096\ \textcolor{keyword}{extern}\ QueueHandle\_t\ \ \ \ \ \ \mbox{\hyperlink{admin_8c_a77d12f838c966d96a18a31e503b7955c}{hGPS\_Queue}};}
+\DoxyCodeLine{00098\ \textcolor{keyword}{extern}\ SemaphoreHandle\_t\ \ \mbox{\hyperlink{admin_8c_a011b1349f4d8c02977b852c7587f0581}{hLED\_Sem}};}
+\DoxyCodeLine{00100\ \textcolor{keyword}{extern}\ SemaphoreHandle\_t\ \ \mbox{\hyperlink{admin_8c_acb75afe78edbc0029054eef295bbd316}{hGpsDataMutex}};}
+\DoxyCodeLine{00102\ \textcolor{keyword}{extern}\ EventGroupHandle\_t\ \mbox{\hyperlink{admin_8c_ada55e3a3cc32b9d16e1bbc08d83431c9}{hKEY\_Event}};}
+\DoxyCodeLine{00104\ \textcolor{keyword}{extern}\ TimerHandle\_t\ \ \ \ \ \ \mbox{\hyperlink{admin_8c_af1a9410a47225cac12eb96a84b51b035}{hTimer1}};}
+\DoxyCodeLine{00106\ \textcolor{keyword}{extern}\ TaskHandle\_t\ \ \ \ \ \ \ \mbox{\hyperlink{admin_8h_ab0334f032bcc3014435a9a3ce0dbcb43}{hWaypointTask}};}
+\DoxyCodeLine{00107\ \textcolor{keyword}{extern}\ TaskHandle\_t\ \ \ \ \ \ \ hReachWP;}
+\DoxyCodeLine{00108\ }
+\DoxyCodeLine{00109\ }
+\DoxyCodeLine{00110\ }
+\DoxyCodeLine{00113\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{admin_8c_a952449da34b356e2651de547daf4312c}{Uart\_debug\_out}};}
+\DoxyCodeLine{00115\ \textcolor{preprocessor}{\#define\ DEBUG\_OUT\_NONE\ \ \ \ \ \ 0x00}}
+\DoxyCodeLine{00117\ \textcolor{preprocessor}{\#define\ DEBUG\_OUT\_ALL\ \ \ \ \ \ \ 0xff}}
+\DoxyCodeLine{00118\ }
+\DoxyCodeLine{00120\ \textcolor{preprocessor}{\#define\ LEDS\_DEBUG\_OUT\ \ \ \ \ \ 0x01}}
+\DoxyCodeLine{00122\ \textcolor{preprocessor}{\#define\ ARMKEYS\_DEBUG\_OUT\ \ \ 0x02}}
+\DoxyCodeLine{00124\ \textcolor{preprocessor}{\#define\ UART\_DEBUG\_OUT\ \ \ \ \ \ 0x04}}
+\DoxyCodeLine{00126\ \textcolor{preprocessor}{\#define\ STUDENT\_DEBUG\_OUT\ \ \ 0x08}}
+\DoxyCodeLine{00128\ \textcolor{preprocessor}{\#define\ GPS\_DEBUG\_OUT\ \ \ \ \ \ \ 0x10}}
+\DoxyCodeLine{00130\ \textcolor{preprocessor}{\#define\ GPS\_DEBUG\_RAW\_OUT\ \ \ 0x20}}
+\DoxyCodeLine{00132\ \textcolor{preprocessor}{\#define\ RESERVED1\_OUT\ \ \ \ \ \ \ 0x40}}
+\DoxyCodeLine{00134\ \textcolor{preprocessor}{\#define\ RESERVED2\_OUT\ \ \ \ \ \ \ 0x80}}
+\DoxyCodeLine{00135\ }
+\DoxyCodeLine{00138\ \textcolor{preprocessor}{\#define\ LEDGREEN\ \ GPIO\_PIN\_12}}
+\DoxyCodeLine{00140\ \textcolor{preprocessor}{\#define\ LEDRED\ \ \ \ GPIO\_PIN\_13}}
+\DoxyCodeLine{00142\ \textcolor{preprocessor}{\#define\ LEDORANGE\ GPIO\_PIN\_14}}
+\DoxyCodeLine{00144\ \textcolor{preprocessor}{\#define\ LEDBLUE\ \ \ GPIO\_PIN\_15}}
+\DoxyCodeLine{00145\ }
+\DoxyCodeLine{00146\ \textcolor{preprocessor}{\#define\ M1\_1\ \ \ \ \ \ GPIO\_PIN\_7}}
+\DoxyCodeLine{00147\ }
+\DoxyCodeLine{00148\ \textcolor{preprocessor}{\#define\ M1\_2\ \ \ \ \ \ GPIO\_PIN\_8}}
+\DoxyCodeLine{00149\ }
+\DoxyCodeLine{00150\ \textcolor{preprocessor}{\#define\ M2\_1\ \ \ \ \ \ GPIO\_PIN\_9}}
+\DoxyCodeLine{00151\ }
+\DoxyCodeLine{00152\ \textcolor{preprocessor}{\#define\ M2\_2\ \ \ \ \ \ GPIO\_PIN\_10}}
+\DoxyCodeLine{00153\ }
+\DoxyCodeLine{00154\ \textcolor{preprocessor}{\#define\ M1\_ANALOG\ GPIO\_PIN\_11}}
 \DoxyCodeLine{00155\ }
-\DoxyCodeLine{00156\ \textcolor{comment}{//\ tasks.c}}
-\DoxyCodeLine{00157\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{void}\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{admin_8h_a27f94d40ad6bce04d22896b2c679b8c5}{CheckTaskData}}\ (\textcolor{keywordtype}{int});}
-\DoxyCodeLine{00158\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{void}\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{admin_8h_a7f983159a50cdcaaad786c6c7a216cd9}{CreateTasks}}\ \ \ \ \ (\textcolor{keywordtype}{void});}
-\DoxyCodeLine{00159\ \textcolor{keyword}{extern}\ osThreadId\_t\ \mbox{\hyperlink{admin_8h_af3fcde4e5fc023f9a6b398139143c657}{GetTaskhandle}}\ \ \ (\textcolor{keywordtype}{char}\ *);}
-\DoxyCodeLine{00160\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{void}\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{admin_8h_a16ba23da293f6f319ffbc502a4cb7d5c}{SetTaskPriority}}\ (\textcolor{keywordtype}{int},\ \textcolor{keywordtype}{int});}
-\DoxyCodeLine{00161\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{void}\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{admin_8h_a0c9aab30edaac2fecc7fd1c21f5763a2}{StartStopTask}}\ \ \ (\textcolor{keywordtype}{int});}
+\DoxyCodeLine{00156\ \textcolor{preprocessor}{\#define\ M2\_ANALOG\ GPIO\_PIN\_12}}
+\DoxyCodeLine{00157\ }
+\DoxyCodeLine{00158\ \textcolor{comment}{//\ my\_app.c}}
+\DoxyCodeLine{00159\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{admin_8h_a9dec45875121142b6466b9475691b40a}{DisplayVersion}}\ (\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00160\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{admin_8h_a93467475af28d4b75cafb508f95578bf}{DisplayMenu}}\ \ \ \ (\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00161\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{admin_8h_ac7a60a0c0a7a24b63849288395b81b59}{error\_HaltOS}}\ \ \ (\textcolor{keywordtype}{char}\ *);}
 \DoxyCodeLine{00162\ }
-\DoxyCodeLine{00163\ \textcolor{comment}{//\ handles.c}}
-\DoxyCodeLine{00164\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{void}\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{admin_8h_a183387e08a88262f831be8b883ce8754}{CreateHandles}}\ \ \ (\textcolor{keywordtype}{void});}
-\DoxyCodeLine{00165\ }
-\DoxyCodeLine{00166\ \textcolor{comment}{//\ LEDS.c}}
-\DoxyCodeLine{00167\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{admin_8h_a8fa46093b138efd9f745379e50aaebb1}{LED\_Task1}}\ (\textcolor{keywordtype}{void}\ *);}
-\DoxyCodeLine{00168\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{admin_8h_aa6578679005e0ded1868835daa8fbede}{LED\_Task2}}\ (\textcolor{keywordtype}{void}\ *);}
-\DoxyCodeLine{00169\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{admin_8h_a379c01dd4fb15e45ca6e00a95c761cc7}{LED\_Task3}}\ (\textcolor{keywordtype}{void}\ *);}
-\DoxyCodeLine{00170\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{admin_8h_a549798a0f2a6d88c91a8297567a018c1}{LED\_Task4}}\ (\textcolor{keywordtype}{void}\ *);}
-\DoxyCodeLine{00171\ }
-\DoxyCodeLine{00172\ \textcolor{comment}{//route.c}}
-\DoxyCodeLine{00173\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{void}\ Waypoint\ ();}
-\DoxyCodeLine{00174\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{admin_8h_ab8ef2480f3b6e8731e14146e47d92a72}{returnWaypoints}}\ (\textcolor{keywordtype}{int},\ \textcolor{keywordtype}{int});}
-\DoxyCodeLine{00175\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{admin_8h_ad27f7aa2260823ac2f3a243ae7654e32}{CurrentWaypointChange}}\ (\textcolor{keywordtype}{int});}
-\DoxyCodeLine{00176\ }
-\DoxyCodeLine{00177\ \textcolor{comment}{//\ ARM\_keys.c}}
-\DoxyCodeLine{00178\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{admin_8h_a0c660e87fd3fb5216355c32e3a72f95e}{ARM\_keys\_IRQ}}\ (\textcolor{keywordtype}{void}\ *);}
-\DoxyCodeLine{00179\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{admin_8h_af21164a48742d972455d2ce8c6317262}{ARM\_keys\_task}}(\textcolor{keywordtype}{void}\ *);}
-\DoxyCodeLine{00180\ }
-\DoxyCodeLine{00181\ \textcolor{comment}{//\ UART\_keys.c}}
-\DoxyCodeLine{00182\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{admin_8h_a390831b4b34c463c81b188d9973d2a52}{UART\_keys\_poll}}(\textcolor{keywordtype}{void}\ *);}
-\DoxyCodeLine{00183\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{admin_8h_af42059fd155a512774c89e7fc38bc03c}{UART\_keys\_IRQ}}\ (\textcolor{keywordtype}{void}\ *);}
-\DoxyCodeLine{00184\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{admin_8h_af909ca669055035da2246051d81ae747}{UART\_menu}}\ \ \ \ \ (\textcolor{keywordtype}{void}\ *);}
-\DoxyCodeLine{00185\ }
-\DoxyCodeLine{00186\ \textcolor{comment}{//\ gps.c}}
-\DoxyCodeLine{00187\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{admin_8h_aa858cc1bd518e1f551603a78e90c53be}{GPS\_getNMEA}}\ (\textcolor{keywordtype}{void}\ *);}
-\DoxyCodeLine{00188\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{admin_8h_a279ae28c1e6a05f0495e2fc3688e4947}{ParsedGPS}}\ (\textcolor{keywordtype}{void});}
-\DoxyCodeLine{00189\ }
-\DoxyCodeLine{00190\ \textcolor{comment}{//\ studenttask.c}}
-\DoxyCodeLine{00191\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{admin_8h_a23fe84bfb739ead3f3005b8378170b62}{Student\_task1}}\ (\textcolor{keywordtype}{void}\ *);}
+\DoxyCodeLine{00163\ \textcolor{comment}{//\ tasks.c}}
+\DoxyCodeLine{00164\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{void}\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{admin_8h_a27f94d40ad6bce04d22896b2c679b8c5}{CheckTaskData}}\ (\textcolor{keywordtype}{int});}
+\DoxyCodeLine{00165\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{void}\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{admin_8h_a7f983159a50cdcaaad786c6c7a216cd9}{CreateTasks}}\ \ \ \ \ (\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00166\ \textcolor{keyword}{extern}\ osThreadId\_t\ \mbox{\hyperlink{admin_8h_af3fcde4e5fc023f9a6b398139143c657}{GetTaskhandle}}\ \ \ (\textcolor{keywordtype}{char}\ *);}
+\DoxyCodeLine{00167\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{void}\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{admin_8h_a16ba23da293f6f319ffbc502a4cb7d5c}{SetTaskPriority}}\ (\textcolor{keywordtype}{int},\ \textcolor{keywordtype}{int});}
+\DoxyCodeLine{00168\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{void}\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{admin_8h_a0c9aab30edaac2fecc7fd1c21f5763a2}{StartStopTask}}\ \ \ (\textcolor{keywordtype}{int});}
+\DoxyCodeLine{00169\ }
+\DoxyCodeLine{00170\ \textcolor{comment}{//\ handles.c}}
+\DoxyCodeLine{00171\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{void}\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{admin_8h_a183387e08a88262f831be8b883ce8754}{CreateHandles}}\ \ \ (\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00172\ }
+\DoxyCodeLine{00173\ \textcolor{comment}{//\ LEDS.c}}
+\DoxyCodeLine{00174\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{admin_8h_a8fa46093b138efd9f745379e50aaebb1}{LED\_Task1}}\ (\textcolor{keywordtype}{void}\ *);}
+\DoxyCodeLine{00175\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{admin_8h_aa6578679005e0ded1868835daa8fbede}{LED\_Task2}}\ (\textcolor{keywordtype}{void}\ *);}
+\DoxyCodeLine{00176\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{admin_8h_a379c01dd4fb15e45ca6e00a95c761cc7}{LED\_Task3}}\ (\textcolor{keywordtype}{void}\ *);}
+\DoxyCodeLine{00177\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{admin_8h_a549798a0f2a6d88c91a8297567a018c1}{LED\_Task4}}\ (\textcolor{keywordtype}{void}\ *);}
+\DoxyCodeLine{00178\ }
+\DoxyCodeLine{00179\ \textcolor{comment}{//route.c}}
+\DoxyCodeLine{00180\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{void}\ Waypoint\ ();}
+\DoxyCodeLine{00181\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{admin_8h_ab8ef2480f3b6e8731e14146e47d92a72}{returnWaypoints}}\ (\textcolor{keywordtype}{int},\ \textcolor{keywordtype}{int});}
+\DoxyCodeLine{00182\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{admin_8h_ad27f7aa2260823ac2f3a243ae7654e32}{CurrentWaypointChange}}\ (\textcolor{keywordtype}{int});}
+\DoxyCodeLine{00183\ }
+\DoxyCodeLine{00184\ \textcolor{comment}{//\ ARM\_keys.c}}
+\DoxyCodeLine{00185\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{admin_8h_a0c660e87fd3fb5216355c32e3a72f95e}{ARM\_keys\_IRQ}}\ (\textcolor{keywordtype}{void}\ *);}
+\DoxyCodeLine{00186\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{admin_8h_af21164a48742d972455d2ce8c6317262}{ARM\_keys\_task}}(\textcolor{keywordtype}{void}\ *);}
+\DoxyCodeLine{00187\ }
+\DoxyCodeLine{00188\ \textcolor{comment}{//\ UART\_keys.c}}
+\DoxyCodeLine{00189\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{admin_8h_a390831b4b34c463c81b188d9973d2a52}{UART\_keys\_poll}}(\textcolor{keywordtype}{void}\ *);}
+\DoxyCodeLine{00190\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{admin_8h_af42059fd155a512774c89e7fc38bc03c}{UART\_keys\_IRQ}}\ (\textcolor{keywordtype}{void}\ *);}
+\DoxyCodeLine{00191\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{admin_8h_af909ca669055035da2246051d81ae747}{UART\_menu}}\ \ \ \ \ (\textcolor{keywordtype}{void}\ *);}
 \DoxyCodeLine{00192\ }
-\DoxyCodeLine{00193\ \textcolor{comment}{//\ admin.c}}
-\DoxyCodeLine{00194\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{admin_8h_a96c9e7d4608bbcbb1f89460ea7d8da6f}{Timer1\_Handler}}(\textcolor{keywordtype}{void});}
-\DoxyCodeLine{00195\ }
-\DoxyCodeLine{00196\ \textcolor{comment}{//TactileFeedback.c}}
-\DoxyCodeLine{00197\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{admin_8h_af292f364f4ee621c575f83b5b25fbfc5}{ReachWPTask}}\ (\textcolor{keywordtype}{void}\ *);}
-\DoxyCodeLine{00198\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{admin_8h_a5d6397136fbf12fef3dca666de7a35a0}{heading}}\ (\textcolor{keywordtype}{int});}
-\DoxyCodeLine{00199\ \textcolor{keyword}{extern}\ RouteInfo\ \mbox{\hyperlink{admin_8h_af4a85680d3fac414e5b91f0cd16e8adf}{Get\_Waypoint\_Info}}\ (\textcolor{keywordtype}{int}\ waypoint);}
-\DoxyCodeLine{00200\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{admin_8h_a8e72f6787dd96ab06b941f402e994077}{SkipWaypoint}}\ (\textcolor{keywordtype}{void});}
-\DoxyCodeLine{00201\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{admin_8h_a2f96c316955e657fb8242f6a23b21975}{BackWaypoint}}\ (\textcolor{keywordtype}{void});}
-\DoxyCodeLine{00202\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{admin_8h_a5f8b543f818c13ecb6eaf9452f9a4395}{ShowWaypoint}}\ (\textcolor{keywordtype}{void});}
-\DoxyCodeLine{00203\ }
-\DoxyCodeLine{00204\ \textcolor{comment}{//\ dataretention.c}}
-\DoxyCodeLine{00205\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{admin_8h_ae101eafad5ce91c38146e960eaed0c50}{logWrite}}(\textcolor{keywordtype}{int}\ type,\ \textcolor{keywordtype}{void}*\ info);}
-\DoxyCodeLine{00206\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{admin_8h_a2ebdc8837802eba656d049ffab377c30}{printLogs}}(\textcolor{keywordtype}{void});}
-\DoxyCodeLine{00207\ }
-\DoxyCodeLine{00208\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{admin_8h_a3f88352450dad51d82e4bf84a0a439a1}{delay\_us}}\ (\textcolor{keywordtype}{int}\ us);}
-\DoxyCodeLine{00209\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{admin_8h_acba72bb75efaeba8bfbb4bd856cc49c3}{SR04\_Task}}\ (\textcolor{keywordtype}{void}\ *);}
-\DoxyCodeLine{00210\ }
-\DoxyCodeLine{00211\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{admin_8h_a70f05e6a13ceea6e6c44a03cfa90059b}{drive\_forward}}(\textcolor{keywordtype}{void});}
-\DoxyCodeLine{00212\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{admin_8h_a984a089ed87e45a3f221747b1199403b}{turn\_left}}(\textcolor{keywordtype}{void});}
-\DoxyCodeLine{00213\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{admin_8h_a3d336b48993609629f204ac0babbd8db}{turn\_right}}(\textcolor{keywordtype}{void});}
-\DoxyCodeLine{00214\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{admin_8h_a464fa1880ef5cea26035bc54a25aa685}{drive\_backward}}(\textcolor{keywordtype}{void});}
-\DoxyCodeLine{00215\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{admin_8h_aacf6bf8e121fea8b0a92d7197b73fe27}{stop}}(\textcolor{keywordtype}{void});}
-\DoxyCodeLine{00216\ }
-\DoxyCodeLine{00217\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ ADMIM\_H}}
+\DoxyCodeLine{00193\ \textcolor{comment}{//\ gps.c}}
+\DoxyCodeLine{00194\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{admin_8h_aa858cc1bd518e1f551603a78e90c53be}{GPS\_getNMEA}}\ (\textcolor{keywordtype}{void}\ *);}
+\DoxyCodeLine{00195\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{admin_8h_a279ae28c1e6a05f0495e2fc3688e4947}{ParsedGPS}}\ (\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00196\ }
+\DoxyCodeLine{00197\ \textcolor{comment}{//\ studenttask.c}}
+\DoxyCodeLine{00198\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{admin_8h_a23fe84bfb739ead3f3005b8378170b62}{Student\_task1}}\ (\textcolor{keywordtype}{void}\ *);}
+\DoxyCodeLine{00199\ }
+\DoxyCodeLine{00200\ \textcolor{comment}{//\ admin.c}}
+\DoxyCodeLine{00201\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{admin_8h_a96c9e7d4608bbcbb1f89460ea7d8da6f}{Timer1\_Handler}}(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00202\ }
+\DoxyCodeLine{00203\ \textcolor{comment}{//TactileFeedback.c}}
+\DoxyCodeLine{00204\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{admin_8h_af292f364f4ee621c575f83b5b25fbfc5}{ReachWPTask}}\ (\textcolor{keywordtype}{void}\ *);}
+\DoxyCodeLine{00205\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{admin_8h_a5d6397136fbf12fef3dca666de7a35a0}{heading}}\ (\textcolor{keywordtype}{int});}
+\DoxyCodeLine{00206\ \textcolor{keyword}{extern}\ RouteInfo\ \mbox{\hyperlink{admin_8h_af4a85680d3fac414e5b91f0cd16e8adf}{Get\_Waypoint\_Info}}\ (\textcolor{keywordtype}{int}\ waypoint);}
+\DoxyCodeLine{00207\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{admin_8h_a8e72f6787dd96ab06b941f402e994077}{SkipWaypoint}}\ (\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00208\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{admin_8h_a2f96c316955e657fb8242f6a23b21975}{BackWaypoint}}\ (\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00209\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{admin_8h_a5f8b543f818c13ecb6eaf9452f9a4395}{ShowWaypoint}}\ (\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00210\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{admin_8h_af71671f3764037bb67dce96f83ee96d5}{setMotors}}(\textcolor{keywordtype}{int}\ direction,\ uint16\_t\ speed\_l,\ uint16\_t\ speed\_r);}
+\DoxyCodeLine{00211\ }
+\DoxyCodeLine{00212\ \textcolor{comment}{//\ dataretention.c}}
+\DoxyCodeLine{00213\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{admin_8h_ae101eafad5ce91c38146e960eaed0c50}{logWrite}}(\textcolor{keywordtype}{int}\ type,\ \textcolor{keywordtype}{void}*\ info);}
+\DoxyCodeLine{00214\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{admin_8h_a2ebdc8837802eba656d049ffab377c30}{printLogs}}(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00215\ }
+\DoxyCodeLine{00216\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{admin_8h_a3f88352450dad51d82e4bf84a0a439a1}{delay\_us}}\ (\textcolor{keywordtype}{int}\ us);}
+\DoxyCodeLine{00217\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{admin_8h_acba72bb75efaeba8bfbb4bd856cc49c3}{SR04\_Task}}\ (\textcolor{keywordtype}{void}\ *);}
+\DoxyCodeLine{00218\ }
+\DoxyCodeLine{00219\ }
+\DoxyCodeLine{00220\ }
+\DoxyCodeLine{00221\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ ADMIM\_H}}
 
 \end{DoxyCode}

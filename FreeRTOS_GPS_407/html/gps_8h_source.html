@@ -111,16 +111,16 @@ $(function() {
 <div class="line"><a id="l00035" name="l00035"></a><span class="lineno"><a class="line" href="structs_parsed___g_n_r_m_c.html">   35</a></span><span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code hl_struct" href="structs_parsed___g_n_r_m_c.html">sParsed_GNRMC</a></div>
 <div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>{</div>
 <div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>    <span class="keywordtype">char</span>    head[7];       <span class="comment">// 1. header</span></div>
-<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>    <span class="keywordtype">int</span>     time;      <span class="comment">// 2. hhmmss.sss</span></div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>    <span class="keywordtype">int</span>     time;          <span class="comment">// 2. hhmmss.sss</span></div>
 <div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>    <span class="keywordtype">char</span>    status;        <span class="comment">// 3. A=valid, V=not valid</span></div>
-<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>    <span class="keywordtype">double</span>  latitude;  <span class="comment">// 4. ddmm.mmmm (double)</span></div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>    <span class="keywordtype">double</span>  latitude;      <span class="comment">// 4. ddmm.mmmm (double)</span></div>
 <div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>    <span class="keywordtype">char</span>    NS_ind;        <span class="comment">// 5. N,S</span></div>
-<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>    <span class="keywordtype">double</span>  longitude; <span class="comment">// 6. ddmm.mmmm (double)</span></div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>    <span class="keywordtype">double</span>  longitude;     <span class="comment">// 6. ddmm.mmmm (double)</span></div>
 <div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>    <span class="keywordtype">char</span>    EW_ind;        <span class="comment">// 7. E,W</span></div>
-<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>    <span class="keywordtype">double</span>  speed;      <span class="comment">// 8. 0.13 knots (double)</span></div>
-<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>    <span class="keywordtype">double</span>  course;     <span class="comment">// 9. 309.62 degrees (double)</span></div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>    <span class="keywordtype">double</span>  speed;         <span class="comment">// 8. 0.13 knots (double)</span></div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>    <span class="keywordtype">double</span>  course;        <span class="comment">// 9. 309.62 degrees (double)</span></div>
 <div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>    <span class="keywordtype">char</span>    date[7];       <span class="comment">// 10. ddmmyy</span></div>
-<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>    <span class="keywordtype">double</span>  mag_var;    <span class="comment">// 11. E,W degrees (double)</span></div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>    <span class="keywordtype">double</span>  mag_var;       <span class="comment">// 11. E,W degrees (double)</span></div>
 <div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>    <span class="keywordtype">char</span>    mag_var_pos;   <span class="comment">// 12.</span></div>
 <div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>    <span class="keywordtype">char</span>    mode;          <span class="comment">// 13. A=autonomous, D,E</span></div>
 <div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>    <span class="keywordtype">char</span>    cs[4];         <span class="comment">// 14. checkum *34</span></div>

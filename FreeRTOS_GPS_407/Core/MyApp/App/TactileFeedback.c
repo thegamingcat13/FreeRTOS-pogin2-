@@ -37,7 +37,7 @@ char course_char;
 bool FirstRun = true;
 
 TaskHandle_t hReachWP;
-
+extern TIM_HandleTypeDef htim8;  // PWM timer
 
 /**
  * @brief Functie voor de aansturing van de motors, met een switch case.
@@ -46,9 +46,6 @@ TaskHandle_t hReachWP;
  * 		  speed_r = snelheid voor rechter motor<br>
  * @return void
  */
-
-extern TIM_HandleTypeDef htim8;  // PWM timer
-
 void setMotors(int direction, uint16_t speed_l, uint16_t speed_r)
 {
     if (speed_l > htim8.Init.Period)
