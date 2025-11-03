@@ -1,15 +1,14 @@
 /**
  * @file TactileFeedback.c
- * @brief Hierin staan verschillende tasks en functies.<br>
- * @verbatim
- *		- Motor aansturing<br>
- * 		- Bereiken van de waypoint<br>
- * 		- Overslaan en terug gaan naar waypoints<br>
- * 		- Uitlezen van waypoint op LCD<br>
- *@endverbatim
+ * @brief Hierin staan verschillende tasks en functies.
+ * - Motor aansturing
+ * - Bereiken van de waypoint
+ * - Overslaan en terug gaan naar waypoints
+ * - Uitlezen van waypoint op LCD
  *
  * @date 28/10/2025
  */
+
 
 #include <admin.h>
 #include <stdbool.h>
