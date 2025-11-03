@@ -216,6 +216,7 @@ void UART_menu (void *argument)
 			      s = strtok(s,    tok); 				 // naar start van string, negeer 't,'
 				  s = strtok(NULL, tok); val1 = atoi(s); // volgende = task_id
 				  s = strtok(NULL, tok); val2 = atoi(s); // volgende = priority
+
 				  if (val1 && val2)						 // kleine validiteitscontrole
 					  SetTaskPriority(val1, val2);
 				  break;
@@ -227,6 +228,7 @@ void UART_menu (void *argument)
 				  //  nb. dit is wel grof geprogrammeerd zo, in het echt maak je hier een mooie functie van.
 			      s = strtok(s,    tok); 				 // naar start van string, negeer 's,'
 				  s = strtok(NULL, tok); val1 = atoi(s); // volgende = task_id
+
 				  if (val1)						 // kleine validiteitscontrole
 					  StartStopTask(val1);
 				  break;
@@ -235,12 +237,15 @@ void UART_menu (void *argument)
 				  // Eerst worden floats aangemaakt als buffer,
 				  // daarna wordt funtie returnWaypoints aangeroepen (route.c) om de floatwaardes op te halen.
 				UART_puts("\r\n\nGetting waypoints");
+
 				for (int i = 0; i <STRC_AMOUNT; i++) 			// maakt teller aan om waypoints te printen
 				{
 					float templat;
-					templat = returnWaypoints(i, 1);			// print latitude van punt i
 					float templon;
+
+					templat = returnWaypoints(i, 1);			// print latitude van punt i
 					templon = returnWaypoints(i, 2);			// print longitude van punt i
+
 					UART_printf(100, "\r\n\nWaypoint %d: ", i+1);
 					UART_printf(100, "\r\nlon: %f", templat);
 					UART_printf(100, "\r\nlat: %f", templon);
@@ -277,9 +282,11 @@ void UART_menu (void *argument)
 
 		case 'R': /// R: Registreer een waypoint met de huidige gps data
 			UART_puts("\n\n\rParsing GPS data");
+
 			ParsedGPS(); // geef de notify aan de struct van gps data
-			osDelay(10);
+
 			UART_puts("\n\rSaving waypoints");
+
 			Waypoint();
 
 			switch (status)

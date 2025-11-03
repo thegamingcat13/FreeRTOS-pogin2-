@@ -15,8 +15,6 @@
 #include "gps.h"
 #include "cmsis_os.h"
 
-TaskHandle_t hWaypointTask;
-
 struct waypoints // maakt de struct aan die de latitude en longitude opslaat in floats
 {
     float lon;

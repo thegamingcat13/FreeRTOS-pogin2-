@@ -99,6 +99,7 @@ void setMotors(int direction, uint16_t speed_l, uint16_t speed_r)
             HAL_GPIO_WritePin(M2_1_GPIO_Port, M2_1_Pin, GPIO_PIN_RESET);
             HAL_GPIO_WritePin(M2_2_GPIO_Port, M2_2_Pin, GPIO_PIN_RESET);
             logWrite(6, Stop);
+
             speed_l = 0;
             speed_r = 0;
             break;
@@ -129,6 +130,7 @@ void ReachWPTask(void *argument)
 			while (fabs(wpLat_temp) < 0.0001f)
 			{
 				WaypointCount --;
+
 				wpLat_temp = returnWaypoints(WaypointCount, 1); // decide how many waypoints we have max of 20
 			}
 			CurrentWaypoint = 0;
@@ -141,19 +143,14 @@ void ReachWPTask(void *argument)
 
 			gps_lcd_print = false;
 
-			if (CurrentWaypoint > WaypointCount)
-			{
-				setMotors(STOP, STANDSTILL, STANDSTILL);
-				osDelay(5000);
-				continue;
-			}
-
 			if (xSemaphoreTake(hGpsDataMutex, portMAX_DELAY) == pdTRUE)
 			{
 				LCD_clear();
+
 				info = Get_Waypoint_Info(CurrentWaypoint);
 				current_speed = parsed_gnrmc.speed;
 				CurrentHeading = parsed_gnrmc.course;
+
 				xSemaphoreGive(hGpsDataMutex);
 			}
 
@@ -161,10 +158,12 @@ void ReachWPTask(void *argument)
 			if (info.distance_m < ARRIVAL_RADIUS_METERS)
 			{
 				setMotors(STOP, STANDSTILL, STANDSTILL);
+
 				LCD_clear();
 				LCD_puts("Waypoint reached");
-				UART_puts("Waypont reached");
+
 				osDelay(3000);
+
 				CurrentWaypoint++;
 			}
 
@@ -191,38 +190,40 @@ void ReachWPTask(void *argument)
 					if (heading_error > 0)
 					{
 						setMotors(RIGHT, SLOW, MEDIUM); //turn right
+
 						LCD_clear();
 						LCD_puts("RIGHT");
-						UART_puts("\n\n\rRIGHT");
 					}
 
 					if (heading_error < 0)
 					{
 						setMotors(LEFT, MEDIUM, SLOW); //turn left
+
 						LCD_clear();
 						LCD_puts("LEFT");
-						UART_puts("\n\n\rLEFT");
 					}
 				}
 				else
 				{
 					setMotors(FORWARD, MEDIUM, MEDIUM); //go foward
+
 					LCD_clear();
 					LCD_puts("Foward");
-					UART_puts("\n\n\rForward");
 				}
 
 			}
 			else
 			{
 				setMotors(FORWARD, MEDIUM, MEDIUM); //go foward
+
 				LCD_clear();
 				LCD_puts("FORWARD");
-				UART_puts("\n\n\rFORWARD");
 			}
 
 			osDelay(200);
 		}
+		setMotors(STOP, STANDSTILL, STANDSTILL);
+
 		LCD_puts("Final point reached");
 		UART_puts("\n\n\rFinal point reached");
 
@@ -240,7 +241,9 @@ void ReachWPTask(void *argument)
 int SkipWaypoint (void)
 {
 	int memory = CurrentWaypoint;
+
 	CurrentWaypoint++;
+
 	if (CurrentWaypoint == memory +1) // verhoog CurrentWaypoint met 1 om zo naar de volgende waypoint te gaan
 		return 1;
 	else
@@ -256,7 +259,9 @@ int SkipWaypoint (void)
 int BackWaypoint (void)
 {
 	int memory = CurrentWaypoint;
+
 	CurrentWaypoint--;
+
 	if (CurrentWaypoint == memory -1) // verlaag CurrentWaypoint met 1 om zo naar de vorige waypoint te gaan
 		return 1;
 	else
@@ -272,10 +277,12 @@ void ShowWaypoint (void)
 {
 	int current = CurrentWaypoint;
 	char charcurrent[10]; // Converteer integer naar character
-	itoa (current, charcurrent, 10);
 	int total = WaypointCount;
 	char chartotal[10];
+
+	itoa (current, charcurrent, 10);
 	itoa (total, chartotal, 10); // Converteer integer naar character
+
 	LCD_clear();				 // veeg het scherm leeg
 	LCD_puts("waypoint");		 // zet de data op het scherm
 	LCD_puts(charcurrent);

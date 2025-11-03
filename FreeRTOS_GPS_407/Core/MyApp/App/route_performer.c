@@ -80,7 +80,7 @@ float heading (int waypoint)
 	// Normalize to 0-360 degrees
 	heading_deg = fmodf((heading_deg + 360.0f), 360.0f); // Make sure 360.0 is float
 
-	if (1)
+	if (Uart_debug_out)
 		{
 			UART_puts("\nHeading:");
 			UART_printf(100, "%f", heading_deg);
