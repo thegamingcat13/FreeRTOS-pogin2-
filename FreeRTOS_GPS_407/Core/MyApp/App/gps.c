@@ -36,7 +36,6 @@ void ParsedGPS(void)
 			parsed_gnrmc.longitude = atof(gnrmc.longitude);
 			parsed_gnrmc.speed = atof(gnrmc.speed);
 			parsed_gnrmc.course = atof(gnrmc.course);
-			LCD_puts("GPS Gevonden");
 		}
 	else
 		UART_puts("No GPS found\n\n ");
@@ -64,6 +63,12 @@ void fill_GNRMC(char *message)
 
 	s = strtok(NULL, tok);    // 3. valid;
 	gnrmc.status = s[0];
+
+	if (gnrmc.status == 'A')
+	{
+		LCD_clear();
+		LCD_puts("GPS Gevonden");
+	}
 
 	s = strtok(NULL, tok);    // 4. latitude;
 	strcpy(gnrmc.latitude, s);

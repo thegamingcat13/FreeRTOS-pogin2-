@@ -156,7 +156,7 @@ void ReachWPTask(void *argument)
 			desiredheadingValue = DesiredHeading;
 			logWrite(4, (void*)&desiredheadingValue);
 
-			if (current_speed > MIN_COG_SPEED)
+			if (CurrentHeading < 361 && CurrentHeading >= 0)
 			{
 				float heading_error = DesiredHeading - CurrentHeading;
 
