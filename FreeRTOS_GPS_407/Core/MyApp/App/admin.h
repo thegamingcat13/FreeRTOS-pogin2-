@@ -17,7 +17,7 @@
 #include "semphr.h"
 #include "message_buffer.h"
 #include "cmsis_os.h"
-
+#include <stdbool.h>
 #include "stdio.h"
 #include "string.h" // strtok, strcpy
 #include "stdlib.h" // atoi
@@ -61,7 +61,7 @@
 #define METER_PER_DEG_LON 67890.0f
 
 #define MAX_HEADING_DIFFERENCE_DEG 5.0f // level of precision for the heading were going to
-#define ARRIVAL_RADIUS_METERS 1.0f // set arrival radius to 1 meter
+#define ARRIVAL_RADIUS_METERS 2.0f // set arrival radius to 2 meter
 #define MIN_COG_SPEED 0.5f
 
 typedef struct RouteInfo_s{
@@ -113,6 +113,8 @@ extern TimerHandle_t      hTimer1;
 /// handle zodat de waypoint task extern genotified kan worden
 extern TaskHandle_t   	  hWaypointTask;
 extern TaskHandle_t		  hReachWP;
+
+extern bool gps_lcd_print;
 
 
 

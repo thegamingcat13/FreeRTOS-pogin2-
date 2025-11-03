@@ -13,10 +13,13 @@
 #include "cmsis_os.h"
 #include "gps.h"
 #include <stdlib.h>
+#include <stdbool.h>
 
 
 GNRMC gnrmc; // global struct for GNRMC-messages
 Parsed_GNRMC parsed_gnrmc; //global struct for parsed GNRMC-messages
+
+bool gps_lcd_print = true;
 /**
 * @brief De chars van de binnengekomen GNRMC-string worden in data omgezet, dwz in een
 * GNRMC-struct, mbv strtok(); De struct bevat nu alleen chars - je kunt er ook voor kiezen
@@ -66,7 +69,7 @@ void fill_GNRMC(char *message)
 	s = strtok(NULL, tok);    // 3. valid;
 	gnrmc.status = s[0];
 
-	if (gnrmc.status == 'A')
+	if (gnrmc.status == 'A' && gps_lcd_print)
 	{
 		LCD_clear();
 		LCD_puts("GPS Gevonden");

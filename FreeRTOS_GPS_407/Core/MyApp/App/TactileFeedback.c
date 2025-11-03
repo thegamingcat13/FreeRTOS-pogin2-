@@ -129,6 +129,8 @@ void ReachWPTask(void *argument)
 		{
 			ParsedGPS();
 
+			gps_lcd_print = false;
+
 			if (CurrentWaypoint >= WaypointCount)
 			{
 				setMotors(STOP, STANDSTILL, STANDSTILL);
@@ -148,8 +150,10 @@ void ReachWPTask(void *argument)
 			if (info.distance_m < ARRIVAL_RADIUS_METERS)
 			{
 				setMotors(STOP, STANDSTILL, STANDSTILL);
+				LCD_clear();
+				LCD_puts("You did it!!!");
+				osDelay(3000);
 				CurrentWaypoint++;
-				osDelay(500);
 			}
 
 			DesiredHeading = heading(CurrentWaypoint);
@@ -166,20 +170,40 @@ void ReachWPTask(void *argument)
 				if (heading_error < -180.0f)
 					heading_error += 360.0f;
 
+
 				if (Uart_debug_out)
 					UART_printf(100, "\n\rCurrent heading: %.2f, Desired heading: %.2f, Error: %.2f", CurrentHeading, DesiredHeading, heading_error);
 
 				if (fabs(heading_error) > MAX_HEADING_DIFFERENCE)
 				{
 					if (heading_error > 0)
+					{
 						setMotors(RIGHT, MEDIUM, MEDIUM); //turn right
+						LCD_clear();
+						LCD_puts("RIGHT");
+					}
 
 					if (heading_error < 0)
+					{
 						setMotors(LEFT, MEDIUM, MEDIUM); //turn left
-				} else
+						LCD_clear();
+						LCD_puts("LEFT");
+					}
+				}
+				else
+				{
 					setMotors(FORWARD, MEDIUM, MEDIUM); //go foward
-			} else
+					LCD_clear();
+					LCD_puts("Foward");
+				}
+
+			}
+			else
+			{
 				setMotors(FORWARD, MEDIUM, MEDIUM); //go foward
+				LCD_clear();
+				LCD_puts("FORWARD");
+			}
 
 			osDelay(200);
 		}
