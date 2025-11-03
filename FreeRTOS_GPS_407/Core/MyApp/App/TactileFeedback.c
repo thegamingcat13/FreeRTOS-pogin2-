@@ -61,6 +61,7 @@ void setMotors(int direction, uint16_t speed_l, uint16_t speed_r)
             HAL_GPIO_WritePin(M1_2_GPIO_Port, M1_2_Pin, GPIO_PIN_RESET);
             HAL_GPIO_WritePin(M2_1_GPIO_Port, M2_1_Pin, GPIO_PIN_RESET);
             HAL_GPIO_WritePin(M2_2_GPIO_Port, M2_2_Pin, GPIO_PIN_SET);
+            logWrite(6, Drive_forward);
             break;
 
         case -1: /// achteruit
@@ -68,6 +69,7 @@ void setMotors(int direction, uint16_t speed_l, uint16_t speed_r)
             HAL_GPIO_WritePin(M1_2_GPIO_Port, M1_2_Pin, GPIO_PIN_SET);
             HAL_GPIO_WritePin(M2_1_GPIO_Port, M2_1_Pin, GPIO_PIN_SET);
             HAL_GPIO_WritePin(M2_2_GPIO_Port, M2_2_Pin, GPIO_PIN_RESET);
+            logWrite(6, Drive_backward);
             break;
 
         case 2: /// draai rechts (linker motor vooruit, rechter achteruit)
@@ -75,6 +77,7 @@ void setMotors(int direction, uint16_t speed_l, uint16_t speed_r)
             HAL_GPIO_WritePin(M1_2_GPIO_Port, M1_2_Pin, GPIO_PIN_RESET);
             HAL_GPIO_WritePin(M2_1_GPIO_Port, M2_1_Pin, GPIO_PIN_SET);
             HAL_GPIO_WritePin(M2_2_GPIO_Port, M2_2_Pin, GPIO_PIN_RESET);
+            logWrite(6, Turn_right);
             break;
 
         case -2: /// draai links (linker achteruit, rechter vooruit)
@@ -82,6 +85,7 @@ void setMotors(int direction, uint16_t speed_l, uint16_t speed_r)
             HAL_GPIO_WritePin(M1_2_GPIO_Port, M1_2_Pin, GPIO_PIN_SET);
             HAL_GPIO_WritePin(M2_1_GPIO_Port, M2_1_Pin, GPIO_PIN_RESET);
             HAL_GPIO_WritePin(M2_2_GPIO_Port, M2_2_Pin, GPIO_PIN_SET);
+            logWrite(6, Turn_left);
             break;
 
         case 3: // stop
@@ -89,6 +93,7 @@ void setMotors(int direction, uint16_t speed_l, uint16_t speed_r)
             HAL_GPIO_WritePin(M1_2_GPIO_Port, M1_2_Pin, GPIO_PIN_RESET);
             HAL_GPIO_WritePin(M2_1_GPIO_Port, M2_1_Pin, GPIO_PIN_RESET);
             HAL_GPIO_WritePin(M2_2_GPIO_Port, M2_2_Pin, GPIO_PIN_RESET);
+            logWrite(6, Stop);
             speed_l = 0;
             speed_r = 0;
             break;
@@ -131,7 +136,7 @@ void ReachWPTask(void *argument)
 
 			gps_lcd_print = false;
 
-			if (CurrentWaypoint >= WaypointCount)
+			if (CurrentWaypoint > WaypointCount)
 			{
 				setMotors(STOP, STANDSTILL, STANDSTILL);
 				osDelay(5000);
@@ -140,6 +145,7 @@ void ReachWPTask(void *argument)
 
 			if (xSemaphoreTake(hGpsDataMutex, portMAX_DELAY) == pdTRUE)
 			{
+				LCD_clear();
 				info = Get_Waypoint_Info(CurrentWaypoint);
 				current_speed = parsed_gnrmc.speed;
 				CurrentHeading = parsed_gnrmc.course;
@@ -151,7 +157,8 @@ void ReachWPTask(void *argument)
 			{
 				setMotors(STOP, STANDSTILL, STANDSTILL);
 				LCD_clear();
-				LCD_puts("You did it!!!");
+				LCD_puts("Waypoint reached");
+				UART_puts("Waypont reached");
 				osDelay(3000);
 				CurrentWaypoint++;
 			}
@@ -160,7 +167,7 @@ void ReachWPTask(void *argument)
 			desiredheadingValue = DesiredHeading;
 			logWrite(4, (void*)&desiredheadingValue);
 
-			if (CurrentHeading < 361 && CurrentHeading >= 0)
+			if (CurrentHeading < 361.0f && CurrentHeading >= 0.0f)
 			{
 				float heading_error = DesiredHeading - CurrentHeading;
 
@@ -181,6 +188,7 @@ void ReachWPTask(void *argument)
 						setMotors(RIGHT, MEDIUM, MEDIUM); //turn right
 						LCD_clear();
 						LCD_puts("RIGHT");
+						UART_puts("\n\n\rRIGHT");
 					}
 
 					if (heading_error < 0)
@@ -188,6 +196,7 @@ void ReachWPTask(void *argument)
 						setMotors(LEFT, MEDIUM, MEDIUM); //turn left
 						LCD_clear();
 						LCD_puts("LEFT");
+						UART_puts("\n\n\rLEFT");
 					}
 				}
 				else
@@ -195,6 +204,7 @@ void ReachWPTask(void *argument)
 					setMotors(FORWARD, MEDIUM, MEDIUM); //go foward
 					LCD_clear();
 					LCD_puts("Foward");
+					UART_puts("\n\n\rForward");
 				}
 
 			}
@@ -203,11 +213,13 @@ void ReachWPTask(void *argument)
 				setMotors(FORWARD, MEDIUM, MEDIUM); //go foward
 				LCD_clear();
 				LCD_puts("FORWARD");
+				UART_puts("\n\n\rFORWARD");
 			}
 
 			osDelay(200);
 		}
 		LCD_puts("Final point reached");
+		UART_puts("\n\n\rFinal point reached");
 
 		taskYIELD();
 	}

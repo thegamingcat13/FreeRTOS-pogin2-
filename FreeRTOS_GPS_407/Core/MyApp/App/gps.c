@@ -14,6 +14,7 @@
 #include "gps.h"
 #include <stdlib.h>
 #include <stdbool.h>
+#include "math.h"
 
 
 GNRMC gnrmc; // global struct for GNRMC-messages
@@ -35,8 +36,17 @@ void ParsedGPS(void)
 		if (xSemaphoreTake(hGpsDataMutex, portMAX_DELAY) == pdTRUE)
 		{
 			parsed_gnrmc.status = gnrmc.status;
-			parsed_gnrmc.latitude = atof(gnrmc.latitude);
-			parsed_gnrmc.longitude = atof(gnrmc.longitude);
+		    float raw_latitude_ddmmm = atof(gnrmc.latitude); // e.g., "5205.015137"
+		    float raw_longitude_ddmmm = atof(gnrmc.longitude); // e.g., "5101.069824"
+
+		    // Convert to decimal degrees
+		    float degrees = floorf(raw_latitude_ddmmm / 100.0f);
+		    float minutes = raw_latitude_ddmmm - (degrees * 100.0f);
+		    parsed_gnrmc.latitude = degrees + (minutes / 60.0f);
+
+		    degrees = floorf(raw_longitude_ddmmm / 100.0f);
+		    minutes = raw_longitude_ddmmm - (degrees * 100.0f);
+		    parsed_gnrmc.longitude = degrees + (minutes / 60.0f);
 			parsed_gnrmc.speed = atof(gnrmc.speed);
 			parsed_gnrmc.course = atof(gnrmc.course);
 		}

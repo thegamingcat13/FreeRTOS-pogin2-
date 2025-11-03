@@ -66,17 +66,20 @@ RouteInfo Get_Waypoint_Info (int waypoint)
 float heading (int waypoint)
 {
 
-	info = Get_Waypoint_Info(waypoint);
+	info = Get_Waypoint_Info(waypoint); //
 
-	double overstaande = info.londifference;
-	double aanliggende = info.latdifference;
 
-	double heading_rad = atan2f(overstaande, aanliggende);
+	double delta_lon_to_target = -info.londifference; // Use negative of info.londifference
+	double delta_lat_to_target = -info.latdifference; // Use negative of info.latdifference
+
+	// Now, atan2f(Y, X) where Y is East-West component, X is North-South component
+	double heading_rad = atan2f(delta_lon_to_target, delta_lat_to_target);
 	double heading_deg = heading_rad * (180.0 / M_PI);
 
-	heading_deg = fmodf((heading_deg +360.0), 360.0);
+	// Normalize to 0-360 degrees
+	heading_deg = fmodf((heading_deg + 360.0f), 360.0f); // Make sure 360.0 is float
 
-	if (Uart_debug_out)
+	if (1)
 		{
 			UART_puts("\nHeading:");
 			UART_printf(100, "%f", heading_deg);

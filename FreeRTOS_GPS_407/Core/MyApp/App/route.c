@@ -31,7 +31,7 @@ static int current = 0;
 static bool filled = false;
 bool first_run = true;
 
-sWaypoints aWaypoints[STRC_AMOUNT];
+sWaypoints aWaypoints[STRC_AMOUNT - 1];
 /**
  * @brief deze functie checkt of er goede gps-data is binnen gekomen en slaat goede data op in een structure array.
  * Hiermee kunnen (STRC_AMOUNT) punten opgslagen worden.
@@ -44,6 +44,16 @@ void Waypoint ()
 {
     if (xSemaphoreTake(hGpsDataMutex, portMAX_DELAY) == pdTRUE) // wacht tot de semaphore van de gps-data vrij is
     {
+    	if (first_run)
+    	{
+    		for (int i = 0; i <= 19; i++)
+    		{
+    			aWaypoints[i].lat = 0;
+    			aWaypoints[i].lon = 0;
+    		}
+    		first_run = false;
+    	}
+
 		if (parsed_gnrmc.status == 'A') 						// check of de gps-data die ontvangen is goed is
 		{
 			aWaypoints[current].lon = parsed_gnrmc.longitude;	// kopieer de latitude van de gps-data naar de waypoints-struct
@@ -73,15 +83,6 @@ void Waypoint ()
  */
 float returnWaypoints (int pointNumber, int type)
 {
-	if (first_run)
-	{
-		for (int i = 0; i <= 19; i++)
-		{
-			aWaypoints[i].lat = 0;
-			aWaypoints[i].lon = 0;
-		}
-		first_run = false;
-	}
 	switch (type)
 	{
 		case 1: //

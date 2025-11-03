@@ -98,10 +98,8 @@ void ARM_keys_task (void *argument)
 		{
 		case 1: /// Set waypoint
 			ParsedGPS();
-			osDelay(50);
 			LCD_clear();
 			LCD_puts(wplcd);
-			osDelay(7);
 			Waypoint();
 			break;
 

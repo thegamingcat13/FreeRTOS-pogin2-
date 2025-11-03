@@ -58,7 +58,7 @@
 #define LAT_PREC 0.000045 // level of precision for gps parser
 #define LON_PREC 0.000074 // level of precision for gps parser
 #define METER_PER_DEG_LAT 111132.0f
-#define METER_PER_DEG_LON 67890.0f
+#define METER_PER_DEG_LON 65430.0f
 
 #define MAX_HEADING_DIFFERENCE_DEG 5.0f // level of precision for the heading were going to
 #define ARRIVAL_RADIUS_METERS 2.0f // set arrival radius to 2 meter
