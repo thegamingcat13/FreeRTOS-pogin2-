@@ -3,6 +3,7 @@
 * @brief Behandelt de communicatie met de ARM-toetsjes met: Eventgroups, TaskNotify, Interrupt-handling.<br>
 * <b>Demonstreert: xEventGroupWaitBits(), xTaskGetHandle(), xTaskNotify(), xTaskNotifyWait(),xSemaphoregive(), xSemaphoreTake(). </b><br>
 *
+* Voert verschillende acties uit voor verschillende arm keys.<br>
 * Aan de ARM-keys is een interrupt gekoppeld (zie stm32f4xx_it.c). Die stuurt een event
 * door die opgevangen wordt door task ARM_keys_IRQ().
 * @author MSC
@@ -66,7 +67,8 @@ void ARM_keys_IRQ (void *argument)
 /**
 * @brief Task krijgt ARM-key met notificatie binnen, en zet ledjes op die waarde.
 * Ook de gekleurde ledjes (behalve blauw, die wordt door de timer gebruikt) krijgen
-* een schwung...
+* een schwung...<br>
+* Verschillende acties op basis van de ingedrukte arm key.
 * @param *argument Niet gebruikt, eventueel een waarde of string om te testen.
 * @return void.
 */
@@ -94,7 +96,7 @@ void ARM_keys_task (void *argument)
 
 		switch (key)
 		{
-		case 1:
+		case 1: /// Set waypoint
 			ParsedGPS();
 			osDelay(50);
 			LCD_clear();
@@ -103,28 +105,28 @@ void ARM_keys_task (void *argument)
 			Waypoint();
 			break;
 
-		case 2:
+		case 2: /// Start cruising
 			xTaskNotifyGive(hReachWP);
 			logWrite(5, (void*)started);
 			LCD_clear();
 			LCD_puts(rslcd);
 			break;
 
-		case 3:
+		case 3: /// Skip next waypoint
 			logWrite(5, (void*)waypoint_skipped);
 			SkipWaypoint();
 			LCD_clear();
 			LCD_puts(skiplcd);
 			break;
 
-		case 4:
+		case 4: /// Return to previous waypoint
 			logWrite(5, (void*)waypoint_back);
 			BackWaypoint();
 			LCD_clear();
 			LCD_puts(backlcd);
 			break;
 
-		case 5:
+		case 5: /// Show the amount of waypoints and which is next
 			ShowWaypoint();
 			break;
 
