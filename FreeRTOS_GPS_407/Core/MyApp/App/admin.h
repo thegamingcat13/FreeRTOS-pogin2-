@@ -34,6 +34,14 @@
 #define MEDIUM 2000
 #define FAST 3000
 #define VERY_FAST 4000
+#define STANDSTILL 0
+
+// motor direction definies
+#define FORWARD 1
+#define BACKWARD -1
+#define RIGHT 2
+#define LEFT -2
+#define STOP 0
 
 /// set software timer 1000 msecs
 #define TIMER1_DELAY 1000

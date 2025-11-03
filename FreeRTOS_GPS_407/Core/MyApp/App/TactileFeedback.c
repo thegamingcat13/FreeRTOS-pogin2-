@@ -84,7 +84,7 @@ void setMotors(int direction, uint16_t speed_l, uint16_t speed_r)
             HAL_GPIO_WritePin(M2_2_GPIO_Port, M2_2_Pin, GPIO_PIN_SET);
             break;
 
-        default: // stop
+        case 3: // stop
             HAL_GPIO_WritePin(M1_1_GPIO_Port, M1_1_Pin, GPIO_PIN_RESET);
             HAL_GPIO_WritePin(M1_2_GPIO_Port, M1_2_Pin, GPIO_PIN_RESET);
             HAL_GPIO_WritePin(M2_1_GPIO_Port, M2_1_Pin, GPIO_PIN_RESET);
@@ -92,6 +92,10 @@ void setMotors(int direction, uint16_t speed_l, uint16_t speed_r)
             speed_l = 0;
             speed_r = 0;
             break;
+
+        default:
+        	LCD_puts("Driving error");
+        	Error_Handler();
     }
 
     // PWM duty instellen (zelfde op beide motoren hier)
@@ -108,74 +112,83 @@ void ReachWPTask(void *argument)
 {
 	while (TRUE)
 	{
-
-
 		ulTaskNotifyTake(pdTRUE, portMAX_DELAY);
-		if (FirstRun == true)
+
+		if (xSemaphoreTake(hGpsDataMutex, portMAX_DELAY) == pdTRUE)
 		{
-			while (fabs(wpLat_temp) < 0.0001f)
+			if (FirstRun == true)
 			{
-				WaypointCount --;
-				wpLat_temp = returnWaypoints(WaypointCount, 1); // decide how many waypoints we have max of 20
-			}
-			CurrentWaypoint = 0;
-			FirstRun = false;
-		}
-
-		while (CurrentWaypoint <= WaypointCount) // Controleer of we nog bezig zijn met een waypoint waar data in zit.
-		{
-			if (CurrentWaypoint >= WaypointCount)
-			{
-				setMotors(0,0,0);
-				osDelay(5000);
-				continue;
-			}
-
-
-			info = Get_Waypoint_Info(CurrentWaypoint);
-
-			if (info.distance_m < ARRIVAL_RADIUS_METERS)
-			{
-				setMotors(0,0,0);
-				CurrentWaypoint++;
-				osDelay(500);
-			}
-
-
-			if (xSemaphoreTake(hGpsDataMutex, portMAX_DELAY) == pdTRUE)
-			{
-				current_speed = parsed_gnrmc.speed;
-				CurrentHeading = parsed_gnrmc.course;
-				xSemaphoreGive(hGpsDataMutex);
-			}
-
-			DesiredHeading = heading(CurrentWaypoint);
-			desiredheadingValue = DesiredHeading;
-			logWrite(4, (void*)&desiredheadingValue);
-
-			if (current_speed > MIN_COG_SPEED)
-			{
-				float heading_error = DesiredHeading - CurrentHeading;
-
-				if (heading_error > 180.0f) heading_error -= 360.0f;
-				if (heading_error < 180.0f) heading_error += 360.0f;
-
-				if (Uart_debug_out)
-					UART_printf(100, "\n\rCurrent heading: %.2f, Desired heading: %.2f, Error: %.2f", CurrentHeading, DesiredHeading, heading_error);
-
-				if (fabs(heading_error) > MAX_HEADING_DIFFERENCE)
+				while (fabs(wpLat_temp) < 0.0001f)
 				{
-					if (heading_error > 0)
-						setMotors(2, MEDIUM, MEDIUM); //turn right
+					WaypointCount --;
+					wpLat_temp = returnWaypoints(WaypointCount, 1); // decide how many waypoints we have max of 20
+				}
+				CurrentWaypoint = 0;
+				FirstRun = false;
+			}
 
-					if (heading_error < 0)
-						setMotors(-2, MEDIUM, MEDIUM); //turn left
+			while (CurrentWaypoint <= WaypointCount) // Controleer of we nog bezig zijn met een waypoint waar data in zit.
+			{
+				xSemaphoreGive(hGpsDataMutex);
+				ParsedGPS();
+				if (xSemaphoreTake(hGpsDataMutex, portMAX_DELAY) == pdFALSE)
+					Error_Handler();
+
+				if (CurrentWaypoint >= WaypointCount)
+				{
+					setMotors(STOP, STANDSTILL, STANDSTILL);
+					osDelay(5000);
+					continue;
+				}
+
+
+				info = Get_Waypoint_Info(CurrentWaypoint);
+
+				if (info.distance_m < ARRIVAL_RADIUS_METERS)
+				{
+					setMotors(STOP, STANDSTILL, STANDSTILL);
+					CurrentWaypoint++;
+					osDelay(500);
+				}
+
+
+					current_speed = parsed_gnrmc.speed;
+					CurrentHeading = parsed_gnrmc.course;
+					xSemaphoreGive(hGpsDataMutex);
+
+				DesiredHeading = heading(CurrentWaypoint);
+				desiredheadingValue = DesiredHeading;
+				logWrite(4, (void*)&desiredheadingValue);
+
+				if (current_speed > MIN_COG_SPEED)
+				{
+					float heading_error = DesiredHeading - CurrentHeading;
+
+					if (heading_error > 180.0f)
+						heading_error -= 360.0f;
+
+					if (heading_error < -180.0f)
+						heading_error += 360.0f;
+
+					if (Uart_debug_out)
+						UART_printf(100, "\n\rCurrent heading: %.2f, Desired heading: %.2f, Error: %.2f", CurrentHeading, DesiredHeading, heading_error);
+
+					if (fabs(heading_error) > MAX_HEADING_DIFFERENCE)
+					{
+						if (heading_error > 0)
+							setMotors(RIGHT, MEDIUM, MEDIUM); //turn right
+
+						if (heading_error < 0)
+							setMotors(LEFT, MEDIUM, MEDIUM); //turn left
+					} else
+						setMotors(FORWARD, MEDIUM, MEDIUM); //go foward
 				} else
-					setMotors(1, MEDIUM, MEDIUM); //go foward
-			} else
-				setMotors(1, MEDIUM, MEDIUM); //go foward
+					setMotors(FORWARD, MEDIUM, MEDIUM); //go foward
 
-			osDelay(200);
+				osDelay(200);
+			}
+			LCD_puts("Final point reached");
+
 		}
 		taskYIELD();
 	}

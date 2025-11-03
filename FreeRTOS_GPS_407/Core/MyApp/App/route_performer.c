@@ -29,39 +29,31 @@ RouteInfo Get_Waypoint_Info (int waypoint)
 	float latcurrent_deg;    // de huidige latitude
 	float loncurrent_deg;    // de huidige longitude
 
-	ParsedGPS();
-	osDelay(50);
-
-	if (xSemaphoreTake(hGpsDataMutex, portMAX_DELAY) == pdTRUE) // wacht op de semephore
+	if (waypoint <= STRC_AMOUNT)
 	{
-		if (waypoint <= STRC_AMOUNT)
-		{
 
-			latpoint_deg = returnWaypoints(waypoint, 1);
-			lonpoint_deg = returnWaypoints(waypoint, 2);
-			latcurrent_deg = parsed_gnrmc.latitude;
-			loncurrent_deg = parsed_gnrmc.longitude;
+		latpoint_deg = returnWaypoints(waypoint, 1);
+		lonpoint_deg = returnWaypoints(waypoint, 2);
+		latcurrent_deg = parsed_gnrmc.latitude;
+		loncurrent_deg = parsed_gnrmc.longitude;
 
-			info.latdifference = latcurrent_deg - latpoint_deg;
-			info.londifference = loncurrent_deg - lonpoint_deg;
+		info.latdifference = latcurrent_deg - latpoint_deg;
+		info.londifference = loncurrent_deg - lonpoint_deg;
 
-			float dx_meters = info.londifference * METER_PER_DEG_LON;
-			float dy_meters = info.latdifference * METER_PER_DEG_LAT;
-			info.distance_m = sqrtf(dx_meters * dx_meters + dy_meters + dy_meters);
+		float dx_meters = info.londifference * METER_PER_DEG_LON;
+		float dy_meters = info.latdifference * METER_PER_DEG_LAT;
+		info.distance_m = sqrtf(dx_meters * dx_meters + dy_meters * dy_meters);
 
-			if (Uart_debug_out) // print de verschillen op de terminal
-				{
-					UART_puts("\n\r--- Waypoint Info ---");
-					UART_printf(100, "\n\rWP %d Target: Lat %.6f, Lon %.6f", waypoint, latpoint_deg, lonpoint_deg);
-					UART_printf(100, "\n\rCurrent GPS: Lat %.6f, Lon %.6f", latcurrent_deg, loncurrent_deg);
-					UART_printf(100, "\n\rLat Diff: %.6f deg, Lon Diff: %.6f deg", info.latdifference, info.londifference);
-					UART_printf(100, "\r\nDistance to WP: %.2f m", info.distance_m);
-					UART_puts("\n\r---------------------");
-				}
+		if (Uart_debug_out) // print de verschillen op de terminal
+			{
+				UART_puts("\n\r--- Waypoint Info ---");
+				UART_printf(100, "\n\rWP %d Target: Lat %.6f, Lon %.6f", waypoint, latpoint_deg, lonpoint_deg);
+				UART_printf(100, "\n\rCurrent GPS: Lat %.6f, Lon %.6f", latcurrent_deg, loncurrent_deg);
+				UART_printf(100, "\n\rLat Diff: %.6f deg, Lon Diff: %.6f deg", info.latdifference, info.londifference);
+				UART_printf(100, "\r\nDistance to WP: %.2f m", info.distance_m);
+				UART_puts("\n\r---------------------");
+			}
 
-			osDelay(2000);
-		}
-		xSemaphoreGive(hGpsDataMutex); // geef de semaphore weer vrij
 	}
 		return (info);
 }
