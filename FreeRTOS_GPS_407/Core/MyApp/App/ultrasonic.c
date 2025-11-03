@@ -99,11 +99,11 @@ void SR04_Task (void *argument)
 				LCD_puts("Object  gedetecteerd"); //Dubbele spatie is voor spacing op het LCD scherm
 				setMotors(BACKWARD, FAST, FAST);
 				osDelay(1000);
-				setMotors(LEFT, FAST, FAST);
+				setMotors(LEFT, STANDSTILL, FAST);
 				osDelay(1000);
 				setMotors(FORWARD, FAST, FAST);
 				osDelay(1000);
-				setMotors(RIGHT, FAST, FAST);
+				setMotors(RIGHT, FAST, STANDSTILL);
 				osDelay(1000);
 				setMotors(STOP, STANDSTILL, STANDSTILL);
 			}

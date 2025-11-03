@@ -36,17 +36,17 @@ void ParsedGPS(void)
 		if (xSemaphoreTake(hGpsDataMutex, portMAX_DELAY) == pdTRUE)
 		{
 			parsed_gnrmc.status = gnrmc.status;
-		    float raw_latitude_ddmmm = atof(gnrmc.latitude); // e.g., "5205.015137"
-		    float raw_longitude_ddmmm = atof(gnrmc.longitude); // e.g., "5101.069824"
+		    float raw_latitude_ddmmm = atof(gnrmc.latitude); // Convert string to float
+		    float raw_longitude_ddmmm = atof(gnrmc.longitude); // Convert string to float
 
 		    // Convert to decimal degrees
-		    float degrees = floorf(raw_latitude_ddmmm / 100.0f);
-		    float minutes = raw_latitude_ddmmm - (degrees * 100.0f);
-		    parsed_gnrmc.latitude = degrees + (minutes / 60.0f);
+		    float degrees = floorf(raw_latitude_ddmmm / 100.0f); // extract degrees 5205.015 becomes 52
+		    float minutes = raw_latitude_ddmmm - (degrees * 100.0f); // extract degrees 5205.015 becomes 5.015
+		    parsed_gnrmc.latitude = degrees + (minutes / 60.0f); //combine minutes (converted to fractions) to get decimal degrees
 
-		    degrees = floorf(raw_longitude_ddmmm / 100.0f);
-		    minutes = raw_longitude_ddmmm - (degrees * 100.0f);
-		    parsed_gnrmc.longitude = degrees + (minutes / 60.0f);
+		    degrees = floorf(raw_longitude_ddmmm / 100.0f); // extract degrees 5101.069 becomes 51
+		    minutes = raw_longitude_ddmmm - (degrees * 100.0f); // extract degrees 5101.069 becomes 1.069
+		    parsed_gnrmc.longitude = degrees + (minutes / 60.0f); // combine degrees and minutes (converted to fractions) to get decimal degrees
 			parsed_gnrmc.speed = atof(gnrmc.speed);
 			parsed_gnrmc.course = atof(gnrmc.course);
 		}

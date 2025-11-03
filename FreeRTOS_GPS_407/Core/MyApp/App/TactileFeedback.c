@@ -75,14 +75,14 @@ void setMotors(int direction, uint16_t speed_l, uint16_t speed_r)
         case 2: /// draai rechts (linker motor vooruit, rechter achteruit)
             HAL_GPIO_WritePin(M1_1_GPIO_Port, M1_1_Pin, GPIO_PIN_SET);
             HAL_GPIO_WritePin(M1_2_GPIO_Port, M1_2_Pin, GPIO_PIN_RESET);
-            HAL_GPIO_WritePin(M2_1_GPIO_Port, M2_1_Pin, GPIO_PIN_SET);
+            HAL_GPIO_WritePin(M2_1_GPIO_Port, M2_1_Pin, GPIO_PIN_RESET);
             HAL_GPIO_WritePin(M2_2_GPIO_Port, M2_2_Pin, GPIO_PIN_RESET);
             logWrite(6, Turn_right);
             break;
 
         case -2: /// draai links (linker achteruit, rechter vooruit)
-            HAL_GPIO_WritePin(M1_1_GPIO_Port, M1_1_Pin, GPIO_PIN_RESET);
-            HAL_GPIO_WritePin(M1_2_GPIO_Port, M1_2_Pin, GPIO_PIN_SET);
+            HAL_GPIO_WritePin(M1_1_GPIO_Port, M1_1_Pin, GPIO_PIN_SET);
+            HAL_GPIO_WritePin(M1_2_GPIO_Port, M1_2_Pin, GPIO_PIN_RESET);
             HAL_GPIO_WritePin(M2_1_GPIO_Port, M2_1_Pin, GPIO_PIN_RESET);
             HAL_GPIO_WritePin(M2_2_GPIO_Port, M2_2_Pin, GPIO_PIN_SET);
             logWrite(6, Turn_left);
@@ -185,7 +185,7 @@ void ReachWPTask(void *argument)
 				{
 					if (heading_error > 0)
 					{
-						setMotors(RIGHT, MEDIUM, MEDIUM); //turn right
+						setMotors(RIGHT, SLOW, MEDIUM); //turn right
 						LCD_clear();
 						LCD_puts("RIGHT");
 						UART_puts("\n\n\rRIGHT");
@@ -193,7 +193,7 @@ void ReachWPTask(void *argument)
 
 					if (heading_error < 0)
 					{
-						setMotors(LEFT, MEDIUM, MEDIUM); //turn left
+						setMotors(LEFT, MEDIUM, SLOW); //turn left
 						LCD_clear();
 						LCD_puts("LEFT");
 						UART_puts("\n\n\rLEFT");
