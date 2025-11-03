@@ -18,7 +18,8 @@ void \mbox{\hyperlink{_a_r_m__keys_8c_a1fd0008123c48c14439411716629af5a}{toggle\
 void \mbox{\hyperlink{_a_r_m__keys_8c_a38598fd3a3a66db7e4617f5d6d01749b}{ARM\+\_\+keys\+\_\+\+IRQ}} (void \texorpdfstring{$\ast$}{*}argument)
 \begin{DoxyCompactList}\small\item\em Deze task handelt de ARM-\/toets af, die ontvangen is van de ISR-\/handler (zie\+: \doxylink{stm32f4xx__it_8c}{stm32f4xx\+\_\+it.\+c}). \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{_a_r_m__keys_8c_a877687ff1bd562c855d11d4941cd966d}{ARM\+\_\+keys\+\_\+task}} (void \texorpdfstring{$\ast$}{*}argument)
-\begin{DoxyCompactList}\small\item\em Task krijgt ARM-\/key met notificatie binnen, en zet ledjes op die waarde. Ook de gekleurde ledjes (behalve blauw, die wordt door de timer gebruikt) krijgen een schwung... \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Task krijgt ARM-\/key met notificatie binnen, en zet ledjes op die waarde. Ook de gekleurde ledjes (behalve blauw, die wordt door de timer gebruikt) krijgen een schwung...~\newline
+ Verschillende acties op basis van de ingedrukte arm key. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsubsection*{Variables}
 \begin{DoxyCompactItemize}
 \item 
@@ -53,7 +54,8 @@ Behandelt de communicatie met de ARM-\/toetsjes met\+: Eventgroups, Task\+Notify
  {\bfseries{Demonstreert\+: x\+Event\+Group\+Wait\+Bits(), x\+Task\+Get\+Handle(), x\+Task\+Notify(), x\+Task\+Notify\+Wait(),x\+Semaphoregive(), x\+Semaphore\+Take(). }}~\newline
 . 
 
-Aan de ARM-\/keys is een interrupt gekoppeld (zie \doxylink{stm32f4xx__it_8c}{stm32f4xx\+\_\+it.\+c}). Die stuurt een event door die opgevangen wordt door task \doxylink{_a_r_m__keys_8c_a38598fd3a3a66db7e4617f5d6d01749b}{ARM\+\_\+keys\+\_\+\+IRQ()}. \begin{DoxyAuthor}{Author}
+Voert verschillende acties uit voor verschillende arm keys.~\newline
+ Aan de ARM-\/keys is een interrupt gekoppeld (zie \doxylink{stm32f4xx__it_8c}{stm32f4xx\+\_\+it.\+c}). Die stuurt een event door die opgevangen wordt door task \doxylink{_a_r_m__keys_8c_a38598fd3a3a66db7e4617f5d6d01749b}{ARM\+\_\+keys\+\_\+\+IRQ()}. \begin{DoxyAuthor}{Author}
 MSC
 \end{DoxyAuthor}
 \begin{DoxyDate}{Date}
@@ -90,7 +92,8 @@ void ARM\+\_\+keys\+\_\+task (\begin{DoxyParamCaption}\item[{void \texorpdfstrin
 
 
 
-Task krijgt ARM-\/key met notificatie binnen, en zet ledjes op die waarde. Ook de gekleurde ledjes (behalve blauw, die wordt door de timer gebruikt) krijgen een schwung... 
+Task krijgt ARM-\/key met notificatie binnen, en zet ledjes op die waarde. Ook de gekleurde ledjes (behalve blauw, die wordt door de timer gebruikt) krijgen een schwung...~\newline
+ Verschillende acties op basis van de ingedrukte arm key. 
 
 
 \begin{DoxyParams}{Parameters}
@@ -100,7 +103,15 @@ Task krijgt ARM-\/key met notificatie binnen, en zet ledjes op die waarde. Ook d
 \begin{DoxyReturn}{Returns}
 void. 
 \end{DoxyReturn}
-\Hypertarget{_a_r_m__keys_8c_a1fd0008123c48c14439411716629af5a}\index{ARM\_keys.c@{ARM\_keys.c}!toggle\_led@{toggle\_led}}
+Set waypoint
+
+Start cruising
+
+Skip next waypoint
+
+Return to previous waypoint
+
+Show the amount of waypoints and which is next\Hypertarget{_a_r_m__keys_8c_a1fd0008123c48c14439411716629af5a}\index{ARM\_keys.c@{ARM\_keys.c}!toggle\_led@{toggle\_led}}
 \index{toggle\_led@{toggle\_led}!ARM\_keys.c@{ARM\_keys.c}}
 \doxysubsubsection{\texorpdfstring{toggle\_led()}{toggle\_led()}}
 {\footnotesize\ttfamily \label{_a_r_m__keys_8c_a1fd0008123c48c14439411716629af5a} 

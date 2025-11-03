@@ -167,10 +167,15 @@ key: function\r\n\
  5 : [on/off] GPS output\r\n\
  6 : [on/off] GPS raw data output\r\n\
  d : change DELAY time (default 200), eg. 'd,50'\r\n\
- p : change TASK PRIORITY, eg. 'p,7,20' sets priority of task 7 to 20\r\n\
+ m:  show menu\r\n\
  t : display TASK DATA (number, priority, stack usage, status)\r\n\
+ p : change TASK PRIORITY, eg. 'p,7,20' sets priority of task 7 to 20\r\n\
  s : start/stop TASK, eg. s,7 starts or stops task 7\r\n\
  w : display waypoint values (waypoint number, longitude, latitude)\r\n\
+ h : display all in- and outputs (ARM_Keys, motor aansturing, waypoints enz.)\r\n\
+ c : change current waypoint counter, eg. c.6 sets the current waypoint to  waypoint 6\r\n\
+ r : change waypoint data, changes the waypoint data to the current gps data\r\n\
+ g : display the new gps structre, helpfull for debug\r\n\
 =====================================================================\r\n";
 
     UART_puts(menu);

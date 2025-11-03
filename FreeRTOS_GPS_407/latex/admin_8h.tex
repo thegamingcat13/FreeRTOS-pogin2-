@@ -37,6 +37,18 @@ struct \mbox{\hyperlink{struct_task_data}{Task\+Data}}
 \Hypertarget{admin_8h_a18901836d92cf76a93826b9e1116292d}\label{admin_8h_a18901836d92cf76a93826b9e1116292d} 
 \#define {\bfseries QSIZE\+\_\+\+UART}~10
 \begin{DoxyCompactList}\small\item\em set queue op 10 elementen \end{DoxyCompactList}\item 
+\Hypertarget{admin_8h_a5da43425fff36347c69fc3c090e42c6c}\label{admin_8h_a5da43425fff36347c69fc3c090e42c6c} 
+\#define {\bfseries SLOW}~1000
+\begin{DoxyCompactList}\small\item\em motor speeds defines \end{DoxyCompactList}\item 
+\Hypertarget{admin_8h_a455b219d48b21108576f53129be38c32}\label{admin_8h_a455b219d48b21108576f53129be38c32} 
+\#define {\bfseries MEDIUM}~2000
+\item 
+\Hypertarget{admin_8h_a8091c2bcff55cbe0a4a145fd5fb7c22d}\label{admin_8h_a8091c2bcff55cbe0a4a145fd5fb7c22d} 
+\#define {\bfseries FAST}~3000
+\item 
+\Hypertarget{admin_8h_a48a08aed5b9070297732293c1429ad88}\label{admin_8h_a48a08aed5b9070297732293c1429ad88} 
+\#define {\bfseries VERY\+\_\+\+FAST}~4000
+\item 
 \Hypertarget{admin_8h_a13315792b47dcf5207ce4e06daeab518}\label{admin_8h_a13315792b47dcf5207ce4e06daeab518} 
 \#define {\bfseries TIMER1\+\_\+\+DELAY}~1000
 \begin{DoxyCompactList}\small\item\em set software timer 1000 msecs \end{DoxyCompactList}\item 
@@ -183,7 +195,8 @@ int \mbox{\hyperlink{admin_8h_ad27f7aa2260823ac2f3a243ae7654e32}{Current\+Waypoi
 void \mbox{\hyperlink{admin_8h_a0c660e87fd3fb5216355c32e3a72f95e}{ARM\+\_\+keys\+\_\+\+IRQ}} (void \texorpdfstring{$\ast$}{*})
 \begin{DoxyCompactList}\small\item\em Deze task handelt de ARM-\/toets af, die ontvangen is van de ISR-\/handler (zie\+: \doxylink{stm32f4xx__it_8c}{stm32f4xx\+\_\+it.\+c}). \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{admin_8h_af21164a48742d972455d2ce8c6317262}{ARM\+\_\+keys\+\_\+task}} (void \texorpdfstring{$\ast$}{*})
-\begin{DoxyCompactList}\small\item\em Task krijgt ARM-\/key met notificatie binnen, en zet ledjes op die waarde. Ook de gekleurde ledjes (behalve blauw, die wordt door de timer gebruikt) krijgen een schwung... \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Task krijgt ARM-\/key met notificatie binnen, en zet ledjes op die waarde. Ook de gekleurde ledjes (behalve blauw, die wordt door de timer gebruikt) krijgen een schwung...~\newline
+ Verschillende acties op basis van de ingedrukte arm key. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{admin_8h_a390831b4b34c463c81b188d9973d2a52}{UART\+\_\+keys\+\_\+poll}} (void \texorpdfstring{$\ast$}{*})
 \begin{DoxyCompactList}\small\item\em deze waarde kan hier veranderd worden. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{admin_8h_af42059fd155a512774c89e7fc38bc03c}{UART\+\_\+keys\+\_\+\+IRQ}} (void \texorpdfstring{$\ast$}{*})
@@ -199,7 +212,7 @@ void \mbox{\hyperlink{admin_8h_a23fe84bfb739ead3f3005b8378170b62}{Student\+\_\+t
 void \mbox{\hyperlink{admin_8h_a96c9e7d4608bbcbb1f89460ea7d8da6f}{Timer1\+\_\+\+Handler}} (void)
 \begin{DoxyCompactList}\small\item\em Vangt de Free\+RTOS software-\/interrupt op en toggelt een ledje. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{admin_8h_af292f364f4ee621c575f83b5b25fbfc5}{Reach\+WPTask}} (void \texorpdfstring{$\ast$}{*})
-\begin{DoxyCompactList}\small\item\em Deze functie wordt gebruikt om te kijken of wij de waypoint bereikt hebben. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Deze functie wordt gebruikt om te kijken of de waypoint bereikt is. Daarnaast wordt hier de heading berekent en wordt de {\ttfamily \doxylink{_tactile_feedback_8c_af71671f3764037bb67dce96f83ee96d5}{set\+Motors()}} aan geroepen. \end{DoxyCompactList}\item 
 float \mbox{\hyperlink{admin_8h_a5d6397136fbf12fef3dca666de7a35a0}{heading}} (int)
 \begin{DoxyCompactList}\small\item\em Berekent de heading eerst in radialen en daarna omgezet in graden. \end{DoxyCompactList}\item 
 Route\+Info \mbox{\hyperlink{admin_8h_af4a85680d3fac414e5b91f0cd16e8adf}{Get\+\_\+\+Waypoint\+\_\+\+Info}} (int waypoint)
@@ -210,24 +223,16 @@ int \mbox{\hyperlink{admin_8h_a2f96c316955e657fb8242f6a23b21975}{Back\+Waypoint}
 \begin{DoxyCompactList}\small\item\em Back\+Waypoint wordt gebruikt om terug te gaan naar de vorige waypoint. Deze functie wordt aangeroepen door de {\ttfamily 0ARM-\/keys}. In de functie is een check ingebouwd die kijkt of de functie correct is uitgevoerd. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{admin_8h_a5f8b543f818c13ecb6eaf9452f9a4395}{Show\+Waypoint}} (void)
 \begin{DoxyCompactList}\small\item\em Show\+Waypoint wordt gebruikt om te laten zien welk waypoint we naartoe aan het gaan zijn en hoeveel waypoints er totaal zijn. Deze functie wordt aangeroepen door de {\ttfamily ARM-\/keys}. In de functie is een check ingebouwd die kijkt of de functie correct is uitgevoerd. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{admin_8h_af71671f3764037bb67dce96f83ee96d5}{set\+Motors}} (int direction, uint16\+\_\+t speed\+\_\+l, uint16\+\_\+t speed\+\_\+r)
+\item 
 void \mbox{\hyperlink{admin_8h_ae101eafad5ce91c38146e960eaed0c50}{log\+Write}} (int type, void \texorpdfstring{$\ast$}{*}info)
 \begin{DoxyCompactList}\small\item\em slaat alle data op in een structure array. Zoals gps data, motor besturing, knoppen die worden ingedrukt. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{admin_8h_a2ebdc8837802eba656d049ffab377c30}{print\+Logs}} (void)
 \begin{DoxyCompactList}\small\item\em deze functie print alle gegevens die zijn opgelslagen in de Log-\/structure-\/arrray. de hoeveelheid lijnen die moeten worden uitgeprint worden automatisch bepaald voor elke log\+Count. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{admin_8h_a3f88352450dad51d82e4bf84a0a439a1}{delay\+\_\+us}} (int us)
-\begin{DoxyCompactList}\small\item\em Functie voor het creeren van de timer, nodig voor het corect werken van de sensor. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Functie die een delay creeërt in microseconden i.\+p.\+v. de standaart miliseconden hiervoor word timer 2 gebruikt. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{admin_8h_acba72bb75efaeba8bfbb4bd856cc49c3}{SR04\+\_\+\+Task}} (void \texorpdfstring{$\ast$}{*})
-\begin{DoxyCompactList}\small\item\em Functie voor het aansturen en het uitlezen van de sensor. Daarnaast berekent hij de afstand, en maakt hij een keuze op basis van deze afstand. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{admin_8h_a70f05e6a13ceea6e6c44a03cfa90059b}{drive\+\_\+forward}} (void)
-\begin{DoxyCompactList}\small\item\em Functie voor het naar voren rijden. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{admin_8h_a984a089ed87e45a3f221747b1199403b}{turn\+\_\+left}} (void)
-\begin{DoxyCompactList}\small\item\em Functie voor het draaien naar links. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{admin_8h_a3d336b48993609629f204ac0babbd8db}{turn\+\_\+right}} (void)
-\begin{DoxyCompactList}\small\item\em Functie voor het draaien naar rechts. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{admin_8h_a464fa1880ef5cea26035bc54a25aa685}{drive\+\_\+backward}} (void)
-\begin{DoxyCompactList}\small\item\em Functie voor het naar achteren rijden. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{admin_8h_aacf6bf8e121fea8b0a92d7197b73fe27}{stop}} (void)
-\begin{DoxyCompactList}\small\item\em Functie voor het stoppen van alle motoren. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Functie voor het aansturen en het uitlezen van de sensor. Daarnaast berekent hij de afstand, en maakt hij een keuze op basis van deze afstand. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsubsection*{Variables}
 \begin{DoxyCompactItemize}
 \item 
@@ -319,7 +324,8 @@ void ARM\+\_\+keys\+\_\+task (\begin{DoxyParamCaption}\item[{void \texorpdfstrin
 
 
 
-Task krijgt ARM-\/key met notificatie binnen, en zet ledjes op die waarde. Ook de gekleurde ledjes (behalve blauw, die wordt door de timer gebruikt) krijgen een schwung... 
+Task krijgt ARM-\/key met notificatie binnen, en zet ledjes op die waarde. Ook de gekleurde ledjes (behalve blauw, die wordt door de timer gebruikt) krijgen een schwung...~\newline
+ Verschillende acties op basis van de ingedrukte arm key. 
 
 
 \begin{DoxyParams}{Parameters}
@@ -329,7 +335,15 @@ Task krijgt ARM-\/key met notificatie binnen, en zet ledjes op die waarde. Ook d
 \begin{DoxyReturn}{Returns}
 void. 
 \end{DoxyReturn}
-\Hypertarget{admin_8h_a2f96c316955e657fb8242f6a23b21975}\index{admin.h@{admin.h}!BackWaypoint@{BackWaypoint}}
+Set waypoint
+
+Start cruising
+
+Skip next waypoint
+
+Return to previous waypoint
+
+Show the amount of waypoints and which is next\Hypertarget{admin_8h_a2f96c316955e657fb8242f6a23b21975}\index{admin.h@{admin.h}!BackWaypoint@{BackWaypoint}}
 \index{BackWaypoint@{BackWaypoint}!admin.h@{admin.h}}
 \doxysubsubsection{\texorpdfstring{BackWaypoint()}{BackWaypoint()}}
 {\footnotesize\ttfamily \label{admin_8h_a2f96c316955e657fb8242f6a23b21975} 
@@ -414,11 +428,11 @@ void delay\+\_\+us (\begin{DoxyParamCaption}\item[{int}]{us}{}\end{DoxyParamCapt
 
 
 
-Functie voor het creeren van de timer, nodig voor het corect werken van de sensor. 
+Functie die een delay creeërt in microseconden i.\+p.\+v. de standaart miliseconden hiervoor word timer 2 gebruikt. 
 
 
 \begin{DoxyParams}{Parameters}
-{\em } & \\
+{\em us} & Aantal microseconden (us) om te wachten. \\
 \hline
 \end{DoxyParams}
 \Hypertarget{admin_8h_a93467475af28d4b75cafb508f95578bf}\index{admin.h@{admin.h}!DisplayMenu@{DisplayMenu}}
@@ -448,32 +462,6 @@ void
 \begin{DoxyAuthor}{Author}
 MSC 
 \end{DoxyAuthor}
-\Hypertarget{admin_8h_a464fa1880ef5cea26035bc54a25aa685}\index{admin.h@{admin.h}!drive\_backward@{drive\_backward}}
-\index{drive\_backward@{drive\_backward}!admin.h@{admin.h}}
-\doxysubsubsection{\texorpdfstring{drive\_backward()}{drive\_backward()}}
-{\footnotesize\ttfamily \label{admin_8h_a464fa1880ef5cea26035bc54a25aa685} 
-void drive\+\_\+backward (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [extern]}}
-
-
-
-Functie voor het naar achteren rijden. 
-
-\begin{DoxyReturn}{Returns}
-void 
-\end{DoxyReturn}
-\Hypertarget{admin_8h_a70f05e6a13ceea6e6c44a03cfa90059b}\index{admin.h@{admin.h}!drive\_forward@{drive\_forward}}
-\index{drive\_forward@{drive\_forward}!admin.h@{admin.h}}
-\doxysubsubsection{\texorpdfstring{drive\_forward()}{drive\_forward()}}
-{\footnotesize\ttfamily \label{admin_8h_a70f05e6a13ceea6e6c44a03cfa90059b} 
-void drive\+\_\+forward (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [extern]}}
-
-
-
-Functie voor het naar voren rijden. 
-
-\begin{DoxyReturn}{Returns}
-void 
-\end{DoxyReturn}
 \Hypertarget{admin_8h_ac7a60a0c0a7a24b63849288395b81b59}\index{admin.h@{admin.h}!error\_HaltOS@{error\_HaltOS}}
 \index{error\_HaltOS@{error\_HaltOS}!admin.h@{admin.h}}
 \doxysubsubsection{\texorpdfstring{error\_HaltOS()}{error\_HaltOS()}}
@@ -511,7 +499,7 @@ Berekent het verschil tussen huidige lon en lat vergeleken met de waypoint. Geef
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-diffs is het verschil in lon en lat. 
+info = verschil in lat, lon en de afstand 
 \end{DoxyReturn}
 \Hypertarget{admin_8h_af3fcde4e5fc023f9a6b398139143c657}\index{admin.h@{admin.h}!GetTaskhandle@{GetTaskhandle}}
 \index{GetTaskhandle@{GetTaskhandle}!admin.h@{admin.h}}
@@ -560,7 +548,7 @@ Berekent de heading eerst in radialen en daarna omgezet in graden.
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-heading\+\_\+deg de heading in graden. 
+heading\+\_\+deg = heading in graden. 
 \end{DoxyReturn}
 \Hypertarget{admin_8h_a8fa46093b138efd9f745379e50aaebb1}\index{admin.h@{admin.h}!LED\_Task1@{LED\_Task1}}
 \index{LED\_Task1@{LED\_Task1}!admin.h@{admin.h}}
@@ -688,7 +676,7 @@ void Reach\+WPTask (\begin{DoxyParamCaption}\item[{void \texorpdfstring{$\ast$}{
 
 
 
-Deze functie wordt gebruikt om te kijken of wij de waypoint bereikt hebben. 
+Deze functie wordt gebruikt om te kijken of de waypoint bereikt is. Daarnaast wordt hier de heading berekent en wordt de {\ttfamily \doxylink{_tactile_feedback_8c_af71671f3764037bb67dce96f83ee96d5}{set\+Motors()}} aan geroepen. 
 
 
 \begin{DoxyParams}{Parameters}
@@ -718,7 +706,21 @@ Wanneer in de terminal \textquotesingle{}W\textquotesingle{} wordt ingetoetst, w
 \begin{DoxyReturn}{Returns}
 Een float met latitude of longitude waardes afhankelijk van waarde \textquotesingle{}type\textquotesingle{}. 
 \end{DoxyReturn}
-\Hypertarget{admin_8h_a16ba23da293f6f319ffbc502a4cb7d5c}\index{admin.h@{admin.h}!SetTaskPriority@{SetTaskPriority}}
+\Hypertarget{admin_8h_af71671f3764037bb67dce96f83ee96d5}\index{admin.h@{admin.h}!setMotors@{setMotors}}
+\index{setMotors@{setMotors}!admin.h@{admin.h}}
+\doxysubsubsection{\texorpdfstring{setMotors()}{setMotors()}}
+{\footnotesize\ttfamily \label{admin_8h_af71671f3764037bb67dce96f83ee96d5} 
+void set\+Motors (\begin{DoxyParamCaption}\item[{int}]{direction}{, }\item[{uint16\+\_\+t}]{speed\+\_\+l}{, }\item[{uint16\+\_\+t}]{speed\+\_\+r}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [extern]}}
+
+vooruit
+
+achteruit
+
+draai rechts (linker motor vooruit, rechter achteruit)
+
+draai links (linker achteruit, rechter vooruit)
+
+stop\Hypertarget{admin_8h_a16ba23da293f6f319ffbc502a4cb7d5c}\index{admin.h@{admin.h}!SetTaskPriority@{SetTaskPriority}}
 \index{SetTaskPriority@{SetTaskPriority}!admin.h@{admin.h}}
 \doxysubsubsection{\texorpdfstring{SetTaskPriority()}{SetTaskPriority()}}
 {\footnotesize\ttfamily \label{admin_8h_a16ba23da293f6f319ffbc502a4cb7d5c} 
@@ -795,19 +797,6 @@ Suspends (stopt) of Resumes (start) een task. Pas op. Als een task suspended wor
 \begin{DoxyReturn}{Returns}
 void 
 \end{DoxyReturn}
-\Hypertarget{admin_8h_aacf6bf8e121fea8b0a92d7197b73fe27}\index{admin.h@{admin.h}!stop@{stop}}
-\index{stop@{stop}!admin.h@{admin.h}}
-\doxysubsubsection{\texorpdfstring{stop()}{stop()}}
-{\footnotesize\ttfamily \label{admin_8h_aacf6bf8e121fea8b0a92d7197b73fe27} 
-void stop (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [extern]}}
-
-
-
-Functie voor het stoppen van alle motoren. 
-
-\begin{DoxyReturn}{Returns}
-void 
-\end{DoxyReturn}
 \Hypertarget{admin_8h_a23fe84bfb739ead3f3005b8378170b62}\index{admin.h@{admin.h}!Student\_task1@{Student\_task1}}
 \index{Student\_task1@{Student\_task1}!admin.h@{admin.h}}
 \doxysubsubsection{\texorpdfstring{Student\_task1()}{Student\_task1()}}
@@ -841,32 +830,6 @@ Vangt de Free\+RTOS software-\/interrupt op en toggelt een ledje.
 {\em h\+Timer1} & De handle van de timer \\
 \hline
 \end{DoxyParams}
-\begin{DoxyReturn}{Returns}
-void 
-\end{DoxyReturn}
-\Hypertarget{admin_8h_a984a089ed87e45a3f221747b1199403b}\index{admin.h@{admin.h}!turn\_left@{turn\_left}}
-\index{turn\_left@{turn\_left}!admin.h@{admin.h}}
-\doxysubsubsection{\texorpdfstring{turn\_left()}{turn\_left()}}
-{\footnotesize\ttfamily \label{admin_8h_a984a089ed87e45a3f221747b1199403b} 
-void turn\+\_\+left (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [extern]}}
-
-
-
-Functie voor het draaien naar links. 
-
-\begin{DoxyReturn}{Returns}
-void 
-\end{DoxyReturn}
-\Hypertarget{admin_8h_a3d336b48993609629f204ac0babbd8db}\index{admin.h@{admin.h}!turn\_right@{turn\_right}}
-\index{turn\_right@{turn\_right}!admin.h@{admin.h}}
-\doxysubsubsection{\texorpdfstring{turn\_right()}{turn\_right()}}
-{\footnotesize\ttfamily \label{admin_8h_a3d336b48993609629f204ac0babbd8db} 
-void turn\+\_\+right (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [extern]}}
-
-
-
-Functie voor het draaien naar rechts. 
-
 \begin{DoxyReturn}{Returns}
 void 
 \end{DoxyReturn}

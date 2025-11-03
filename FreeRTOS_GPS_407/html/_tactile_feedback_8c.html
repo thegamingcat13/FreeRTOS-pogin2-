@@ -95,18 +95,9 @@ $(function() {
 </div><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-func-members" class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:a0565ad7a822d9d334bb50c088af22361" id="r_a0565ad7a822d9d334bb50c088af22361"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0565ad7a822d9d334bb50c088af22361">turn_left</a> ()</td></tr>
-<tr class="memdesc:a0565ad7a822d9d334bb50c088af22361"><td class="mdescLeft">&#160;</td><td class="mdescRight">Functie voor het draaien naar links.  <br /></td></tr>
-<tr class="memitem:aca3b725ebee32d3719a9c02b41002ea3" id="r_aca3b725ebee32d3719a9c02b41002ea3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aca3b725ebee32d3719a9c02b41002ea3">turn_right</a> ()</td></tr>
-<tr class="memdesc:aca3b725ebee32d3719a9c02b41002ea3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Functie voor het draaien naar rechts.  <br /></td></tr>
-<tr class="memitem:acb6983eff31c6153e994997ac3381358" id="r_acb6983eff31c6153e994997ac3381358"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#acb6983eff31c6153e994997ac3381358">drive_forward</a> ()</td></tr>
-<tr class="memdesc:acb6983eff31c6153e994997ac3381358"><td class="mdescLeft">&#160;</td><td class="mdescRight">Functie voor het naar voren rijden.  <br /></td></tr>
-<tr class="memitem:a3f93e72e6296d5c5510ab3b43acd0626" id="r_a3f93e72e6296d5c5510ab3b43acd0626"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3f93e72e6296d5c5510ab3b43acd0626">drive_backward</a> ()</td></tr>
-<tr class="memdesc:a3f93e72e6296d5c5510ab3b43acd0626"><td class="mdescLeft">&#160;</td><td class="mdescRight">Functie voor het naar achteren rijden.  <br /></td></tr>
-<tr class="memitem:a8c528baf37154d347366083f0f816846" id="r_a8c528baf37154d347366083f0f816846"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8c528baf37154d347366083f0f816846">stop</a> ()</td></tr>
-<tr class="memdesc:a8c528baf37154d347366083f0f816846"><td class="mdescLeft">&#160;</td><td class="mdescRight">Functie voor het stoppen van alle motoren.  <br /></td></tr>
+<tr class="memitem:af71671f3764037bb67dce96f83ee96d5" id="r_af71671f3764037bb67dce96f83ee96d5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af71671f3764037bb67dce96f83ee96d5">setMotors</a> (int direction, uint16_t speed_l, uint16_t speed_r)</td></tr>
 <tr class="memitem:a55082f7e274aedceb19eedd95a687a85" id="r_a55082f7e274aedceb19eedd95a687a85"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a55082f7e274aedceb19eedd95a687a85">ReachWPTask</a> (void *argument)</td></tr>
-<tr class="memdesc:a55082f7e274aedceb19eedd95a687a85"><td class="mdescLeft">&#160;</td><td class="mdescRight">Deze functie wordt gebruikt om te kijken of wij de waypoint bereikt hebben.  <br /></td></tr>
+<tr class="memdesc:a55082f7e274aedceb19eedd95a687a85"><td class="mdescLeft">&#160;</td><td class="mdescRight">Deze functie wordt gebruikt om te kijken of de waypoint bereikt is. Daarnaast wordt hier de heading berekent en wordt de <span class="tt"><a class="el" href="#af71671f3764037bb67dce96f83ee96d5">setMotors()</a></span> aan geroepen.  <br /></td></tr>
 <tr class="memitem:a8e72f6787dd96ab06b941f402e994077" id="r_a8e72f6787dd96ab06b941f402e994077"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8e72f6787dd96ab06b941f402e994077">SkipWaypoint</a> (void)</td></tr>
 <tr class="memdesc:a8e72f6787dd96ab06b941f402e994077"><td class="mdescLeft">&#160;</td><td class="mdescRight">SkipWaypoint wordt gebruikt om een waypoint over te slaan. Deze functie wordt aangeroepen door de <span class="tt">ARM-keys</span>. In de functie is een check ingebouwd die kijkt of de functie correct is uitgevoerd.  <br /></td></tr>
 <tr class="memitem:a2f96c316955e657fb8242f6a23b21975" id="r_a2f96c316955e657fb8242f6a23b21975"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2f96c316955e657fb8242f6a23b21975">BackWaypoint</a> (void)</td></tr>
@@ -134,8 +125,6 @@ float&#160;</td><td class="memItemRight" valign="bottom"><b>wpLat</b> = 0</td></
 float&#160;</td><td class="memItemRight" valign="bottom"><b>wpLat_temp</b> = 0</td></tr>
 <tr class="memitem:a659ed425c4786f3a28fa27867d6ba063" id="r_a659ed425c4786f3a28fa27867d6ba063"><td class="memItemLeft" align="right" valign="top"><a id="a659ed425c4786f3a28fa27867d6ba063" name="a659ed425c4786f3a28fa27867d6ba063"></a>
 float&#160;</td><td class="memItemRight" valign="bottom"><b>wpLon</b> = 0</td></tr>
-<tr class="memitem:abe5adad105807e4dc1ebe53539733f84" id="r_abe5adad105807e4dc1ebe53539733f84"><td class="memItemLeft" align="right" valign="top"><a id="abe5adad105807e4dc1ebe53539733f84" name="abe5adad105807e4dc1ebe53539733f84"></a>
-float&#160;</td><td class="memItemRight" valign="bottom"><b>current_cog</b> = 0</td></tr>
 <tr class="memitem:a8c82b83d8f762dec031c90bb2a2b4139" id="r_a8c82b83d8f762dec031c90bb2a2b4139"><td class="memItemLeft" align="right" valign="top"><a id="a8c82b83d8f762dec031c90bb2a2b4139" name="a8c82b83d8f762dec031c90bb2a2b4139"></a>
 float&#160;</td><td class="memItemRight" valign="bottom"><b>current_speed</b> = 0</td></tr>
 <tr class="memitem:a6331cb19ba67714c3fa05d045c0c99bc" id="r_a6331cb19ba67714c3fa05d045c0c99bc"><td class="memItemLeft" align="right" valign="top"><a id="a6331cb19ba67714c3fa05d045c0c99bc" name="a6331cb19ba67714c3fa05d045c0c99bc"></a>
@@ -162,6 +151,8 @@ char&#160;</td><td class="memItemRight" valign="bottom"><b>course_char</b></td><
 bool&#160;</td><td class="memItemRight" valign="bottom"><b>FirstRun</b> = true</td></tr>
 <tr class="memitem:ad914495c21e66409a9f5a49acca3796a" id="r_ad914495c21e66409a9f5a49acca3796a"><td class="memItemLeft" align="right" valign="top"><a id="ad914495c21e66409a9f5a49acca3796a" name="ad914495c21e66409a9f5a49acca3796a"></a>
 TaskHandle_t&#160;</td><td class="memItemRight" valign="bottom"><b>hReachWP</b></td></tr>
+<tr class="memitem:a5faa27108379f799afb6984010bf0384" id="r_a5faa27108379f799afb6984010bf0384"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_t_i_m___handle_type_def.html">TIM_HandleTypeDef</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5faa27108379f799afb6984010bf0384">htim8</a></td></tr>
+<tr class="memdesc:a5faa27108379f799afb6984010bf0384"><td class="mdescLeft">&#160;</td><td class="mdescRight">Functie voor de aansturing van de motors, met een switch case.  <br /></td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>De functies voor het aansturen van de L298N dual H-bridge driver. En de functies voor de besturing van de motors. </p>
@@ -190,46 +181,6 @@ TaskHandle_t&#160;</td><td class="memItemRight" valign="bottom"><b>hReachWP</b><
 
 </div>
 </div>
-<a id="a3f93e72e6296d5c5510ab3b43acd0626" name="a3f93e72e6296d5c5510ab3b43acd0626"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a3f93e72e6296d5c5510ab3b43acd0626">&#9670;&#160;</a></span>drive_backward()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void drive_backward </td>
-          <td>(</td>
-          <td class="paramtype">void</td>          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Functie voor het naar achteren rijden. </p>
-<dl class="section return"><dt>Returns</dt><dd>void </dd></dl>
-
-</div>
-</div>
-<a id="acb6983eff31c6153e994997ac3381358" name="acb6983eff31c6153e994997ac3381358"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#acb6983eff31c6153e994997ac3381358">&#9670;&#160;</a></span>drive_forward()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void drive_forward </td>
-          <td>(</td>
-          <td class="paramtype">void</td>          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Functie voor het naar voren rijden. </p>
-<dl class="section return"><dt>Returns</dt><dd>void </dd></dl>
-
-</div>
-</div>
 <a id="a55082f7e274aedceb19eedd95a687a85" name="a55082f7e274aedceb19eedd95a687a85"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a55082f7e274aedceb19eedd95a687a85">&#9670;&#160;</a></span>ReachWPTask()</h2>
 
@@ -245,7 +196,7 @@ TaskHandle_t&#160;</td><td class="memItemRight" valign="bottom"><b>hReachWP</b><
       </table>
 </div><div class="memdoc">
 
-<p>Deze functie wordt gebruikt om te kijken of wij de waypoint bereikt hebben. </p>
+<p>Deze functie wordt gebruikt om te kijken of de waypoint bereikt is. Daarnaast wordt hier de heading berekent en wordt de <span class="tt"><a class="el" href="#af71671f3764037bb67dce96f83ee96d5">setMotors()</a></span> aan geroepen. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">*argument</td><td>niet gerbuikt. </td></tr>
@@ -253,6 +204,37 @@ TaskHandle_t&#160;</td><td class="memItemRight" valign="bottom"><b>hReachWP</b><
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>void </dd></dl>
+
+</div>
+</div>
+<a id="af71671f3764037bb67dce96f83ee96d5" name="af71671f3764037bb67dce96f83ee96d5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af71671f3764037bb67dce96f83ee96d5">&#9670;&#160;</a></span>setMotors()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void setMotors </td>
+          <td>(</td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>direction</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint16_t</td>          <td class="paramname"><span class="paramname"><em>speed_l</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint16_t</td>          <td class="paramname"><span class="paramname"><em>speed_r</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>vooruit</p>
+<p>achteruit</p>
+<p>draai rechts (linker motor vooruit, rechter achteruit)</p>
+<p>draai links (linker achteruit, rechter vooruit)</p>
+<p>stop</p>
 
 </div>
 </div>
@@ -296,62 +278,37 @@ TaskHandle_t&#160;</td><td class="memItemRight" valign="bottom"><b>hReachWP</b><
 
 </div>
 </div>
-<a id="a8c528baf37154d347366083f0f816846" name="a8c528baf37154d347366083f0f816846"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a8c528baf37154d347366083f0f816846">&#9670;&#160;</a></span>stop()</h2>
+<a name="doc-var-members" id="doc-var-members"></a><h2 id="header-doc-var-members" class="groupheader">Variable Documentation</h2>
+<a id="a5faa27108379f799afb6984010bf0384" name="a5faa27108379f799afb6984010bf0384"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5faa27108379f799afb6984010bf0384">&#9670;&#160;</a></span>htim8</h2>
 
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">void stop </td>
-          <td>(</td>
-          <td class="paramtype">void</td>          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
-          <td></td>
+          <td class="memname"><a class="el" href="struct_t_i_m___handle_type_def.html">TIM_HandleTypeDef</a> htim8</td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel extern">extern</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 
-<p>Functie voor het stoppen van alle motoren. </p>
-<dl class="section return"><dt>Returns</dt><dd>void </dd></dl>
-
-</div>
-</div>
-<a id="a0565ad7a822d9d334bb50c088af22361" name="a0565ad7a822d9d334bb50c088af22361"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a0565ad7a822d9d334bb50c088af22361">&#9670;&#160;</a></span>turn_left()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void turn_left </td>
-          <td>(</td>
-          <td class="paramtype">void</td>          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Functie voor het draaien naar links. </p>
-<dl class="section return"><dt>Returns</dt><dd>void </dd></dl>
-
-</div>
-</div>
-<a id="aca3b725ebee32d3719a9c02b41002ea3" name="aca3b725ebee32d3719a9c02b41002ea3"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aca3b725ebee32d3719a9c02b41002ea3">&#9670;&#160;</a></span>turn_right()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void turn_right </td>
-          <td>(</td>
-          <td class="paramtype">void</td>          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Functie voor het draaien naar rechts. </p>
+<p>Functie voor de aansturing van de motors, met een switch case. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">direction</td><td>= gewenste richting<br  />
+ speed_l = snelheid voor linker motor<br  />
+ speed_r = snelheid voor rechter motor<br  />
+ </td></tr>
+  </table>
+  </dd>
+</dl>
 <dl class="section return"><dt>Returns</dt><dd>void </dd></dl>
 
 </div>

@@ -98,7 +98,8 @@ Functions</h2></td></tr>
 <tr class="memitem:a38598fd3a3a66db7e4617f5d6d01749b" id="r_a38598fd3a3a66db7e4617f5d6d01749b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a38598fd3a3a66db7e4617f5d6d01749b">ARM_keys_IRQ</a> (void *argument)</td></tr>
 <tr class="memdesc:a38598fd3a3a66db7e4617f5d6d01749b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Deze task handelt de ARM-toets af, die ontvangen is van de ISR-handler (zie: <a class="el" href="stm32f4xx__it_8c.html" title="Interrupt Service Routines.">stm32f4xx_it.c</a>).  <br /></td></tr>
 <tr class="memitem:a877687ff1bd562c855d11d4941cd966d" id="r_a877687ff1bd562c855d11d4941cd966d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a877687ff1bd562c855d11d4941cd966d">ARM_keys_task</a> (void *argument)</td></tr>
-<tr class="memdesc:a877687ff1bd562c855d11d4941cd966d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Task krijgt ARM-key met notificatie binnen, en zet ledjes op die waarde. Ook de gekleurde ledjes (behalve blauw, die wordt door de timer gebruikt) krijgen een schwung...  <br /></td></tr>
+<tr class="memdesc:a877687ff1bd562c855d11d4941cd966d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Task krijgt ARM-key met notificatie binnen, en zet ledjes op die waarde. Ook de gekleurde ledjes (behalve blauw, die wordt door de timer gebruikt) krijgen een schwung...<br  />
+ Verschillende acties op basis van de ingedrukte arm key.  <br /></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-var-members" class="groupheader"><a id="var-members" name="var-members"></a>
 Variables</h2></td></tr>
@@ -123,7 +124,8 @@ char&#160;</td><td class="memItemRight" valign="bottom"><b>waypoint_back</b> [] 
 <div class="textblock"><p>Behandelt de communicatie met de ARM-toetsjes met: Eventgroups, TaskNotify, Interrupt-handling.<br  />
  <b>Demonstreert: xEventGroupWaitBits(), xTaskGetHandle(), xTaskNotify(), xTaskNotifyWait(),xSemaphoregive(), xSemaphoreTake(). </b><br  />
 . </p>
-<p>Aan de ARM-keys is een interrupt gekoppeld (zie <a class="el" href="stm32f4xx__it_8c.html" title="Interrupt Service Routines.">stm32f4xx_it.c</a>). Die stuurt een event door die opgevangen wordt door task <a class="el" href="#a38598fd3a3a66db7e4617f5d6d01749b" title="Deze task handelt de ARM-toets af, die ontvangen is van de ISR-handler (zie: stm32f4xx_it....">ARM_keys_IRQ()</a>. </p><dl class="section author"><dt>Author</dt><dd>MSC</dd></dl>
+<p>Voert verschillende acties uit voor verschillende arm keys.<br  />
+ Aan de ARM-keys is een interrupt gekoppeld (zie <a class="el" href="stm32f4xx__it_8c.html" title="Interrupt Service Routines.">stm32f4xx_it.c</a>). Die stuurt een event door die opgevangen wordt door task <a class="el" href="#a38598fd3a3a66db7e4617f5d6d01749b" title="Deze task handelt de ARM-toets af, die ontvangen is van de ISR-handler (zie: stm32f4xx_it....">ARM_keys_IRQ()</a>. </p><dl class="section author"><dt>Author</dt><dd>MSC</dd></dl>
 <dl class="section date"><dt>Date</dt><dd>5/5/2022 </dd></dl>
 </div><a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Function Documentation</h2>
 <a id="a38598fd3a3a66db7e4617f5d6d01749b" name="a38598fd3a3a66db7e4617f5d6d01749b"></a>
@@ -167,7 +169,8 @@ char&#160;</td><td class="memItemRight" valign="bottom"><b>waypoint_back</b> [] 
       </table>
 </div><div class="memdoc">
 
-<p>Task krijgt ARM-key met notificatie binnen, en zet ledjes op die waarde. Ook de gekleurde ledjes (behalve blauw, die wordt door de timer gebruikt) krijgen een schwung... </p>
+<p>Task krijgt ARM-key met notificatie binnen, en zet ledjes op die waarde. Ook de gekleurde ledjes (behalve blauw, die wordt door de timer gebruikt) krijgen een schwung...<br  />
+ Verschillende acties op basis van de ingedrukte arm key. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">*argument</td><td>Niet gebruikt, eventueel een waarde of string om te testen. </td></tr>
@@ -175,6 +178,11 @@ char&#160;</td><td class="memItemRight" valign="bottom"><b>waypoint_back</b> [] 
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>void. </dd></dl>
+<p>Set waypoint</p>
+<p>Start cruising</p>
+<p>Skip next waypoint</p>
+<p>Return to previous waypoint</p>
+<p>Show the amount of waypoints and which is next</p>
 
 </div>
 </div>

@@ -15,18 +15,10 @@ De functies voor het aansturen van de L298N dual H-\/bridge driver. En de functi
 \doxysubsubsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
-void \mbox{\hyperlink{_tactile_feedback_8c_a0565ad7a822d9d334bb50c088af22361}{turn\+\_\+left}} ()
-\begin{DoxyCompactList}\small\item\em Functie voor het draaien naar links. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{_tactile_feedback_8c_aca3b725ebee32d3719a9c02b41002ea3}{turn\+\_\+right}} ()
-\begin{DoxyCompactList}\small\item\em Functie voor het draaien naar rechts. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{_tactile_feedback_8c_acb6983eff31c6153e994997ac3381358}{drive\+\_\+forward}} ()
-\begin{DoxyCompactList}\small\item\em Functie voor het naar voren rijden. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{_tactile_feedback_8c_a3f93e72e6296d5c5510ab3b43acd0626}{drive\+\_\+backward}} ()
-\begin{DoxyCompactList}\small\item\em Functie voor het naar achteren rijden. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{_tactile_feedback_8c_a8c528baf37154d347366083f0f816846}{stop}} ()
-\begin{DoxyCompactList}\small\item\em Functie voor het stoppen van alle motoren. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{_tactile_feedback_8c_af71671f3764037bb67dce96f83ee96d5}{set\+Motors}} (int direction, uint16\+\_\+t speed\+\_\+l, uint16\+\_\+t speed\+\_\+r)
+\item 
 void \mbox{\hyperlink{_tactile_feedback_8c_a55082f7e274aedceb19eedd95a687a85}{Reach\+WPTask}} (void \texorpdfstring{$\ast$}{*}argument)
-\begin{DoxyCompactList}\small\item\em Deze functie wordt gebruikt om te kijken of wij de waypoint bereikt hebben. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Deze functie wordt gebruikt om te kijken of de waypoint bereikt is. Daarnaast wordt hier de heading berekent en wordt de {\ttfamily \doxylink{_tactile_feedback_8c_af71671f3764037bb67dce96f83ee96d5}{set\+Motors()}} aan geroepen. \end{DoxyCompactList}\item 
 int \mbox{\hyperlink{_tactile_feedback_8c_a8e72f6787dd96ab06b941f402e994077}{Skip\+Waypoint}} (void)
 \begin{DoxyCompactList}\small\item\em Skip\+Waypoint wordt gebruikt om een waypoint over te slaan. Deze functie wordt aangeroepen door de {\ttfamily ARM-\/keys}. In de functie is een check ingebouwd die kijkt of de functie correct is uitgevoerd. \end{DoxyCompactList}\item 
 int \mbox{\hyperlink{_tactile_feedback_8c_a2f96c316955e657fb8242f6a23b21975}{Back\+Waypoint}} (void)
@@ -62,9 +54,6 @@ float {\bfseries wp\+Lat\+\_\+temp} = 0
 \item 
 \Hypertarget{_tactile_feedback_8c_a659ed425c4786f3a28fa27867d6ba063}\label{_tactile_feedback_8c_a659ed425c4786f3a28fa27867d6ba063} 
 float {\bfseries wp\+Lon} = 0
-\item 
-\Hypertarget{_tactile_feedback_8c_abe5adad105807e4dc1ebe53539733f84}\label{_tactile_feedback_8c_abe5adad105807e4dc1ebe53539733f84} 
-float {\bfseries current\+\_\+cog} = 0
 \item 
 \Hypertarget{_tactile_feedback_8c_a8c82b83d8f762dec031c90bb2a2b4139}\label{_tactile_feedback_8c_a8c82b83d8f762dec031c90bb2a2b4139} 
 float {\bfseries current\+\_\+speed} = 0
@@ -104,7 +93,9 @@ bool {\bfseries First\+Run} = true
 \item 
 \Hypertarget{_tactile_feedback_8c_ad914495c21e66409a9f5a49acca3796a}\label{_tactile_feedback_8c_ad914495c21e66409a9f5a49acca3796a} 
 Task\+Handle\+\_\+t {\bfseries h\+Reach\+WP}
-\end{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{struct_t_i_m___handle_type_def}{TIM\+\_\+\+Handle\+Type\+Def}} \mbox{\hyperlink{_tactile_feedback_8c_a5faa27108379f799afb6984010bf0384}{htim8}}
+\begin{DoxyCompactList}\small\item\em Functie voor de aansturing van de motors, met een switch case. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
@@ -134,33 +125,7 @@ Back\+Waypoint wordt gebruikt om terug te gaan naar de vorige waypoint. Deze fun
 1 = waypoint verlaagt, verlaag {\ttfamily Current\+Waypoint} met 1 voor vorige waypoint. 0 = waypoint niet verlaagt. 
 \end{DoxyReturn}
 
-\end{DoxyItemize}\Hypertarget{_tactile_feedback_8c_a3f93e72e6296d5c5510ab3b43acd0626}\index{TactileFeedback.c@{TactileFeedback.c}!drive\_backward@{drive\_backward}}
-\index{drive\_backward@{drive\_backward}!TactileFeedback.c@{TactileFeedback.c}}
-\doxysubsubsection{\texorpdfstring{drive\_backward()}{drive\_backward()}}
-{\footnotesize\ttfamily \label{_tactile_feedback_8c_a3f93e72e6296d5c5510ab3b43acd0626} 
-void drive\+\_\+backward (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})}
-
-
-
-Functie voor het naar achteren rijden. 
-
-\begin{DoxyReturn}{Returns}
-void 
-\end{DoxyReturn}
-\Hypertarget{_tactile_feedback_8c_acb6983eff31c6153e994997ac3381358}\index{TactileFeedback.c@{TactileFeedback.c}!drive\_forward@{drive\_forward}}
-\index{drive\_forward@{drive\_forward}!TactileFeedback.c@{TactileFeedback.c}}
-\doxysubsubsection{\texorpdfstring{drive\_forward()}{drive\_forward()}}
-{\footnotesize\ttfamily \label{_tactile_feedback_8c_acb6983eff31c6153e994997ac3381358} 
-void drive\+\_\+forward (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})}
-
-
-
-Functie voor het naar voren rijden. 
-
-\begin{DoxyReturn}{Returns}
-void 
-\end{DoxyReturn}
-\Hypertarget{_tactile_feedback_8c_a55082f7e274aedceb19eedd95a687a85}\index{TactileFeedback.c@{TactileFeedback.c}!ReachWPTask@{ReachWPTask}}
+\end{DoxyItemize}\Hypertarget{_tactile_feedback_8c_a55082f7e274aedceb19eedd95a687a85}\index{TactileFeedback.c@{TactileFeedback.c}!ReachWPTask@{ReachWPTask}}
 \index{ReachWPTask@{ReachWPTask}!TactileFeedback.c@{TactileFeedback.c}}
 \doxysubsubsection{\texorpdfstring{ReachWPTask()}{ReachWPTask()}}
 {\footnotesize\ttfamily \label{_tactile_feedback_8c_a55082f7e274aedceb19eedd95a687a85} 
@@ -168,7 +133,7 @@ void Reach\+WPTask (\begin{DoxyParamCaption}\item[{void \texorpdfstring{$\ast$}{
 
 
 
-Deze functie wordt gebruikt om te kijken of wij de waypoint bereikt hebben. 
+Deze functie wordt gebruikt om te kijken of de waypoint bereikt is. Daarnaast wordt hier de heading berekent en wordt de {\ttfamily \doxylink{_tactile_feedback_8c_af71671f3764037bb67dce96f83ee96d5}{set\+Motors()}} aan geroepen. 
 
 
 \begin{DoxyParams}{Parameters}
@@ -178,7 +143,21 @@ Deze functie wordt gebruikt om te kijken of wij de waypoint bereikt hebben.
 \begin{DoxyReturn}{Returns}
 void 
 \end{DoxyReturn}
-\Hypertarget{_tactile_feedback_8c_a5f8b543f818c13ecb6eaf9452f9a4395}\index{TactileFeedback.c@{TactileFeedback.c}!ShowWaypoint@{ShowWaypoint}}
+\Hypertarget{_tactile_feedback_8c_af71671f3764037bb67dce96f83ee96d5}\index{TactileFeedback.c@{TactileFeedback.c}!setMotors@{setMotors}}
+\index{setMotors@{setMotors}!TactileFeedback.c@{TactileFeedback.c}}
+\doxysubsubsection{\texorpdfstring{setMotors()}{setMotors()}}
+{\footnotesize\ttfamily \label{_tactile_feedback_8c_af71671f3764037bb67dce96f83ee96d5} 
+void set\+Motors (\begin{DoxyParamCaption}\item[{int}]{direction}{, }\item[{uint16\+\_\+t}]{speed\+\_\+l}{, }\item[{uint16\+\_\+t}]{speed\+\_\+r}{}\end{DoxyParamCaption})}
+
+vooruit
+
+achteruit
+
+draai rechts (linker motor vooruit, rechter achteruit)
+
+draai links (linker achteruit, rechter vooruit)
+
+stop\Hypertarget{_tactile_feedback_8c_a5f8b543f818c13ecb6eaf9452f9a4395}\index{TactileFeedback.c@{TactileFeedback.c}!ShowWaypoint@{ShowWaypoint}}
 \index{ShowWaypoint@{ShowWaypoint}!TactileFeedback.c@{TactileFeedback.c}}
 \doxysubsubsection{\texorpdfstring{ShowWaypoint()}{ShowWaypoint()}}
 {\footnotesize\ttfamily \label{_tactile_feedback_8c_a5f8b543f818c13ecb6eaf9452f9a4395} 
@@ -204,42 +183,29 @@ Skip\+Waypoint wordt gebruikt om een waypoint over te slaan. Deze functie wordt 
 \begin{DoxyReturn}{Returns}
 1 = waypoint behaald, verhoog {\ttfamily Current\+Waypoint} met 1 voor volgende waypoint. 0 = waypoint nog niet bereikt. 
 \end{DoxyReturn}
-\Hypertarget{_tactile_feedback_8c_a8c528baf37154d347366083f0f816846}\index{TactileFeedback.c@{TactileFeedback.c}!stop@{stop}}
-\index{stop@{stop}!TactileFeedback.c@{TactileFeedback.c}}
-\doxysubsubsection{\texorpdfstring{stop()}{stop()}}
-{\footnotesize\ttfamily \label{_tactile_feedback_8c_a8c528baf37154d347366083f0f816846} 
-void stop (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})}
+
+
+\label{doc-var-members}
+\Hypertarget{_tactile_feedback_8c_doc-var-members}
+\doxysubsection{Variable Documentation}
+\Hypertarget{_tactile_feedback_8c_a5faa27108379f799afb6984010bf0384}\index{TactileFeedback.c@{TactileFeedback.c}!htim8@{htim8}}
+\index{htim8@{htim8}!TactileFeedback.c@{TactileFeedback.c}}
+\doxysubsubsection{\texorpdfstring{htim8}{htim8}}
+{\footnotesize\ttfamily \label{_tactile_feedback_8c_a5faa27108379f799afb6984010bf0384} 
+\mbox{\hyperlink{struct_t_i_m___handle_type_def}{TIM\+\_\+\+Handle\+Type\+Def}} htim8\hspace{0.3cm}{\ttfamily [extern]}}
 
 
 
-Functie voor het stoppen van alle motoren. 
-
-\begin{DoxyReturn}{Returns}
-void 
-\end{DoxyReturn}
-\Hypertarget{_tactile_feedback_8c_a0565ad7a822d9d334bb50c088af22361}\index{TactileFeedback.c@{TactileFeedback.c}!turn\_left@{turn\_left}}
-\index{turn\_left@{turn\_left}!TactileFeedback.c@{TactileFeedback.c}}
-\doxysubsubsection{\texorpdfstring{turn\_left()}{turn\_left()}}
-{\footnotesize\ttfamily \label{_tactile_feedback_8c_a0565ad7a822d9d334bb50c088af22361} 
-void turn\+\_\+left (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})}
+Functie voor de aansturing van de motors, met een switch case. 
 
 
-
-Functie voor het draaien naar links. 
-
-\begin{DoxyReturn}{Returns}
-void 
-\end{DoxyReturn}
-\Hypertarget{_tactile_feedback_8c_aca3b725ebee32d3719a9c02b41002ea3}\index{TactileFeedback.c@{TactileFeedback.c}!turn\_right@{turn\_right}}
-\index{turn\_right@{turn\_right}!TactileFeedback.c@{TactileFeedback.c}}
-\doxysubsubsection{\texorpdfstring{turn\_right()}{turn\_right()}}
-{\footnotesize\ttfamily \label{_tactile_feedback_8c_aca3b725ebee32d3719a9c02b41002ea3} 
-void turn\+\_\+right (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})}
-
-
-
-Functie voor het draaien naar rechts. 
-
+\begin{DoxyParams}{Parameters}
+{\em direction} & = gewenste richting~\newline
+ speed\+\_\+l = snelheid voor linker motor~\newline
+ speed\+\_\+r = snelheid voor rechter motor~\newline
+ \\
+\hline
+\end{DoxyParams}
 \begin{DoxyReturn}{Returns}
 void 
 \end{DoxyReturn}

@@ -37,15 +37,15 @@ char course_char;
 bool FirstRun = true;
 
 TaskHandle_t hReachWP;
-
-
-/**
- * @brief Functie voor het draaien naar links.
- * @return void
- */
-
 extern TIM_HandleTypeDef htim8;  // PWM timer
 
+/**
+ * @brief Functie voor de aansturing van de motors, met een switch case.
+ * @param direction = gewenste richting<br>
+ * 		  speed_l = snelheid voor linker motor<br>
+ * 		  speed_r = snelheid voor rechter motor<br>
+ * @return void
+ */
 void setMotors(int direction, uint16_t speed_l, uint16_t speed_r)
 {
     if (speed_l > htim8.Init.Period)
@@ -56,35 +56,39 @@ void setMotors(int direction, uint16_t speed_l, uint16_t speed_r)
 
     switch (direction)
     {
-        case 1: // vooruit
+        case 1: /// vooruit
             HAL_GPIO_WritePin(M1_1_GPIO_Port, M1_1_Pin, GPIO_PIN_SET);
             HAL_GPIO_WritePin(M1_2_GPIO_Port, M1_2_Pin, GPIO_PIN_RESET);
             HAL_GPIO_WritePin(M2_1_GPIO_Port, M2_1_Pin, GPIO_PIN_RESET);
             HAL_GPIO_WritePin(M2_2_GPIO_Port, M2_2_Pin, GPIO_PIN_SET);
             break;
 
-        case -1: // achteruit
+        case -1: /// achteruit
             HAL_GPIO_WritePin(M1_1_GPIO_Port, M1_1_Pin, GPIO_PIN_RESET);
             HAL_GPIO_WritePin(M1_2_GPIO_Port, M1_2_Pin, GPIO_PIN_SET);
             HAL_GPIO_WritePin(M2_1_GPIO_Port, M2_1_Pin, GPIO_PIN_SET);
             HAL_GPIO_WritePin(M2_2_GPIO_Port, M2_2_Pin, GPIO_PIN_RESET);
             break;
 
-        case 2: // draai rechts (linker motor vooruit, rechter achteruit)
+        case 2: /// draai rechts (linker motor vooruit, rechter achteruit)
             HAL_GPIO_WritePin(M1_1_GPIO_Port, M1_1_Pin, GPIO_PIN_SET);
             HAL_GPIO_WritePin(M1_2_GPIO_Port, M1_2_Pin, GPIO_PIN_RESET);
             HAL_GPIO_WritePin(M2_1_GPIO_Port, M2_1_Pin, GPIO_PIN_SET);
             HAL_GPIO_WritePin(M2_2_GPIO_Port, M2_2_Pin, GPIO_PIN_RESET);
             break;
 
-        case -2: // draai links (linker achteruit, rechter vooruit)
+        case -2: /// draai links (linker achteruit, rechter vooruit)
             HAL_GPIO_WritePin(M1_1_GPIO_Port, M1_1_Pin, GPIO_PIN_RESET);
             HAL_GPIO_WritePin(M1_2_GPIO_Port, M1_2_Pin, GPIO_PIN_SET);
             HAL_GPIO_WritePin(M2_1_GPIO_Port, M2_1_Pin, GPIO_PIN_RESET);
             HAL_GPIO_WritePin(M2_2_GPIO_Port, M2_2_Pin, GPIO_PIN_SET);
             break;
 
+<<<<<<< HEAD
         case 3: // stop
+=======
+        default: /// stop
+>>>>>>> branch 'master' of https://github.com/thegamingcat13/FreeRTOS-pogin2-.git
             HAL_GPIO_WritePin(M1_1_GPIO_Port, M1_1_Pin, GPIO_PIN_RESET);
             HAL_GPIO_WritePin(M1_2_GPIO_Port, M1_2_Pin, GPIO_PIN_RESET);
             HAL_GPIO_WritePin(M2_1_GPIO_Port, M2_1_Pin, GPIO_PIN_RESET);
@@ -104,7 +108,7 @@ void setMotors(int direction, uint16_t speed_l, uint16_t speed_r)
 }
 
 /**
- * @brief Deze functie wordt gebruikt om te kijken of wij de waypoint bereikt hebben.
+ * @brief Deze functie wordt gebruikt om te kijken of de waypoint bereikt is. Daarnaast wordt hier de heading berekent en wordt de `setMotors()` aan geroepen
  * @param *argument niet gerbuikt.
  * @return void
  */

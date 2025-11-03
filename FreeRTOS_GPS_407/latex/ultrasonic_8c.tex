@@ -21,14 +21,15 @@ Task/functie rondom de ultrasoon sensor. Deze taak doet het volgende\+:~\newline
 \begin{DoxyCompactItemize}
 \item 
 void \mbox{\hyperlink{ultrasonic_8c_a3f88352450dad51d82e4bf84a0a439a1}{delay\+\_\+us}} (int us)
-\begin{DoxyCompactList}\small\item\em Functie voor het creeren van de timer, nodig voor het corect werken van de sensor. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Functie die een delay creeërt in microseconden i.\+p.\+v. de standaart miliseconden hiervoor word timer 2 gebruikt. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{ultrasonic_8c_abbc295f35f3b064af728432caf7aa338}{SR04\+\_\+\+Task}} (void \texorpdfstring{$\ast$}{*}argument)
 \begin{DoxyCompactList}\small\item\em Functie voor het aansturen en het uitlezen van de sensor. Daarnaast berekent hij de afstand, en maakt hij een keuze op basis van deze afstand. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsubsection*{Variables}
 \begin{DoxyCompactItemize}
 \item 
-bool \mbox{\hyperlink{ultrasonic_8c_a4653e57faac0975f85e9f0d6b19c94fc}{sr04\+\_\+debug}} = false
-\begin{DoxyCompactList}\small\item\em Provides a blocking microsecond delay using timer 2. \end{DoxyCompactList}\item 
+\Hypertarget{ultrasonic_8c_a4653e57faac0975f85e9f0d6b19c94fc}\label{ultrasonic_8c_a4653e57faac0975f85e9f0d6b19c94fc} 
+bool {\bfseries sr04\+\_\+debug} = false
+\item 
 \Hypertarget{ultrasonic_8c_a7474ab22834d3f7c041f6a2155437168}\label{ultrasonic_8c_a7474ab22834d3f7c041f6a2155437168} 
 Event\+Group\+Handle\+\_\+t {\bfseries x\+Echo\+Event\+Group}
 \item 
@@ -72,11 +73,11 @@ void delay\+\_\+us (\begin{DoxyParamCaption}\item[{int}]{us}{}\end{DoxyParamCapt
 
 
 
-Functie voor het creeren van de timer, nodig voor het corect werken van de sensor. 
+Functie die een delay creeërt in microseconden i.\+p.\+v. de standaart miliseconden hiervoor word timer 2 gebruikt. 
 
 
 \begin{DoxyParams}{Parameters}
-{\em } & \\
+{\em us} & Aantal microseconden (us) om te wachten. \\
 \hline
 \end{DoxyParams}
 \Hypertarget{ultrasonic_8c_abbc295f35f3b064af728432caf7aa338}\index{ultrasonic.c@{ultrasonic.c}!SR04\_Task@{SR04\_Task}}
@@ -97,23 +98,3 @@ Functie voor het aansturen en het uitlezen van de sensor. Daarnaast berekent hij
 \begin{DoxyReturn}{Returns}
 void 
 \end{DoxyReturn}
-
-
-\label{doc-var-members}
-\Hypertarget{ultrasonic_8c_doc-var-members}
-\doxysubsection{Variable Documentation}
-\Hypertarget{ultrasonic_8c_a4653e57faac0975f85e9f0d6b19c94fc}\index{ultrasonic.c@{ultrasonic.c}!sr04\_debug@{sr04\_debug}}
-\index{sr04\_debug@{sr04\_debug}!ultrasonic.c@{ultrasonic.c}}
-\doxysubsubsection{\texorpdfstring{sr04\_debug}{sr04\_debug}}
-{\footnotesize\ttfamily \label{ultrasonic_8c_a4653e57faac0975f85e9f0d6b19c94fc} 
-bool sr04\+\_\+debug = false}
-
-
-
-Provides a blocking microsecond delay using timer 2. 
-
-
-\begin{DoxyParams}{Parameters}
-{\em us} & Number of microseconds to delay \\
-\hline
-\end{DoxyParams}

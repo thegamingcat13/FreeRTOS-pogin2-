@@ -19,7 +19,7 @@ RouteInfo info;   // Struct voor de verschillen
  * De data wordt vanuit `parsed_grmc` gehaald( zie `gps.h` voor de struct).
  *
  * @param waypoint de struct die lan en lon opslaat.
- * @return diffs is het verschil in lon en lat.
+ * @return info = verschil in lat, lon en de afstand
  */
 RouteInfo Get_Waypoint_Info (int waypoint)
 {
@@ -61,7 +61,7 @@ RouteInfo Get_Waypoint_Info (int waypoint)
 /**
  * @brief Berekent de heading eerst in radialen en daarna omgezet in graden.
  * @param waypoint de struct die lan en lon opslaat.
- * @return heading_deg de heading in graden.
+ * @return heading_deg = heading in graden.
  */
 float heading (int waypoint)
 {
