@@ -95,6 +95,7 @@ $(function() {
 <code>#include &quot;semphr.h&quot;</code><br />
 <code>#include &quot;message_buffer.h&quot;</code><br />
 <code>#include &quot;cmsis_os.h&quot;</code><br />
+<code>#include &lt;stdbool.h&gt;</code><br />
 <code>#include &quot;stdio.h&quot;</code><br />
 <code>#include &quot;string.h&quot;</code><br />
 <code>#include &quot;stdlib.h&quot;</code><br />
@@ -119,14 +120,26 @@ Macros</h2></td></tr>
 #define&#160;</td><td class="memItemRight" valign="bottom"><b>QSIZE_UART</b>&#160;&#160;&#160;10</td></tr>
 <tr class="memdesc:a18901836d92cf76a93826b9e1116292d"><td class="mdescLeft">&#160;</td><td class="mdescRight">set queue op 10 elementen <br /></td></tr>
 <tr class="memitem:a5da43425fff36347c69fc3c090e42c6c" id="r_a5da43425fff36347c69fc3c090e42c6c"><td class="memItemLeft" align="right" valign="top"><a id="a5da43425fff36347c69fc3c090e42c6c" name="a5da43425fff36347c69fc3c090e42c6c"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>SLOW</b>&#160;&#160;&#160;1000</td></tr>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>SLOW</b>&#160;&#160;&#160;300</td></tr>
 <tr class="memdesc:a5da43425fff36347c69fc3c090e42c6c"><td class="mdescLeft">&#160;</td><td class="mdescRight">motor speeds defines <br /></td></tr>
 <tr class="memitem:a455b219d48b21108576f53129be38c32" id="r_a455b219d48b21108576f53129be38c32"><td class="memItemLeft" align="right" valign="top"><a id="a455b219d48b21108576f53129be38c32" name="a455b219d48b21108576f53129be38c32"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>MEDIUM</b>&#160;&#160;&#160;2000</td></tr>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>MEDIUM</b>&#160;&#160;&#160;500</td></tr>
 <tr class="memitem:a8091c2bcff55cbe0a4a145fd5fb7c22d" id="r_a8091c2bcff55cbe0a4a145fd5fb7c22d"><td class="memItemLeft" align="right" valign="top"><a id="a8091c2bcff55cbe0a4a145fd5fb7c22d" name="a8091c2bcff55cbe0a4a145fd5fb7c22d"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>FAST</b>&#160;&#160;&#160;3000</td></tr>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>FAST</b>&#160;&#160;&#160;1500</td></tr>
 <tr class="memitem:a48a08aed5b9070297732293c1429ad88" id="r_a48a08aed5b9070297732293c1429ad88"><td class="memItemLeft" align="right" valign="top"><a id="a48a08aed5b9070297732293c1429ad88" name="a48a08aed5b9070297732293c1429ad88"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>VERY_FAST</b>&#160;&#160;&#160;4000</td></tr>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>VERY_FAST</b>&#160;&#160;&#160;600</td></tr>
+<tr class="memitem:a587ff8b92bf1b8971cee08280a2c6131" id="r_a587ff8b92bf1b8971cee08280a2c6131"><td class="memItemLeft" align="right" valign="top"><a id="a587ff8b92bf1b8971cee08280a2c6131" name="a587ff8b92bf1b8971cee08280a2c6131"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>STANDSTILL</b>&#160;&#160;&#160;0</td></tr>
+<tr class="memitem:a6ddfdda7a062d10cff4a72b76b44aeb8" id="r_a6ddfdda7a062d10cff4a72b76b44aeb8"><td class="memItemLeft" align="right" valign="top"><a id="a6ddfdda7a062d10cff4a72b76b44aeb8" name="a6ddfdda7a062d10cff4a72b76b44aeb8"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>FORWARD</b>&#160;&#160;&#160;1</td></tr>
+<tr class="memitem:adf445abfe1b77fa63f89e315ccc2f7f2" id="r_adf445abfe1b77fa63f89e315ccc2f7f2"><td class="memItemLeft" align="right" valign="top"><a id="adf445abfe1b77fa63f89e315ccc2f7f2" name="adf445abfe1b77fa63f89e315ccc2f7f2"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>BACKWARD</b>&#160;&#160;&#160;-1</td></tr>
+<tr class="memitem:a80fb826a684cf3f0d306b22aa100ddac" id="r_a80fb826a684cf3f0d306b22aa100ddac"><td class="memItemLeft" align="right" valign="top"><a id="a80fb826a684cf3f0d306b22aa100ddac" name="a80fb826a684cf3f0d306b22aa100ddac"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>RIGHT</b>&#160;&#160;&#160;2</td></tr>
+<tr class="memitem:a437ef08681e7210d6678427030446a54" id="r_a437ef08681e7210d6678427030446a54"><td class="memItemLeft" align="right" valign="top"><a id="a437ef08681e7210d6678427030446a54" name="a437ef08681e7210d6678427030446a54"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>LEFT</b>&#160;&#160;&#160;-2</td></tr>
+<tr class="memitem:ae19b6bb2940d2fbe0a79852b070eeafd" id="r_ae19b6bb2940d2fbe0a79852b070eeafd"><td class="memItemLeft" align="right" valign="top"><a id="ae19b6bb2940d2fbe0a79852b070eeafd" name="ae19b6bb2940d2fbe0a79852b070eeafd"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>STOP</b>&#160;&#160;&#160;3</td></tr>
 <tr class="memitem:a13315792b47dcf5207ce4e06daeab518" id="r_a13315792b47dcf5207ce4e06daeab518"><td class="memItemLeft" align="right" valign="top"><a id="a13315792b47dcf5207ce4e06daeab518" name="a13315792b47dcf5207ce4e06daeab518"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><b>TIMER1_DELAY</b>&#160;&#160;&#160;1000</td></tr>
 <tr class="memdesc:a13315792b47dcf5207ce4e06daeab518"><td class="mdescLeft">&#160;</td><td class="mdescRight">set software timer 1000 msecs <br /></td></tr>
@@ -140,11 +153,11 @@ Macros</h2></td></tr>
 <tr class="memitem:a4dbb9b7af3551f02a4a7a612b5b1945e" id="r_a4dbb9b7af3551f02a4a7a612b5b1945e"><td class="memItemLeft" align="right" valign="top"><a id="a4dbb9b7af3551f02a4a7a612b5b1945e" name="a4dbb9b7af3551f02a4a7a612b5b1945e"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><b>METER_PER_DEG_LAT</b>&#160;&#160;&#160;111132.0f</td></tr>
 <tr class="memitem:acf00179e78b8665b124872006d1a3825" id="r_acf00179e78b8665b124872006d1a3825"><td class="memItemLeft" align="right" valign="top"><a id="acf00179e78b8665b124872006d1a3825" name="acf00179e78b8665b124872006d1a3825"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>METER_PER_DEG_LON</b>&#160;&#160;&#160;67890.0f</td></tr>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>METER_PER_DEG_LON</b>&#160;&#160;&#160;65430.0f</td></tr>
 <tr class="memitem:afe37a01e641952e5c687a6dc0c6847b9" id="r_afe37a01e641952e5c687a6dc0c6847b9"><td class="memItemLeft" align="right" valign="top"><a id="afe37a01e641952e5c687a6dc0c6847b9" name="afe37a01e641952e5c687a6dc0c6847b9"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><b>MAX_HEADING_DIFFERENCE_DEG</b>&#160;&#160;&#160;5.0f</td></tr>
 <tr class="memitem:a14bdbaa52affd16be648be362e67d2fb" id="r_a14bdbaa52affd16be648be362e67d2fb"><td class="memItemLeft" align="right" valign="top"><a id="a14bdbaa52affd16be648be362e67d2fb" name="a14bdbaa52affd16be648be362e67d2fb"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>ARRIVAL_RADIUS_METERS</b>&#160;&#160;&#160;1.0f</td></tr>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>ARRIVAL_RADIUS_METERS</b>&#160;&#160;&#160;2.0f</td></tr>
 <tr class="memitem:a4ae68bc4da0f671082b3a2abc70672eb" id="r_a4ae68bc4da0f671082b3a2abc70672eb"><td class="memItemLeft" align="right" valign="top"><a id="a4ae68bc4da0f671082b3a2abc70672eb" name="a4ae68bc4da0f671082b3a2abc70672eb"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><b>MIN_COG_SPEED</b>&#160;&#160;&#160;0.5f</td></tr>
 <tr class="memitem:a90a2fc1fcdc1fb0aa0706e78cc498f01" id="r_a90a2fc1fcdc1fb0aa0706e78cc498f01"><td class="memItemLeft" align="right" valign="top"><a id="a90a2fc1fcdc1fb0aa0706e78cc498f01" name="a90a2fc1fcdc1fb0aa0706e78cc498f01"></a>
@@ -267,7 +280,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>Waypoint</b> ()</td><
 <tr class="memitem:a96c9e7d4608bbcbb1f89460ea7d8da6f" id="r_a96c9e7d4608bbcbb1f89460ea7d8da6f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a96c9e7d4608bbcbb1f89460ea7d8da6f">Timer1_Handler</a> (void)</td></tr>
 <tr class="memdesc:a96c9e7d4608bbcbb1f89460ea7d8da6f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Vangt de FreeRTOS software-interrupt op en toggelt een ledje.  <br /></td></tr>
 <tr class="memitem:af292f364f4ee621c575f83b5b25fbfc5" id="r_af292f364f4ee621c575f83b5b25fbfc5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af292f364f4ee621c575f83b5b25fbfc5">ReachWPTask</a> (void *)</td></tr>
-<tr class="memdesc:af292f364f4ee621c575f83b5b25fbfc5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Deze functie wordt gebruikt om te kijken of de waypoint bereikt is. Daarnaast wordt hier de heading berekent en wordt de <span class="tt"><a class="el" href="_tactile_feedback_8c.html#af71671f3764037bb67dce96f83ee96d5">setMotors()</a></span> aan geroepen.  <br /></td></tr>
+<tr class="memdesc:af292f364f4ee621c575f83b5b25fbfc5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Deze functie wordt gebruikt om te kijken of de waypoint bereikt is. Daarnaast wordt hier de heading berekent en wordt de <span class="tt"><a class="el" href="_tactile_feedback_8c.html#af71671f3764037bb67dce96f83ee96d5" title="Functie voor de aansturing van de motors, met een switch case.">setMotors()</a></span> aan geroepen.  <br /></td></tr>
 <tr class="memitem:a5d6397136fbf12fef3dca666de7a35a0" id="r_a5d6397136fbf12fef3dca666de7a35a0"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5d6397136fbf12fef3dca666de7a35a0">heading</a> (int)</td></tr>
 <tr class="memdesc:a5d6397136fbf12fef3dca666de7a35a0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Berekent de heading eerst in radialen en daarna omgezet in graden.  <br /></td></tr>
 <tr class="memitem:af4a85680d3fac414e5b91f0cd16e8adf" id="r_af4a85680d3fac414e5b91f0cd16e8adf"><td class="memItemLeft" align="right" valign="top">RouteInfo&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af4a85680d3fac414e5b91f0cd16e8adf">Get_Waypoint_Info</a> (int waypoint)</td></tr>
@@ -279,6 +292,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>Waypoint</b> ()</td><
 <tr class="memitem:a5f8b543f818c13ecb6eaf9452f9a4395" id="r_a5f8b543f818c13ecb6eaf9452f9a4395"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5f8b543f818c13ecb6eaf9452f9a4395">ShowWaypoint</a> (void)</td></tr>
 <tr class="memdesc:a5f8b543f818c13ecb6eaf9452f9a4395"><td class="mdescLeft">&#160;</td><td class="mdescRight">ShowWaypoint wordt gebruikt om te laten zien welk waypoint we naartoe aan het gaan zijn en hoeveel waypoints er totaal zijn. Deze functie wordt aangeroepen door de <span class="tt">ARM-keys</span>. In de functie is een check ingebouwd die kijkt of de functie correct is uitgevoerd.  <br /></td></tr>
 <tr class="memitem:af71671f3764037bb67dce96f83ee96d5" id="r_af71671f3764037bb67dce96f83ee96d5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af71671f3764037bb67dce96f83ee96d5">setMotors</a> (int direction, uint16_t speed_l, uint16_t speed_r)</td></tr>
+<tr class="memdesc:af71671f3764037bb67dce96f83ee96d5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Functie voor de aansturing van de motors, met een switch case.  <br /></td></tr>
 <tr class="memitem:ae101eafad5ce91c38146e960eaed0c50" id="r_ae101eafad5ce91c38146e960eaed0c50"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae101eafad5ce91c38146e960eaed0c50">logWrite</a> (int type, void *info)</td></tr>
 <tr class="memdesc:ae101eafad5ce91c38146e960eaed0c50"><td class="mdescLeft">&#160;</td><td class="mdescRight">slaat alle data op in een structure array. Zoals gps data, motor besturing, knoppen die worden ingedrukt.  <br /></td></tr>
 <tr class="memitem:a2ebdc8837802eba656d049ffab377c30" id="r_a2ebdc8837802eba656d049ffab377c30"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2ebdc8837802eba656d049ffab377c30">printLogs</a> (void)</td></tr>
@@ -312,6 +326,8 @@ TaskHandle_t&#160;</td><td class="memItemRight" valign="bottom"><b>hWaypointTask
 <tr class="memdesc:ab0334f032bcc3014435a9a3ce0dbcb43"><td class="mdescLeft">&#160;</td><td class="mdescRight">handle zodat de waypoint task extern genotified kan worden <br /></td></tr>
 <tr class="memitem:ad914495c21e66409a9f5a49acca3796a" id="r_ad914495c21e66409a9f5a49acca3796a"><td class="memItemLeft" align="right" valign="top"><a id="ad914495c21e66409a9f5a49acca3796a" name="ad914495c21e66409a9f5a49acca3796a"></a>
 TaskHandle_t&#160;</td><td class="memItemRight" valign="bottom"><b>hReachWP</b></td></tr>
+<tr class="memitem:a6c9470c1299852dfcbcfe2d36a54d61c" id="r_a6c9470c1299852dfcbcfe2d36a54d61c"><td class="memItemLeft" align="right" valign="top"><a id="a6c9470c1299852dfcbcfe2d36a54d61c" name="a6c9470c1299852dfcbcfe2d36a54d61c"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><b>gps_lcd_print</b></td></tr>
 <tr class="memitem:a952449da34b356e2651de547daf4312c" id="r_a952449da34b356e2651de547daf4312c"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a952449da34b356e2651de547daf4312c">Uart_debug_out</a></td></tr>
 <tr class="memdesc:a952449da34b356e2651de547daf4312c"><td class="mdescLeft">&#160;</td><td class="mdescRight">default: debug all output to uart  <br /></td></tr>
 </table>
@@ -1085,7 +1101,7 @@ TaskHandle_t&#160;</td><td class="memItemRight" valign="bottom"><b>hReachWP</b><
 </table>
 </div><div class="memdoc">
 
-<p>Deze functie wordt gebruikt om te kijken of de waypoint bereikt is. Daarnaast wordt hier de heading berekent en wordt de <span class="tt"><a class="el" href="_tactile_feedback_8c.html#af71671f3764037bb67dce96f83ee96d5">setMotors()</a></span> aan geroepen. </p>
+<p>Deze functie wordt gebruikt om te kijken of de waypoint bereikt is. Daarnaast wordt hier de heading berekent en wordt de <span class="tt"><a class="el" href="_tactile_feedback_8c.html#af71671f3764037bb67dce96f83ee96d5" title="Functie voor de aansturing van de motors, met een switch case.">setMotors()</a></span> aan geroepen. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">*argument</td><td>niet gerbuikt. </td></tr>
@@ -1166,11 +1182,22 @@ TaskHandle_t&#160;</td><td class="memItemRight" valign="bottom"><b>hReachWP</b><
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Functie voor de aansturing van de motors, met een switch case. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">direction</td><td>= gewenste richting<br  />
+ speed_l = snelheid voor linker motor<br  />
+ speed_r = snelheid voor rechter motor<br  />
+ </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>void </dd></dl>
 <p>vooruit</p>
 <p>achteruit</p>
 <p>draai rechts (linker motor vooruit, rechter achteruit)</p>
 <p>draai links (linker achteruit, rechter vooruit)</p>
-<p>stop</p>
 
 </div>
 </div>

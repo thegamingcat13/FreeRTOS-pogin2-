@@ -45,7 +45,8 @@ extern TIM_HandleTypeDef htim8;  // PWM timer
 
 /**
  * @brief Functie voor de aansturing van de motors, met een switch case.
- * @param direction = gewenste richting<br>
+ * @param
+ * 		  direction = gewenste richting<br>
  * 		  speed_l = snelheid voor linker motor<br>
  * 		  speed_r = snelheid voor rechter motor<br>
  * @return void
@@ -60,7 +61,7 @@ void setMotors(int direction, uint16_t speed_l, uint16_t speed_r)
 
     switch (direction)
     {
-        case 1: /// vooruit
+        case 1: // vooruit
             HAL_GPIO_WritePin(M1_1_GPIO_Port, M1_1_Pin, GPIO_PIN_SET);
             HAL_GPIO_WritePin(M1_2_GPIO_Port, M1_2_Pin, GPIO_PIN_RESET);
             HAL_GPIO_WritePin(M2_1_GPIO_Port, M2_1_Pin, GPIO_PIN_RESET);
@@ -68,7 +69,7 @@ void setMotors(int direction, uint16_t speed_l, uint16_t speed_r)
             logWrite(6, Drive_forward);
             break;
 
-        case -1: /// achteruit
+        case -1: // achteruit
             HAL_GPIO_WritePin(M1_1_GPIO_Port, M1_1_Pin, GPIO_PIN_RESET);
             HAL_GPIO_WritePin(M1_2_GPIO_Port, M1_2_Pin, GPIO_PIN_SET);
             HAL_GPIO_WritePin(M2_1_GPIO_Port, M2_1_Pin, GPIO_PIN_SET);
@@ -76,7 +77,7 @@ void setMotors(int direction, uint16_t speed_l, uint16_t speed_r)
             logWrite(6, Drive_backward);
             break;
 
-        case 2: /// draai rechts (linker motor vooruit, rechter achteruit)
+        case 2: // draai rechts (linker motor vooruit, rechter achteruit)
             HAL_GPIO_WritePin(M1_1_GPIO_Port, M1_1_Pin, GPIO_PIN_SET);
             HAL_GPIO_WritePin(M1_2_GPIO_Port, M1_2_Pin, GPIO_PIN_RESET);
             HAL_GPIO_WritePin(M2_1_GPIO_Port, M2_1_Pin, GPIO_PIN_RESET);
@@ -84,7 +85,7 @@ void setMotors(int direction, uint16_t speed_l, uint16_t speed_r)
             logWrite(6, Turn_right);
             break;
 
-        case -2: /// draai links (linker achteruit, rechter vooruit)
+        case -2: // draai links (linker achteruit, rechter vooruit)
             HAL_GPIO_WritePin(M1_1_GPIO_Port, M1_1_Pin, GPIO_PIN_SET);
             HAL_GPIO_WritePin(M1_2_GPIO_Port, M1_2_Pin, GPIO_PIN_RESET);
             HAL_GPIO_WritePin(M2_1_GPIO_Port, M2_1_Pin, GPIO_PIN_RESET);
@@ -233,7 +234,7 @@ void ReachWPTask(void *argument)
  * @brief SkipWaypoint wordt gebruikt om een waypoint over te slaan.
  * Deze functie wordt aangeroepen door de `ARM-keys`.
  * In de functie is een check ingebouwd die kijkt of de functie correct is uitgevoerd.
- * @return 1 = waypoint behaald, verhoog `CurrentWaypoint` met 1 voor volgende waypoint.
+ * @return 1 = waypoint behaald, verhoog `CurrentWaypoint` met 1 voor volgende waypoint.<br
  * 0 = waypoint nog niet bereikt.
  */
 int SkipWaypoint (void)
@@ -249,7 +250,7 @@ int SkipWaypoint (void)
  * @brief BackWaypoint wordt gebruikt om terug te gaan naar de vorige waypoint.
  * Deze functie wordt aangeroepen door de `0ARM-keys`.
  * In de functie is een check ingebouwd die kijkt of de functie correct is uitgevoerd.
- *  * @return 1 = waypoint verlaagt, verlaag `CurrentWaypoint` met 1 voor vorige waypoint.
+ * @return 1 = waypoint verlaagt, verlaag `CurrentWaypoint` met 1 voor vorige waypoint.<br>
  * 0 = waypoint niet verlaagt.
  */
 int BackWaypoint (void)
