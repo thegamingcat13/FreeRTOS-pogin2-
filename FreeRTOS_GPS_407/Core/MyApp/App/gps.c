@@ -50,8 +50,8 @@ void ParsedGPS(void)
 			parsed_gnrmc.speed = atof(gnrmc.speed);
 			parsed_gnrmc.course = atof(gnrmc.course);
 		}
-	else
-		UART_puts("No GPS found\n\n ");
+		else
+			UART_puts("No GPS found\n\n ");
 
 	xSemaphoreGive(hGpsDataMutex);
 	}

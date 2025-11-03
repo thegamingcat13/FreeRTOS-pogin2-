@@ -83,7 +83,8 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 
-<p>De functies voor het aansturen van de L298N dual H-bridge driver. En de functies voor de besturing van de motors.  
+<p>Hierin staan verschillende tasks en functies.<br  />
+.  
 <a href="#details">More...</a></p>
 <div class="textblock"><code>#include &lt;<a class="el" href="admin_8h_source.html">admin.h</a>&gt;</code><br />
 <code>#include &lt;stdbool.h&gt;</code><br />
@@ -96,8 +97,9 @@ $(function() {
 <tr class="heading"><td colspan="2"><h2 id="header-func-members" class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
 <tr class="memitem:af71671f3764037bb67dce96f83ee96d5" id="r_af71671f3764037bb67dce96f83ee96d5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af71671f3764037bb67dce96f83ee96d5">setMotors</a> (int direction, uint16_t speed_l, uint16_t speed_r)</td></tr>
+<tr class="memdesc:af71671f3764037bb67dce96f83ee96d5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Functie voor de aansturing van de motors, met een switch case.  <br /></td></tr>
 <tr class="memitem:a55082f7e274aedceb19eedd95a687a85" id="r_a55082f7e274aedceb19eedd95a687a85"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a55082f7e274aedceb19eedd95a687a85">ReachWPTask</a> (void *argument)</td></tr>
-<tr class="memdesc:a55082f7e274aedceb19eedd95a687a85"><td class="mdescLeft">&#160;</td><td class="mdescRight">Deze functie wordt gebruikt om te kijken of de waypoint bereikt is. Daarnaast wordt hier de heading berekent en wordt de <span class="tt"><a class="el" href="#af71671f3764037bb67dce96f83ee96d5">setMotors()</a></span> aan geroepen.  <br /></td></tr>
+<tr class="memdesc:a55082f7e274aedceb19eedd95a687a85"><td class="mdescLeft">&#160;</td><td class="mdescRight">Deze functie wordt gebruikt om te kijken of de waypoint bereikt is. Daarnaast wordt hier de heading berekent en wordt de <span class="tt"><a class="el" href="#af71671f3764037bb67dce96f83ee96d5" title="Functie voor de aansturing van de motors, met een switch case.">setMotors()</a></span> aan geroepen.  <br /></td></tr>
 <tr class="memitem:a8e72f6787dd96ab06b941f402e994077" id="r_a8e72f6787dd96ab06b941f402e994077"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8e72f6787dd96ab06b941f402e994077">SkipWaypoint</a> (void)</td></tr>
 <tr class="memdesc:a8e72f6787dd96ab06b941f402e994077"><td class="mdescLeft">&#160;</td><td class="mdescRight">SkipWaypoint wordt gebruikt om een waypoint over te slaan. Deze functie wordt aangeroepen door de <span class="tt">ARM-keys</span>. In de functie is een check ingebouwd die kijkt of de functie correct is uitgevoerd.  <br /></td></tr>
 <tr class="memitem:a2f96c316955e657fb8242f6a23b21975" id="r_a2f96c316955e657fb8242f6a23b21975"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2f96c316955e657fb8242f6a23b21975">BackWaypoint</a> (void)</td></tr>
@@ -151,12 +153,17 @@ char&#160;</td><td class="memItemRight" valign="bottom"><b>course_char</b></td><
 bool&#160;</td><td class="memItemRight" valign="bottom"><b>FirstRun</b> = true</td></tr>
 <tr class="memitem:ad914495c21e66409a9f5a49acca3796a" id="r_ad914495c21e66409a9f5a49acca3796a"><td class="memItemLeft" align="right" valign="top"><a id="ad914495c21e66409a9f5a49acca3796a" name="ad914495c21e66409a9f5a49acca3796a"></a>
 TaskHandle_t&#160;</td><td class="memItemRight" valign="bottom"><b>hReachWP</b></td></tr>
-<tr class="memitem:a5faa27108379f799afb6984010bf0384" id="r_a5faa27108379f799afb6984010bf0384"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_t_i_m___handle_type_def.html">TIM_HandleTypeDef</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5faa27108379f799afb6984010bf0384">htim8</a></td></tr>
-<tr class="memdesc:a5faa27108379f799afb6984010bf0384"><td class="mdescLeft">&#160;</td><td class="mdescRight">Functie voor de aansturing van de motors, met een switch case.  <br /></td></tr>
+<tr class="memitem:a5faa27108379f799afb6984010bf0384" id="r_a5faa27108379f799afb6984010bf0384"><td class="memItemLeft" align="right" valign="top"><a id="a5faa27108379f799afb6984010bf0384" name="a5faa27108379f799afb6984010bf0384"></a>
+<a class="el" href="struct_t_i_m___handle_type_def.html">TIM_HandleTypeDef</a>&#160;</td><td class="memItemRight" valign="bottom"><b>htim8</b></td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>De functies voor het aansturen van de L298N dual H-bridge driver. En de functies voor de besturing van de motors. </p>
-<dl class="section date"><dt>Date</dt><dd>28/10/2025 </dd></dl>
+<div class="textblock"><p>Hierin staan verschillende tasks en functies.<br  />
+. </p>
+<pre class="fragment">*       - Motor aansturing&lt;br&gt;
+*       - Bereiken van de waypoint&lt;br&gt;
+*       - Overslaan en terug gaan naar waypoints&lt;br&gt;
+*       - Uitlezen van waypoint op LCD&lt;br&gt;
+*</pre><dl class="section date"><dt>Date</dt><dd>28/10/2025 </dd></dl>
 </div><a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Function Documentation</h2>
 <a id="a2f96c316955e657fb8242f6a23b21975" name="a2f96c316955e657fb8242f6a23b21975"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a2f96c316955e657fb8242f6a23b21975">&#9670;&#160;</a></span>BackWaypoint()</h2>
@@ -196,7 +203,7 @@ TaskHandle_t&#160;</td><td class="memItemRight" valign="bottom"><b>hReachWP</b><
       </table>
 </div><div class="memdoc">
 
-<p>Deze functie wordt gebruikt om te kijken of de waypoint bereikt is. Daarnaast wordt hier de heading berekent en wordt de <span class="tt"><a class="el" href="#af71671f3764037bb67dce96f83ee96d5">setMotors()</a></span> aan geroepen. </p>
+<p>Deze functie wordt gebruikt om te kijken of de waypoint bereikt is. Daarnaast wordt hier de heading berekent en wordt de <span class="tt"><a class="el" href="#af71671f3764037bb67dce96f83ee96d5" title="Functie voor de aansturing van de motors, met een switch case.">setMotors()</a></span> aan geroepen. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">*argument</td><td>niet gerbuikt. </td></tr>
@@ -230,11 +237,22 @@ TaskHandle_t&#160;</td><td class="memItemRight" valign="bottom"><b>hReachWP</b><
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Functie voor de aansturing van de motors, met een switch case. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">direction</td><td>= gewenste richting<br  />
+ speed_l = snelheid voor linker motor<br  />
+ speed_r = snelheid voor rechter motor<br  />
+ </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>void </dd></dl>
 <p>vooruit</p>
 <p>achteruit</p>
 <p>draai rechts (linker motor vooruit, rechter achteruit)</p>
 <p>draai links (linker achteruit, rechter vooruit)</p>
-<p>stop</p>
 
 </div>
 </div>
@@ -275,41 +293,6 @@ TaskHandle_t&#160;</td><td class="memItemRight" valign="bottom"><b>hReachWP</b><
 
 <p>SkipWaypoint wordt gebruikt om een waypoint over te slaan. Deze functie wordt aangeroepen door de <span class="tt">ARM-keys</span>. In de functie is een check ingebouwd die kijkt of de functie correct is uitgevoerd. </p>
 <dl class="section return"><dt>Returns</dt><dd>1 = waypoint behaald, verhoog <span class="tt">CurrentWaypoint</span> met 1 voor volgende waypoint. 0 = waypoint nog niet bereikt. </dd></dl>
-
-</div>
-</div>
-<a name="doc-var-members" id="doc-var-members"></a><h2 id="header-doc-var-members" class="groupheader">Variable Documentation</h2>
-<a id="a5faa27108379f799afb6984010bf0384" name="a5faa27108379f799afb6984010bf0384"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a5faa27108379f799afb6984010bf0384">&#9670;&#160;</a></span>htim8</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="struct_t_i_m___handle_type_def.html">TIM_HandleTypeDef</a> htim8</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel extern">extern</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Functie voor de aansturing van de motors, met een switch case. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">direction</td><td>= gewenste richting<br  />
- speed_l = snelheid voor linker motor<br  />
- speed_r = snelheid voor rechter motor<br  />
- </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>void </dd></dl>
 
 </div>
 </div>

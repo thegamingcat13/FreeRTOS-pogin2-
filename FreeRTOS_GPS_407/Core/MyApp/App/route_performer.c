@@ -1,7 +1,8 @@
 /**
  * @file Route_performer.c
  * @brief Berekent de verschillen tussen de huidige locatie en de waypoint.
- * Dit doet hij met het verschil tussen de lon en lat en de heading te berekenen
+ * Dit doet hij met het verschil tussen de lon en lat en de heading te berekenen.
+ * Daarnaast berekent hij de heading in graden.
  *
  * @date 08/10/2025
  */
@@ -15,7 +16,7 @@
 RouteInfo info;   // Struct voor de verschillen
 /**
  * @brief Berekent het verschil tussen huidige lon en lat vergeleken met de waypoint.
- * Geeft aan of wij het waypoint hebben berijkt of nog niet.
+ * Geeft aan of de waypoint hebben berijkt of nog niet.
  * De data wordt vanuit `parsed_grmc` gehaald( zie `gps.h` voor de struct).
  *
  * @param waypoint de struct die lan en lon opslaat.
@@ -79,7 +80,7 @@ float heading (int waypoint)
 	// Normalize to 0-360 degrees
 	heading_deg = fmodf((heading_deg + 360.0f), 360.0f); // Make sure 360.0 is float
 
-	if (1)
+	if (Uart_debug_out)
 		{
 			UART_puts("\nHeading:");
 			UART_printf(100, "%f", heading_deg);

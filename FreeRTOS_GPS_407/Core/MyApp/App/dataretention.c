@@ -74,12 +74,23 @@ void printLogs(void)
 {
     // Determine the maximum number of logs across all fields
     int maxLogs = 0;
-    if (logCount1 > maxLogs) maxLogs = logCount1;
-    if (logCount2 > maxLogs) maxLogs = logCount2;
-    if (logCount3 > maxLogs) maxLogs = logCount3;
-    if (logCount4 > maxLogs) maxLogs = logCount4;
-    if (logCount5 > maxLogs) maxLogs = logCount5;
-    if (logCount6 > maxLogs) maxLogs = logCount6;
+    if (logCount1 > maxLogs)
+    	maxLogs = logCount1;
+
+    if (logCount2 > maxLogs)
+    	maxLogs = logCount2;
+
+    if (logCount3 > maxLogs)
+    	maxLogs = logCount3;
+
+    if (logCount4 > maxLogs)
+    	maxLogs = logCount4;
+
+    if (logCount5 > maxLogs)
+    	maxLogs = logCount5;
+
+    if (logCount6 > maxLogs)
+    	maxLogs = logCount6;
 
     // Iterate up to the maximum number of logs
     for (int i = 0; i < maxLogs; i++)

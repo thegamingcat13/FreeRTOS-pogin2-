@@ -1,10 +1,14 @@
 /**
  * @file TactileFeedback.c
- * @brief De functies voor het aansturen van de L298N dual H-bridge driver.
- * En de functies voor de besturing van de motors.
+ * @brief Hierin staan verschillende tasks en functies.
+ * - Motor aansturing
+ * - Bereiken van de waypoint
+ * - Overslaan en terug gaan naar waypoints
+ * - Uitlezen van waypoint op LCD
  *
  * @date 28/10/2025
  */
+
 
 #include <admin.h>
 #include <stdbool.h>
@@ -41,7 +45,8 @@ extern TIM_HandleTypeDef htim8;  // PWM timer
 
 /**
  * @brief Functie voor de aansturing van de motors, met een switch case.
- * @param direction = gewenste richting<br>
+ * @param
+ * 		  direction = gewenste richting<br>
  * 		  speed_l = snelheid voor linker motor<br>
  * 		  speed_r = snelheid voor rechter motor<br>
  * @return void
@@ -56,7 +61,7 @@ void setMotors(int direction, uint16_t speed_l, uint16_t speed_r)
 
     switch (direction)
     {
-        case 1: /// vooruit
+        case 1: // vooruit
             HAL_GPIO_WritePin(M1_1_GPIO_Port, M1_1_Pin, GPIO_PIN_SET);
             HAL_GPIO_WritePin(M1_2_GPIO_Port, M1_2_Pin, GPIO_PIN_RESET);
             HAL_GPIO_WritePin(M2_1_GPIO_Port, M2_1_Pin, GPIO_PIN_RESET);
@@ -64,7 +69,7 @@ void setMotors(int direction, uint16_t speed_l, uint16_t speed_r)
             logWrite(6, Drive_forward);
             break;
 
-        case -1: /// achteruit
+        case -1: // achteruit
             HAL_GPIO_WritePin(M1_1_GPIO_Port, M1_1_Pin, GPIO_PIN_RESET);
             HAL_GPIO_WritePin(M1_2_GPIO_Port, M1_2_Pin, GPIO_PIN_SET);
             HAL_GPIO_WritePin(M2_1_GPIO_Port, M2_1_Pin, GPIO_PIN_SET);
@@ -72,7 +77,7 @@ void setMotors(int direction, uint16_t speed_l, uint16_t speed_r)
             logWrite(6, Drive_backward);
             break;
 
-        case 2: /// draai rechts (linker motor vooruit, rechter achteruit)
+        case 2: // draai rechts (linker motor vooruit, rechter achteruit)
             HAL_GPIO_WritePin(M1_1_GPIO_Port, M1_1_Pin, GPIO_PIN_SET);
             HAL_GPIO_WritePin(M1_2_GPIO_Port, M1_2_Pin, GPIO_PIN_RESET);
             HAL_GPIO_WritePin(M2_1_GPIO_Port, M2_1_Pin, GPIO_PIN_RESET);
@@ -80,7 +85,7 @@ void setMotors(int direction, uint16_t speed_l, uint16_t speed_r)
             logWrite(6, Turn_right);
             break;
 
-        case -2: /// draai links (linker achteruit, rechter vooruit)
+        case -2: // draai links (linker achteruit, rechter vooruit)
             HAL_GPIO_WritePin(M1_1_GPIO_Port, M1_1_Pin, GPIO_PIN_SET);
             HAL_GPIO_WritePin(M1_2_GPIO_Port, M1_2_Pin, GPIO_PIN_RESET);
             HAL_GPIO_WritePin(M2_1_GPIO_Port, M2_1_Pin, GPIO_PIN_RESET);
@@ -94,6 +99,7 @@ void setMotors(int direction, uint16_t speed_l, uint16_t speed_r)
             HAL_GPIO_WritePin(M2_1_GPIO_Port, M2_1_Pin, GPIO_PIN_RESET);
             HAL_GPIO_WritePin(M2_2_GPIO_Port, M2_2_Pin, GPIO_PIN_RESET);
             logWrite(6, Stop);
+
             speed_l = 0;
             speed_r = 0;
             break;
@@ -124,6 +130,7 @@ void ReachWPTask(void *argument)
 			while (fabs(wpLat_temp) < 0.0001f)
 			{
 				WaypointCount --;
+
 				wpLat_temp = returnWaypoints(WaypointCount, 1); // decide how many waypoints we have max of 20
 			}
 			CurrentWaypoint = 0;
@@ -136,19 +143,14 @@ void ReachWPTask(void *argument)
 
 			gps_lcd_print = false;
 
-			if (CurrentWaypoint > WaypointCount)
-			{
-				setMotors(STOP, STANDSTILL, STANDSTILL);
-				osDelay(5000);
-				continue;
-			}
-
 			if (xSemaphoreTake(hGpsDataMutex, portMAX_DELAY) == pdTRUE)
 			{
 				LCD_clear();
+
 				info = Get_Waypoint_Info(CurrentWaypoint);
 				current_speed = parsed_gnrmc.speed;
 				CurrentHeading = parsed_gnrmc.course;
+
 				xSemaphoreGive(hGpsDataMutex);
 			}
 
@@ -156,10 +158,12 @@ void ReachWPTask(void *argument)
 			if (info.distance_m < ARRIVAL_RADIUS_METERS)
 			{
 				setMotors(STOP, STANDSTILL, STANDSTILL);
+
 				LCD_clear();
 				LCD_puts("Waypoint reached");
-				UART_puts("Waypont reached");
+
 				osDelay(3000);
+
 				CurrentWaypoint++;
 			}
 
@@ -186,38 +190,40 @@ void ReachWPTask(void *argument)
 					if (heading_error > 0)
 					{
 						setMotors(RIGHT, SLOW, MEDIUM); //turn right
+
 						LCD_clear();
 						LCD_puts("RIGHT");
-						UART_puts("\n\n\rRIGHT");
 					}
 
 					if (heading_error < 0)
 					{
 						setMotors(LEFT, MEDIUM, SLOW); //turn left
+
 						LCD_clear();
 						LCD_puts("LEFT");
-						UART_puts("\n\n\rLEFT");
 					}
 				}
 				else
 				{
 					setMotors(FORWARD, MEDIUM, MEDIUM); //go foward
+
 					LCD_clear();
 					LCD_puts("Foward");
-					UART_puts("\n\n\rForward");
 				}
 
 			}
 			else
 			{
 				setMotors(FORWARD, MEDIUM, MEDIUM); //go foward
+
 				LCD_clear();
 				LCD_puts("FORWARD");
-				UART_puts("\n\n\rFORWARD");
 			}
 
 			osDelay(200);
 		}
+		setMotors(STOP, STANDSTILL, STANDSTILL);
+
 		LCD_puts("Final point reached");
 		UART_puts("\n\n\rFinal point reached");
 
@@ -229,13 +235,15 @@ void ReachWPTask(void *argument)
  * @brief SkipWaypoint wordt gebruikt om een waypoint over te slaan.
  * Deze functie wordt aangeroepen door de `ARM-keys`.
  * In de functie is een check ingebouwd die kijkt of de functie correct is uitgevoerd.
- * @return 1 = waypoint behaald, verhoog `CurrentWaypoint` met 1 voor volgende waypoint.
+ * @return 1 = waypoint behaald, verhoog `CurrentWaypoint` met 1 voor volgende waypoint.<br
  * 0 = waypoint nog niet bereikt.
  */
 int SkipWaypoint (void)
 {
 	int memory = CurrentWaypoint;
+
 	CurrentWaypoint++;
+
 	if (CurrentWaypoint == memory +1) // verhoog CurrentWaypoint met 1 om zo naar de volgende waypoint te gaan
 		return 1;
 	else
@@ -245,13 +253,15 @@ int SkipWaypoint (void)
  * @brief BackWaypoint wordt gebruikt om terug te gaan naar de vorige waypoint.
  * Deze functie wordt aangeroepen door de `0ARM-keys`.
  * In de functie is een check ingebouwd die kijkt of de functie correct is uitgevoerd.
- *  * @return 1 = waypoint verlaagt, verlaag `CurrentWaypoint` met 1 voor vorige waypoint.
+ * @return 1 = waypoint verlaagt, verlaag `CurrentWaypoint` met 1 voor vorige waypoint.<br>
  * 0 = waypoint niet verlaagt.
  */
 int BackWaypoint (void)
 {
 	int memory = CurrentWaypoint;
+
 	CurrentWaypoint--;
+
 	if (CurrentWaypoint == memory -1) // verlaag CurrentWaypoint met 1 om zo naar de vorige waypoint te gaan
 		return 1;
 	else
@@ -267,10 +277,12 @@ void ShowWaypoint (void)
 {
 	int current = CurrentWaypoint;
 	char charcurrent[10]; // Converteer integer naar character
-	itoa (current, charcurrent, 10);
 	int total = WaypointCount;
 	char chartotal[10];
+
+	itoa (current, charcurrent, 10);
 	itoa (total, chartotal, 10); // Converteer integer naar character
+
 	LCD_clear();				 // veeg het scherm leeg
 	LCD_puts("waypoint");		 // zet de data op het scherm
 	LCD_puts(charcurrent);

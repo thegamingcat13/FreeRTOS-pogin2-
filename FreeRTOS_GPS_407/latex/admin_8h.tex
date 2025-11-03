@@ -12,6 +12,7 @@ Bevat de defines \& externals voor deze applicatie.
 {\ttfamily \#include "{}semphr.\+h"{}}\newline
 {\ttfamily \#include "{}message\+\_\+buffer.\+h"{}}\newline
 {\ttfamily \#include "{}cmsis\+\_\+os.\+h"{}}\newline
+{\ttfamily \#include $<$stdbool.\+h$>$}\newline
 {\ttfamily \#include "{}stdio.\+h"{}}\newline
 {\ttfamily \#include "{}string.\+h"{}}\newline
 {\ttfamily \#include "{}stdlib.\+h"{}}\newline
@@ -38,16 +39,34 @@ struct \mbox{\hyperlink{struct_task_data}{Task\+Data}}
 \#define {\bfseries QSIZE\+\_\+\+UART}~10
 \begin{DoxyCompactList}\small\item\em set queue op 10 elementen \end{DoxyCompactList}\item 
 \Hypertarget{admin_8h_a5da43425fff36347c69fc3c090e42c6c}\label{admin_8h_a5da43425fff36347c69fc3c090e42c6c} 
-\#define {\bfseries SLOW}~1000
+\#define {\bfseries SLOW}~300
 \begin{DoxyCompactList}\small\item\em motor speeds defines \end{DoxyCompactList}\item 
 \Hypertarget{admin_8h_a455b219d48b21108576f53129be38c32}\label{admin_8h_a455b219d48b21108576f53129be38c32} 
-\#define {\bfseries MEDIUM}~2000
+\#define {\bfseries MEDIUM}~500
 \item 
 \Hypertarget{admin_8h_a8091c2bcff55cbe0a4a145fd5fb7c22d}\label{admin_8h_a8091c2bcff55cbe0a4a145fd5fb7c22d} 
-\#define {\bfseries FAST}~3000
+\#define {\bfseries FAST}~1500
 \item 
 \Hypertarget{admin_8h_a48a08aed5b9070297732293c1429ad88}\label{admin_8h_a48a08aed5b9070297732293c1429ad88} 
-\#define {\bfseries VERY\+\_\+\+FAST}~4000
+\#define {\bfseries VERY\+\_\+\+FAST}~600
+\item 
+\Hypertarget{admin_8h_a587ff8b92bf1b8971cee08280a2c6131}\label{admin_8h_a587ff8b92bf1b8971cee08280a2c6131} 
+\#define {\bfseries STANDSTILL}~0
+\item 
+\Hypertarget{admin_8h_a6ddfdda7a062d10cff4a72b76b44aeb8}\label{admin_8h_a6ddfdda7a062d10cff4a72b76b44aeb8} 
+\#define {\bfseries FORWARD}~1
+\item 
+\Hypertarget{admin_8h_adf445abfe1b77fa63f89e315ccc2f7f2}\label{admin_8h_adf445abfe1b77fa63f89e315ccc2f7f2} 
+\#define {\bfseries BACKWARD}~-\/1
+\item 
+\Hypertarget{admin_8h_a80fb826a684cf3f0d306b22aa100ddac}\label{admin_8h_a80fb826a684cf3f0d306b22aa100ddac} 
+\#define {\bfseries RIGHT}~2
+\item 
+\Hypertarget{admin_8h_a437ef08681e7210d6678427030446a54}\label{admin_8h_a437ef08681e7210d6678427030446a54} 
+\#define {\bfseries LEFT}~-\/2
+\item 
+\Hypertarget{admin_8h_ae19b6bb2940d2fbe0a79852b070eeafd}\label{admin_8h_ae19b6bb2940d2fbe0a79852b070eeafd} 
+\#define {\bfseries STOP}~3
 \item 
 \Hypertarget{admin_8h_a13315792b47dcf5207ce4e06daeab518}\label{admin_8h_a13315792b47dcf5207ce4e06daeab518} 
 \#define {\bfseries TIMER1\+\_\+\+DELAY}~1000
@@ -67,13 +86,13 @@ struct \mbox{\hyperlink{struct_task_data}{Task\+Data}}
 \#define {\bfseries METER\+\_\+\+PER\+\_\+\+DEG\+\_\+\+LAT}~111132.\+0f
 \item 
 \Hypertarget{admin_8h_acf00179e78b8665b124872006d1a3825}\label{admin_8h_acf00179e78b8665b124872006d1a3825} 
-\#define {\bfseries METER\+\_\+\+PER\+\_\+\+DEG\+\_\+\+LON}~67890.\+0f
+\#define {\bfseries METER\+\_\+\+PER\+\_\+\+DEG\+\_\+\+LON}~65430.\+0f
 \item 
 \Hypertarget{admin_8h_afe37a01e641952e5c687a6dc0c6847b9}\label{admin_8h_afe37a01e641952e5c687a6dc0c6847b9} 
 \#define {\bfseries MAX\+\_\+\+HEADING\+\_\+\+DIFFERENCE\+\_\+\+DEG}~5.\+0f
 \item 
 \Hypertarget{admin_8h_a14bdbaa52affd16be648be362e67d2fb}\label{admin_8h_a14bdbaa52affd16be648be362e67d2fb} 
-\#define {\bfseries ARRIVAL\+\_\+\+RADIUS\+\_\+\+METERS}~1.\+0f
+\#define {\bfseries ARRIVAL\+\_\+\+RADIUS\+\_\+\+METERS}~2.\+0f
 \item 
 \Hypertarget{admin_8h_a4ae68bc4da0f671082b3a2abc70672eb}\label{admin_8h_a4ae68bc4da0f671082b3a2abc70672eb} 
 \#define {\bfseries MIN\+\_\+\+COG\+\_\+\+SPEED}~0.\+5f
@@ -224,7 +243,7 @@ int \mbox{\hyperlink{admin_8h_a2f96c316955e657fb8242f6a23b21975}{Back\+Waypoint}
 void \mbox{\hyperlink{admin_8h_a5f8b543f818c13ecb6eaf9452f9a4395}{Show\+Waypoint}} (void)
 \begin{DoxyCompactList}\small\item\em Show\+Waypoint wordt gebruikt om te laten zien welk waypoint we naartoe aan het gaan zijn en hoeveel waypoints er totaal zijn. Deze functie wordt aangeroepen door de {\ttfamily ARM-\/keys}. In de functie is een check ingebouwd die kijkt of de functie correct is uitgevoerd. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{admin_8h_af71671f3764037bb67dce96f83ee96d5}{set\+Motors}} (int direction, uint16\+\_\+t speed\+\_\+l, uint16\+\_\+t speed\+\_\+r)
-\item 
+\begin{DoxyCompactList}\small\item\em Functie voor de aansturing van de motors, met een switch case. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{admin_8h_ae101eafad5ce91c38146e960eaed0c50}{log\+Write}} (int type, void \texorpdfstring{$\ast$}{*}info)
 \begin{DoxyCompactList}\small\item\em slaat alle data op in een structure array. Zoals gps data, motor besturing, knoppen die worden ingedrukt. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{admin_8h_a2ebdc8837802eba656d049ffab377c30}{print\+Logs}} (void)
@@ -259,6 +278,9 @@ Task\+Handle\+\_\+t {\bfseries h\+Waypoint\+Task}
 \begin{DoxyCompactList}\small\item\em handle zodat de waypoint task extern genotified kan worden \end{DoxyCompactList}\item 
 \Hypertarget{admin_8h_ad914495c21e66409a9f5a49acca3796a}\label{admin_8h_ad914495c21e66409a9f5a49acca3796a} 
 Task\+Handle\+\_\+t {\bfseries h\+Reach\+WP}
+\item 
+\Hypertarget{admin_8h_a6c9470c1299852dfcbcfe2d36a54d61c}\label{admin_8h_a6c9470c1299852dfcbcfe2d36a54d61c} 
+bool {\bfseries gps\+\_\+lcd\+\_\+print}
 \item 
 int \mbox{\hyperlink{admin_8h_a952449da34b356e2651de547daf4312c}{Uart\+\_\+debug\+\_\+out}}
 \begin{DoxyCompactList}\small\item\em default\+: debug all output to uart \end{DoxyCompactList}\end{DoxyCompactItemize}
@@ -712,15 +734,28 @@ Een float met latitude of longitude waardes afhankelijk van waarde \textquotesin
 {\footnotesize\ttfamily \label{admin_8h_af71671f3764037bb67dce96f83ee96d5} 
 void set\+Motors (\begin{DoxyParamCaption}\item[{int}]{direction}{, }\item[{uint16\+\_\+t}]{speed\+\_\+l}{, }\item[{uint16\+\_\+t}]{speed\+\_\+r}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [extern]}}
 
+
+
+Functie voor de aansturing van de motors, met een switch case. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em direction} & = gewenste richting~\newline
+ speed\+\_\+l = snelheid voor linker motor~\newline
+ speed\+\_\+r = snelheid voor rechter motor~\newline
+ \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
 vooruit
 
 achteruit
 
 draai rechts (linker motor vooruit, rechter achteruit)
 
-draai links (linker achteruit, rechter vooruit)
-
-stop\Hypertarget{admin_8h_a16ba23da293f6f319ffbc502a4cb7d5c}\index{admin.h@{admin.h}!SetTaskPriority@{SetTaskPriority}}
+draai links (linker achteruit, rechter vooruit)\Hypertarget{admin_8h_a16ba23da293f6f319ffbc502a4cb7d5c}\index{admin.h@{admin.h}!SetTaskPriority@{SetTaskPriority}}
 \index{SetTaskPriority@{SetTaskPriority}!admin.h@{admin.h}}
 \doxysubsubsection{\texorpdfstring{SetTaskPriority()}{SetTaskPriority()}}
 {\footnotesize\ttfamily \label{admin_8h_a16ba23da293f6f319ffbc502a4cb7d5c} 

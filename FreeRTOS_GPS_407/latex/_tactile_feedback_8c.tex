@@ -2,7 +2,8 @@
 \hypertarget{_tactile_feedback_8c}{}\label{_tactile_feedback_8c}\index{Core/MyApp/App/TactileFeedback.c@{Core/MyApp/App/TactileFeedback.c}}
 
 
-De functies voor het aansturen van de L298N dual H-\/bridge driver. En de functies voor de besturing van de motors.  
+Hierin staan verschillende tasks en functies.~\newline
+.  
 
 
 {\ttfamily \#include $<$admin.\+h$>$}\newline
@@ -16,7 +17,7 @@ De functies voor het aansturen van de L298N dual H-\/bridge driver. En de functi
 \begin{DoxyCompactItemize}
 \item 
 void \mbox{\hyperlink{_tactile_feedback_8c_af71671f3764037bb67dce96f83ee96d5}{set\+Motors}} (int direction, uint16\+\_\+t speed\+\_\+l, uint16\+\_\+t speed\+\_\+r)
-\item 
+\begin{DoxyCompactList}\small\item\em Functie voor de aansturing van de motors, met een switch case. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{_tactile_feedback_8c_a55082f7e274aedceb19eedd95a687a85}{Reach\+WPTask}} (void \texorpdfstring{$\ast$}{*}argument)
 \begin{DoxyCompactList}\small\item\em Deze functie wordt gebruikt om te kijken of de waypoint bereikt is. Daarnaast wordt hier de heading berekent en wordt de {\ttfamily \doxylink{_tactile_feedback_8c_af71671f3764037bb67dce96f83ee96d5}{set\+Motors()}} aan geroepen. \end{DoxyCompactList}\item 
 int \mbox{\hyperlink{_tactile_feedback_8c_a8e72f6787dd96ab06b941f402e994077}{Skip\+Waypoint}} (void)
@@ -94,12 +95,21 @@ bool {\bfseries First\+Run} = true
 \Hypertarget{_tactile_feedback_8c_ad914495c21e66409a9f5a49acca3796a}\label{_tactile_feedback_8c_ad914495c21e66409a9f5a49acca3796a} 
 Task\+Handle\+\_\+t {\bfseries h\+Reach\+WP}
 \item 
-\mbox{\hyperlink{struct_t_i_m___handle_type_def}{TIM\+\_\+\+Handle\+Type\+Def}} \mbox{\hyperlink{_tactile_feedback_8c_a5faa27108379f799afb6984010bf0384}{htim8}}
-\begin{DoxyCompactList}\small\item\em Functie voor de aansturing van de motors, met een switch case. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\Hypertarget{_tactile_feedback_8c_a5faa27108379f799afb6984010bf0384}\label{_tactile_feedback_8c_a5faa27108379f799afb6984010bf0384} 
+\mbox{\hyperlink{struct_t_i_m___handle_type_def}{TIM\+\_\+\+Handle\+Type\+Def}} {\bfseries htim8}
+\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
-De functies voor het aansturen van de L298N dual H-\/bridge driver. En de functies voor de besturing van de motors. 
+Hierin staan verschillende tasks en functies.~\newline
+. 
+
+\begin{DoxyVerb}*       - Motor aansturing<br>
+*       - Bereiken van de waypoint<br>
+*       - Overslaan en terug gaan naar waypoints<br>
+*       - Uitlezen van waypoint op LCD<br>
+*\end{DoxyVerb}
+
 
 \begin{DoxyDate}{Date}
 28/10/2025 
@@ -149,15 +159,28 @@ void
 {\footnotesize\ttfamily \label{_tactile_feedback_8c_af71671f3764037bb67dce96f83ee96d5} 
 void set\+Motors (\begin{DoxyParamCaption}\item[{int}]{direction}{, }\item[{uint16\+\_\+t}]{speed\+\_\+l}{, }\item[{uint16\+\_\+t}]{speed\+\_\+r}{}\end{DoxyParamCaption})}
 
+
+
+Functie voor de aansturing van de motors, met een switch case. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em direction} & = gewenste richting~\newline
+ speed\+\_\+l = snelheid voor linker motor~\newline
+ speed\+\_\+r = snelheid voor rechter motor~\newline
+ \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
 vooruit
 
 achteruit
 
 draai rechts (linker motor vooruit, rechter achteruit)
 
-draai links (linker achteruit, rechter vooruit)
-
-stop\Hypertarget{_tactile_feedback_8c_a5f8b543f818c13ecb6eaf9452f9a4395}\index{TactileFeedback.c@{TactileFeedback.c}!ShowWaypoint@{ShowWaypoint}}
+draai links (linker achteruit, rechter vooruit)\Hypertarget{_tactile_feedback_8c_a5f8b543f818c13ecb6eaf9452f9a4395}\index{TactileFeedback.c@{TactileFeedback.c}!ShowWaypoint@{ShowWaypoint}}
 \index{ShowWaypoint@{ShowWaypoint}!TactileFeedback.c@{TactileFeedback.c}}
 \doxysubsubsection{\texorpdfstring{ShowWaypoint()}{ShowWaypoint()}}
 {\footnotesize\ttfamily \label{_tactile_feedback_8c_a5f8b543f818c13ecb6eaf9452f9a4395} 
@@ -182,30 +205,4 @@ Skip\+Waypoint wordt gebruikt om een waypoint over te slaan. Deze functie wordt 
 
 \begin{DoxyReturn}{Returns}
 1 = waypoint behaald, verhoog {\ttfamily Current\+Waypoint} met 1 voor volgende waypoint. 0 = waypoint nog niet bereikt. 
-\end{DoxyReturn}
-
-
-\label{doc-var-members}
-\Hypertarget{_tactile_feedback_8c_doc-var-members}
-\doxysubsection{Variable Documentation}
-\Hypertarget{_tactile_feedback_8c_a5faa27108379f799afb6984010bf0384}\index{TactileFeedback.c@{TactileFeedback.c}!htim8@{htim8}}
-\index{htim8@{htim8}!TactileFeedback.c@{TactileFeedback.c}}
-\doxysubsubsection{\texorpdfstring{htim8}{htim8}}
-{\footnotesize\ttfamily \label{_tactile_feedback_8c_a5faa27108379f799afb6984010bf0384} 
-\mbox{\hyperlink{struct_t_i_m___handle_type_def}{TIM\+\_\+\+Handle\+Type\+Def}} htim8\hspace{0.3cm}{\ttfamily [extern]}}
-
-
-
-Functie voor de aansturing van de motors, met een switch case. 
-
-
-\begin{DoxyParams}{Parameters}
-{\em direction} & = gewenste richting~\newline
- speed\+\_\+l = snelheid voor linker motor~\newline
- speed\+\_\+r = snelheid voor rechter motor~\newline
- \\
-\hline
-\end{DoxyParams}
-\begin{DoxyReturn}{Returns}
-void 
 \end{DoxyReturn}
