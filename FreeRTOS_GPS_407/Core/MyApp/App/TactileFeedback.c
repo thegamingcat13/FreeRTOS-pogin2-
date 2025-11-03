@@ -84,11 +84,7 @@ void setMotors(int direction, uint16_t speed_l, uint16_t speed_r)
             HAL_GPIO_WritePin(M2_2_GPIO_Port, M2_2_Pin, GPIO_PIN_SET);
             break;
 
-<<<<<<< HEAD
         case 3: // stop
-=======
-        default: /// stop
->>>>>>> branch 'master' of https://github.com/thegamingcat13/FreeRTOS-pogin2-.git
             HAL_GPIO_WritePin(M1_1_GPIO_Port, M1_1_Pin, GPIO_PIN_RESET);
             HAL_GPIO_WritePin(M1_2_GPIO_Port, M1_2_Pin, GPIO_PIN_RESET);
             HAL_GPIO_WritePin(M2_1_GPIO_Port, M2_1_Pin, GPIO_PIN_RESET);

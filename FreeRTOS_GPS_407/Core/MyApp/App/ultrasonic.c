@@ -105,7 +105,7 @@ void SR04_Task (void *argument)
 				osDelay(1000);
 				setMotors(RIGHT, FAST, FAST);
 				osDelay(1000);
-				setMotors(0,0, 0);
+				setMotors(STOP, STANDSTILL, STANDSTILL);
 			}
 			if (sr04_debug)
 				UART_printf(100, "\n\n\rDistance: %.2f cm", distance_cm);

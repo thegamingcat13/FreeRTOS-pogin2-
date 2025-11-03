@@ -30,10 +30,10 @@
 #define QSIZE_UART 10
 
 /// motor speeds defines
-#define SLOW 1000
-#define MEDIUM 2000
-#define FAST 3000
-#define VERY_FAST 4000
+#define SLOW 300
+#define MEDIUM 500
+#define FAST 1500
+#define VERY_FAST 600
 #define STANDSTILL 0
 
 // motor direction definies
@@ -41,7 +41,7 @@
 #define BACKWARD -1
 #define RIGHT 2
 #define LEFT -2
-#define STOP 0
+#define STOP 3
 
 /// set software timer 1000 msecs
 #define TIMER1_DELAY 1000

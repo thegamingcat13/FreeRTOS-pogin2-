@@ -38,10 +38,9 @@ void ParsedGPS(void)
 			parsed_gnrmc.course = atof(gnrmc.course);
 			LCD_puts("GPS Gevonden");
 		}
-		xSemaphoreGive(hGpsDataMutex);
-	}
 	else
 		UART_puts("No GPS found\n\n ");
+	}
 }
 
 
