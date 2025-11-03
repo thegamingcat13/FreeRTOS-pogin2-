@@ -39,6 +39,8 @@ void ParsedGPS(void)
 		}
 	else
 		UART_puts("No GPS found\n\n ");
+
+	xSemaphoreGive(hGpsDataMutex);
 	}
 }
 
