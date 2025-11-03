@@ -36,6 +36,7 @@ void ParsedGPS(void)
 			parsed_gnrmc.longitude = atof(gnrmc.longitude);
 			parsed_gnrmc.speed = atof(gnrmc.speed);
 			parsed_gnrmc.course = atof(gnrmc.course);
+			LCD_puts("GPS Gevonden");
 		}
 		xSemaphoreGive(hGpsDataMutex);
 	}
