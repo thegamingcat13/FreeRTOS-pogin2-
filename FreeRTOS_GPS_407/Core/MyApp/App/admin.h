@@ -33,7 +33,7 @@
 #define SLOW 1000
 #define MEDIUM 2000
 #define FAST 3000
-#define VERY_FAST 400
+#define VERY_FAST 4000
 
 /// set software timer 1000 msecs
 #define TIMER1_DELAY 1000
