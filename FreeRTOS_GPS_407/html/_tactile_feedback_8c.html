@@ -83,8 +83,7 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 
-<p>Hierin staan verschillende tasks en functies.<br  />
-.  
+<p>De functies voor het aansturen van de L298N dual H-bridge driver. En de functies voor de besturing van de motors.  
 <a href="#details">More...</a></p>
 <div class="textblock"><code>#include &lt;<a class="el" href="admin_8h_source.html">admin.h</a>&gt;</code><br />
 <code>#include &lt;stdbool.h&gt;</code><br />
@@ -147,23 +146,18 @@ char&#160;</td><td class="memItemRight" valign="bottom"><b>Stop</b> [] = &quot;s
 char&#160;</td><td class="memItemRight" valign="bottom"><b>motor</b> [] = &quot;motor&quot;</td></tr>
 <tr class="memitem:a52c6ab9f8236f07bd58e07b8daac4437" id="r_a52c6ab9f8236f07bd58e07b8daac4437"><td class="memItemLeft" align="right" valign="top"><a id="a52c6ab9f8236f07bd58e07b8daac4437" name="a52c6ab9f8236f07bd58e07b8daac4437"></a>
 char&#160;</td><td class="memItemRight" valign="bottom"><b>waypoint</b> [] = &quot;waypoint&quot;</td></tr>
-<tr class="memitem:acc255b4c5f805e970b716d90661be274" id="r_acc255b4c5f805e970b716d90661be274"><td class="memItemLeft" align="right" valign="top"><a id="acc255b4c5f805e970b716d90661be274" name="acc255b4c5f805e970b716d90661be274"></a>
-char&#160;</td><td class="memItemRight" valign="bottom"><b>course_char</b></td></tr>
+<tr class="memitem:af438a6b31874f4b2b234cb385368dfb6" id="r_af438a6b31874f4b2b234cb385368dfb6"><td class="memItemLeft" align="right" valign="top">char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af438a6b31874f4b2b234cb385368dfb6">destReached</a> []</td></tr>
 <tr class="memitem:a5dbdfc4bf12262f6c38185c0f5e51cb6" id="r_a5dbdfc4bf12262f6c38185c0f5e51cb6"><td class="memItemLeft" align="right" valign="top"><a id="a5dbdfc4bf12262f6c38185c0f5e51cb6" name="a5dbdfc4bf12262f6c38185c0f5e51cb6"></a>
 bool&#160;</td><td class="memItemRight" valign="bottom"><b>FirstRun</b> = true</td></tr>
 <tr class="memitem:ad914495c21e66409a9f5a49acca3796a" id="r_ad914495c21e66409a9f5a49acca3796a"><td class="memItemLeft" align="right" valign="top"><a id="ad914495c21e66409a9f5a49acca3796a" name="ad914495c21e66409a9f5a49acca3796a"></a>
 TaskHandle_t&#160;</td><td class="memItemRight" valign="bottom"><b>hReachWP</b></td></tr>
+<tr class="memdesc:ad914495c21e66409a9f5a49acca3796a"><td class="mdescLeft">&#160;</td><td class="mdescRight">handle zodat de waypoint task extern genotified kan worden <br /></td></tr>
 <tr class="memitem:a5faa27108379f799afb6984010bf0384" id="r_a5faa27108379f799afb6984010bf0384"><td class="memItemLeft" align="right" valign="top"><a id="a5faa27108379f799afb6984010bf0384" name="a5faa27108379f799afb6984010bf0384"></a>
 <a class="el" href="struct_t_i_m___handle_type_def.html">TIM_HandleTypeDef</a>&#160;</td><td class="memItemRight" valign="bottom"><b>htim8</b></td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Hierin staan verschillende tasks en functies.<br  />
-. </p>
-<pre class="fragment">*       - Motor aansturing&lt;br&gt;
-*       - Bereiken van de waypoint&lt;br&gt;
-*       - Overslaan en terug gaan naar waypoints&lt;br&gt;
-*       - Uitlezen van waypoint op LCD&lt;br&gt;
-*</pre><dl class="section date"><dt>Date</dt><dd>28/10/2025 </dd></dl>
+<div class="textblock"><p>De functies voor het aansturen van de L298N dual H-bridge driver. En de functies voor de besturing van de motors. </p>
+<dl class="section date"><dt>Date</dt><dd>28/10/2025 </dd></dl>
 </div><a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Function Documentation</h2>
 <a id="a2f96c316955e657fb8242f6a23b21975" name="a2f96c316955e657fb8242f6a23b21975"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a2f96c316955e657fb8242f6a23b21975">&#9670;&#160;</a></span>BackWaypoint()</h2>
@@ -294,6 +288,23 @@ TaskHandle_t&#160;</td><td class="memItemRight" valign="bottom"><b>hReachWP</b><
 <p>SkipWaypoint wordt gebruikt om een waypoint over te slaan. Deze functie wordt aangeroepen door de <span class="tt">ARM-keys</span>. In de functie is een check ingebouwd die kijkt of de functie correct is uitgevoerd. </p>
 <dl class="section return"><dt>Returns</dt><dd>1 = waypoint behaald, verhoog <span class="tt">CurrentWaypoint</span> met 1 voor volgende waypoint. 0 = waypoint nog niet bereikt. </dd></dl>
 
+</div>
+</div>
+<a name="doc-var-members" id="doc-var-members"></a><h2 id="header-doc-var-members" class="groupheader">Variable Documentation</h2>
+<a id="af438a6b31874f4b2b234cb385368dfb6" name="af438a6b31874f4b2b234cb385368dfb6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af438a6b31874f4b2b234cb385368dfb6">&#9670;&#160;</a></span>destReached</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">char destReached[]</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<b>Initial value:</b><div class="fragment"><div class="line">= <span class="stringliteral">&quot;Waypoint reached&quot;</span></div>
+<div class="line"><span class="keywordtype">char</span> course_char</div>
+</div><!-- fragment -->
 </div>
 </div>
 </div><!-- contents -->

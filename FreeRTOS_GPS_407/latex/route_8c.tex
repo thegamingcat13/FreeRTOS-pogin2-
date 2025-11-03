@@ -38,9 +38,6 @@ int \mbox{\hyperlink{route_8c_ac2f2271634eb7ee6e6e3b7696ae3441b}{Current\+Waypoi
 \doxysubsubsection*{Variables}
 \begin{DoxyCompactItemize}
 \item 
-\Hypertarget{route_8c_ab0334f032bcc3014435a9a3ce0dbcb43}\label{route_8c_ab0334f032bcc3014435a9a3ce0dbcb43} 
-Task\+Handle\+\_\+t {\bfseries h\+Waypoint\+Task}
-\begin{DoxyCompactList}\small\item\em handle zodat de waypoint task extern genotified kan worden \end{DoxyCompactList}\item 
 \Hypertarget{route_8c_ab794723acf55340c35c1f79c2d1a8c6b}\label{route_8c_ab794723acf55340c35c1f79c2d1a8c6b} 
 s\+Waypoints {\bfseries Waypoints}
 \item 
@@ -51,7 +48,7 @@ bool {\bfseries first\+\_\+run} = true
 s\+Waypoints {\bfseries a\+Waypoints} \mbox{[}\mbox{\hyperlink{admin_8h_a593d279df692e4e19e04443e24cd823d}{STRC\+\_\+\+AMOUNT}} -\/ 1\mbox{]}
 \item 
 char \mbox{\hyperlink{route_8c_a66806a129ea5ddf6de8e05693cf6e925}{latitude}} \mbox{[}$\,$\mbox{]} = "{}latitude"{}
-\begin{DoxyCompactList}\small\item\em deze functie checkt of er goede gps-\/data is binnen gekomen en slaat goede data op in een structure array. Hiermee kunnen (STRC\+\_\+\+AMOUNT) punten opgslagen worden. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Deze functie checkt of er goede gps-\/data is binnen gekomen en slaat de lon en lat op naar de waypoint array. Hiermee kunnen (STRC\+\_\+\+AMOUNT) punten opgslagen worden. \end{DoxyCompactList}\item 
 \Hypertarget{route_8c_ab309edf7eaa31ce9cd5ddc1db6bf9c05}\label{route_8c_ab309edf7eaa31ce9cd5ddc1db6bf9c05} 
 char {\bfseries longitude} \mbox{[}$\,$\mbox{]} = "{}longitude"{}
 \end{DoxyCompactItemize}
@@ -123,7 +120,7 @@ char latitude\mbox{[}$\,$\mbox{]} = "{}latitude"{}}
 
 
 
-deze functie checkt of er goede gps-\/data is binnen gekomen en slaat goede data op in een structure array. Hiermee kunnen (STRC\+\_\+\+AMOUNT) punten opgslagen worden. 
+Deze functie checkt of er goede gps-\/data is binnen gekomen en slaat de lon en lat op naar de waypoint array. Hiermee kunnen (STRC\+\_\+\+AMOUNT) punten opgslagen worden. 
 
 \begin{DoxyReturn}{Returns}
 void 

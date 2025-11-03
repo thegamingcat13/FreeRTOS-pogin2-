@@ -83,7 +83,7 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 
-<p>Berekent de verschillen tussen de huidige locatie en de waypoint. Dit doet hij met het verschil tussen de lon en lat en de heading te berekenen.  
+<p>Berekent de verschillen tussen de huidige locatie en de waypoint. Dit doet hij met het verschil tussen de lon en lat en de heading te berekenen. Daarnaast berekent hij de heading in graden.  
 <a href="#details">More...</a></p>
 <div class="textblock"><code>#include &lt;<a class="el" href="admin_8h_source.html">admin.h</a>&gt;</code><br />
 <code>#include &lt;stdbool.h&gt;</code><br />
@@ -95,7 +95,7 @@ $(function() {
 <tr class="heading"><td colspan="2"><h2 id="header-func-members" class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
 <tr class="memitem:af4a85680d3fac414e5b91f0cd16e8adf" id="r_af4a85680d3fac414e5b91f0cd16e8adf"><td class="memItemLeft" align="right" valign="top">RouteInfo&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af4a85680d3fac414e5b91f0cd16e8adf">Get_Waypoint_Info</a> (int waypoint)</td></tr>
-<tr class="memdesc:af4a85680d3fac414e5b91f0cd16e8adf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Berekent het verschil tussen huidige lon en lat vergeleken met de waypoint. Geeft aan of wij het waypoint hebben berijkt of nog niet. De data wordt vanuit <span class="tt">parsed_grmc</span> gehaald( zie <span class="tt"><a class="el" href="gps_8h_source.html">gps.h</a></span> voor de struct).  <br /></td></tr>
+<tr class="memdesc:af4a85680d3fac414e5b91f0cd16e8adf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Berekent het verschil tussen huidige lon en lat vergeleken met de waypoint. Geeft aan of de waypoint hebben berijkt of nog niet. De data wordt vanuit <span class="tt">parsed_grmc</span> gehaald( zie <span class="tt"><a class="el" href="gps_8h_source.html">gps.h</a></span> voor de struct).  <br /></td></tr>
 <tr class="memitem:af36f3f68b66e5f85d4008363868269ac" id="r_af36f3f68b66e5f85d4008363868269ac"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af36f3f68b66e5f85d4008363868269ac">heading</a> (int waypoint)</td></tr>
 <tr class="memdesc:af36f3f68b66e5f85d4008363868269ac"><td class="mdescLeft">&#160;</td><td class="mdescRight">Berekent de heading eerst in radialen en daarna omgezet in graden.  <br /></td></tr>
 </table><table class="memberdecls">
@@ -105,7 +105,7 @@ Variables</h2></td></tr>
 RouteInfo&#160;</td><td class="memItemRight" valign="bottom"><b>info</b></td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Berekent de verschillen tussen de huidige locatie en de waypoint. Dit doet hij met het verschil tussen de lon en lat en de heading te berekenen. </p>
+<div class="textblock"><p>Berekent de verschillen tussen de huidige locatie en de waypoint. Dit doet hij met het verschil tussen de lon en lat en de heading te berekenen. Daarnaast berekent hij de heading in graden. </p>
 <dl class="section date"><dt>Date</dt><dd>08/10/2025 </dd></dl>
 </div><a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Function Documentation</h2>
 <a id="af4a85680d3fac414e5b91f0cd16e8adf" name="af4a85680d3fac414e5b91f0cd16e8adf"></a>
@@ -123,7 +123,7 @@ RouteInfo&#160;</td><td class="memItemRight" valign="bottom"><b>info</b></td></t
       </table>
 </div><div class="memdoc">
 
-<p>Berekent het verschil tussen huidige lon en lat vergeleken met de waypoint. Geeft aan of wij het waypoint hebben berijkt of nog niet. De data wordt vanuit <span class="tt">parsed_grmc</span> gehaald( zie <span class="tt"><a class="el" href="gps_8h_source.html">gps.h</a></span> voor de struct). </p>
+<p>Berekent het verschil tussen huidige lon en lat vergeleken met de waypoint. Geeft aan of de waypoint hebben berijkt of nog niet. De data wordt vanuit <span class="tt">parsed_grmc</span> gehaald( zie <span class="tt"><a class="el" href="gps_8h_source.html">gps.h</a></span> voor de struct). </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">waypoint</td><td>de struct die lan en lon opslaat. </td></tr>

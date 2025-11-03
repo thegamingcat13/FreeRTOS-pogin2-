@@ -235,7 +235,7 @@ void \mbox{\hyperlink{admin_8h_af292f364f4ee621c575f83b5b25fbfc5}{Reach\+WPTask}
 float \mbox{\hyperlink{admin_8h_a5d6397136fbf12fef3dca666de7a35a0}{heading}} (int)
 \begin{DoxyCompactList}\small\item\em Berekent de heading eerst in radialen en daarna omgezet in graden. \end{DoxyCompactList}\item 
 Route\+Info \mbox{\hyperlink{admin_8h_af4a85680d3fac414e5b91f0cd16e8adf}{Get\+\_\+\+Waypoint\+\_\+\+Info}} (int waypoint)
-\begin{DoxyCompactList}\small\item\em Berekent het verschil tussen huidige lon en lat vergeleken met de waypoint. Geeft aan of wij het waypoint hebben berijkt of nog niet. De data wordt vanuit {\ttfamily parsed\+\_\+grmc} gehaald( zie {\ttfamily \doxylink{gps_8h_source}{gps.\+h}} voor de struct). \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Berekent het verschil tussen huidige lon en lat vergeleken met de waypoint. Geeft aan of de waypoint hebben berijkt of nog niet. De data wordt vanuit {\ttfamily parsed\+\_\+grmc} gehaald( zie {\ttfamily \doxylink{gps_8h_source}{gps.\+h}} voor de struct). \end{DoxyCompactList}\item 
 int \mbox{\hyperlink{admin_8h_a8e72f6787dd96ab06b941f402e994077}{Skip\+Waypoint}} (void)
 \begin{DoxyCompactList}\small\item\em Skip\+Waypoint wordt gebruikt om een waypoint over te slaan. Deze functie wordt aangeroepen door de {\ttfamily ARM-\/keys}. In de functie is een check ingebouwd die kijkt of de functie correct is uitgevoerd. \end{DoxyCompactList}\item 
 int \mbox{\hyperlink{admin_8h_a2f96c316955e657fb8242f6a23b21975}{Back\+Waypoint}} (void)
@@ -273,17 +273,14 @@ Event\+Group\+Handle\+\_\+t {\bfseries h\+KEY\+\_\+\+Event}
 \Hypertarget{admin_8h_af1a9410a47225cac12eb96a84b51b035}\label{admin_8h_af1a9410a47225cac12eb96a84b51b035} 
 Timer\+Handle\+\_\+t {\bfseries h\+Timer1}
 \begin{DoxyCompactList}\small\item\em handle voor software timer \end{DoxyCompactList}\item 
-\Hypertarget{admin_8h_ab0334f032bcc3014435a9a3ce0dbcb43}\label{admin_8h_ab0334f032bcc3014435a9a3ce0dbcb43} 
-Task\+Handle\+\_\+t {\bfseries h\+Waypoint\+Task}
-\begin{DoxyCompactList}\small\item\em handle zodat de waypoint task extern genotified kan worden \end{DoxyCompactList}\item 
 \Hypertarget{admin_8h_ad914495c21e66409a9f5a49acca3796a}\label{admin_8h_ad914495c21e66409a9f5a49acca3796a} 
 Task\+Handle\+\_\+t {\bfseries h\+Reach\+WP}
-\item 
+\begin{DoxyCompactList}\small\item\em handle zodat de waypoint task extern genotified kan worden \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{admin_8h_a952449da34b356e2651de547daf4312c}{Uart\+\_\+debug\+\_\+out}}
+\begin{DoxyCompactList}\small\item\em default\+: debug all output to uart \end{DoxyCompactList}\item 
 \Hypertarget{admin_8h_a6c9470c1299852dfcbcfe2d36a54d61c}\label{admin_8h_a6c9470c1299852dfcbcfe2d36a54d61c} 
 bool {\bfseries gps\+\_\+lcd\+\_\+print}
-\item 
-int \mbox{\hyperlink{admin_8h_a952449da34b356e2651de547daf4312c}{Uart\+\_\+debug\+\_\+out}}
-\begin{DoxyCompactList}\small\item\em default\+: debug all output to uart \end{DoxyCompactList}\end{DoxyCompactItemize}
+\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
@@ -513,7 +510,7 @@ Route\+Info Get\+\_\+\+Waypoint\+\_\+\+Info (\begin{DoxyParamCaption}\item[{int}
 
 
 
-Berekent het verschil tussen huidige lon en lat vergeleken met de waypoint. Geeft aan of wij het waypoint hebben berijkt of nog niet. De data wordt vanuit {\ttfamily parsed\+\_\+grmc} gehaald( zie {\ttfamily \doxylink{gps_8h_source}{gps.\+h}} voor de struct). 
+Berekent het verschil tussen huidige lon en lat vergeleken met de waypoint. Geeft aan of de waypoint hebben berijkt of nog niet. De data wordt vanuit {\ttfamily parsed\+\_\+grmc} gehaald( zie {\ttfamily \doxylink{gps_8h_source}{gps.\+h}} voor de struct). 
 
 
 \begin{DoxyParams}{Parameters}

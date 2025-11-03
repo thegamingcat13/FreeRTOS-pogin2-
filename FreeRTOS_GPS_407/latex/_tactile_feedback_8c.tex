@@ -2,8 +2,7 @@
 \hypertarget{_tactile_feedback_8c}{}\label{_tactile_feedback_8c}\index{Core/MyApp/App/TactileFeedback.c@{Core/MyApp/App/TactileFeedback.c}}
 
 
-Hierin staan verschillende tasks en functies.~\newline
-.  
+De functies voor het aansturen van de L298N dual H-\/bridge driver. En de functies voor de besturing van de motors.  
 
 
 {\ttfamily \#include $<$admin.\+h$>$}\newline
@@ -86,30 +85,21 @@ char {\bfseries motor} \mbox{[}$\,$\mbox{]} = "{}motor"{}
 \Hypertarget{_tactile_feedback_8c_a52c6ab9f8236f07bd58e07b8daac4437}\label{_tactile_feedback_8c_a52c6ab9f8236f07bd58e07b8daac4437} 
 char {\bfseries waypoint} \mbox{[}$\,$\mbox{]} = "{}waypoint"{}
 \item 
-\Hypertarget{_tactile_feedback_8c_acc255b4c5f805e970b716d90661be274}\label{_tactile_feedback_8c_acc255b4c5f805e970b716d90661be274} 
-char {\bfseries course\+\_\+char}
+char \mbox{\hyperlink{_tactile_feedback_8c_af438a6b31874f4b2b234cb385368dfb6}{dest\+Reached}} \mbox{[}$\,$\mbox{]}
 \item 
 \Hypertarget{_tactile_feedback_8c_a5dbdfc4bf12262f6c38185c0f5e51cb6}\label{_tactile_feedback_8c_a5dbdfc4bf12262f6c38185c0f5e51cb6} 
 bool {\bfseries First\+Run} = true
 \item 
 \Hypertarget{_tactile_feedback_8c_ad914495c21e66409a9f5a49acca3796a}\label{_tactile_feedback_8c_ad914495c21e66409a9f5a49acca3796a} 
 Task\+Handle\+\_\+t {\bfseries h\+Reach\+WP}
-\item 
+\begin{DoxyCompactList}\small\item\em handle zodat de waypoint task extern genotified kan worden \end{DoxyCompactList}\item 
 \Hypertarget{_tactile_feedback_8c_a5faa27108379f799afb6984010bf0384}\label{_tactile_feedback_8c_a5faa27108379f799afb6984010bf0384} 
 \mbox{\hyperlink{struct_t_i_m___handle_type_def}{TIM\+\_\+\+Handle\+Type\+Def}} {\bfseries htim8}
 \end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
-Hierin staan verschillende tasks en functies.~\newline
-. 
-
-\begin{DoxyVerb}*       - Motor aansturing<br>
-*       - Bereiken van de waypoint<br>
-*       - Overslaan en terug gaan naar waypoints<br>
-*       - Uitlezen van waypoint op LCD<br>
-*\end{DoxyVerb}
-
+De functies voor het aansturen van de L298N dual H-\/bridge driver. En de functies voor de besturing van de motors. 
 
 \begin{DoxyDate}{Date}
 28/10/2025 
@@ -206,3 +196,20 @@ Skip\+Waypoint wordt gebruikt om een waypoint over te slaan. Deze functie wordt 
 \begin{DoxyReturn}{Returns}
 1 = waypoint behaald, verhoog {\ttfamily Current\+Waypoint} met 1 voor volgende waypoint. 0 = waypoint nog niet bereikt. 
 \end{DoxyReturn}
+
+
+\label{doc-var-members}
+\Hypertarget{_tactile_feedback_8c_doc-var-members}
+\doxysubsection{Variable Documentation}
+\Hypertarget{_tactile_feedback_8c_af438a6b31874f4b2b234cb385368dfb6}\index{TactileFeedback.c@{TactileFeedback.c}!destReached@{destReached}}
+\index{destReached@{destReached}!TactileFeedback.c@{TactileFeedback.c}}
+\doxysubsubsection{\texorpdfstring{destReached}{destReached}}
+{\footnotesize\ttfamily \label{_tactile_feedback_8c_af438a6b31874f4b2b234cb385368dfb6} 
+char dest\+Reached\mbox{[}$\,$\mbox{]}}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{=\ \textcolor{stringliteral}{"{}Waypoint\ reached"{}}}
+\DoxyCodeLine{\textcolor{keywordtype}{char}\ course\_char}
+
+\end{DoxyCode}

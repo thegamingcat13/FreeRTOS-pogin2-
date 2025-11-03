@@ -2,7 +2,7 @@
 \hypertarget{route__performer_8c}{}\label{route__performer_8c}\index{Core/MyApp/App/route\_performer.c@{Core/MyApp/App/route\_performer.c}}
 
 
-Berekent de verschillen tussen de huidige locatie en de waypoint. Dit doet hij met het verschil tussen de lon en lat en de heading te berekenen.  
+Berekent de verschillen tussen de huidige locatie en de waypoint. Dit doet hij met het verschil tussen de lon en lat en de heading te berekenen. Daarnaast berekent hij de heading in graden.  
 
 
 {\ttfamily \#include $<$admin.\+h$>$}\newline
@@ -15,7 +15,7 @@ Berekent de verschillen tussen de huidige locatie en de waypoint. Dit doet hij m
 \begin{DoxyCompactItemize}
 \item 
 Route\+Info \mbox{\hyperlink{route__performer_8c_af4a85680d3fac414e5b91f0cd16e8adf}{Get\+\_\+\+Waypoint\+\_\+\+Info}} (int waypoint)
-\begin{DoxyCompactList}\small\item\em Berekent het verschil tussen huidige lon en lat vergeleken met de waypoint. Geeft aan of wij het waypoint hebben berijkt of nog niet. De data wordt vanuit {\ttfamily parsed\+\_\+grmc} gehaald( zie {\ttfamily \doxylink{gps_8h_source}{gps.\+h}} voor de struct). \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Berekent het verschil tussen huidige lon en lat vergeleken met de waypoint. Geeft aan of de waypoint hebben berijkt of nog niet. De data wordt vanuit {\ttfamily parsed\+\_\+grmc} gehaald( zie {\ttfamily \doxylink{gps_8h_source}{gps.\+h}} voor de struct). \end{DoxyCompactList}\item 
 float \mbox{\hyperlink{route__performer_8c_af36f3f68b66e5f85d4008363868269ac}{heading}} (int waypoint)
 \begin{DoxyCompactList}\small\item\em Berekent de heading eerst in radialen en daarna omgezet in graden. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsubsection*{Variables}
@@ -27,7 +27,7 @@ Route\+Info {\bfseries info}
 
 
 \doxysubsection{Detailed Description}
-Berekent de verschillen tussen de huidige locatie en de waypoint. Dit doet hij met het verschil tussen de lon en lat en de heading te berekenen. 
+Berekent de verschillen tussen de huidige locatie en de waypoint. Dit doet hij met het verschil tussen de lon en lat en de heading te berekenen. Daarnaast berekent hij de heading in graden. 
 
 \begin{DoxyDate}{Date}
 08/10/2025 
@@ -45,7 +45,7 @@ Route\+Info Get\+\_\+\+Waypoint\+\_\+\+Info (\begin{DoxyParamCaption}\item[{int}
 
 
 
-Berekent het verschil tussen huidige lon en lat vergeleken met de waypoint. Geeft aan of wij het waypoint hebben berijkt of nog niet. De data wordt vanuit {\ttfamily parsed\+\_\+grmc} gehaald( zie {\ttfamily \doxylink{gps_8h_source}{gps.\+h}} voor de struct). 
+Berekent het verschil tussen huidige lon en lat vergeleken met de waypoint. Geeft aan of de waypoint hebben berijkt of nog niet. De data wordt vanuit {\ttfamily parsed\+\_\+grmc} gehaald( zie {\ttfamily \doxylink{gps_8h_source}{gps.\+h}} voor de struct). 
 
 
 \begin{DoxyParams}{Parameters}

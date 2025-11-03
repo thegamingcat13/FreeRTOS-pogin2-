@@ -117,9 +117,6 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>Waypoint</b> ()</td><
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-var-members" class="groupheader"><a id="var-members" name="var-members"></a>
 Variables</h2></td></tr>
-<tr class="memitem:ab0334f032bcc3014435a9a3ce0dbcb43" id="r_ab0334f032bcc3014435a9a3ce0dbcb43"><td class="memItemLeft" align="right" valign="top"><a id="ab0334f032bcc3014435a9a3ce0dbcb43" name="ab0334f032bcc3014435a9a3ce0dbcb43"></a>
-TaskHandle_t&#160;</td><td class="memItemRight" valign="bottom"><b>hWaypointTask</b></td></tr>
-<tr class="memdesc:ab0334f032bcc3014435a9a3ce0dbcb43"><td class="mdescLeft">&#160;</td><td class="mdescRight">handle zodat de waypoint task extern genotified kan worden <br /></td></tr>
 <tr class="memitem:ab794723acf55340c35c1f79c2d1a8c6b" id="r_ab794723acf55340c35c1f79c2d1a8c6b"><td class="memItemLeft" align="right" valign="top"><a id="ab794723acf55340c35c1f79c2d1a8c6b" name="ab794723acf55340c35c1f79c2d1a8c6b"></a>
 sWaypoints&#160;</td><td class="memItemRight" valign="bottom"><b>Waypoints</b></td></tr>
 <tr class="memitem:a580ed2f12b661ba032d0e08c549e9d4d" id="r_a580ed2f12b661ba032d0e08c549e9d4d"><td class="memItemLeft" align="right" valign="top"><a id="a580ed2f12b661ba032d0e08c549e9d4d" name="a580ed2f12b661ba032d0e08c549e9d4d"></a>
@@ -127,7 +124,7 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>first_run</b> = true<
 <tr class="memitem:a235818ebec9bdb14941d8fd2ddc0b67d" id="r_a235818ebec9bdb14941d8fd2ddc0b67d"><td class="memItemLeft" align="right" valign="top"><a id="a235818ebec9bdb14941d8fd2ddc0b67d" name="a235818ebec9bdb14941d8fd2ddc0b67d"></a>
 sWaypoints&#160;</td><td class="memItemRight" valign="bottom"><b>aWaypoints</b> [<a class="el" href="admin_8h.html#a593d279df692e4e19e04443e24cd823d">STRC_AMOUNT</a> - 1]</td></tr>
 <tr class="memitem:a66806a129ea5ddf6de8e05693cf6e925" id="r_a66806a129ea5ddf6de8e05693cf6e925"><td class="memItemLeft" align="right" valign="top">char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a66806a129ea5ddf6de8e05693cf6e925">latitude</a> [] = &quot;latitude&quot;</td></tr>
-<tr class="memdesc:a66806a129ea5ddf6de8e05693cf6e925"><td class="mdescLeft">&#160;</td><td class="mdescRight">deze functie checkt of er goede gps-data is binnen gekomen en slaat goede data op in een structure array. Hiermee kunnen (STRC_AMOUNT) punten opgslagen worden.  <br /></td></tr>
+<tr class="memdesc:a66806a129ea5ddf6de8e05693cf6e925"><td class="mdescLeft">&#160;</td><td class="mdescRight">Deze functie checkt of er goede gps-data is binnen gekomen en slaat de lon en lat op naar de waypoint array. Hiermee kunnen (STRC_AMOUNT) punten opgslagen worden.  <br /></td></tr>
 <tr class="memitem:ab309edf7eaa31ce9cd5ddc1db6bf9c05" id="r_ab309edf7eaa31ce9cd5ddc1db6bf9c05"><td class="memItemLeft" align="right" valign="top"><a id="ab309edf7eaa31ce9cd5ddc1db6bf9c05" name="ab309edf7eaa31ce9cd5ddc1db6bf9c05"></a>
 char&#160;</td><td class="memItemRight" valign="bottom"><b>longitude</b> [] = &quot;longitude&quot;</td></tr>
 </table>
@@ -209,7 +206,7 @@ char&#160;</td><td class="memItemRight" valign="bottom"><b>longitude</b> [] = &q
       </table>
 </div><div class="memdoc">
 
-<p>deze functie checkt of er goede gps-data is binnen gekomen en slaat goede data op in een structure array. Hiermee kunnen (STRC_AMOUNT) punten opgslagen worden. </p>
+<p>Deze functie checkt of er goede gps-data is binnen gekomen en slaat de lon en lat op naar de waypoint array. Hiermee kunnen (STRC_AMOUNT) punten opgslagen worden. </p>
 <dl class="section return"><dt>Returns</dt><dd>void </dd></dl>
 
 </div>
