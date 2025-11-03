@@ -17,13 +17,11 @@
 
 // LCD messages
 char wplcd[]= "Waypoint opslaan";
-char rslcd[]= "route starten";
-char skiplcd[]= "waypoint overgeslagen";
-char backlcd[]= "terug naar vorige punt";
-char route[]= "route";
-char started[]= "started";
-char waypoint_skipped[]= "waypoint_skipped";
-char waypoint_back[]= "waypoint_back";
+char rslcd[]= "Route gestart";
+char skiplcd[]= "Waypoint overgeslagen";
+char backlcd[]= "Terug naar vorige punt";
+char waypoint_skipped[]= "Waypoint_skipped";
+char waypoint_back[]= "Waypoint_back";
 
 /**
 * @brief Zet een kleurenledje aan en uit.
