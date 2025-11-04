@@ -103,7 +103,7 @@ void ARM_keys_task (void *argument)
 
 		case 2: /// Start cruising
 			xTaskNotifyGive(hReachWP);
-			logWrite(5, (void*)started);
+			logWrite(5, (void*)rslcd);
 			LCD_clear();
 			LCD_puts(rslcd);
 			break;

@@ -57,14 +57,22 @@ void Waypoint ()
 			aWaypoints[current].lon = parsed_gnrmc.longitude;	// kopieer de latitude van de gps-data naar de waypoints-struct
 			aWaypoints[current].lat = parsed_gnrmc.latitude;	// kopieer de longitude van de gps-data naar de waypoints-struct
 
-			logWrite(1, 0);										// sla de latitude op in de terminal-log
-			logWrite(2, 0);										// sla de longitude op in de terminal-log
-
-			current++;
-			if (current >= STRC_AMOUNT)							// als er 20 sets data zijn opgeslagen, zet de pointer weer terug op de eerste set
+			if (aWaypoints[current].lon < 1.00f || aWaypoints[current].lat < 1.00f)
 			{
-				filled = true;
-				current = 0;
+				LCD_clear();
+				LCD_puts("Waypoints save failed");
+			}
+			else
+			{
+				logWrite(1, 0);										// sla de latitude op in de terminal-log
+				logWrite(2, 0);										// sla de longitude op in de terminal-log
+
+				current++;
+				if (current >= STRC_AMOUNT)							// als er 20 sets data zijn opgeslagen, zet de pointer weer terug op de eerste set
+				{
+					filled = true;
+					current = 0;
+				}
 			}
 		}
 

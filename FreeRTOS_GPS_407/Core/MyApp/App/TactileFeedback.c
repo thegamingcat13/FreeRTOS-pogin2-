@@ -33,7 +33,7 @@ char Drive_backward[] = "Drive_backward";
 char Stop[]= "stop";
 char motor[]= "motor";
 char waypoint[]= "waypoint";
-char destReached[]= "Waypoint reached"
+char destReached[]= "Waypoint reached";
 char course_char;
 bool FirstRun = true;
 
