@@ -18,7 +18,7 @@ typedef struct _GNRMC
 	char    head[7];       // 1. header
 	char    time[10];      // 2. hhmmss.sss
 	char    status;        // 3. A=valid, V=not valid
-	char    latitude[10];  // 4. ddmm.mmmm (double)
+	char    latitude[10+2];  // 4. ddmm.mmmm (double)
 	char    NS_ind;        // 5. N,S
 	char    longitude[10+2]; // 6. ddmm.mmmm (double)
 	char    EW_ind;        // 7. E,W
@@ -60,4 +60,3 @@ enum NMEA
 	eGPGSA,      // 2
 	eGNGGA       // 3 - kun je verder uitbreiden natuurlijk
 };
-

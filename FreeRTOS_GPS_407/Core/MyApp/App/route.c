@@ -15,6 +15,8 @@
 #include "gps.h"
 #include "cmsis_os.h"
 
+TaskHandle_t hWaypointTask;
+
 struct waypoints // maakt de struct aan die de latitude en longitude opslaat in floats
 {
     float lon;
@@ -29,9 +31,9 @@ static int current = 0;
 static bool filled = false;
 bool first_run = true;
 
-sWaypoints aWaypoints[STRC_AMOUNT - 1];
+sWaypoints aWaypoints[STRC_AMOUNT];
 /**
- * @brief Deze functie  checkt of er goede gps-data is binnen gekomen en slaat de lon en lat op naar de waypoint array.
+ * @brief deze functie checkt of er goede gps-data is binnen gekomen en slaat goede data op in een structure array.
  * Hiermee kunnen (STRC_AMOUNT) punten opgslagen worden.
  * @return void
 */
@@ -44,7 +46,7 @@ void Waypoint ()
     {
     	if (first_run)
     	{
-    		for (int i = 0; i <= 19; i++)
+    		for (int i = 0; i < STRC_AMOUNT; i++)
     		{
     			aWaypoints[i].lat = 0;
     			aWaypoints[i].lon = 0;
@@ -57,22 +59,14 @@ void Waypoint ()
 			aWaypoints[current].lon = parsed_gnrmc.longitude;	// kopieer de latitude van de gps-data naar de waypoints-struct
 			aWaypoints[current].lat = parsed_gnrmc.latitude;	// kopieer de longitude van de gps-data naar de waypoints-struct
 
-			if (aWaypoints[current].lon < 1.00f || aWaypoints[current].lat < 1.00f)
-			{
-				LCD_clear();
-				LCD_puts("Waypoints save failed");
-			}
-			else
-			{
-				logWrite(1, 0);										// sla de latitude op in de terminal-log
-				logWrite(2, 0);										// sla de longitude op in de terminal-log
+			logWrite(1, 0);										// sla de latitude op in de terminal-log
+			logWrite(2, 0);										// sla de longitude op in de terminal-log
 
-				current++;
-				if (current >= STRC_AMOUNT)							// als er 20 sets data zijn opgeslagen, zet de pointer weer terug op de eerste set
-				{
-					filled = true;
-					current = 0;
-				}
+			current++;
+			if (current >= STRC_AMOUNT)							// als er 20 sets data zijn opgeslagen, zet de pointer weer terug op de eerste set
+			{
+				filled = true;
+				current = 0;
 			}
 		}
 

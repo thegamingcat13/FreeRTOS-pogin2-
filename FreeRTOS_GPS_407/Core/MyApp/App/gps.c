@@ -49,11 +49,11 @@ void ParsedGPS(void)
 		    parsed_gnrmc.longitude = degrees + (minutes / 60.0f); // combine degrees and minutes (converted to fractions) to get decimal degrees
 			parsed_gnrmc.speed = atof(gnrmc.speed);
 			parsed_gnrmc.course = atof(gnrmc.course);
-		}
-		else
-			UART_puts("No GPS found\n\n ");
 
-	xSemaphoreGive(hGpsDataMutex);
+			xSemaphoreGive(hGpsDataMutex);
+		}
+	else
+		UART_puts("No GPS found\n\n ");
 	}
 }
 
@@ -291,6 +291,5 @@ int checksum_valid(char *string)
 
 	return (0);
 }
-
 
 

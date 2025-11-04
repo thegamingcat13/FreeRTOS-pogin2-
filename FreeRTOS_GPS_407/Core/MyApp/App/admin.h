@@ -64,11 +64,6 @@
 #define ARRIVAL_RADIUS_METERS 2.0f // set arrival radius to 2 meter
 #define MIN_COG_SPEED 0.5f
 
-
-// dataretention.c
-#define MAX_LOGS 100 // Define the maximum number of logs
-
-// structure that contains the info that will be used for the route compute
 typedef struct RouteInfo_s{
 	    float latdifference;
 	    float londifference;
@@ -76,6 +71,9 @@ typedef struct RouteInfo_s{
 	} RouteInfo;
 
 extern RouteInfo info;
+
+// dataretention.c
+#define MAX_LOGS 100 // Define the maximum number of logs
 
 // data retention log structure
 typedef struct log
@@ -113,7 +111,10 @@ extern EventGroupHandle_t hKEY_Event;
 /// handle voor software timer
 extern TimerHandle_t      hTimer1;
 /// handle zodat de waypoint task extern genotified kan worden
+extern TaskHandle_t   	  hWaypointTask;
 extern TaskHandle_t		  hReachWP;
+
+extern bool gps_lcd_print;
 
 
 
@@ -222,11 +223,9 @@ extern void setMotors(int direction, uint16_t speed_l, uint16_t speed_r);
 extern void logWrite(int type, void* info);
 extern void printLogs(void);
 
-// ultrasonic.c
 extern void delay_us (int us);
 extern void SR04_Task (void *);
 
-// gps.c
-extern bool gps_lcd_print;
+
 
 #endif // ADMIM_H

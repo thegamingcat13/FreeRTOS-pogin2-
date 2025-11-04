@@ -33,7 +33,6 @@ char Drive_backward[] = "Drive_backward";
 char Stop[]= "stop";
 char motor[]= "motor";
 char waypoint[]= "waypoint";
-char destReached[]= "Waypoint reached";
 char course_char;
 bool FirstRun = true;
 
@@ -158,10 +157,10 @@ void ReachWPTask(void *argument)
 			{
 				setMotors(STOP, STANDSTILL, STANDSTILL);
 				LCD_clear();
-				LCD_puts(destReached);
-				UART_puts(destReached);
+				LCD_puts("Waypoint reached");
+				UART_puts("Waypont reached");
 				osDelay(3000);
-				CurrentWaypoint++;
+				CurrentWaypoint = CurrentWaypoint + 1;
 			}
 
 			DesiredHeading = heading(CurrentWaypoint);
